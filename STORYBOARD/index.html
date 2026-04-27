@@ -78,12 +78,35 @@
   .subato-grid .cell .k{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
   .subato-grid .cell .v{font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);line-height:1.45}
 
-  /* Frames */
-  .frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+  /* Frames — sempre grandes */
+  .frames{display:flex;flex-direction:column;gap:24px;margin-top:24px}
   .frame{background:#000;border:1px solid var(--border);overflow:hidden;cursor:zoom-in;transition:border-color .2s ease}
   .frame:hover{border-color:var(--accent)}
-  .frame img{display:block;width:100%;height:auto}
-  .frame .cap{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint);padding:8px 12px;border-top:1px solid var(--border);background:var(--sec-bg)}
+  .frame img{display:block;width:100%;height:auto;max-height:78vh;object-fit:contain;background:#000}
+  .frame .cap{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint);padding:12px 16px;border-top:1px solid var(--border);background:var(--sec-bg)}
+
+  /* Layout split: imagem + texto lado a lado */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center;margin:48px 0}
+  .split.media-right{grid-template-columns:1fr 1fr}
+  .split .media{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000;border:1px solid var(--border)}
+  .split .media img{width:100%;height:100%;object-fit:cover;display:block}
+  .split .media .badge{position:absolute;top:14px;left:14px;background:rgba(0,0,0,.72);color:var(--accent);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--border-strong)}
+  @media (max-width:840px){.split{grid-template-columns:1fr;gap:24px}.split .media{aspect-ratio:16/9}}
+
+  /* Banda full-width — imagem como cabeçalho de seção */
+  .band{position:relative;height:60vh;min-height:380px;max-height:560px;margin:48px 0;overflow:hidden;background:#000;border:1px solid var(--border)}
+  .band img{width:100%;height:100%;object-fit:cover;display:block;opacity:.78}
+  .band .band-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 0%,rgba(17,17,17,.45) 60%,rgba(17,17,17,.92) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:32px}
+  .band .band-overlay .eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .band .band-overlay h2{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.1;color:var(--ink);margin:0;border:0;padding:0}
+
+  /* Hero com imagem full-bleed */
+  .hero{position:relative;padding:0;margin:24px 0 0;border:1px solid var(--border);overflow:hidden}
+  .hero .hero-img{position:absolute;inset:0;background:#000}
+  .hero .hero-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:.55}
+  .hero .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(17,17,17,.85) 0%,rgba(17,17,17,.55) 50%,rgba(17,17,17,.85) 100%)}
+  .hero-inner{position:relative;padding:80px 48px;min-height:520px;display:flex;flex-direction:column;justify-content:center}
+  @media (max-width:640px){.hero-inner{padding:48px 24px;min-height:440px}}
 
   /* Lightbox */
   .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:32px;z-index:1000;cursor:zoom-out}
@@ -120,45 +143,98 @@
   </header>
 
   <section class="hero">
-    <span class="tag">Roteiro narrativo · Concorrência 002/2026 · Santo Ângelo/RS</span>
-    <h1 class="hero-title">Catedral Angelopolitana — <em>uma ópera visual</em>.</h1>
-
-    <div class="stats">
-      <div class="stat"><div class="k">Estrutura</div><div class="v">3 <small>atos · 9 sub-atos</small></div></div>
-      <div class="stat"><div class="k">Duração</div><div class="v">30 <small>minutos</small></div></div>
-      <div class="stat"><div class="k">Tempo por sub-ato</div><div class="v">~3 <small>minutos</small></div></div>
-      <div class="stat"><div class="k">Recorte</div><div class="v">XVII <small>— XXI</small></div></div>
+    <div class="hero-img"><img src="img/catedral-noite.png" alt="Catedral Angelopolitana à noite"></div>
+    <div class="hero-inner">
+      <span class="tag">Roteiro narrativo · Concorrência 002/2026 · Santo Ângelo/RS</span>
+      <h1 class="hero-title">Catedral Angelopolitana — <em>uma ópera visual</em>.</h1>
+      <div class="stats" style="margin-top:36px">
+        <div class="stat"><div class="k">Estrutura</div><div class="v">3 <small>atos · 9 sub-atos</small></div></div>
+        <div class="stat"><div class="k">Duração</div><div class="v">30 <small>minutos</small></div></div>
+        <div class="stat"><div class="k">Tempo por sub-ato</div><div class="v">~3 <small>minutos</small></div></div>
+        <div class="stat"><div class="k">Recorte</div><div class="v">XVII—XXI</div></div>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="section-eyebrow">Roteiro narrativo para vídeo mapping na Catedral Angelopolitana</div>
     <h2>Por que ópera visual</h2>
-    <div class="lede">
-      <p>Para a realização de projeções monumentais através de vídeo mapping que sejam mais do que mera exploração da técnica e de possibilidades gráficas de animação faz-se necessário buscar um instrumental de estrutura narrativa que permita a concatenação de texto, música e elementos visuais de forma coesa. Em nossa experiência, esse formato é mais próximo do roteiro de uma ópera do que de um filme ou de uma peça teatral.</p>
 
-      <p>No campo da videoarte, o vídeo mapping ainda não possui um instrumental próprio com maturidade suficiente para falarmos de uma estrutura narrativa de vídeo mapping.</p>
+    <div class="split">
+      <div class="media">
+        <img src="img/ato2-1-2.png" alt="Frame de referência — apogeu missioneiro">
+        <div class="badge">Referência · Apogeu</div>
+      </div>
+      <div>
+        <p>Para a realização de projeções monumentais através de vídeo mapping que sejam mais do que mera exploração da técnica e de possibilidades gráficas de animação faz-se necessário buscar um instrumental de estrutura narrativa que permita a concatenação de texto, música e elementos visuais de forma coesa. Em nossa experiência, esse formato é mais próximo do roteiro de uma ópera do que de um filme ou de uma peça teatral.</p>
+        <p>No campo da videoarte, o vídeo mapping ainda não possui um instrumental próprio com maturidade suficiente para falarmos de uma estrutura narrativa de vídeo mapping.</p>
+      </div>
+    </div>
 
-      <p>A utilização da técnica de vídeo mapping para a narração da história de um patrimônio histórico transcende a mera projeção de truques sobre uma superfície arquitetônica; trata-se de um suporte complexo, onde as camadas temporais de um monumento são reveladas através da fusão entre tecnologia digital e narrativa dramática. No caso da Catedral Angelopolitana de Santo Ângelo, este desafio está justamente no campo narrativo, e não no visual, devido à carga simbólica e à complexidade histórica das Missões Jesuíticas-Guaranis.</p>
+    <div class="band">
+      <img src="img/ato1-1-1.png" alt="Origens — gênese indígena">
+      <div class="band-overlay">
+        <div class="eyebrow">A pele da história</div>
+        <h2>O monumento como suporte de camadas temporais.</h2>
+      </div>
+    </div>
 
-      <p>O projeto que apresentamos propõe uma peça de trinta minutos, estruturada como uma <strong>ópera visual contemporânea</strong>, que utiliza a própria arquitetura do templo para narrar a trajetória da Redução de San Ángel Custódio e a evolução do território missioneiro através dos séculos.</p>
+    <div class="split">
+      <div>
+        <p>A utilização da técnica de vídeo mapping para a narração da história de um patrimônio histórico transcende a mera projeção de truques sobre uma superfície arquitetônica; trata-se de um suporte complexo, onde as <strong>camadas temporais de um monumento são reveladas</strong> através da fusão entre tecnologia digital e narrativa dramática. No caso da Catedral Angelopolitana de Santo Ângelo, este desafio está justamente no campo narrativo, e não no visual, devido à carga simbólica e à complexidade histórica das Missões Jesuíticas-Guaranis.</p>
+        <p>O projeto que apresentamos propõe uma peça de trinta minutos, estruturada como uma <strong>ópera visual contemporânea</strong>, que utiliza a própria arquitetura do templo para narrar a trajetória da Redução de San Ángel Custódio e a evolução do território missioneiro através dos séculos.</p>
+      </div>
+      <div class="media">
+        <img src="img/ato1-2-2.png" alt="Frame de referência — chegada dos jesuítas">
+        <div class="badge">Referência · O Encontro</div>
+      </div>
+    </div>
 
-      <p>A estrutura narrativa adota o modelo de <strong>progressividade dramática operística</strong>, onde a narração verbal não é um mero complemento, mas o alicerce que sustenta grandes movimentos musicais e visuais. Esta abordagem vai permitir que a história seja contada de forma didática, sem perder a potência emocional e sensorial exigida por um espetáculo de grande escala ao ar livre.</p>
-
-      <p>O narrador escolhido, justamente o <strong>Santo Anjo da Guarda</strong>, atua como a consciência imortal do local, uma testemunha ocular que atravessa as três fases fundamentais da ocupação humana nesta região: a gênese indígena, o esplendor das reduções e a consolidação da cidade moderna.</p>
+    <div class="split">
+      <div class="media">
+        <img src="img/ato2-2-2.png" alt="Frame de referência — Tragédia">
+        <div class="badge">Referência · Tragédia</div>
+      </div>
+      <div>
+        <p>A estrutura narrativa adota o modelo de <strong>progressividade dramática operística</strong>, onde a narração verbal não é um mero complemento, mas o alicerce que sustenta grandes movimentos musicais e visuais. Esta abordagem vai permitir que a história seja contada de forma didática, sem perder a potência emocional e sensorial exigida por um espetáculo de grande escala ao ar livre.</p>
+        <p>O narrador escolhido, justamente o <strong>Santo Anjo da Guarda</strong>, atua como a consciência imortal do local, uma testemunha ocular que atravessa as três fases fundamentais da ocupação humana nesta região: a gênese indígena, o esplendor das reduções e a consolidação da cidade moderna.</p>
+      </div>
     </div>
   </section>
 
   <section class="section">
     <div class="section-eyebrow">Fundamentação teórica e estrutural do roteiro</div>
     <h2>Três atos, nove sub-atos</h2>
-    <div class="lede">
-      <p>A peça foi organizada em uma estrutura clássica (Ato I, Ato II e Ato III), onde cada ato é composto por três sub-atos, totalizando <strong>nove segmentos narrativos</strong>. Esta divisão não apenas facilita a compreensão cronológica por parte do público, mas também permite uma gestão precisa da curva dramática, alternando momentos de contemplação, tensão, conflito e celebração. A decisão de utilizar o Anjo da Guarda como fio condutor justifica-se pela própria origem do nome da redução e da catedral, estabelecendo uma conexão direta entre o sagrado e o histórico.</p>
 
-      <p>A duração total de trinta minutos é apropriada para uma peça dessa natureza, e trabalhamos, portanto, com uma divisão equilibrada entre os atos, onde cada sub-ato possui aproximadamente 3 minutos, divididos entre a narração e o interlúdio audiovisual. Esta dinâmica mantém o engajamento do espectador, mantendo o tempo de cada movimento dentro dos limites esperados para que uma peça audiovisual mantenha seu impacto e prenda a atenção do público.</p>
-
-      <p>A estrutura proposta garante que nenhum período crucial seja negligenciado, desde a cultura Guarani até as escavações arqueológicas contemporâneas.</p>
+    <div class="split">
+      <div>
+        <p>A peça foi organizada em uma estrutura clássica (Ato I, Ato II e Ato III), onde cada ato é composto por três sub-atos, totalizando <strong>nove segmentos narrativos</strong>. Esta divisão não apenas facilita a compreensão cronológica por parte do público, mas também permite uma gestão precisa da curva dramática, alternando momentos de contemplação, tensão, conflito e celebração. A decisão de utilizar o Anjo da Guarda como fio condutor justifica-se pela própria origem do nome da redução e da catedral, estabelecendo uma conexão direta entre o sagrado e o histórico.</p>
+      </div>
+      <div class="media">
+        <img src="img/ato3-1-2.png" alt="Frame de referência — Retorno">
+        <div class="badge">Referência · Retorno</div>
+      </div>
     </div>
+
+    <div class="split">
+      <div class="media">
+        <img src="img/ato2-3-2.png" alt="Frame de referência — O Silêncio">
+        <div class="badge">Referência · O Silêncio</div>
+      </div>
+      <div>
+        <p>A duração total de trinta minutos é apropriada para uma peça dessa natureza, e trabalhamos, portanto, com uma divisão equilibrada entre os atos, onde cada sub-ato possui aproximadamente 3 minutos, divididos entre a narração e o interlúdio audiovisual. Esta dinâmica mantém o engajamento do espectador, mantendo o tempo de cada movimento dentro dos limites esperados para que uma peça audiovisual mantenha seu impacto e prenda a atenção do público.</p>
+        <p>A estrutura proposta garante que nenhum período crucial seja negligenciado, desde a cultura Guarani até as escavações arqueológicas contemporâneas.</p>
+      </div>
+    </div>
+
+    <div class="band">
+      <img src="img/ato3-2-2.png" alt="Frame de referência — O Templo">
+      <div class="band-overlay">
+        <div class="eyebrow">Conclusão</div>
+        <h2>A Catedral é uma escultura de tempo.</h2>
+      </div>
+    </div>
+
     <blockquote>Ao final da peça, o espectador não apenas viu a história — ele a atravessou, compreendendo que a Catedral é uma escultura de tempo, esculpida por muitas mãos, pelo espírito de gerações sob a guarda do anjo.</blockquote>
   </section>
 
