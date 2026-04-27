@@ -4,6 +4,19 @@ Diário de bordo da inscrição. Registrar aqui contatos, interações com a Pre
 
 ---
 
+## Identificação institucional da ADA (para a licitação)
+
+- **Razão social**: Tatiane G L da Silva Produção Cultural
+- **Nome fantasia**: Ateliê Digital Analógico
+- **CNPJ**: 20.420.653/0001-37
+- **Atividade principal (CNAE)**: 5911-1/02 — Produção de filmes para publicidade
+- **Data de fundação**: 10/06/2014
+- **Sede**: Rua Engenheiro Francisco Azevedo, 711 — Jardim Vera Cruz — São Paulo/SP — CEP 05.030-010
+
+> Esses dados vão no cabeçalho de todos os documentos da ADA na licitação (papel timbrado, declarações dos Anexos III a XI, Anexo I de proposta, Anexo II de credenciamento, contratos da equipe).
+
+---
+
 ## Contatos institucionais
 
 ### Departamento de Turismo de Santo Ângelo (área técnica)

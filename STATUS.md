@@ -113,15 +113,15 @@
 
 > Modelos prontos no papel timbrado da ADA. Selecione o anexo no topo da página, edite se precisar, imprima/salve em PDF e assine.
 
-- [ ] [Anexo III](MODELOS/declaracoes-licitacao.html#03) — atendimento aos requisitos de habilitação
-- [ ] [Anexo IV](MODELOS/declaracoes-licitacao.html#04) — reserva de cargos PCD / reabilitado Previdência
-- [ ] [Anexo V](MODELOS/declaracoes-licitacao.html#05) — custos trabalhistas integralizados na proposta
-- [ ] [Anexo VI](MODELOS/declaracoes-licitacao.html#06) — atendimento dos índices econômicos (contador)
-- [ ] [Anexo VII](MODELOS/declaracoes-licitacao.html#07) — art. 7º XXXIII CF (não emprega menor)
-- [ ] [Anexo VIII](MODELOS/declaracoes-licitacao.html#08) — enquadramento ME/EPP/Coop (contador)
-- [ ] [Anexo IX](MODELOS/declaracoes-licitacao.html#09) — idoneidade
-- [ ] [Anexo X](MODELOS/declaracoes-licitacao.html#10) — conhecimento (responsável técnico)
-- [ ] [Anexo XI](MODELOS/declaracoes-licitacao.html#11) — inexistência de servidor público no quadro
+- [ ] Atendimento aos requisitos de habilitação [Anexo III](MODELOS/declaracoes-licitacao.html#03)
+- [ ] Reserva de cargos PCD / reabilitado Previdência [Anexo IV](MODELOS/declaracoes-licitacao.html#04)
+- [ ] Custos trabalhistas integralizados na proposta [Anexo V](MODELOS/declaracoes-licitacao.html#05)
+- [ ] Atendimento dos índices econômicos (contador) [Anexo VI](MODELOS/declaracoes-licitacao.html#06)
+- [ ] Art. 7º XXXIII CF — não emprega menor [Anexo VII](MODELOS/declaracoes-licitacao.html#07)
+- [ ] Enquadramento ME/EPP/Coop (contador) [Anexo VIII](MODELOS/declaracoes-licitacao.html#08)
+- [ ] Idoneidade [Anexo IX](MODELOS/declaracoes-licitacao.html#09)
+- [ ] Conhecimento (responsável técnico) [Anexo X](MODELOS/declaracoes-licitacao.html#10)
+- [ ] Inexistência de servidor público no quadro [Anexo XI](MODELOS/declaracoes-licitacao.html#11)
 
 ### 9. Proposta de Preço
 - [ ] Definir valor global da proposta (abaixo de R$ 2.035.039)

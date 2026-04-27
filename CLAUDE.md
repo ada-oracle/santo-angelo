@@ -211,3 +211,13 @@ III habilitação · IV reserva PCD · V custos trabalhistas · VI índices econ
 - Valores em reais com vírgula decimal.
 - Comunicação em português.
 - Para qualquer ação irreversível (envio de proposta, depósito de garantia, assinatura): **confirmar com o usuário antes**.
+
+### 10.1 Linguagem com o usuário
+
+O usuário é **artista audiovisual**, não tem formação em direito ou licitações. **Falar simples**, sem jargão jurídico:
+
+- ❌ Evitar: "cláusula suspensiva", "instrumento equivalente", "art. X §Y da Lei Z", "alíneas", "súmula", "obrigação recíproca", "habilitação técnico-profissional".
+- ✅ Usar: "só vale se a gente ganhar", "pode ser um contrato simples", "a regra diz que pode", "comprovação de equipe".
+- Analogias do universo de produção AV ajudam ("é como combinar um freela antes de começar o projeto").
+- Frases curtas, bullets > parágrafos.
+- A precisão técnica é mantida internamente (pesquisa, leitura de leis, jurisprudência); só não despejar a base legal crua na resposta.

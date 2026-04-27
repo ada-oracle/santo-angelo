@@ -455,7 +455,7 @@ Testemunhas:
       };
       const close = ()=>{ back.dataset.open = 'false'; document.body.style.overflow = ''; };
       target.addEventListener('click', e=>{
-        const btn = e.target.closest('.info-btn');
+        const btn = e.target.closest('button.info-btn[data-info]');
         if(btn){ e.preventDefault(); open(btn.dataset.info); }
       });
       back.addEventListener('click', e=>{ if(e.target===back) close(); });
