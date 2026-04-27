@@ -24,8 +24,8 @@
 - [ ] Roteirista nominado com produção AV pública/premiada — **eliminatório se ausente** [+ info](#info:vinculo)
 - [ ] 3 historiadores com notório saber em Missões Jesuíticas (cada um com 2+ comprovações) [+ info](#info:vinculo)
 - [ ] 2 tradutores (ES, EN) — CV é suficiente, podem ser subcontratados [+ info](#info:tradutores)
-- [ ] Revisor histórico
-- [ ] Diretor de arte / coordenador de pós / sound designer (reforça critérios 5, 10, 11)
+- [ ] Revisor histórico [+ info](#info:equipe-estrategica)
+- [ ] Diretor de arte / coordenador de pós / sound designer / animadores 2D-3D [+ info](#info:equipe-estrategica)
 
 ### 3. DEMO — 2 a 3 minutos
 - [x] Máscara para mapping recebida (Departamento de Turismo, 2026-04-27)
