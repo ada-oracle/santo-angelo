@@ -109,16 +109,19 @@
 - [ ] R$ 20.350,39 efetivado (1% sobre R$ 2.035.039)
 - [ ] Validade ≥ 60 dias confirmada
 
-### 8. Declarações obrigatórias (Anexos III a XII do edital)
-- [ ] III — atendimento aos requisitos de habilitação
-- [ ] IV — reserva de cargos PCD / reabilitado Previdência
-- [ ] V — custos trabalhistas integralizados na proposta
-- [ ] VI — atendimento dos índices econômicos (contador)
-- [ ] VII — art. 7º XXXIII CF (não emprego de menores)
-- [ ] VIII — enquadramento ME/EPP/Coop (se aplicável)
-- [ ] IX — idoneidade
-- [ ] X — conhecimento (responsável técnico)
-- [ ] XI — inexistência de servidor público no quadro
+### 8. Declarações obrigatórias (Anexos III a XI do edital)
+
+> Modelos prontos no papel timbrado da ADA. Selecione o anexo no topo da página, edite se precisar, imprima/salve em PDF e assine.
+
+- [ ] [Anexo III](MODELOS/declaracoes-licitacao.html#03) — atendimento aos requisitos de habilitação
+- [ ] [Anexo IV](MODELOS/declaracoes-licitacao.html#04) — reserva de cargos PCD / reabilitado Previdência
+- [ ] [Anexo V](MODELOS/declaracoes-licitacao.html#05) — custos trabalhistas integralizados na proposta
+- [ ] [Anexo VI](MODELOS/declaracoes-licitacao.html#06) — atendimento dos índices econômicos (contador)
+- [ ] [Anexo VII](MODELOS/declaracoes-licitacao.html#07) — art. 7º XXXIII CF (não emprega menor)
+- [ ] [Anexo VIII](MODELOS/declaracoes-licitacao.html#08) — enquadramento ME/EPP/Coop (contador)
+- [ ] [Anexo IX](MODELOS/declaracoes-licitacao.html#09) — idoneidade
+- [ ] [Anexo X](MODELOS/declaracoes-licitacao.html#10) — conhecimento (responsável técnico)
+- [ ] [Anexo XI](MODELOS/declaracoes-licitacao.html#11) — inexistência de servidor público no quadro
 
 ### 9. Proposta de Preço
 - [ ] Definir valor global da proposta (abaixo de R$ 2.035.039)
