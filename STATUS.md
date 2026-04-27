@@ -166,13 +166,41 @@
 
 ## Documentos de referência
 
-**Online (este repositório):**
-
 - [`CLAUDE.md`](CLAUDE.md) — visão geral da licitação (contexto técnico, financeiro, narrativo)
 - [`ANOTACOES.md`](ANOTACOES.md) — diário de bordo com contatos e interações com a Prefeitura
 - [`MODELOS/papel-timbrado-ADA.html`](MODELOS/papel-timbrado-ADA.html) — papel timbrado oficial da ADA (editar conteúdo + imprimir/salvar PDF)
+- [`MODELOS/declaracoes-licitacao.html`](MODELOS/declaracoes-licitacao.html) — 9 declarações dos Anexos III a XI no papel timbrado
+- Documentos oficiais da licitação → ver "Documentos baixados da Prefeitura" no fim deste arquivo
+- `STORYBOARD_PREGAO/APOIO/` — frames de storyboard e fotos da Catedral (somente local, material da ADA)
 
-**Somente local (não publicados no GitHub):**
+---
 
-- `DOCUMENTOS BAIXADOS/` — edital, TR, ETP, convênio, portaria, máscara de mapping
-- `STORYBOARD_PREGAO/APOIO/` — frames de storyboard, fotos da Catedral
+## Documentos baixados da Prefeitura
+
+Material oficial da Concorrência 002/2026, extraído do portal `www.santoangelo.rs.gov.br` e do Departamento de Turismo. Todos os arquivos estão na pasta `DOCUMENTOS BAIXADOS/`.
+
+### Documentos da licitação
+
+- [`856752.pdf`](DOCUMENTOS%20BAIXADOS/856752.pdf) — **Edital nº 002/2026 completo** (42 páginas). Inclui o preâmbulo, regras gerais, critérios de julgamento, exigências de habilitação e os Anexos I a XIII (formulário de proposta, modelos de declaração e minuta do contrato). É o documento principal.
+
+- [`856753.pdf`](DOCUMENTOS%20BAIXADOS/856753.pdf) — **Estudo Técnico Preliminar (ETP)** (25 páginas, escaneado). Detalha os 14 critérios da Nota Técnica (0–140 pontos), a regra de corte (NTn ≥ 70), os critérios eliminatórios (3 idiomas, 50% de animação 3D, paleta barroco-missioneira, áudio binaural, 4K ProRes), o teto orçamentário oficial (R$ 2.035.039,00), o cronograma de pagamentos 30/30/40 e o esboço de roteiro com 14 cenas em 6 partes.
+
+- [`856753_OCR.txt`](DOCUMENTOS%20BAIXADOS/856753_OCR.txt) — **ETP em texto** (gerado por OCR). O PDF original é só imagem; este `.txt` permite buscar literalmente por trechos do ETP.
+
+- [`639083919405691533639047770653842423112330_TR.PDF`](DOCUMENTOS%20BAIXADOS/639083919405691533639047770653842423112330_TR.PDF) — **Termo de Referência (TR)** (6 páginas). Detalha o objeto, técnicas exigidas, escopo dos serviços (incluindo a curadoria de pelo menos 3 historiadores), prazos, qualificação técnica e o esboço narrativo de 14 cenas. Documento que melhor descreve o "o quê" do projeto.
+
+- [`639083919405604177639047770232830908112330_Te.PDF`](DOCUMENTOS%20BAIXADOS/639083919405604177639047770232830908112330_Te.PDF) — **Termo de Referência – Orçamentos (Anexo II do convênio)** (6 páginas, escaneado). Tabela com os 3 orçamentos coletados pela Prefeitura, separados por equipamentos (projetores, container, sonorização, fones), serviços (historiadores, revisor, tradutores, produção visual, vídeo mapping) e materiais. É a base do teto de R$ 2.035.039,00.
+
+### Convênio e portarias
+
+- [`639083919405342031639047770071218576112330_Co.pdf`](DOCUMENTOS%20BAIXADOS/639083919405342031639047770071218576112330_Co.pdf) — **Termo de Convênio SEDAC nº 01/2025** (9 páginas). Convênio entre Estado do RS (SEDAC) e Município de Santo Ângelo, no valor de R$ 5.334.631,20 + R$ 592.736,80 de contrapartida. É a fonte do recurso da licitação. Programa Pró-Missões, Processo 24/1100.0002579-2, FPE 5792/2024.
+
+- [`639083919405781976639047770858032382112330_P1.pdf`](DOCUMENTOS%20BAIXADOS/639083919405781976639047770858032382112330_P1.pdf) — **Portaria nº 16/SMGRI/2026** (1 página, 20/01/2026). Designa a Comissão Especial de Avaliação Técnica que vai julgar a proposta técnica: Marconi Flach (Turismo), Erick de Melo Maciel (Film Commission Missões), Nadir Damiani (História), Rolando Burgel (Comunicação), Douglas Pinto de Moura (Professor).
+
+### Concorrência identificada
+
+- [`639083919405852339639082457197171375112330_20.pdf`](DOCUMENTOS%20BAIXADOS/639083919405852339639082457197171375112330_20.pdf) — **Proposta de referência da Neorama** (4 páginas, 03/09/2025). Proposta comercial enviada à Prefeitura por R$ 1.900.000, composta por: produção visual R$ 1,7 mi + 2 historiadores R$ 120k + revisor R$ 40k + 2 tradutores R$ 40k. Assinada por Ramon Martins Bastos (Client Manager). É benchmark de mercado e indica que a Neorama é provável concorrente.
+
+### Material técnico recebido do Departamento de Turismo
+
+- [`Guia_de_produção-Catedral_de_Santo_Ângelo_RS_00000.png`](DOCUMENTOS%20BAIXADOS/Guia_de_produ%C3%A7%C3%A3o-Catedral_de_Santo_%C3%82ngelo_RS_00000.png) — **Máscara/guia para mapping** (PNG, 3800×3840 px). Solicitada em 2026-04-27 e recebida do Departamento de Turismo (Marconi Flach). Base geométrica para alinhar a animação à fachada da Catedral, tanto no DEMO quanto no filme final.
