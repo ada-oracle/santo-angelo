@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Storyboard · Catedral Angelopolitana — ADA</title>
+<meta name="description" content="Roteiro narrativo em 3 atos para o vídeo mapping da Catedral Angelopolitana de Santo Ângelo/RS." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --page-bg:#111111;
+    --sec-bg:#1A1A1A;
+    --card-bg:#222222;
+    --accent:#FFD600;
+    --ink:#FFFFFF;
+    --ink-mid:rgba(255,255,255,.55);
+    --ink-faint:rgba(255,255,255,.35);
+    --border:rgba(255,214,0,.12);
+    --border-strong:rgba(255,214,0,.30);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-weight:400;font-size:15px;line-height:1.65}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--border-strong)}
+  a:hover{border-bottom-color:var(--accent)}
+  ::selection{background:var(--accent);color:#111}
+
+  .wrap{max-width:1280px;margin:0 auto;padding:32px 24px 96px}
+
+  /* Header */
+  header.nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:16px}
+  .wordmark{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;letter-spacing:.02em;color:var(--accent)}
+  .wordmark::before{content:"";display:inline-block;width:10px;height:10px;background:var(--accent);margin-right:10px;vertical-align:1px}
+  .nav-back{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint);border-bottom:0}
+  .nav-back:hover{color:var(--accent)}
+
+  /* Hero */
+  .hero{padding:48px 0 24px}
+  .tag{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);padding:4px 10px;border:1px solid var(--border);margin-bottom:24px}
+  h1.hero-title{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(36px,5.5vw,60px);line-height:1.05;color:var(--ink);margin:0 0 18px;letter-spacing:-.01em}
+  h1.hero-title em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;color:var(--accent)}
+  .hero-sub{max-width:820px;font-size:16px;color:var(--ink-mid)}
+  .hero-sub p{margin:0 0 12px}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);margin:36px 0;border:1px solid var(--border)}
+  .stat{background:var(--sec-bg);padding:18px 20px}
+  .stat .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .stat .v{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;color:var(--accent);line-height:1.1}
+  .stat .v small{font-size:12px;color:var(--ink-mid);letter-spacing:.04em}
+
+  /* Section title */
+  .section{margin:64px 0 24px}
+  .section-eyebrow{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+  .section h2{font-family:'DM Mono',monospace;font-weight:300;font-size:32px;color:var(--ink);margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .section .lede{max-width:780px;color:var(--ink-mid);margin-bottom:8px}
+
+  /* Ato */
+  .ato{margin:56px 0}
+  .ato-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+  .ato-num{font-family:'DM Mono',monospace;font-weight:300;font-size:96px;line-height:.85;color:var(--accent)}
+  .ato-info{flex:1;min-width:240px}
+  .ato-info .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .ato-info h3{font-family:'DM Mono',monospace;font-weight:300;font-size:36px;color:var(--ink);margin:0 0 6px;line-height:1.1}
+  .ato-info .ato-period{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;color:var(--accent)}
+
+  /* Sub-ato */
+  .subato{background:var(--sec-bg);border:1px solid var(--border);margin:24px 0;padding:28px 32px}
+  @media (max-width:640px){.subato{padding:20px 18px}}
+  .subato-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+  .subato-num{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .subato-name{font-family:'Syne',sans-serif;font-weight:600;font-size:18px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+  .subato-period{margin-left:auto;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--accent)}
+
+  .subato-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);margin-bottom:20px;border:1px solid var(--border)}
+  .subato-grid .cell{background:var(--card-bg);padding:14px 16px}
+  .subato-grid .cell .k{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .subato-grid .cell .v{font-family:'Syne',sans-serif;font-size:14px;color:var(--ink);line-height:1.45}
+
+  /* Frames */
+  .frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-top:18px}
+  .frame{background:#000;border:1px solid var(--border);overflow:hidden;cursor:zoom-in;transition:border-color .2s ease}
+  .frame:hover{border-color:var(--accent)}
+  .frame img{display:block;width:100%;height:auto}
+  .frame .cap{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint);padding:8px 12px;border-top:1px solid var(--border);background:var(--sec-bg)}
+
+  /* Lightbox */
+  .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:32px;z-index:1000;cursor:zoom-out}
+  .lightbox[data-open="true"]{display:flex}
+  .lightbox img{max-width:100%;max-height:100%;object-fit:contain}
+  .lightbox .close{position:absolute;top:16px;right:24px;color:var(--accent);font-family:'DM Mono',monospace;font-size:18px;background:none;border:0;cursor:pointer;padding:8px}
+
+  /* Tabela de contexto */
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:13.5px}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+  th{font-family:'DM Mono',monospace;font-weight:400;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:var(--sec-bg)}
+  td{color:var(--ink-mid)}
+  td:first-child{color:var(--ink);font-weight:600}
+
+  /* Quote */
+  blockquote{margin:18px 0;padding:14px 18px;border-left:2px solid var(--accent);background:var(--sec-bg);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;color:var(--ink);line-height:1.5}
+
+  /* Lists */
+  .list{margin:14px 0;padding-left:0;list-style:none}
+  .list li{position:relative;padding-left:18px;margin:8px 0;color:var(--ink-mid)}
+  .list li::before{content:"·";position:absolute;left:4px;top:-2px;color:var(--accent);font-weight:700}
+  .list li strong{color:var(--ink)}
+
+  /* Footer */
+  footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <span class="wordmark">ADA · Storyboard</span>
+    <a href="../index.html" class="nav-back">← voltar ao painel</a>
+  </header>
+
+  <section class="hero">
+    <span class="tag">Roteiro narrativo · Concorrência 002/2026 · Santo Ângelo/RS</span>
+    <h1 class="hero-title">Catedral Angelopolitana — <em>uma ópera visual</em>.</h1>
+    <div class="hero-sub">
+      <p>Peça de 30 minutos para vídeo mapping na fachada da Catedral Angelopolitana de Santo Ângelo. Estruturada como uma <strong>ópera visual contemporânea</strong> em três atos, narra a trajetória da Redução de San Ángel Custódio e a evolução do território missioneiro através dos séculos.</p>
+      <p>O <strong>Anjo da Guarda</strong>, capturado da própria fachada, é o narrador — testemunha imortal que atravessa as três fases fundamentais da ocupação humana na região: a gênese indígena, o esplendor das reduções e a consolidação da cidade moderna.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="k">Estrutura</div><div class="v">3 <small>atos · 9 sub-atos</small></div></div>
+      <div class="stat"><div class="k">Duração</div><div class="v">30 <small>minutos</small></div></div>
+      <div class="stat"><div class="k">Tempo por sub-ato</div><div class="v">~3 <small>minutos</small></div></div>
+      <div class="stat"><div class="k">Recorte</div><div class="v">XVII <small>— XXI</small></div></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-eyebrow">Fundamentação</div>
+    <h2>Por que ópera visual</h2>
+    <div class="lede">
+      <p>O vídeo mapping para narrar um patrimônio histórico transcende a projeção de truques sobre uma superfície arquitetônica. É um suporte complexo, onde as camadas temporais do monumento são reveladas através da fusão entre tecnologia digital e narrativa dramática. No campo da videoarte, o vídeo mapping ainda não tem instrumental próprio com maturidade suficiente para falarmos de uma estrutura narrativa específica — o formato mais próximo é o roteiro de uma ópera, e não o de um filme ou peça teatral.</p>
+      <p>A estrutura adota o modelo de <strong>progressividade dramática operística</strong>, onde a narração verbal não é mero complemento, mas o alicerce que sustenta grandes movimentos musicais e visuais. A divisão clássica em três atos com três sub-atos cada permite gestão precisa da curva dramática, alternando contemplação, tensão, conflito e celebração.</p>
+    </div>
+    <blockquote>Ao final da peça, o espectador não apenas viu a história — ele a atravessou, compreendendo que a Catedral é uma escultura de tempo, esculpida por muitas mãos, pelo espírito de gerações sob a guarda do anjo.</blockquote>
+  </section>
+
+  <!-- ============== ATO I ============== -->
+  <div class="ato">
+    <div class="ato-head">
+      <div class="ato-num">I</div>
+      <div class="ato-info">
+        <div class="label">Ato I</div>
+        <h3>Origens</h3>
+        <div class="ato-period">A gênese — séculos XVI a XVIII</div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 1.1</span>
+        <span class="subato-name">Origens</span>
+        <span class="subato-period">Ocupação Guarani Ancestral</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Ocupação Guarani Ancestral</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Orgânico / Natureza</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Indígena tribal</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Ciclo do gado inicial</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Início das Bandeiras</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Renascimento tardio</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato1-1-1.png" alt="Ato I, sub-ato 1.1, frame 1"><div class="cap">Frame 1.1.1</div></div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 1.2</span>
+        <span class="subato-name">O Encontro</span>
+        <span class="subato-period">Chegada dos Jesuítas — séc. XVII</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Chegada dos Jesuítas (séc. XVII)</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Geometria / Luz</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Barroco inicial</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Fundação de Colônia do Sacramento</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Guerra dos Emboabas</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Reinado de Luís XIV</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato1-2-1.png" alt="Ato I, sub-ato 1.2, frame 1"><div class="cap">Frame 1.2.1</div></div>
+        <div class="frame"><img src="img/ato1-2-2.png" alt="Ato I, sub-ato 1.2, frame 2"><div class="cap">Frame 1.2.2</div></div>
+        <div class="frame"><img src="img/ato1-2-3.png" alt="Ato I, sub-ato 1.2, frame 3"><div class="cap">Frame 1.2.3</div></div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 1.3</span>
+        <span class="subato-name">Fundação</span>
+        <span class="subato-period">Criação de San Ángel Custódio · 1706</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Criação de San Ángel Custódio (1706)</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Construção / Pedra</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Coral litúrgico</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Consolidação dos Sete Povos</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Exploração de ouro em MG</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Guerra da Sucessão Espanhola</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato1-3-1.png" alt="Ato I, sub-ato 1.3, frame 1"><div class="cap">Frame 1.3.1</div></div>
+        <div class="frame"><img src="img/ato1-3-2.png" alt="Ato I, sub-ato 1.3, frame 2"><div class="cap">Frame 1.3.2</div></div>
+        <div class="frame"><img src="img/ato1-3-3.png" alt="Ato I, sub-ato 1.3, frame 3"><div class="cap">Frame 1.3.3</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== ATO II ============== -->
+  <div class="ato">
+    <div class="ato-head">
+      <div class="ato-num">II</div>
+      <div class="ato-info">
+        <div class="label">Ato II</div>
+        <h3>Apogeu, Tragédia e Silêncio</h3>
+        <div class="ato-period">A República Guaranítica — séc. XVIII</div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 2.1</span>
+        <span class="subato-name">Apogeu</span>
+        <span class="subato-period">A "República Guaranítica" — séc. XVIII</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Apogeu missioneiro</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Ouro / Arte / Arquitetura</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Barroco missioneiro</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Crescimento das estâncias</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Ciclo do ouro</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Revolução Industrial (Inglaterra)</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato2-1-0.png" alt="Ato II, sub-ato 2.1, frame 0"><div class="cap">Frame 2.1.0</div></div>
+        <div class="frame"><img src="img/ato2-1-1.png" alt="Ato II, sub-ato 2.1, frame 1"><div class="cap">Frame 2.1.1</div></div>
+        <div class="frame"><img src="img/ato2-1-2.png" alt="Ato II, sub-ato 2.1, frame 2"><div class="cap">Frame 2.1.2</div></div>
+        <div class="frame"><img src="img/ato2-1-3.png" alt="Ato II, sub-ato 2.1, frame 3"><div class="cap">Frame 2.1.3</div></div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 2.2</span>
+        <span class="subato-name">Tragédia</span>
+        <span class="subato-period">Tratado de Madrid e Guerra · 1750–1756</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Tratado de Madrid e Guerra Guaranítica (1750–1756)</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Fogo / Sangue / Ruína</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Percussão / Épico</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Resistência de Sepé Tiaraju</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Mudança da Capital para o RJ</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Terremoto de Lisboa (1755)</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato2-2-1.png" alt="Ato II, sub-ato 2.2, frame 1"><div class="cap">Frame 2.2.1</div></div>
+        <div class="frame"><img src="img/ato2-2-2.png" alt="Ato II, sub-ato 2.2, frame 2"><div class="cap">Frame 2.2.2</div></div>
+        <div class="frame"><img src="img/ato2-2-3.png" alt="Ato II, sub-ato 2.2, frame 3"><div class="cap">Frame 2.2.3</div></div>
+        <div class="frame"><img src="img/ato2-2-4.png" alt="Ato II, sub-ato 2.2, frame 4"><div class="cap">Frame 2.2.4</div></div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 2.3</span>
+        <span class="subato-name">O Silêncio</span>
+        <span class="subato-period">Abandono e Decadência · 1767–1880</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Expulsão dos jesuítas, abandono, decadência (1767–1880)</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Cinzas / Natureza selvagem</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Melancólico</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Tratado de San Ildefonso</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Inconfidência Mineira (1789)</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Revolução Francesa (1789)</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato2-3-1.png" alt="Ato II, sub-ato 2.3, frame 1"><div class="cap">Frame 2.3.1</div></div>
+        <div class="frame"><img src="img/ato2-3-2.png" alt="Ato II, sub-ato 2.3, frame 2"><div class="cap">Frame 2.3.2</div></div>
+        <div class="frame"><img src="img/ato2-3-3.png" alt="Ato II, sub-ato 2.3, frame 3"><div class="cap">Frame 2.3.3</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== ATO III ============== -->
+  <div class="ato">
+    <div class="ato-head">
+      <div class="ato-num">III</div>
+      <div class="ato-info">
+        <div class="label">Ato III</div>
+        <h3>Retorno, Templo e Eternidade</h3>
+        <div class="ato-period">A consolidação moderna — séculos XIX a XXI</div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 3.1</span>
+        <span class="subato-name">Retorno</span>
+        <span class="subato-period">Lançamento da 2ª Pedra · 1888</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Lançamento da 2ª Pedra (1888) — segundo templo</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Reconstrução / Esperança</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Milonga / Regional</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Imigração europeia</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Abolição da Escravidão</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Invenção do automóvel</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato3-1-1.png" alt="Ato III, sub-ato 3.1, frame 1"><div class="cap">Frame 3.1.1</div></div>
+        <div class="frame"><img src="img/ato3-1-2.png" alt="Ato III, sub-ato 3.1, frame 2"><div class="cap">Frame 3.1.2</div></div>
+        <div class="frame"><img src="img/ato3-1-3.png" alt="Ato III, sub-ato 3.1, frame 3"><div class="cap">Frame 3.1.3</div></div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 3.2</span>
+        <span class="subato-name">O Templo</span>
+        <span class="subato-period">Construção da Catedral atual · 1929–1971</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Construção da Catedral atual (1929–1971)</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Evolução urbana</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Orquestral moderno</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Revolução de 1930</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Milagre econômico</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Corrida espacial</div></div>
+      </div>
+      <div class="frames">
+        <div class="frame"><img src="img/ato3-2-1.png" alt="Ato III, sub-ato 3.2, frame 1"><div class="cap">Frame 3.2.1</div></div>
+        <div class="frame"><img src="img/ato3-2-2.png" alt="Ato III, sub-ato 3.2, frame 2"><div class="cap">Frame 3.2.2</div></div>
+        <div class="frame"><img src="img/ato3-2-3.png" alt="Ato III, sub-ato 3.2, frame 3"><div class="cap">Frame 3.2.3</div></div>
+        <div class="frame"><img src="img/ato3-2-4.png" alt="Ato III, sub-ato 3.2, frame 4"><div class="cap">Frame 3.2.4</div></div>
+      </div>
+    </div>
+
+    <div class="subato">
+      <div class="subato-head">
+        <span class="subato-num">Sub-ato 3.3</span>
+        <span class="subato-name">Eternidade</span>
+        <span class="subato-period">Contemporaneidade e Arqueologia · 2006</span>
+      </div>
+      <div class="subato-grid">
+        <div class="cell"><div class="k">Marco histórico</div><div class="v">Contemporaneidade e Arqueologia (2006)</div></div>
+        <div class="cell"><div class="k">Narrativa visual</div><div class="v">Digital / Conexão / Futuro</div></div>
+        <div class="cell"><div class="k">Clima musical</div><div class="v">Hino triunfal</div></div>
+        <div class="cell"><div class="k">Contexto RS</div><div class="v">Turismo missioneiro</div></div>
+        <div class="cell"><div class="k">Contexto Brasil</div><div class="v">Estabilidade econômica</div></div>
+        <div class="cell"><div class="k">Contexto mundial</div><div class="v">Revolução Digital</div></div>
+      </div>
+      <p style="color:var(--ink-faint);font-style:italic;font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;margin-top:18px;">Frames em produção.</p>
+    </div>
+  </div>
+
+  <!-- ============== APROVEITAMENTO DA ARQUITETURA ============== -->
+  <section class="section">
+    <div class="section-eyebrow">Análise técnica</div>
+    <h2>Anatomia da Catedral como suporte narrativo</h2>
+    <p class="lede">A pedra grês, de tonalidade avermelhada e textura porosa, é uma superfície excelente para projeção — absorve a luz criando profundidade natural. Sua cor quente exige correção cromática precisa para que tons de azul e branco não sejam distorcidos.</p>
+
+    <table>
+      <thead>
+        <tr><th>Elemento arquitetônico</th><th>Função narrativa</th><th>Técnica sugerida</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Torres</td><td>Tempo e ascensão</td><td>Verticalidade, efeitos de crescimento e luzes celestiais</td></tr>
+        <tr><td>Pórtico</td><td>Portal de entrada para a história</td><td>Profundidade (túnel do tempo) e foco no Anjo</td></tr>
+        <tr><td>Nichos das estátuas</td><td>Personagens da saga</td><td>Animação 3D de estátuas ganhando vida e saindo do nicho</td></tr>
+        <tr><td>Janelas e frestas</td><td>A alma do edifício</td><td>Luzes internas, silhuetas de pessoas e chamas</td></tr>
+        <tr><td>Paredes de grês</td><td>A pele da história</td><td>Texturização (musgo, ouro, rachaduras, sangue, digital)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============== TRILHA SONORA ============== -->
+  <section class="section">
+    <div class="section-eyebrow">Trilha sonora</div>
+    <h2>Música como personagem</h2>
+    <p class="lede">A música não é acompanhamento — é personagem ativo. A escolha por gêneros brasileiros, indígenas e litúrgicos confere autenticidade necessária a um patrimônio da UNESCO.</p>
+
+    <h3 style="font-family:'Syne';font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:28px 0 8px">Paisagismo sonoro</h3>
+    <p style="color:var(--ink-mid)">A trilha é espacializada. As batalhas da Guerra Guaranítica movem-se de um lado para o outro, o canto gregoriano emana de dentro da catedral. Frequências graves usadas estrategicamente nos momentos de construção e destruição — o público <em>sente</em> o peso das pedras.</p>
+
+    <h3 style="font-family:'Syne';font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:28px 0 8px">Simbolismo dos instrumentos</h3>
+    <ul class="list">
+      <li><strong>Flauta</strong> — pureza e conexão com a terra (Guarani).</li>
+      <li><strong>Violino barroco</strong> — educação jesuítica e sofisticação cultural das reduções.</li>
+      <li><strong>Acordeon e violão</strong> — força do povo gaúcho e a reconstrução de Santo Ângelo após 1888.</li>
+      <li><strong>Sintetizador digital</strong> — modernidade e conexão futura, fundindo todos os instrumentos anteriores num arranjo eletrônico-orquestral no final da peça.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <span>ada-oracle/santo-angelo · storyboard preliminar</span>
+    <span><a href="../index.html" class="nav-back">← painel</a></span>
+  </footer>
+
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="close" aria-label="Fechar">×</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+  const lb = document.getElementById('lightbox');
+  const lbi = document.getElementById('lightbox-img');
+  document.querySelectorAll('.frame img').forEach(img=>{
+    img.addEventListener('click', e=>{
+      lbi.src = img.src;
+      lbi.alt = img.alt;
+      lb.dataset.open = 'true';
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  function closeLB(){ lb.dataset.open = 'false'; document.body.style.overflow=''; lbi.src=''; }
+  lb.addEventListener('click', closeLB);
+  document.addEventListener('keydown', e=>{ if(e.key==='Escape' && lb.dataset.open==='true') closeLB(); });
+</script>
+
+</body>
+</html>
