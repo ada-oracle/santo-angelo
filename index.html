@@ -117,8 +117,11 @@
   ::selection{background:var(--accent);color:#111}
 
   /* Botão "+ info" inline */
-  .info-btn{display:inline-flex;align-items:center;gap:4px;margin-left:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:2px 8px;cursor:pointer;border-radius:2px;transition:all .15s ease;vertical-align:1px}
+  .info-btn{display:inline-flex;align-items:center;gap:4px;margin-left:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:2px 8px;cursor:pointer;border-radius:2px;transition:all .15s ease;vertical-align:1px;text-decoration:none}
   .info-btn:hover{background:var(--accent);color:#111;border-color:var(--accent)}
+  a.info-btn{border-bottom:1px solid var(--border-strong)}
+  a.info-btn:hover{border-bottom-color:var(--accent)}
+  a.info-btn::after{content:"↗";margin-left:4px;font-size:9px;opacity:.7}
 
   /* Modal */
   .modal-back{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:1000;overflow-y:auto}
@@ -405,12 +408,13 @@ Testemunhas:
         a.replaceWith(btn);
       });
 
-      // Demais links: abrir em nova aba para preservar o painel
+      // Demais links: abrir em nova aba e estilizar como botões (mesmo padrão do +info)
       target.querySelectorAll('a[href]').forEach(a=>{
         const href = a.getAttribute('href');
         if(!href || href.startsWith('#')) return;
         a.setAttribute('target','_blank');
         a.setAttribute('rel','noopener');
+        a.classList.add('info-btn');
       });
 
       // Modal handlers
