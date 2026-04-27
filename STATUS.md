@@ -22,13 +22,13 @@
 
 ### 2. Equipe-chave
 
-- **Roteirista** {!eliminatorio} *(Alexandre — sobrenome a confirmar)* [+ info](#info:vinculo)
+- **Roteirista** {!eliminatorio} *(Alexandre — sobrenome a confirmar)* [+ info](#info:vinculo) [modelo de contrato](#info:contrato)
   - [x] Nome definido
   - [ ] CV anexado
   - [ ] Portfólio com produção AV pública ou premiada
   - [ ] Contrato de vínculo formal (trabalho / prestação / equivalente)
 
-- **3 Historiadores** {!obrig} [+ info](#info:vinculo)
+- **3 Historiadores** {!obrig} [+ info](#info:vinculo) [modelo de contrato](#info:contrato)
   - [ ] 3 nomes definidos
   - [ ] CVs (3)
   - [ ] 2+ comprovações de notório saber por historiador (diploma · publicações · projetos · atuação · atestados)
@@ -38,16 +38,38 @@
   - [ ] CV tradutor espanhol
   - [ ] CV tradutor inglês
 
-- **Revisor histórico** {!estrat} [+ info](#info:equipe-estrategica)
+- **Revisor histórico** {!estrat} [+ info](#info:equipe-estrategica) [modelo de contrato](#info:contrato)
   - [ ] Nome definido
   - [ ] CV resumido
   - [ ] Carta de compromisso (opcional)
 
-- **Equipe técnica complementar** {!estrat} [+ info](#info:equipe-estrategica)
-  - [ ] Diretor de arte — CV
-  - [ ] Animadores 2D / 3D — CVs
-  - [ ] Sound designer — CV
-  - [ ] Coordenador de pós-produção — CV
+- **Direção criativa** {!estrat} *(Tatiane Gonzalez — sócia ADA)* [+ info](#info:equipe-estrategica)
+  - [x] Nome definido
+  - [ ] CV anexado
+  - [ ] Vínculo: contrato social da ADA já cobre — não precisa contrato extra
+
+- **Direção de arte** {!estrat} *(Caio Fazolin — não sócio, entra como prestador)* [+ info](#info:equipe-estrategica) [modelo de contrato](#info:contrato)
+  - [x] Nome definido
+  - [ ] CV anexado
+  - [ ] Contrato com cláusula suspensiva assinado
+
+- **Animação 2D / 3D** {!estrat} [+ info](#info:equipe-estrategica) [modelo de contrato](#info:contrato)
+  - [ ] Profissional ou lead definido
+  - [ ] CV anexado
+  - [ ] Demo reel anexado (reforça Critério 5)
+  - [ ] Contrato com cláusula suspensiva assinado (se externo à ADA)
+
+- **Sound design / trilha sonora** {!estrat} [+ info](#info:equipe-estrategica) [modelo de contrato](#info:contrato)
+  - [ ] Profissional definido
+  - [ ] CV anexado
+  - [ ] Demo de trilha original anexado (reforça Critérios 10, 11, 12)
+  - [ ] Validação binaural em fones documentada (reforça Critério 12)
+  - [ ] Contrato com cláusula suspensiva assinado (se externo à ADA)
+
+- **Coordenação de pós-produção** {!estrat} [+ info](#info:equipe-estrategica) [modelo de contrato](#info:contrato)
+  - [ ] Profissional definido
+  - [ ] CV anexado
+  - [ ] Contrato com cláusula suspensiva assinado (se externo à ADA)
 
 ### 3. DEMO — 2 a 3 minutos
 - [x] Máscara para mapping recebida (Departamento de Turismo, 2026-04-27)
@@ -141,7 +163,13 @@
 
 ## Documentos de referência
 
-- `CLAUDE.md` — visão geral da licitação (contexto técnico, financeiro, narrativo)
-- `ANOTACOES.md` — diário de bordo com contatos e interações com a Prefeitura
+**Online (este repositório):**
+
+- [`CLAUDE.md`](CLAUDE.md) — visão geral da licitação (contexto técnico, financeiro, narrativo)
+- [`ANOTACOES.md`](ANOTACOES.md) — diário de bordo com contatos e interações com a Prefeitura
+- [`MODELOS/papel-timbrado-ADA.html`](MODELOS/papel-timbrado-ADA.html) — papel timbrado oficial da ADA (editar conteúdo + imprimir/salvar PDF)
+
+**Somente local (não publicados no GitHub):**
+
 - `DOCUMENTOS BAIXADOS/` — edital, TR, ETP, convênio, portaria, máscara de mapping
 - `STORYBOARD_PREGAO/APOIO/` — frames de storyboard, fotos da Catedral

@@ -119,7 +119,6 @@
   /* Botão "+ info" inline */
   .info-btn{display:inline-flex;align-items:center;gap:4px;margin-left:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:2px 8px;cursor:pointer;border-radius:2px;transition:all .15s ease;vertical-align:1px}
   .info-btn:hover{background:var(--accent);color:#111;border-color:var(--accent)}
-  .info-btn::before{content:"+";font-weight:700;margin-right:2px}
 
   /* Modal */
   .modal-back{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:1000;overflow-y:auto}
@@ -138,6 +137,14 @@
   .modal blockquote{margin:14px 0;padding:14px 18px;border-left:2px solid var(--accent);background:var(--card-bg);font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);font-style:normal;line-height:1.55}
   .modal .src{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-faint);margin-top:24px;padding-top:14px;border-top:1px solid var(--border)}
   .modal .src code{color:var(--accent);background:transparent;border:0;padding:0}
+
+  /* Bloco de contrato */
+  .contract-box{background:var(--card-bg);border:1px solid var(--border);padding:20px 24px;margin:14px 0;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-wrap;max-height:420px;overflow-y:auto}
+  .contract-box .ph{color:var(--accent);background:rgba(255,214,0,.10);padding:0 4px}
+  .contract-actions{display:flex;gap:8px;margin:8px 0 18px;flex-wrap:wrap}
+  .contract-actions button{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:6px 12px;cursor:pointer;border-radius:2px;transition:all .15s ease}
+  .contract-actions button:hover{background:var(--accent);color:#111;border-color:var(--accent)}
+  .contract-actions button.ok{color:#111;background:var(--accent);border-color:var(--accent)}
 </style>
 </head>
 <body>
@@ -232,6 +239,68 @@
   <p class="src">Fonte: <code>DOCUMENTOS BAIXADOS/856752.pdf</code> · Edital 002/2026 · seção 5.7 alíneas (e) e (f) · pp. 9–10. Replicado no ETP <code>856753.pdf</code> nas linhas 503–512 (roteirista) e 514–540 (historiadores).</p>
 </template>
 
+<template id="info-contrato">
+  <div class="eyebrow">Modelo · contrato de prestação de serviços com cláusula suspensiva</div>
+  <h3>Modelo de contrato — vínculo condicional</h3>
+  <p>Modelo enxuto e juridicamente válido. Encaixa em "instrumento equivalente + vigência prevista" (Edital 5.7.e e 5.7.f). Não obriga a ADA a pagar nada caso não vença a licitação. Substitua os campos em <span class="ph">amarelo</span>. <strong>Adapte a Cláusula 1ª (FUNÇÃO)</strong> conforme o profissional: roteirista · pesquisa e curadoria histórica · revisão histórica · direção de arte · animação 2D/3D · trilha sonora e sound design · coordenação de pós-produção.</p>
+
+  <div class="contract-actions">
+    <button id="copy-contract">copiar texto</button>
+    <button id="download-contract">baixar .txt</button>
+  </div>
+
+  <pre class="contract-box" id="contract-text"><strong>CONTRATO DE PRESTAÇÃO DE SERVIÇOS COM CLÁUSULA SUSPENSIVA</strong>
+
+<strong>CONTRATANTE</strong>: <span class="ph">[ATELIÊ DIGITAL ANALÓGICO — RAZÃO SOCIAL COMPLETA]</span>, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº <span class="ph">[CNPJ]</span>, com sede em <span class="ph">[ENDEREÇO COMPLETO]</span>, neste ato representada por <span class="ph">[NOME DO REPRESENTANTE LEGAL]</span>, <span class="ph">[NACIONALIDADE]</span>, <span class="ph">[ESTADO CIVIL]</span>, portador(a) do CPF <span class="ph">[CPF]</span>.
+
+<strong>CONTRATADO(A)</strong>: <span class="ph">[NOME COMPLETO]</span>, <span class="ph">[NACIONALIDADE]</span>, <span class="ph">[ESTADO CIVIL]</span>, <span class="ph">[PROFISSÃO]</span>, portador(a) do CPF <span class="ph">[CPF]</span> e RG <span class="ph">[RG / órgão emissor]</span>, residente e domiciliado(a) em <span class="ph">[ENDEREÇO COMPLETO]</span>.
+
+As partes têm entre si justo e contratado o seguinte:
+
+<strong>CLÁUSULA 1ª — OBJETO.</strong> O CONTRATADO prestará à CONTRATANTE serviços de <span class="ph">[FUNÇÃO — ex.: roteiro / pesquisa e curadoria histórica em Missões Jesuítico-Guarani / revisão histórica / direção de arte / animação 2D e 3D / trilha sonora e sound design / coordenação de pós-produção]</span> no projeto de produção de conteúdo audiovisual para projeção mapeada na fachada da Catedral Angelopolitana de Santo Ângelo/RS, objeto da Concorrência Eletrônica nº 002/2026 do Município de Santo Ângelo/RS.
+
+<strong>CLÁUSULA 2ª — PRAZO.</strong> A prestação dos serviços ocorrerá durante a vigência do contrato administrativo a ser firmado entre a CONTRATANTE e o Município de Santo Ângelo, pelo prazo de 240 (duzentos e quarenta) dias contados da assinatura do referido contrato administrativo, podendo ser prorrogado nos termos da Lei 14.133/2021.
+
+<strong>CLÁUSULA 3ª — REMUNERAÇÃO.</strong> Pelos serviços prestados, a CONTRATANTE pagará ao CONTRATADO o valor total de R$ <span class="ph">[VALOR POR EXTENSO]</span>, em <span class="ph">[FORMA DE PAGAMENTO — ex.: 3 parcelas correspondentes ao cronograma de pagamentos da CONTRATANTE junto ao Município (30%/30%/40%)]</span>.
+
+<strong>CLÁUSULA 4ª — CLÁUSULA SUSPENSIVA.</strong> Este contrato é celebrado sob condição suspensiva: somente produzirá efeitos a partir da adjudicação da Concorrência Eletrônica nº 002/2026 à CONTRATANTE. Caso a CONTRATANTE não seja declarada vencedora ou caso a Administração Pública revogue ou anule a licitação, este contrato será automaticamente rescindido de pleno direito, sem qualquer ônus, indenização ou obrigação recíproca entre as partes.
+
+<strong>CLÁUSULA 5ª — VÍNCULO.</strong> Este contrato não estabelece vínculo empregatício entre as partes, sendo o CONTRATADO responsável por seus tributos, encargos previdenciários e contribuições. O CONTRATADO atuará com autonomia técnica, observando as orientações da CONTRATANTE quanto a prazos, padrões de qualidade e entregas.
+
+<strong>CLÁUSULA 6ª — PROPRIEDADE INTELECTUAL.</strong> Todos os direitos patrimoniais sobre os trabalhos produzidos pelo CONTRATADO no âmbito deste contrato são cedidos integral, definitiva e irrevogavelmente à CONTRATANTE, em conformidade com a Lei 9.610/1998 e com as exigências da Concorrência Eletrônica nº 002/2026.
+
+<strong>CLÁUSULA 7ª — FORO.</strong> As partes elegem o foro da Comarca de <span class="ph">[CIDADE / RS]</span> para dirimir eventuais controvérsias decorrentes deste contrato, com renúncia a qualquer outro, por mais privilegiado que seja.
+
+E, por estarem justas e contratadas, as partes firmam o presente instrumento em duas vias de igual teor, na presença de duas testemunhas.
+
+<span class="ph">[CIDADE]</span>, <span class="ph">[DATA]</span>.
+
+
+_______________________________________
+CONTRATANTE — ATELIÊ DIGITAL ANALÓGICO
+
+
+_______________________________________
+CONTRATADO(A) — <span class="ph">[NOME]</span>
+
+
+Testemunhas:
+
+1. ________________________  CPF: ________________
+
+2. ________________________  CPF: ________________</pre>
+
+  <h4>Como assinar</h4>
+  <ul>
+    <li>Não precisa cartório nem reconhecimento de firma (Lei 13.726/2018 dispensou).</li>
+    <li>Assinatura física ou eletrônica via gov.br, Clicksign ou DocuSign — todas válidas.</li>
+    <li>Para licitação, gov.br tem máxima segurança jurídica e é gratuito.</li>
+    <li>Anexar à proposta o PDF assinado das duas partes.</li>
+  </ul>
+
+  <p class="src">Modelo construído a partir de: Lei 14.133/2021 art. 67 §3º · Edital 002/2026 alíneas 5.7.e e 5.7.f · Lei 9.610/1998 (direitos autorais por encomenda).</p>
+</template>
+
 <template id="info-equipe-estrategica">
   <div class="eyebrow">Equipe complementar · não exigida pelo edital</div>
   <h3>Revisor, diretor de arte e demais especialistas</h3>
@@ -323,16 +392,25 @@
         }
       });
 
-      // Converte links [+ info](#info:slug) em botões de modal
+      // Converte links [...](#info:slug) em botões de modal, preservando o texto original
       target.querySelectorAll('a[href^="#info:"]').forEach(a=>{
         const slug = a.getAttribute('href').slice(6);
+        const label = (a.textContent || 'info').trim();
         const btn = document.createElement('button');
         btn.className = 'info-btn';
         btn.type = 'button';
         btn.dataset.info = slug;
-        btn.textContent = 'informações';
-        btn.setAttribute('aria-label','Mais informações sobre '+slug);
+        btn.textContent = label;
+        btn.setAttribute('aria-label', label+' — '+slug);
         a.replaceWith(btn);
+      });
+
+      // Demais links: abrir em nova aba para preservar o painel
+      target.querySelectorAll('a[href]').forEach(a=>{
+        const href = a.getAttribute('href');
+        if(!href || href.startsWith('#')) return;
+        a.setAttribute('target','_blank');
+        a.setAttribute('rel','noopener');
       });
 
       // Modal handlers
@@ -344,6 +422,32 @@
         else { content.innerHTML = ''; content.appendChild(tpl.content.cloneNode(true)); }
         back.dataset.open = 'true';
         document.body.style.overflow = 'hidden';
+
+        // Wiring específico para o modal de contrato (copiar / baixar)
+        const pre = content.querySelector('#contract-text');
+        const btnCopy = content.querySelector('#copy-contract');
+        const btnDl = content.querySelector('#download-contract');
+        if(pre && btnCopy){
+          btnCopy.addEventListener('click', async ()=>{
+            try{
+              await navigator.clipboard.writeText(pre.innerText);
+              const orig = btnCopy.textContent;
+              btnCopy.textContent = 'copiado ✓';
+              btnCopy.classList.add('ok');
+              setTimeout(()=>{ btnCopy.textContent = orig; btnCopy.classList.remove('ok'); }, 1800);
+            }catch(e){ btnCopy.textContent = 'falhou — selecione e copie manualmente'; }
+          });
+        }
+        if(pre && btnDl){
+          btnDl.addEventListener('click', ()=>{
+            const blob = new Blob([pre.innerText], {type:'text/plain;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = 'contrato-prestacao-servicos-ADA-Concorrencia-002-2026.txt';
+            document.body.appendChild(a); a.click();
+            setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 100);
+          });
+        }
       };
       const close = ()=>{ back.dataset.open = 'false'; document.body.style.overflow = ''; };
       target.addEventListener('click', e=>{
