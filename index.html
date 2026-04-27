@@ -87,6 +87,19 @@
   .doc ul li.task.done > .label{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--ink-faint)}
   .doc ul li.task .label{display:inline}
 
+  /* Subgrupo (item pai com sub-checklist) */
+  .doc ul li.subgroup{padding-left:0;margin:22px 0 8px}
+  .doc ul li.subgroup::before{content:none}
+  .doc ul li.subgroup > strong{font-family:'Syne',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+  .doc ul li.subgroup > em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--ink-mid);font-size:14px;margin-left:6px}
+  .doc ul li.subgroup > ul{margin-top:8px;padding-left:0;border-left:1px solid var(--border);padding-left:14px}
+
+  /* Badges */
+  .badge{display:inline-block;font-family:'DM Mono',monospace;font-weight:400;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:2px 7px;border:1px solid;border-radius:2px;margin-left:8px;vertical-align:2px;line-height:1.3}
+  .badge--eliminatorio{color:#ff5252;border-color:rgba(255,82,82,.45);background:rgba(255,82,82,.08)}
+  .badge--obrig{color:var(--accent);border-color:var(--border-strong);background:rgba(255,214,0,.08)}
+  .badge--estrat{color:var(--ink-mid);border-color:var(--border);background:transparent}
+
   /* Tables */
   .doc table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
   .doc table th, .doc table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
@@ -270,8 +283,22 @@
       marked.setOptions({gfm:true, breaks:false, headerIds:false, mangle:false});
       target.innerHTML = marked.parse(md);
 
+      // Substitui {!slug} por badges visuais
+      const badgeMap = {
+        eliminatorio: {cls:'eliminatorio', label:'Eliminatório'},
+        obrig: {cls:'obrig', label:'Obrigatório'},
+        estrat: {cls:'estrat', label:'Estratégico'}
+      };
+      target.innerHTML = target.innerHTML.replace(/\{!(\w+)\}/g, (_, slug)=>{
+        const b = badgeMap[slug];
+        return b ? '<span class="badge badge--'+b.cls+'">'+b.label+'</span>' : '';
+      });
+
       // Marca task list items
       target.querySelectorAll('li').forEach(li=>{
+        // Subgrupo: <li> que contém <ul> direto como filho
+        if(li.querySelector(':scope > ul')) li.classList.add('subgroup');
+
         const html = li.innerHTML;
         const m = html.match(/^\s*\[( |x|X)\]\s*(.*)$/s);
         if(m){

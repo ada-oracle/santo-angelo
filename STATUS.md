@@ -21,11 +21,33 @@
 - [x] Identificação dos critérios eliminatórios (NTn ≥ 70, zero em qualquer dos 14 = desclassificação)
 
 ### 2. Equipe-chave
-- [ ] Roteirista nominado com produção AV pública/premiada — **eliminatório se ausente** [+ info](#info:vinculo)
-- [ ] 3 historiadores com notório saber em Missões Jesuíticas (cada um com 2+ comprovações) [+ info](#info:vinculo)
-- [ ] 2 tradutores (ES, EN) — CV é suficiente, podem ser subcontratados [+ info](#info:tradutores)
-- [ ] Revisor histórico [+ info](#info:equipe-estrategica)
-- [ ] Diretor de arte / coordenador de pós / sound designer / animadores 2D-3D [+ info](#info:equipe-estrategica)
+
+- **Roteirista** {!eliminatorio} *(Alexandre — sobrenome a confirmar)* [+ info](#info:vinculo)
+  - [x] Nome definido
+  - [ ] CV anexado
+  - [ ] Portfólio com produção AV pública ou premiada
+  - [ ] Contrato de vínculo formal (trabalho / prestação / equivalente)
+
+- **3 Historiadores** {!obrig} [+ info](#info:vinculo)
+  - [ ] 3 nomes definidos
+  - [ ] CVs (3)
+  - [ ] 2+ comprovações de notório saber por historiador (diploma · publicações · projetos · atuação · atestados)
+  - [ ] 3 contratos de vínculo formal
+
+- **2 Tradutores (ES, EN)** {!obrig} [+ info](#info:tradutores)
+  - [ ] CV tradutor espanhol
+  - [ ] CV tradutor inglês
+
+- **Revisor histórico** {!estrat} [+ info](#info:equipe-estrategica)
+  - [ ] Nome definido
+  - [ ] CV resumido
+  - [ ] Carta de compromisso (opcional)
+
+- **Equipe técnica complementar** {!estrat} [+ info](#info:equipe-estrategica)
+  - [ ] Diretor de arte — CV
+  - [ ] Animadores 2D / 3D — CVs
+  - [ ] Sound designer — CV
+  - [ ] Coordenador de pós-produção — CV
 
 ### 3. DEMO — 2 a 3 minutos
 - [x] Máscara para mapping recebida (Departamento de Turismo, 2026-04-27)
