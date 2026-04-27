@@ -20,10 +20,10 @@
 - [x] OCR do ETP (`856753.pdf`) — 14 critérios da Nota Técnica mapeados
 - [x] Identificação dos critérios eliminatórios (NTn ≥ 70, zero em qualquer dos 14 = desclassificação)
 
-### 2. Equipe-chave (vínculo formal exigido)
-- [ ] Roteirista nominado com produção AV pública/premiada — **eliminatório se ausente**
-- [ ] 3 historiadores com notório saber em Missões Jesuíticas (cada um com 2+ comprovações)
-- [ ] 2 tradutores (ES, EN)
+### 2. Equipe-chave
+- [ ] Roteirista nominado com produção AV pública/premiada — **eliminatório se ausente** [+ info](#info:vinculo)
+- [ ] 3 historiadores com notório saber em Missões Jesuíticas (cada um com 2+ comprovações) [+ info](#info:vinculo)
+- [ ] 2 tradutores (ES, EN) — CV é suficiente, podem ser subcontratados [+ info](#info:tradutores)
 - [ ] Revisor histórico
 - [ ] Diretor de arte / coordenador de pós / sound designer (reforça critérios 5, 10, 11)
 

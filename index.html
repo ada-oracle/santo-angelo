@@ -102,6 +102,29 @@
 
   /* Selection */
   ::selection{background:var(--accent);color:#111}
+
+  /* Botão "+ info" inline */
+  .info-btn{display:inline-flex;align-items:center;gap:4px;margin-left:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:2px 8px;cursor:pointer;border-radius:2px;transition:all .15s ease;vertical-align:1px}
+  .info-btn:hover{background:var(--accent);color:#111;border-color:var(--accent)}
+  .info-btn::before{content:"+";font-weight:700;margin-right:2px}
+
+  /* Modal */
+  .modal-back{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:1000;overflow-y:auto}
+  .modal-back[data-open="true"]{display:flex;animation:fade .2s ease}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .modal{background:var(--sec-bg);border:1px solid var(--border-strong);max-width:680px;width:100%;padding:36px 40px;position:relative;margin:auto}
+  @media (max-width:640px){.modal{padding:24px 22px}}
+  .modal .close{position:absolute;top:14px;right:16px;background:transparent;border:0;color:var(--ink-mid);font-family:'DM Mono',monospace;font-size:14px;cursor:pointer;padding:4px 8px}
+  .modal .close:hover{color:var(--accent)}
+  .modal .eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
+  .modal h3{font-family:'DM Mono',monospace;font-weight:300;font-size:24px;color:var(--ink);margin:0 0 18px;letter-spacing:-.005em}
+  .modal h4{font-family:'Syne',sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:24px 0 8px}
+  .modal p, .modal li{color:var(--ink-mid);font-size:14px;line-height:1.6}
+  .modal ul{padding-left:18px}
+  .modal ul li{margin:4px 0}
+  .modal blockquote{margin:14px 0;padding:14px 18px;border-left:2px solid var(--accent);background:var(--card-bg);font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);font-style:normal;line-height:1.55}
+  .modal .src{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-faint);margin-top:24px;padding-top:14px;border-top:1px solid var(--border)}
+  .modal .src code{color:var(--accent);background:transparent;border:0;padding:0}
 </style>
 </head>
 <body>
@@ -141,6 +164,64 @@
 
 </div>
 
+<div class="modal-back" id="modal-back" role="dialog" aria-modal="true">
+  <div class="modal" id="modal-body">
+    <button class="close" aria-label="Fechar">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<template id="info-vinculo">
+  <div class="eyebrow">Habilitação técnica · Edital 002/2026 · alíneas 5.7.e e 5.7.f</div>
+  <h3>Comprovação de vínculo com a empresa proponente</h3>
+  <p>O edital exige <strong>comprovação formal de vínculo</strong> do <strong>roteirista</strong> e da <strong>equipe de historiadores</strong> com a ADA. O texto é literal e idêntico para os dois — três instrumentos são aceitos.</p>
+
+  <h4>Instrumentos aceitos</h4>
+  <ul>
+    <li><strong>Contrato de trabalho</strong> (vínculo CLT)</li>
+    <li><strong>Contrato de prestação de serviços</strong> (PJ ou autônomo)</li>
+    <li><strong>Instrumento equivalente</strong> — qualquer documento que comprove obrigação contratual entre as partes</li>
+  </ul>
+  <p>Em qualquer dos casos, o instrumento deve estar <strong>vigente</strong> ou <strong>com vigência prevista para a execução do objeto</strong> (240 dias a contar da assinatura do contrato com a Prefeitura).</p>
+
+  <h4>Trecho literal do edital</h4>
+  <blockquote>"Deverá ser apresentada, ainda, comprovação do vínculo do roteirista com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto."</blockquote>
+  <blockquote>"Deverá ser apresentada, ainda, a comprovação de vínculo da equipe de historiadores com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto."</blockquote>
+
+  <h4>Consequências</h4>
+  <ul>
+    <li><strong>Roteirista sem vínculo formal ou sem produção AV pregressa</strong> → desclassificação automática (alínea 5.7.e, parte final).</li>
+    <li><strong>Historiadores sem vínculo formal</strong> → inabilitação da licitante (alínea 5.7, observação "d").</li>
+  </ul>
+
+  <h4>Recomendação prática</h4>
+  <ul>
+    <li>Para cada profissional, anexar à proposta um <strong>contrato de prestação de serviços</strong> assinado por ambas as partes, com objeto, prazo e remuneração definidos.</li>
+    <li>O contrato pode ser <strong>condicional</strong> à assinatura do contrato com a Prefeitura — basta cláusula de eficácia atrelada à adjudicação.</li>
+    <li>Não confundir com <strong>tradutores</strong>, que pelo TR podem ser subcontratados (CV é suficiente).</li>
+  </ul>
+
+  <p class="src">Fonte: <code>DOCUMENTOS BAIXADOS/856752.pdf</code> · Edital 002/2026 · seção 5.7 alíneas (e) e (f) · pp. 9–10. Replicado no ETP <code>856753.pdf</code> nas linhas 503–512 (roteirista) e 514–540 (historiadores).</p>
+</template>
+
+<template id="info-tradutores">
+  <div class="eyebrow">Habilitação técnica · Termo de Referência</div>
+  <h3>Tradutores — vínculo NÃO é exigido</h3>
+  <p>Para os tradutores de inglês e espanhol, o Termo de Referência permite explicitamente subcontratação e dispensa instrumento de vínculo formal.</p>
+
+  <h4>Trecho literal do TR</h4>
+  <blockquote>"Tradutores qualificados para inglês e espanhol com demonstração via curriculum vitae (podem ser subcontratados)."</blockquote>
+
+  <h4>O que entregar</h4>
+  <ul>
+    <li><strong>Currículo (CV)</strong> de cada tradutor demonstrando qualificação no idioma e em tradução audiovisual / locução / legendagem.</li>
+    <li>Não é necessário contrato anexado à proposta.</li>
+    <li>A contratação efetiva pode ocorrer após a adjudicação.</li>
+  </ul>
+
+  <p class="src">Fonte: <code>DOCUMENTOS BAIXADOS/639...0653...TR.PDF</code> · página 4, seção de Qualificação Técnica.</p>
+</template>
+
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
   (async function(){
@@ -162,6 +243,37 @@
           li.innerHTML = '<span class="box"></span><span class="label">'+m[2]+'</span>';
         }
       });
+
+      // Converte links [+ info](#info:slug) em botões de modal
+      target.querySelectorAll('a[href^="#info:"]').forEach(a=>{
+        const slug = a.getAttribute('href').slice(6);
+        const btn = document.createElement('button');
+        btn.className = 'info-btn';
+        btn.type = 'button';
+        btn.dataset.info = slug;
+        btn.textContent = 'informações';
+        btn.setAttribute('aria-label','Mais informações sobre '+slug);
+        a.replaceWith(btn);
+      });
+
+      // Modal handlers
+      const back = document.getElementById('modal-back');
+      const content = document.getElementById('modal-content');
+      const open = (slug)=>{
+        const tpl = document.getElementById('info-'+slug);
+        if(!tpl){ content.innerHTML = '<p>Conteúdo não encontrado: '+slug+'</p>'; }
+        else { content.innerHTML = ''; content.appendChild(tpl.content.cloneNode(true)); }
+        back.dataset.open = 'true';
+        document.body.style.overflow = 'hidden';
+      };
+      const close = ()=>{ back.dataset.open = 'false'; document.body.style.overflow = ''; };
+      target.addEventListener('click', e=>{
+        const btn = e.target.closest('.info-btn');
+        if(btn){ e.preventDefault(); open(btn.dataset.info); }
+      });
+      back.addEventListener('click', e=>{ if(e.target===back) close(); });
+      back.querySelector('.close').addEventListener('click', close);
+      document.addEventListener('keydown', e=>{ if(e.key==='Escape' && back.dataset.open==='true') close(); });
 
       // Calcula progresso
       const tasks = target.querySelectorAll('li.task');
