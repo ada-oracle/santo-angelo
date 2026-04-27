@@ -1,0 +1,17 @@
+# Material da licitação — não publicar no GitHub
+DOCUMENTOS BAIXADOS/
+STORYBOARD_PREGAO/
+
+# Memória interna do agente
+memory/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
