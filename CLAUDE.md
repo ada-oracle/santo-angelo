@@ -212,6 +212,32 @@ III habilitação · IV reserva PCD · V custos trabalhistas · VI índices econ
 - Comunicação em português.
 - Para qualquer ação irreversível (envio de proposta, depósito de garantia, assinatura): **confirmar com o usuário antes**.
 
+### 10.0 Padrão de processamento Topaz Video AI
+
+Quando o usuário pedir para "passar um vídeo no Topaz" (sem outras instruções), o padrão é:
+
+- **Binário Topaz**: `C:\Program Files\Topaz Labs LLC\Topaz Video\ffmpeg.exe` (no Windows do Caio é `Topaz Video`, não `Topaz Video AI`).
+- **Modelos cacheados em**: `C:\ProgramData\Topaz Labs LLC\Topaz Video\models` (export `TVAI_MODEL_DIR` apontando pra lá).
+- **Pipeline em UMA única passada** (`-filter_complex`), sem arquivos intermediários:
+  - `tvai_up=model=prob-4:scale=2` — Proteus v4, **upscale 2x** (dobra resolução).
+  - `tvai_fi=model=apo-8:slowmo=2:fps=<fps_origem>` — Apollo v8, **slow-motion 2x** (dobra duração via interpolação de frames). Usar o `fps` do arquivo de origem (geralmente 24).
+- **Codec de saída**: **ProRes 422** (`-c:v prores_ks -profile:v 2 -vendor apl0 -pix_fmt yuv422p10le`), arquivo `.mov`.
+- **Saída em UMA única pasta** (ex: `RENDERS_2X/`). Nada de pasta intermediária separada — um arquivo de entrada gera um arquivo de saída.
+- Usa `bash` (Git Bash) com `set -e` e loop `for` quando processa lote.
+
+Template canônico:
+```bash
+TOPAZ="/c/Program Files/Topaz Labs LLC/Topaz Video/ffmpeg.exe"
+export TVAI_MODEL_DIR="C:/ProgramData/Topaz Labs LLC/Topaz Video/models"
+"$TOPAZ" -y -hide_banner -i "$IN" \
+  -sws_flags spline+accurate_rnd+full_chroma_int -color_trc 2 -colorspace 2 -color_primaries 2 \
+  -filter_complex "tvai_up=model=prob-4:scale=2:preblur=0:noise=0:details=0:halo=0:blur=0:compression=0:estimate=20:blend=0.2:device=-2:vram=1:instances=1,tvai_fi=model=apo-8:slowmo=2:rdt=0.01:fps=24:device=-2:vram=1:instances=1" \
+  -c:v prores_ks -profile:v 2 -vendor apl0 -pix_fmt yuv422p10le -movflags +faststart \
+  "$OUT.mov"
+```
+
+Se o usuário pedir variação (ex: só upscale sem slow-mo, ou scale 4, ou outro modelo, ou h264 em vez de ProRes), seguir a instrução específica e manter o restante do padrão. Não criar pasta intermediária por conta própria.
+
 ### 10.1 Linguagem com o usuário
 
 O usuário é **artista audiovisual**, não tem formação em direito ou licitações. **Falar simples**, sem jargão jurídico:

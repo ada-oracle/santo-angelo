@@ -1,6 +1,7 @@
 # Status — Concorrência 002/2026 Catedral Angelopolitana
 
 > 🎬 [Abrir storyboard preliminar — 3 atos, 9 sub-atos, 30 minutos](STORYBOARD/index.html)
+> 🎞️ [Prompts para animação — 22 keyframes, 21 transições](PROMPTS_ANIMACAO/index.html)
 
 > **Sessão pública: 11/05/2026 às 09h** · plataforma Pregão Online Banrisul · postagem de propostas até 11/05 às 08h.
 > Teto oficial: **R$ 2.035.039,00**. Garantia da proposta: **R$ 20.350,39** (1%).
