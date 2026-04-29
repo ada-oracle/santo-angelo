@@ -4,7 +4,6 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Briefing do Roteirista · Catedral Angelopolitana — ADA</title>
-<meta name="description" content="Briefing completo para o roteirista da Concorrência 002/2026 — Catedral Angelopolitana de Santo Ângelo/RS. Todos os requisitos do edital com citação da fonte." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
@@ -14,114 +13,85 @@
     --sec-bg:#1A1A1A;
     --card-bg:#222222;
     --accent:#FFD600;
+    --good:#7CFFB2;
     --warn:#ff8a3d;
     --danger:#ff5252;
-    --good:#7CFFB2;
     --ink:#FFFFFF;
-    --ink-mid:rgba(255,255,255,.55);
-    --ink-faint:rgba(255,255,255,.35);
+    --ink-mid:rgba(255,255,255,.62);
+    --ink-faint:rgba(255,255,255,.40);
     --border:rgba(255,214,0,.12);
     --border-strong:rgba(255,214,0,.30);
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-size:14.5px;line-height:1.6}
+  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-size:15px;line-height:1.65}
   ::selection{background:var(--accent);color:#111}
-  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--border-strong)}
-  a:hover{border-bottom-color:var(--accent)}
-  .wrap{max-width:1100px;margin:0 auto;padding:24px 22px 80px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:880px;margin:0 auto;padding:24px 22px 80px}
 
   header.nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
   .wordmark{font-family:'DM Mono',monospace;font-weight:300;font-size:20px;color:var(--accent)}
   .wordmark::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px}
-  .nav-back{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint);border:0}
-  .nav-back:hover{color:var(--accent)}
+  .back{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint)}
 
-  .hero{padding:40px 0 16px}
+  .hero{padding:32px 0 12px}
   .tag{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);padding:4px 10px;border:1px solid var(--border);margin-bottom:14px}
-  h1{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(30px,4.5vw,52px);line-height:1.05;color:var(--ink);margin:0 0 14px;letter-spacing:-.01em}
+  h1{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.1;color:var(--ink);margin:0 0 12px;letter-spacing:-.01em}
   h1 em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--accent)}
-  .lede{max-width:820px;color:var(--ink-mid);font-size:16px;line-height:1.6}
+  .lede{max-width:780px;color:var(--ink-mid);font-size:16px}
 
-  /* TOC sticky */
-  .toc{position:sticky;top:0;background:#0d0d0d;border-bottom:1px solid var(--accent);padding:10px 0;margin:24px 0;z-index:50;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch}
-  .toc a{display:inline-block;padding:6px 12px;margin-right:4px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-faint);border:1px solid transparent;text-transform:uppercase}
-  .toc a:hover{color:var(--accent);border-color:var(--border-strong)}
-
-  /* Sections */
-  section.block{margin:48px 0 0;scroll-margin-top:60px}
-  section.block h2{font-family:'DM Mono',monospace;font-weight:300;font-size:26px;color:var(--ink);margin:0 0 6px;padding-bottom:12px;border-bottom:1px solid var(--accent);letter-spacing:-.01em}
-  section.block h2 small{display:block;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;margin-top:6px}
-  section.block h3{font-family:'Syne',sans-serif;font-weight:600;font-size:17px;color:var(--accent);margin:32px 0 10px;letter-spacing:.02em}
+  section.block{margin:48px 0 0}
+  section.block h2{font-family:'DM Mono',monospace;font-weight:300;font-size:24px;color:var(--ink);margin:0 0 6px;padding-bottom:10px;border-bottom:1px solid var(--accent);letter-spacing:-.01em}
+  section.block h2 small{display:block;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+  section.block h3{font-family:'Syne',sans-serif;font-weight:600;font-size:15px;color:var(--accent);margin:22px 0 8px;letter-spacing:.02em}
   section.block p{color:var(--ink-mid);margin:0 0 12px}
-  section.block ul{color:var(--ink-mid);padding-left:22px;margin:8px 0 16px}
+  section.block ul{color:var(--ink-mid);padding-left:22px;margin:6px 0 14px}
   section.block ul li{margin-bottom:6px}
   section.block ul li strong{color:var(--ink)}
 
-  /* Source citation chip */
-  .src{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--accent);background:#0d0d0d;border:1px solid var(--border-strong);padding:3px 8px;margin:0 4px 4px 0;line-height:1.4;vertical-align:1px;text-decoration:none;cursor:pointer;transition:.15s}
-  a.src,.src a{border:1px solid var(--border-strong)}
-  a.src:hover{background:var(--accent);color:#111;border-color:var(--accent)}
-  a.src:hover code{color:#111}
-  a.src.danger:hover{background:var(--danger);color:#111;border-color:var(--danger)}
-  a.src.warn:hover{background:var(--warn);color:#111;border-color:var(--warn)}
-  .src code{font-family:'DM Mono',monospace;color:var(--accent);background:transparent;border:0;padding:0}
-  .src.warn{color:var(--warn);border-color:var(--warn)}
-  .src.danger{color:var(--danger);border-color:var(--danger)}
-  .src::after{content:" ↗";opacity:.5;font-size:9px}
+  /* Cards de status */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0}
+  @media (max-width:640px){.grid2{grid-template-columns:1fr}}
+  .card{background:var(--sec-bg);border:1px solid var(--border-strong);padding:22px}
+  .card.now{border-left:4px solid var(--good)}
+  .card.later{border-left:4px solid var(--warn)}
+  .card .when{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .card.now .when{color:var(--good)}
+  .card.later .when{color:var(--warn)}
+  .card h4{font-family:'DM Mono',monospace;font-weight:300;font-size:16px;color:var(--ink);margin:0 0 10px;letter-spacing:-.005em}
+  .card p, .card li{font-size:13.5px;color:var(--ink-mid);line-height:1.6}
+  .card ul{padding-left:18px;margin:6px 0}
+  .card .pill{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;padding:3px 9px;margin-right:6px;margin-bottom:4px;border:1px solid}
+  .card .pill.req{color:var(--danger);border-color:rgba(255,82,82,.55);background:rgba(255,82,82,.06)}
+  .card .pill.opt{color:var(--accent);border-color:var(--accent);background:rgba(255,214,0,.06)}
+
+  blockquote{margin:14px 0;padding:14px 18px;border-left:3px solid var(--accent);background:#0d0d0d;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:15.5px;color:var(--ink);line-height:1.6}
+  blockquote b{font-style:normal;color:var(--accent);font-family:'Syne',sans-serif;font-weight:600}
+
+  .src{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--accent);background:#0d0d0d;border:1px solid var(--border-strong);padding:2px 7px;margin-top:8px;text-decoration:none}
+  .src:hover{background:var(--accent);color:#111}
+
+  /* Tabela 6 partes */
+  table{width:100%;border-collapse:collapse;margin:14px 0;background:var(--sec-bg);border:1px solid var(--border-strong);font-size:13.5px}
+  table th, table td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--border)}
+  table th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:#0d0d0d;font-weight:400}
+  table td.num{text-align:center;font-family:'DM Mono',monospace;color:var(--accent)}
 
   /* Cena card */
-  .cena{background:var(--sec-bg);border:1px solid var(--border-strong);border-left:4px solid var(--accent);margin:18px 0;padding:22px 26px}
-  .cena-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-  .cena-num{font-family:'DM Mono',monospace;font-weight:300;font-size:32px;color:var(--accent);line-height:1}
-  .cena-title{flex:1;font-family:'Syne',sans-serif;font-weight:700;font-size:17px;color:var(--ink);letter-spacing:.02em}
-  .cena-period{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:16px;color:var(--accent)}
-  .cena .pts{margin-top:10px}
-  .cena .pts strong{color:var(--ink)}
-  .cena .quote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:15.5px;color:var(--ink);background:#0d0d0d;border-left:3px solid var(--accent);padding:14px 18px;margin:12px 0;line-height:1.6}
+  .cena{background:var(--sec-bg);border:1px solid var(--border-strong);border-left:4px solid var(--accent);margin:16px 0;padding:20px 24px}
+  .cena-head{display:flex;align-items:baseline;gap:14px;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .cena-num{font-family:'DM Mono',monospace;font-weight:300;font-size:24px;color:var(--accent);line-height:1}
+  .cena-title{flex:1;font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--ink);letter-spacing:.02em}
+  .cena p{color:var(--ink-mid);font-size:14px;margin:0 0 8px;line-height:1.65}
+  .cena ul{padding-left:18px;color:var(--ink-mid);font-size:13.5px;margin:6px 0}
+  .cena .quote{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:15px;color:var(--ink);background:#0d0d0d;border-left:3px solid var(--accent);padding:12px 16px;margin:8px 0;line-height:1.6}
 
-  /* Parte (ato) banner */
-  .parte{margin:36px 0 12px;padding:20px 24px;background:linear-gradient(135deg,#1a1500 0%,#0d0d0d 100%);border:1px solid var(--accent);border-left:6px solid var(--accent)}
-  .parte-num{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
-  .parte-title{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;color:var(--ink);margin:0 0 6px}
-  .parte-pct{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);letter-spacing:.06em}
+  .parte{margin:32px 0 8px;padding:14px 18px;background:linear-gradient(135deg,#1a1500 0%,#0d0d0d 100%);border:1px solid var(--accent);border-left:6px solid var(--accent)}
+  .parte-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .parte-title{font-family:'DM Mono',monospace;font-weight:300;font-size:18px;color:var(--ink);margin:0}
+  .parte-pct{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.06em;margin-top:2px}
 
-  /* Tables */
-  table.t{width:100%;border-collapse:collapse;margin:14px 0;background:var(--sec-bg);border:1px solid var(--border-strong);font-size:13.5px}
-  table.t th,table.t td{padding:11px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border)}
-  table.t th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:#0d0d0d;font-weight:400}
-  table.t td.peso{font-family:'DM Mono',monospace;text-align:center;color:var(--accent);font-size:16px;font-weight:300;width:60px}
-  table.t td.elim{font-family:'DM Mono',monospace;font-size:11px;color:var(--danger);letter-spacing:.04em;width:90px;text-align:center}
-
-  /* Cards info */
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:14px 0}
-  @media (max-width:640px){.grid2{grid-template-columns:1fr}}
-  .card{background:var(--sec-bg);border:1px solid var(--border);padding:20px 22px}
-  .card h4{font-family:'DM Mono',monospace;font-weight:300;font-size:13px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
-  .card.danger{border-color:var(--danger);border-left:4px solid var(--danger)}
-  .card.danger h4{color:var(--danger)}
-  .card.good{border-color:var(--good);border-left:4px solid var(--good)}
-  .card.good h4{color:var(--good)}
-
-  /* Source library */
-  .sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin:18px 0}
-  .source{background:var(--sec-bg);border:1px solid var(--border-strong);padding:18px}
-  .source-tag{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
-  .source-name{font-family:'Syne',sans-serif;font-weight:600;font-size:14px;color:var(--ink);margin-bottom:6px}
-  .source-desc{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-mid);line-height:1.55}
-  .source-path{margin-top:10px;font-family:'DM Mono',monospace;font-size:10px;color:var(--accent);word-break:break-all;display:block}
-
-  /* Eliminatorios highlight */
-  .elim-list{background:#1a0d0d;border:1px solid var(--danger);padding:18px 22px;margin:14px 0}
-  .elim-list h4{font-family:'DM Mono',monospace;font-weight:300;letter-spacing:.10em;text-transform:uppercase;color:var(--danger);margin:0 0 10px;font-size:13px}
-  .elim-list ul{padding-left:22px;color:var(--ink)}
-  .elim-list ul li{margin-bottom:8px}
-  .elim-list ul li b{color:var(--danger)}
-
-  /* Action box */
-  .action{background:#0d0d0d;border:2px dashed var(--accent);padding:22px 26px;margin:18px 0;font-family:'DM Mono',monospace;font-size:13px;line-height:1.7}
-  .action b{color:var(--accent)}
-
-  footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em}
 </style>
 </head>
 <body>
@@ -129,607 +99,306 @@
 
 <header class="nav">
   <a href="../index.html" class="wordmark">ADA · Catedral</a>
-  <a href="../STORYBOARD/index.html" class="nav-back">→ Storyboard</a>
+  <a href="../index.html" class="back">← Painel</a>
 </header>
 
 <section class="hero">
   <span class="tag">Briefing do roteirista · Concorrência 002/2026 · Santo Ângelo/RS</span>
-  <h1>Pra <em>Alexandre</em>: tudo que o edital exige do roteiro.</h1>
-  <p class="lede">Este documento reúne, em um só lugar, todas as exigências oficiais sobre o roteiro do filme — o que vale agora (minuta para a licitação, prazo 11/05/2026) e o que vale depois (roteiro completo definitivo, dentro do contrato). Cada item traz a <b>citação da fonte original</b> (edital, ETP ou TR) com referência exata para que possa ser conferido nos PDFs do processo. Os documentos-fonte estão na pasta <code>DOCUMENTOS BAIXADOS/</code> deste repositório.</p>
+  <h1>Tudo que o edital diz sobre <em>roteiro</em>.</h1>
+  <p class="lede">Material para o Alexandre. Tudo aqui é texto literal do <strong>ETP (Estudo Técnico Preliminar)</strong> — Edital 002/2026 da Prefeitura de Santo Ângelo/RS. O Edital e o TR não falam diretamente sobre roteiro; toda a referência é do ETP.</p>
 </section>
 
-<nav class="toc">
-  <a href="#fontes">▸ Fontes</a>
-  <a href="#objeto">▸ Objeto</a>
-  <a href="#estrutura">▸ Estrutura macro</a>
-  <a href="#cenas">▸ 14 cenas</a>
-  <a href="#enfase">▸ Pontos de ênfase</a>
-  <a href="#criterios">▸ Critérios pontuáveis</a>
-  <a href="#elim">▸ Eliminatórios</a>
-  <a href="#entregas">▸ Entregas</a>
-  <a href="#proximos">▸ Próximos passos</a>
-</nav>
-
 <!-- ============================================================ -->
-<section class="block" id="fontes">
-  <h2>Fontes documentais <small>tudo que cito vem desses 3 PDFs</small></h2>
-  <p>Todos os requisitos abaixo foram extraídos literalmente dos documentos oficiais publicados pela Prefeitura de Santo Ângelo. Os caminhos remetem ao repositório do projeto — quando uma exigência citar <span class="src">📄 ETP, l. 503</span>, basta abrir o arquivo correspondente e ir à linha indicada.</p>
+<section class="block">
+  <h2>1 · O que entregar de roteiro <small>AGORA × DEPOIS</small></h2>
 
-  <div class="sources">
-    <div class="source">
-      <div class="source-tag">📄 Documento principal</div>
-      <div class="source-name">Edital nº 002/2026</div>
-      <div class="source-desc">42 páginas. Regras gerais, critérios de habilitação, modelo da proposta (Anexo I) e minuta do contrato (Anexo XIII).</div>
-      <span class="source-path">DOCUMENTOS BAIXADOS/856752.pdf</span>
+  <div class="grid2">
+
+    <div class="card now">
+      <div class="when">📅 Agora — inscrição (até 11/05/2026)</div>
+      <h4>Roteiro NÃO é obrigatório</h4>
+      <span class="pill req">Obrigatório: DEMO 2–3 min</span>
+      <span class="pill opt">Opcional: minuta de roteiro</span>
+      <p style="margin-top:14px"><strong>Texto literal do ETP (item 4, linhas 121–148):</strong></p>
+      <blockquote>"Esses critérios serão utilizados na avaliação da capacidade técnica dos proponentes pela comissão constituída (banca) <b>através do vídeo demonstrativo (demo) com duração de 2 a 3 minutos</b> e dos demais documentos que forem anexados pelo proponente que auxiliem na comprovação da capacidade técnica."</blockquote>
+      <blockquote>"A avaliação também será complementada com os documentos adicionais que a proponente <b>a seu critério</b> apresentar em conjunto com o vídeo demonstração (DEMO) como <b>roteiro preliminar</b>, pesquisa histórica estruturada e outros documentos a critério do proponente."</blockquote>
+      <p><a class="src" href="../ETP/index.html#s4" target="_blank">📄 ETP item 4 ↗</a></p>
     </div>
 
-    <div class="source">
-      <div class="source-tag">📄 Critérios de avaliação</div>
-      <div class="source-name">Estudo Técnico Preliminar (ETP)</div>
-      <div class="source-desc">25 páginas. Define os 14 critérios de Nota Técnica, eliminatórios, parcelas de pagamento e o esboço narrativo de 14 cenas (Anexo 1 do ETP).</div>
-      <a class="source-path" href="../ETP/index.html" target="_blank" style="color:var(--accent);text-decoration:none">→ ETP diagramado (HTML navegável)</a>
-      <span class="source-path">DOCUMENTOS BAIXADOS/856753.pdf <small>(PDF original)</small></span>
+    <div class="card later">
+      <div class="when">📅 Depois — só após ganhar (Parcela 1 do contrato)</div>
+      <h4>Roteiro completo e detalhado</h4>
+      <span class="pill req">Obrigatório · libera 30% do contrato</span>
+      <p style="margin-top:14px"><strong>Texto literal do ETP (item 8, linhas 619–631):</strong></p>
+      <blockquote>"<b>1ª Parcela 30% — Entrega do Planejamento Criativo e Narrativo.</b> Após a entrega, análise técnica e aprovação formal dos seguintes itens: Timeline geral do espetáculo, com duração total definida; <b>Roteiro completo e detalhado</b>, contendo: Estrutura narrativa (início, desenvolvimento e encerramento); Descrição de cenas e transições; Indicação de momentos de maior impacto visual; Concepção artística e linguagem visual proposta; Referências estéticas e conceituais (moodboard ou documento equivalente); Adequação do roteiro às características arquitetônicas da Catedral."</blockquote>
+      <p><a class="src" href="../ETP/index.html#s8" target="_blank">📄 ETP item 8 ↗</a></p>
     </div>
 
-    <div class="source">
-      <div class="source-tag">📄 Escopo técnico</div>
-      <div class="source-name">Termo de Referência (TR)</div>
-      <div class="source-desc">6 páginas. Define o objeto, técnicas exigidas, qualificação técnica e equipe mínima (incluindo pelo menos 3 historiadores e roteirista nominado).</div>
-      <span class="source-path">DOCUMENTOS BAIXADOS/639083919405691533639047770653842423112330_TR.PDF</span>
-    </div>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<section class="block" id="objeto">
-  <h2>Objeto e diretrizes gerais <small>o que é o filme</small></h2>
+<section class="block">
+  <h2>2 · Por que vale a pena fazer uma minuta opcional <small>recomendação estratégica · não é obrigação</small></h2>
 
-  <p><strong>Produção de conteúdo audiovisual autoral e inédito</strong> para projeção mapeada na fachada da Catedral Angelopolitana de Santo Ângelo/RS, narrando a história das Missões Jesuítico-Guarani.
-    <span class="src">📄 Edital, item 1 (Objeto), p. 1</span>
-  </p>
+  <p>Embora o roteiro NÃO seja exigido agora, <strong>3 dos 14 critérios da Nota Técnica</strong> avaliam a qualidade do roteiro. Se a banca tiver só o DEMO pra avaliar, perde-se base de pontuação:</p>
 
+  <table>
+    <thead>
+      <tr><th>Critério</th><th>Peso</th><th>O que avalia</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>1.</strong> Pertinência histórica e fidelidade conceitual do roteiro</td><td class="num">3</td><td>Subquesito 1.4 cita literalmente "<em>analisado na amostra do vídeo OU na minuta do roteiro</em>"</td></tr>
+      <tr><td><strong>2.</strong> Profundidade da pesquisa histórica</td><td class="num">5</td><td>Subquesito 2.1: "Todos os elementos do roteiro prévio estão atendidos"</td></tr>
+      <tr><td><strong>3.</strong> Qualidade dramatúrgica do roteiro</td><td class="num">3</td><td>Clareza, fluidez, emoção, ritmo para 25–30 min, construção de cenas</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Se decidir fazer minuta opcional, o que ela cobre</h3>
   <ul>
-    <li><strong>Duração:</strong> entre <b>25 e 30 minutos</b>. <span class="src">📄 ETP, l. 131</span></li>
-    <li><strong>Resolução:</strong> mínimo 3840×2160 (4K UHD), ≥ 30 fps. Entrega final em <b>4K ProRes</b>. <span class="src">📄 ETP / TR — especificações técnicas</span></li>
-    <li><strong>3 versões linguísticas:</strong> português, espanhol e inglês — em <b>trilhas de áudio independentes</b>. <span class="src">📄 ETP — eliminatórios</span></li>
-    <li><strong>Máscara da fachada:</strong> 3800×3840 px, fornecida pela Prefeitura (Departamento de Turismo). <span class="src">📄 ETP, l. 1190 / 1197</span></li>
-    <li><strong>≥ 50% animação 3D obrigatória</strong> (eliminatório). <span class="src danger">⚠ ETP — eliminatório</span></li>
-    <li><strong>Paleta cromática barroco-missioneira</strong> obrigatória (eliminatório). <span class="src danger">⚠ ETP</span></li>
-    <li><strong>Skullmapping autoral</strong> — referência indicada pela Prefeitura: <i>Cupido de Rubens</i> no aeroporto de Bruxelas. <span class="src">📄 ETP, l. 879–881 (link <code>youtube.com/watch?v=JREE37Q5eNM</code>)</span></li>
-    <li><strong>Pesquisa histórica fidedigna e isenta de viés</strong>, validada por equipe de historiadores com notório saber. <span class="src">📄 ETP, l. 514–540 (alínea 5.7.f)</span></li>
-    <li><strong>Cessão integral de direitos</strong> à Prefeitura — obra por encomenda (Lei 9.610/98). <span class="src">📄 ETP, l. 670–705</span></li>
+    <li>Tratamento autoral (visão narrativa, tom, atmosfera)</li>
+    <li>Estrutura macro nas 6 partes do Anexo 1 (cumprindo % de tempo de cada parte)</li>
+    <li>Sinopse das 14 cenas com pontos de ênfase obrigatória</li>
+    <li>Bibliografia preliminar (do Prof. Guilherme + 2 historiadores)</li>
+    <li>Selo de validação histórica (declaração da equipe)</li>
   </ul>
 </section>
 
 <!-- ============================================================ -->
-<section class="block" id="estrutura">
-  <h2>Estrutura macro · 6 partes, 14 cenas <small>distribuição de tempo definida pelo edital</small></h2>
+<section class="block">
+  <h2>3 · Anexo 1 do ETP <small>esboço narrativo oficial · base obrigatória do roteiro</small></h2>
 
-  <p>O ETP, no <b>Anexo 1</b>, fornece o esboço narrativo oficial — distribuição de tempo entre as 6 partes do filme. <strong>Esta divisão é a base obrigatória do roteiro.</strong> Pode ser desenvolvida com liberdade autoral, desde que respeite os percentuais e os pontos de ênfase. <span class="src">📄 ETP, l. 842–859 (Anexo 1 — Esboço de sugestão de roteiro)</span></p>
+  <p>O ETP, no seu Anexo 1, define a estrutura narrativa que o roteiro tem que seguir — distribuição de tempo entre as 6 partes do filme. Pode ser desenvolvido com liberdade autoral, desde que respeite os percentuais e contemple os marcadores históricos. <a class="src" href="../ETP/index.html#anexo1" target="_blank">📄 ETP · Anexo 1 ↗</a></p>
 
-  <table class="t">
+  <table>
     <thead>
-      <tr>
-        <th>Parte</th>
-        <th>Título</th>
-        <th>%</th>
-        <th>Min. (~28')</th>
-        <th>Cenas</th>
-      </tr>
+      <tr><th>Parte</th><th>Descrição</th><th>%</th><th>Min. (~28')</th></tr>
     </thead>
     <tbody>
-      <tr><td>0</td><td>Introdução — captura do anjinho da fachada (narrador)</td><td>—</td><td>~1'</td><td>1</td></tr>
-      <tr><td>1</td><td>Roque Gonzales e o primeiro ciclo (evangelização)</td><td>15%</td><td>~4'</td><td>2, 3, 4, 5, 6, 7</td></tr>
-      <tr><td>2</td><td>Estrutura da vida na redução + ataque bandeirante + migração + gado abandonado</td><td>20%</td><td>~5'30"</td><td>8, 9, 10</td></tr>
-      <tr><td>3</td><td>Segundo ciclo missioneiro — apogeu</td><td>40%</td><td>~11'</td><td>11</td></tr>
-      <tr><td>4</td><td>Pressões externas / ambiente para Guerra Guaranítica</td><td>10%</td><td>~3'</td><td>12</td></tr>
-      <tr><td>5</td><td>Destruição (fim das missões)</td><td>10%</td><td>~3'</td><td>13</td></tr>
-      <tr><td>6</td><td>Encerramento (mensagem final do anjo da guarda)</td><td>5%</td><td>~1'30"</td><td>14</td></tr>
+      <tr><td class="num">0</td><td>Introdução — captura do anjinho da fachada (narrador)</td><td class="num">—</td><td class="num">~1'</td></tr>
+      <tr><td class="num">1</td><td>Roque Gonzales e o primeiro ciclo (evangelização)</td><td class="num">15%</td><td class="num">~4'</td></tr>
+      <tr><td class="num">2</td><td>A estrutura da vida na redução + ataque bandeirante + migração + gado abandonado</td><td class="num">20%</td><td class="num">~5'30"</td></tr>
+      <tr><td class="num">3</td><td>O segundo ciclo missioneiro — apogeu</td><td class="num">40%</td><td class="num">~11'</td></tr>
+      <tr><td class="num">4</td><td>Pressões externas / ambiente para a Guerra Guaranítica</td><td class="num">10%</td><td class="num">~3'</td></tr>
+      <tr><td class="num">5</td><td>O processo de destruição (fim das missões)</td><td class="num">10%</td><td class="num">~3'</td></tr>
+      <tr><td class="num">6</td><td>Encerramento (mensagem final do anjinho)</td><td class="num">5%</td><td class="num">~1'30"</td></tr>
     </tbody>
   </table>
 </section>
 
 <!-- ============================================================ -->
-<section class="block" id="cenas">
-  <h2>14 cenas · esboço oficial do edital <small>texto integral do Anexo 1 do ETP</small></h2>
-  <p>Os blocos abaixo reproduzem <b>literalmente</b> o esboço de cada cena conforme o ETP. São o ponto de partida obrigatório — o roteiro pode aprofundar, mas não contradizer nem omitir. <span class="src">📄 ETP, l. 860–1188 (Anexo 1)</span></p>
+<section class="block">
+  <h2>4 · As 14 cenas <small>texto literal do Anexo 1 do ETP</small></h2>
 
   <div class="parte">
     <div class="parte-num">Parte 0</div>
     <div class="parte-title">Introdução</div>
-    <div class="parte-pct">Tempo implícito · captura do anjinho</div>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">01</div>
-      <div class="cena-title">Captura do Anjo da Guarda</div>
-      <div class="cena-period">Cena de abertura</div>
-    </div>
-    <div class="quote">"Inicia-se com a iluminação da fachada dos edifícios históricos onde será desenvolvida a história projetada. Após esta apresentação inicial do espaço físico, apresenta-se um dos elementos da fachada que será utilizado como narrador da história — no caso em questão um anjinho, pois estamos na Redução de San Angel Custódio, o anjo da guarda. O anjo da guarda é capturado da fachada e se transforma no narrador e apresentador da história. Similar ao do aeroporto de Bruxelas (Cupido de Rubens)."</div>
-    <div class="pts"><strong>Notas:</strong> Skullmapping autoral. A figura do anjinho ajuda especialmente as crianças a prestarem atenção. <span class="src">📄 ETP, l. 860–882</span></div>
+    <div class="cena-head"><div class="cena-num">Cena 1</div><div class="cena-title">Captura do Anjo da Guarda</div></div>
+    <p>Inicia-se com a iluminação da fachada dos edifícios históricos onde será desenvolvida a história projetada.</p>
+    <p>Após esta apresentação inicial do espaço físico que define onde será projetada a história, apresenta-se um dos elementos da fachada que será utilizado como narrador da história que se deseja contar, no caso em questão um anjinho, pois estamos na Redução de San Angel Custódio, o anjo da guarda.</p>
+    <p>O anjo da guarda é capturado da fachada e se transforma no narrador e apresentador da história que será apresentado.</p>
+    <p><strong>Apresentador/Narrador</strong> — figura do anjo da guarda (anjinho).</p>
+    <p><em>Nota:</em> Ele seria capturado de alguma escultura que já exista na Catedral. Similar ao do aeroporto de Bruxelas (Cupido de Rubens): <a href="https://www.youtube.com/watch?v=JREE37Q5eNM" target="_blank">youtube.com/watch?v=JREE37Q5eNM</a></p>
+    <p><em>Nota:</em> a figura do anjinho ajuda as crianças a prestar atenção na narrativa.</p>
   </div>
 
   <div class="parte">
     <div class="parte-num">Parte 1 · 15%</div>
     <div class="parte-title">Roque Gonzales e o primeiro ciclo</div>
-    <div class="parte-pct">Cenas 02–07 · evangelização</div>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">02</div>
-      <div class="cena-title">Apresentação dos jesuítas e os guaranis</div>
-      <div class="cena-period">Pré-1610</div>
-    </div>
-    <div class="quote">"A cena se inicia com imagens das selvas, animais silvestres, dos grandes rios — o ambiente onde viviam os guaranis e onde os jesuítas estavam chegando junto com os colonizadores espanhóis. Podemos apresentar imagens gravadas de drones sobre grandes áreas verdes (florestas) e também sobre o rio Uruguai ou outros rios da região. O narrador apresenta uma descrição do ambiente que o jesuíta está encontrando."</div>
-    <span class="src">📄 ETP, l. 891–902</span>
+    <div class="cena-head"><div class="cena-num">Cena 2</div><div class="cena-title">Apresentação dos jesuítas e os guaranis</div></div>
+    <p>A cena se inicia com imagens das selvas, animais silvestres, dos grandes rios, ou seja do ambiente onde viviam os guaranis e onde os jesuítas estavam chegando junto com os colonizadores espanhóis.</p>
+    <p>Podemos apresentar imagens gravadas de drones sobre grandes áreas verdes (florestas) e também sobre o rio Uruguai ou outros rios da região.</p>
+    <p>O narrador apresenta uma descrição do ambiente que o jesuíta está encontrando na sua penetração do território dos guaranis de forma que introduza o ambiente, o evangelizador e o futuro evangelizado.</p>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">03</div>
-      <div class="cena-title">Chegada dos missionários no primeiro ciclo</div>
-      <div class="cena-period">1610–1627</div>
-    </div>
-    <div class="quote">"A cena deve apresentar a figura do jesuíta como evangelizador e a sua devoção à fé católica, entrando em um ambiente desconhecido e hostil. Sugestão de iniciar o trabalho com Roque Gonzáles fundando a Redução de Concepção em 1627. Lá as futuras famílias angelotes entram nas reduções. Vão se tornando cristãos. 79 anos depois, vêem formar a nova redução de San Angel Custódio."</div>
+    <div class="cena-head"><div class="cena-num">Cena 3</div><div class="cena-title">Chegada dos missionários no primeiro ciclo</div></div>
+    <p>A cena deve apresentar a figura do jesuíta como evangelizador e a sua devoção à fé católica, entrando em um ambiente desconhecido e hostil.</p>
+    <p>Sugestão de iniciar o trabalho com Roque Gonzáles fundando a Redução de Concepção em 1627. Lá as futuras famílias angelotes (como Henis chama) entram nas reduções. Vão se tornando cristãos. 79 anos depois, vêem formar a nova redução de San Angel Custódio.</p>
     <ul>
-      <li>O processo de conversão (evangelização) / abordagens iniciais / ajuda da música</li>
-      <li>Proteção oferecida pelos jesuítas contra a escravidão (encomendeiros espanhóis e bandeirantes portugueses)</li>
-      <li>Migração de aldeias nômades para a vida nas reduções</li>
-      <li><b>Ênfase ao Padre Roque</b> — primeiro Santo do RS (interesse promocional regional)</li>
+      <li>O processo de conversão (evangelização) / abordagens iniciais / ajuda da música;</li>
+      <li>Proteção oferecida pelos jesuítas contra a escravidão;</li>
+      <li>Migração dos indígenas da vida nas aldeias para a vida nas reduções e cristianizados;</li>
+      <li>Papel dos jesuítas na proteção dos guaranis contra encomendeiros (espanhóis) e bandeirantes (portugueses);</li>
+      <li>Ênfase ao Padre Roque — primeiro Santo do RS.</li>
     </ul>
-    <span class="src">📄 ETP, l. 904–930</span>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">04</div>
-      <div class="cena-title">Formação das primeiras reduções no atual território do RGS</div>
-      <div class="cena-period">1627–1640</div>
-    </div>
+    <div class="cena-head"><div class="cena-num">Cena 4</div><div class="cena-title">Formação das primeiras reduções no atual território do RGS</div></div>
     <ul>
-      <li>Introdução do gado (que fica para trás, gerando o grande rebanho)</li>
-      <li>A erva mate, introdução da agricultura (base do desenvolvimento econômico do Estado)</li>
-      <li><b>As 18 reduções</b> fundadas no atual território do RGS — bacias dos rios Ibicuí, Jacuí e Ijuí</li>
-      <li>Cunhas de machados de ferro como presentes aos caciques (lavoura e sustento alimentar)</li>
+      <li>Introdução do gado (que fica para trás, gerando o grande rebanho);</li>
+      <li>A erva mate, introdução da agricultura (base para o desenvolvimento econômico futuro do Estado);</li>
+      <li>As 18 reduções fundadas no atual território do RGS — bacias dos rios Ibicuí, Jacuí e Ijuí;</li>
+      <li>Cunhas de machados de ferro como presentes aos caciques.</li>
     </ul>
-    <span class="src">📄 ETP, l. 931–950</span>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">05</div>
-      <div class="cena-title">O martírio</div>
-      <div class="cena-period">~1628</div>
-    </div>
-    <div class="quote">"O martírio dos padres (que depois transformados em Santos da Igreja Católica — deixar um link com o Caaró). Cena rápida, apenas para mostrar que os Santos Missioneiros fazem parte da nossa história e que houve o primeiro ciclo aqui na região (bacia do rio Ijuí)."</div>
-    <span class="src">📄 ETP, l. 952–959</span>
+    <div class="cena-head"><div class="cena-num">Cena 5</div><div class="cena-title">O martírio</div></div>
+    <p>O martírio dos padres (que depois transformados em Santos da Igreja Católica — deixar um link com o Caaró).</p>
+    <p>Cena rápida, apenas para mostrar que os Santos Missioneiros fazem parte da nossa história e que houve o primeiro ciclo aqui na região (bacia do rio Ijuí).</p>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">06</div>
-      <div class="cena-title">A chegada dos Bandeirantes</div>
-      <div class="cena-period">1640</div>
-    </div>
+    <div class="cena-head"><div class="cena-num">Cena 6</div><div class="cena-title">A chegada dos Bandeirantes</div></div>
     <ul>
-      <li>Destruição pelos bandeirantes paulistas — interrupção do trabalho das reduções no atual território do RGS</li>
-      <li>Migração para o outro lado do Rio Uruguai</li>
-      <li>O gado deixado para trás → grande rebanho que se multiplica por 40 anos</li>
-      <li><b>Batalha de M'Bororé</b> — maior batalha naval das Américas, derrota dos bandeirantes (não retornam mais ao sul)</li>
+      <li>Destruição pelos bandeirantes paulistas — interrupção do trabalho das reduções no atual território do RGS;</li>
+      <li>Migração para o outro lado do Rio Uruguai;</li>
+      <li>O gado que fica para trás → grande rebanho que se multiplica por 40 anos livremente (milhões de cabeças);</li>
+      <li>Batalha de M'Bororé (maior batalha naval das Américas) — bandeirantes derrotados não retornam ao sul.</li>
     </ul>
-    <span class="src">📄 ETP, l. 961–974</span>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">07</div>
-      <div class="cena-title">A migração e o período de abandono do território</div>
-      <div class="cena-period">1640–1682</div>
-    </div>
-    <div class="quote">"Aqui seria ilustrado que, durante um período de 40 anos, o território esteve sem a presença dos missioneiros (criar uma forma de fazer esta transição temporal). Devemos destacar que um volume significativo de gado ficou abandonado no território e que formou os grandes rebanhos que mais tarde foram aproveitados para formar as vacarias e as estâncias."</div>
-    <span class="src">📄 ETP, l. 975–984</span>
+    <div class="cena-head"><div class="cena-num">Cena 7</div><div class="cena-title">A migração e o período de abandono do território</div></div>
+    <p>Aqui seria ilustrado que, durante um período de 40 anos, o território esteve sem a presença dos missioneiros (criar uma forma de fazer esta transição temporal).</p>
+    <p>Devemos destacar que um volume significativo de gado ficou abandonado no território e que formou os grandes rebanhos que mais tarde foram aproveitados para formar as vacarias e as estâncias.</p>
   </div>
 
   <div class="parte">
     <div class="parte-num">Parte 2 · 20%</div>
     <div class="parte-title">A estrutura da vida na redução</div>
-    <div class="parte-pct">Cenas 08–10 · funcionamento das missões</div>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">08</div>
-      <div class="cena-title">A estrutura de uma redução</div>
-      <div class="cena-period">Funcionamento</div>
-    </div>
-    <ul>
-      <li>Conceitos: <b>tupambaé, amabaé, cabildo, autossustentabilidade, industrialização</b></li>
-      <li>Fornecimento de água, higiene</li>
-      <li>Organização das estâncias, chácaras, pomares</li>
-      <li>Quinta — ambientalização das espécies europeias / ervas medicinais</li>
-      <li>Sincronização com interesses da Espanha em assegurar territórios, mantendo certa independência</li>
-    </ul>
-    <span class="src">📄 ETP, l. 986–1008</span>
+    <div class="cena-head"><div class="cena-num">Cena 8</div><div class="cena-title">A estrutura de uma redução</div></div>
+    <p>A formação das missões (reduções), como estavam organizadas e como agiam sincronizadas com os interesses da Espanha em assegurar os territórios, apesar de certa independência em relação ao sistema colonial espanhol.</p>
+    <p>Conceitos a introduzir: <strong>evangelização, tupambaé, amabaé, cabildo, autossustentabilidade, industrialização, fornecimento de água, higiene</strong>; organização das estâncias, chácaras, pomares, quinta (ambientalização das espécies europeias / ervas medicinais).</p>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">09</div>
-      <div class="cena-title">O retorno à banda oriental e a fundação dos 7 povos</div>
-      <div class="cena-period">1682–1706</div>
-    </div>
-    <ul>
-      <li>Volta para a banda oriental do rio Uruguai</li>
-      <li><b>Fundação dos 7 povos</b> — São Borja em 1682 (primeira) → Santo Ângelo em 1706 (última)</li>
-      <li>Territorialidade: estâncias e ervais cobrindo quase todo o atual território do RGS</li>
-      <li>Os 30 povos da Província Jesuítica do Paraguai como contexto</li>
-    </ul>
-    <span class="src">📄 ETP, l. 1010–1019</span>
+    <div class="cena-head"><div class="cena-num">Cena 9</div><div class="cena-title">O retorno à banda oriental e a fundação dos 7 povos</div></div>
+    <p>A volta para a banda oriental do rio Uruguai (funda-se os 7 povos, sendo São Borja em 1682 a primeira e Santo Ângelo a última, em 1706).</p>
+    <p>Ênfase na territorialidade e na ilustração da ocupação do espaço com as estâncias e ervais (quase todo o território do atual RGS).</p>
+    <p>Mostrar o que eram os 30 povos em toda a Província Jesuítica do Paraguai.</p>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">10</div>
-      <div class="cena-title">Estrutura das reduções (ênfase nas pessoas e na vida cotidiana)</div>
-      <div class="cena-period">Apogeu populacional</div>
-    </div>
+    <div class="cena-head"><div class="cena-num">Cena 10</div><div class="cena-title">A estrutura das reduções (ênfase nas pessoas e na vida cotidiana)</div></div>
+    <p>Esta é a parte que introduz o auge, mostrando as bases para a afirmativa da grandiosidade do nível de vida e espiritualidade alcançada nas reduções (apologia do triunfo).</p>
     <ul>
-      <li>Vida dos guaranis como cristãos — 150 anos de convívio no sistema reducional</li>
-      <li>Apenas 2 padres comandando, com ajuda dos caciques, mais de 6.000 guaranis</li>
-      <li>Organização administrativa em formato de Cabildo</li>
-      <li>Estrutura urbana: casa dos padres, colégio, oficinas, cabildo</li>
-      <li>Sistemas sanitários, escoamento de água da chuva, fontes</li>
-      <li>Sistema produtivo e comércio com Buenos Aires e Corrientes (navegação no Ijuí e Uruguai)</li>
-      <li>Interior das igrejas — retábulos e esculturas (referência: igrejas atuais do Peru e México)</li>
-      <li><b>Comparação populacional:</b> Salvador (capital) tinha 10.000 hab.; Rio de Janeiro tinha 3.000 hab. Lembrar que em 1680 foi fundada a Colônia do Sacramento.</li>
+      <li>Vida dos guaranis como cristãos — 150 anos de convívio no sistema reducional;</li>
+      <li>Apenas 2 padres comandando, com ajuda dos caciques, mais de 6.000 guaranis;</li>
+      <li>Organização administrativa em formato de Cabildo;</li>
+      <li>Estrutura urbana: casa dos padres, colégio, oficinas, cabildo;</li>
+      <li>Sistemas sanitários, escoamento de água da chuva, fontes;</li>
+      <li>Sistema produtivo e comércio com Buenos Aires e Corrientes (navegação no Ijuí e Uruguai);</li>
+      <li>Interior da igreja com retábulos e esculturas (referência: igrejas atuais do Peru e México).</li>
     </ul>
-    <span class="src">📄 ETP, l. 1021–1057</span>
+    <p><em>Nota:</em> comparação com cidades da América na época — Salvador (capital) tinha 10.000 hab. e Rio de Janeiro 3.000 hab. (Lembrar que em 1680 foi fundada a Colônia do Sacramento.)</p>
   </div>
 
   <div class="parte">
     <div class="parte-num">Parte 3 · 40% <small style="color:var(--warn)">— maior bloco do filme</small></div>
-    <div class="parte-title">Segundo ciclo — o apogeu</div>
-    <div class="parte-pct">Cena 11 · esplendor do projeto missioneiro</div>
+    <div class="parte-title">Segundo ciclo missioneiro — o apogeu</div>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">11</div>
-      <div class="cena-title">Coroamento da mensagem do ufanismo</div>
-      <div class="cena-period">Apogeu — séc. XVIII</div>
-    </div>
+    <div class="cena-head"><div class="cena-num">Cena 11</div><div class="cena-title">Coroamento da mensagem do ufanismo</div></div>
+    <p>Após a cena anterior apresentar a estruturação e o modo de vida, aqui nos concentramos nos destaques e situações ímpares que distinguem as reduções.</p>
     <ul>
-      <li>Esplendor e triunfo da humanidade</li>
-      <li>Estado industrial e exportador</li>
-      <li><b>Primeiro alto-forno das Américas</b> — minério itacuru → ferro (domínio do ciclo siderúrgico)</li>
-      <li><b>Berço da experiência do cooperativismo mundial</b></li>
-      <li>Organização territorial e urbana das reduções</li>
-      <li>Inventário do Brabo sobre o que foi encontrado na redução de Santo Ângelo</li>
-      <li>"Liberdade artística" para retábulos — referência a México, Peru, Assunção</li>
-      <li><b>Esculturas dos museus do Estado</b> e igrejas das reduções no Paraguai e Argentina</li>
-      <li><b>Desafio:</b> chamar atenção para a redução de Santo Ângelo — criar destaque para amarrar o espetáculo ao local da projeção</li>
+      <li>Esplendor e triunfo da humanidade;</li>
+      <li>Estado industrial e exportador;</li>
+      <li><strong>Primeiro alto-forno das Américas</strong> — minério itacuru → ferro (domínio do ciclo siderúrgico);</li>
+      <li><strong>Berço da experiência do cooperativismo mundial</strong>;</li>
+      <li>Organização territorial e urbana das reduções;</li>
+      <li>Inventário do Brabo sobre o que foi encontrado na redução de Santo Ângelo.</li>
     </ul>
-    <span class="src">📄 ETP, l. 1059–1088</span>
+    <p>Na parte das igrejas, podemos usar da "liberdade artística" e ilustrações dos retábulos preservados (México, Peru, Assunção).</p>
+    <p><strong>Desafio:</strong> chamar a atenção para a redução de Santo Ângelo — criar destaque para amarrar o espetáculo ao local da projeção.</p>
   </div>
 
   <div class="parte">
     <div class="parte-num">Parte 4 · 10%</div>
-    <div class="parte-title">Pressões externas / ambiente para a Guerra Guaranítica</div>
-    <div class="parte-pct">Cena 12 · territorialidade e tratados</div>
+    <div class="parte-title">Pressões externas / Guerra Guaranítica</div>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">12</div>
-      <div class="cena-title">Os ambientes limítrofes</div>
-      <div class="cena-period">Tratado de Madri · 1750</div>
-    </div>
+    <div class="cena-head"><div class="cena-num">Cena 12</div><div class="cena-title">Os ambientes limítrofes</div></div>
+    <p>Iniciar a apresentação dos cenários de pressão que levam à assinatura do Tratado de Madri e ao início da Guerra Guaranítica.</p>
     <ul>
-      <li>Ampliação da pressão territorial portuguesa</li>
-      <li>Fundação das cidades portuguesas — Colônia do Sacramento (1680), Rio Grande, Forte de Rio Pardo</li>
-      <li>Tratados de limites</li>
-      <li>Mostrar mapa do RGS com evolução de fronteiras e mudança de "donos"</li>
-      <li><b>Introduzir a figura lendária de Sepé Tiarajú</b> (sem ainda relacionar à Guerra Guaranítica)</li>
-      <li>Início do fim das missões — fatores que levam as Coroas Ibéricas a intervir</li>
+      <li>Ampliação da pressão territorial portuguesa;</li>
+      <li>Fundação das cidades portuguesas (Colônia em 1680, Rio Grande, Forte de Rio Pardo);</li>
+      <li>Tratados de limites;</li>
+      <li>Mostrar mapa do RGS com evolução das fronteiras alterando os "donos";</li>
+      <li>Introduzir a figura lendária de Sepé Tiarajú (sem ainda relacionar à Guerra Guaranítica);</li>
+      <li>Fatores que levam as Coroas Ibéricas a intervir — início do fim das Missões.</li>
     </ul>
-    <span class="src">📄 ETP, l. 1097–1129</span>
   </div>
 
   <div class="parte">
     <div class="parte-num">Parte 5 · 10%</div>
     <div class="parte-title">O processo de destruição</div>
-    <div class="parte-pct">Cena 13 · fim das missões — sem enaltecer</div>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">13</div>
-      <div class="cena-title">O fim da utopia</div>
-      <div class="cena-period">1756–1767</div>
-    </div>
-    <div class="quote">"Avaliar junto com os roteiristas sobre a relevância da inclusão desta parte, pois mostra um momento da história que não queremos enaltecer neste primeiro momento. Quem sabe deixamos para uma segunda fase e um novo filme? Apresentar, sem muita ênfase, o processo da Guerra Guaranítica, dando forma ao fechamento da apresentação e a migração para o processo de ruínas."</div>
+    <div class="cena-head"><div class="cena-num">Cena 13</div><div class="cena-title">O fim da utopia</div></div>
+    <div class="quote">"Avaliar junto com os roteiristas sobre a relevância da inclusão desta parte pois mostra um momento da história que não queremos enaltecer neste primeiro momento. Quem sabe deixamos para uma segunda fase e um novo filme?"</div>
+    <p>Apresentar, sem muita ênfase, o processo da Guerra Guaranítica, dando forma ao fechamento da apresentação e a migração para o processo de ruínas e posterior ocupação colonial.</p>
     <ul>
-      <li>Interesses externos</li>
-      <li>Guerra Guaranítica</li>
-      <li>Anulação dos tratados</li>
-      <li>Expulsão dos jesuítas / extinção da ordem</li>
-      <li>O fim da utopia</li>
-      <li>Disputa pelo comando do território (Artigas, Rivera, Borges do Canto, Chagas Santos)</li>
-      <li>Vitória dos portugueses e início da colonização</li>
+      <li>Interesses externos;</li>
+      <li>Guerra Guaranítica;</li>
+      <li>Anulação dos tratados (tudo foi desfeito, mas já era tarde);</li>
+      <li>Expulsão dos jesuítas / extinção da ordem;</li>
+      <li>O fim da utopia;</li>
+      <li>Disputa pelo comando do território (Artigas, Rivera, Borges do Canto, Chagas Santos);</li>
+      <li>Vitória dos portugueses e início da colonização.</li>
     </ul>
-    <span class="src">📄 ETP, l. 1131–1166</span>
   </div>
 
   <div class="parte">
     <div class="parte-num">Parte 6 · 5%</div>
     <div class="parte-title">Fechamento</div>
-    <div class="parte-pct">Cena 14 · mensagem final do anjinho</div>
   </div>
 
   <div class="cena">
-    <div class="cena-head">
-      <div class="cena-num">14</div>
-      <div class="cena-title">O fechamento — mensagem final</div>
-      <div class="cena-period">Síntese</div>
-    </div>
-    <div class="quote">"Trazer a figura do anjo da guarda para apresentar alguma mensagem final sobre o ocorrido e deixar algo para refletir."</div>
+    <div class="cena-head"><div class="cena-num">Cena 14</div><div class="cena-title">O fechamento — mensagem final</div></div>
+    <p>Trazer a figura do anjo da guarda para apresentar alguma mensagem final sobre o ocorrido e deixar algo para refletir:</p>
     <ul>
-      <li><b>O conceito do verdadeiro cristianismo</b> — único lugar onde a evangelização durou tanto tempo</li>
-      <li>Influência da estrutura reducional e da cultura guarani no sucesso do projeto</li>
-      <li>A interferência de uma cultura em outra (mescla)</li>
-      <li><b>O berço do cooperativismo mundial</b></li>
-      <li><b>"Como seriam as missões sem a interferência da Guerra?"</b> — pergunta de reflexão final</li>
-    </ul>
-    <span class="src">📄 ETP, l. 1167–1182</span>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<section class="block" id="enfase">
-  <h2>Pontos de ênfase obrigatória <small>elementos que NÃO podem faltar</small></h2>
-  <p>Reunindo os marcadores espalhados pelo Anexo 1 do ETP. O roteiro precisa contemplar todos:</p>
-  <ul>
-    <li><strong>Padre Roque Gonzales</strong> — primeiro Santo do RS (cena 03) <span class="src">📄 ETP, l. 928–930</span></li>
-    <li><strong>Redução de Concepção em 1627</strong> + os 79 anos até San Ángel Custódio (1706) <span class="src">📄 ETP, l. 909–912</span></li>
-    <li><strong>18 reduções do 1º ciclo</strong> nas bacias do Ibicuí, Jacuí e Ijuí (cena 04) <span class="src">📄 ETP, l. 943–945</span></li>
-    <li><strong>Batalha de M'Bororé</strong> — maior batalha naval das Américas (cena 06) <span class="src">📄 ETP, l. 972–974</span></li>
-    <li><strong>40 anos de abandono</strong> + multiplicação do gado (cena 07) <span class="src">📄 ETP, l. 977–984</span></li>
-    <li><strong>Os 7 povos:</strong> São Borja 1682 → Santo Ângelo 1706 (cena 09) <span class="src">📄 ETP, l. 1012–1014</span></li>
-    <li><strong>Comparação populacional</strong> com Salvador (10k hab.) e Rio (3k hab.) na época (cena 10) <span class="src">📄 ETP, l. 1054–1057</span></li>
-    <li><strong>Primeiro alto-forno das Américas</strong> — minério itacuru → ferro (cena 11) <span class="src">📄 ETP, l. 1069–1071</span></li>
-    <li><strong>Berço do cooperativismo mundial</strong> (cena 11 e fechamento) <span class="src">📄 ETP, l. 1072 / 1180</span></li>
-    <li><strong>Sepé Tiarajú</strong> como figura lendária — introduzido sem ligação direta à Guerra na cena 12 <span class="src">📄 ETP, l. 1124–1125</span></li>
-    <li><strong>Sistema do Cabildo</strong> — administração das reduções (cena 10) <span class="src">📄 ETP, l. 1034</span></li>
-    <li><strong>Mensagem final do anjo da guarda</strong> — verdadeira cristandade, mescla cultural, "como seriam as missões sem a guerra?" <span class="src">📄 ETP, l. 1170–1182</span></li>
-  </ul>
-
-  <h3>Recomendação editorial da Prefeitura sobre a destruição</h3>
-  <p>O ETP <b>pede explicitamente</b> que a Parte 5 (destruição) seja tratada com discrição: <i>"mostra um momento da história que não queremos enaltecer neste primeiro momento. Quem sabe deixamos para uma segunda fase e um novo filme?"</i> <span class="src">📄 ETP, l. 1132–1134</span> Tom recomendado: melancólico, factual, sem catarse violenta.</p>
-</section>
-
-<!-- ============================================================ -->
-<section class="block" id="criterios">
-  <h2>Critérios pontuáveis ligados ao roteiro <small>onde o roteiro ganha (ou perde) pontos</small></h2>
-  <p>A Nota Técnica vale 0 a 140 pontos brutos. Cinco dos 14 critérios são <b>diretamente avaliáveis pelo roteiro</b>. Cada subquesito vai de 0 a 10; nota do critério = média × peso. <span class="src">📄 ETP, l. 149–342 (tabela completa de critérios)</span></p>
-
-  <table class="t">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Critério</th>
-        <th class="peso">Peso</th>
-        <th>O que olham no roteiro</th>
-        <th>Máx</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td><b>Pertinência histórica e fidelidade conceitual</b></td>
-        <td class="peso">3</td>
-        <td>1.1 contexto histórico-cultural correto · 1.2 evita anacronismos · 1.4 coerência geral (analisado na amostra OU na minuta do roteiro) · 1.5 unidade estética e narrativa · 1.6 ausência de rupturas</td>
-        <td class="peso">30</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td><b>Profundidade da pesquisa histórica</b> ⭐</td>
-        <td class="peso">5</td>
-        <td>2.1 todos os elementos do roteiro prévio atendidos · 2.3 bibliografia satisfatória · 2.6 coerência factual sem distorções</td>
-        <td class="peso">50</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><b>Qualidade dramatúrgica</b></td>
-        <td class="peso">3</td>
-        <td>3.1 clareza/fluidez/unidade · 3.2 capacidade de gerar emoção · 3.3 ritmo para 25–30 min · 3.4 construção de cenas/ambientes/temas</td>
-        <td class="peso">30</td>
-      </tr>
-      <tr>
-        <td>4</td>
-        <td><b>Impacto emocional e artístico</b></td>
-        <td class="peso">4</td>
-        <td>4.1 sensibilizar o público · 4.2 atmosferas definidas · 4.3 estética coerente</td>
-        <td class="peso">40</td>
-      </tr>
-      <tr>
-        <td>14</td>
-        <td><b>Inovação criativa</b></td>
-        <td class="peso">4</td>
-        <td>14.1 originalidade do conceito · 14.2 soluções narrativas diferenciadas</td>
-        <td class="peso">40</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <p><strong>Total exposto pelo roteiro:</strong> até <b>~80 pts dos 140</b> brutos — ~57% da Nota Técnica passa pelo que você escrever.</p>
-</section>
-
-<!-- ============================================================ -->
-<section class="block" id="elim">
-  <h2>Eliminatórios <small>se o roteiro furar com qualquer um deles, somos desclassificados</small></h2>
-
-  <div class="elim-list">
-    <h4>⚠ Critérios que tiram a ADA da disputa</h4>
-    <ul>
-      <li><b>Zero em qualquer dos 14 critérios da Nota Técnica</b> = desclassificação automática (não confundir com subquesito; um subquesito zerado é OK, mas a média do critério não pode dar zero). <span class="src danger">⚠ ETP, l. 135–139</span></li>
-      <li><b>NTn (Nota Técnica Normalizada) abaixo de 70 pts</b> em 100 = desclassificação. Lei 14.133/2021, art. 36 §1º I. <span class="src danger">⚠ ETP, fórmula NTn</span></li>
-      <li><b>Versões em 3 idiomas obrigatórias:</b> PT, ES, EN — em <b>3 trilhas independentes</b>. Proibido fazer downmix de áudio multicanal. <span class="src danger">⚠ ETP — eliminatórios</span></li>
-      <li><b>Paleta cromática barroco-missioneira</b> obrigatória (deve ser visível no DEMO e definida no roteiro). <span class="src danger">⚠ ETP — eliminatórios</span></li>
-      <li><b>≥ 50% de animação 3D</b> obrigatórios. <span class="src danger">⚠ ETP — eliminatórios</span></li>
-      <li><b>Skullmapping autoral</b> sobre elemento da fachada (referência <i>Cupido de Rubens</i>). <span class="src danger">⚠ ETP, l. 879–881</span></li>
-      <li><b>Trilha sonora original</b> em estéreo binaural psicoacústico para fones. <span class="src danger">⚠ ETP — eliminatórios</span></li>
-      <li><b>Entrega final em 4K ProRes</b>. <span class="src danger">⚠ ETP — eliminatórios</span></li>
-      <li><b>Arte respeitando totalmente a arquitetura da Catedral</b> (não distorcer a geometria do prédio). <span class="src danger">⚠ ETP — eliminatórios</span></li>
-      <li><b>Inexistência de produção AV pregressa do roteirista</b> = desclassificação. (Comprovação por exibição pública e/ou seleção/premiação em festivais reconhecidos — basta UMA das três opções.) <span class="src danger">⚠ ETP, l. 503–512 / Edital, alínea 5.7.e</span></li>
+      <li><strong>O conceito do verdadeiro cristianismo</strong> — o que as missões jesuítico-guarani tinham de diferente, único lugar onde a evangelização durou tanto tempo;</li>
+      <li>A interferência de uma cultura em outra (mescla);</li>
+      <li><strong>O berço do cooperativismo mundial</strong>;</li>
+      <li><strong>"Como seriam as missões sem a interferência da Guerra?"</strong> — pergunta de reflexão final.</li>
     </ul>
   </div>
 </section>
 
 <!-- ============================================================ -->
-<section class="block" id="entregas">
-  <h2>O que entregar AGORA × DEPOIS <small>2 momentos completamente diferentes</small></h2>
+<section class="block">
+  <h2>5 · Pontos de ênfase obrigatória <small>elementos que NÃO podem faltar no roteiro</small></h2>
 
-  <div class="grid2">
-    <div class="card">
-      <h4>📅 AGORA — fase de licitação</h4>
-      <p><b>Prazo:</b> até 11/05/2026 às 08h (postagem na plataforma Pregão Online Banrisul).</p>
-      <p><b>O que o ETP exige obrigatoriamente AGORA:</b> apenas o <b>DEMO de 2 a 3 minutos</b> (item 4 do ETP). Roteiro <b>NÃO É OBRIGATÓRIO</b> nesta fase.</p>
-
-      <h4 style="margin-top:18px">Texto literal do ETP sobre o que mandar AGORA</h4>
-      <blockquote>"Esses critérios serão utilizados na avaliação da capacidade técnica dos proponentes pela comissão constituída (banca) <b>através do vídeo demonstrativo (demo) com duração de 2 a 3 minutos</b> e dos demais documentos que forem anexados pelo proponente que auxiliem na comprovação da capacidade técnica."</blockquote>
-      <blockquote>"A avaliação também será complementada com os documentos adicionais que a proponente <b>a seu critério</b> apresentar em conjunto com o vídeo demonstração (DEMO) como <b>roteiro preliminar</b>, pesquisa histórica estruturada e outros documentos a critério do proponente."</blockquote>
-      <p><span class="src">📄 ETP, l. 121–148</span></p>
-
-      <h4 style="margin-top:18px">Tradução prática</h4>
-      <ul>
-        <li><b>OBRIGATÓRIO:</b> DEMO 2–3 min (vídeo).</li>
-        <li><b>OPCIONAL ("a critério do proponente"):</b> roteiro preliminar / minuta.</li>
-      </ul>
-
-      <h4 style="margin-top:18px">Por que vale a pena anexar uma minuta opcional</h4>
-      <p>O <b>Critério 1.4</b> da Nota Técnica diz: "Coerência geral da obra (analisado na amostra do vídeo <b>ou na minuta do roteiro</b>)". Sem minuta, a banca avalia o critério só pelo DEMO. Com minuta, dá mais material pra ela pontuar bem o Critério 1 (peso 3) e o Critério 2 (peso 5).</p>
-      <p><b>Se o Alexandre/Caio decidirem fazer minuta opcional</b> (não obrigatório), sugestão de conteúdo:</p>
-      <ul>
-        <li>Tratamento autoral curto</li>
-        <li>Estrutura macro em 6 partes (do Anexo 1 do ETP)</li>
-        <li>Sinopse das 14 cenas com pontos de ênfase obrigatória do edital</li>
-        <li>Bibliografia preliminar (do Prof. Guilherme + 2 historiadores)</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h4>📅 DEPOIS — Parcela 1 do contrato</h4>
-      <p><b>Prazo:</b> primeiros ~60 dias após assinatura do contrato (~julho/2026).</p>
-      <p><b>Status:</b> <b>OBRIGATÓRIO</b> para liberar 30% do contrato (R$ 510.000,00). <span class="src">📄 ETP, l. 619–631</span></p>
-      <p><b>Formato:</b> roteiro técnico completo, com aprovação formal da Prefeitura.</p>
-      <p><b>Conteúdo (literal do ETP):</b></p>
-      <ul>
-        <li>Timeline geral do espetáculo, com duração total definida</li>
-        <li>Roteiro completo e detalhado contendo:
-          <ul>
-            <li>Estrutura narrativa (início, desenvolvimento e encerramento)</li>
-            <li>Descrição de cenas e transições</li>
-            <li>Indicação de momentos de maior impacto visual</li>
-          </ul>
-        </li>
-        <li>Concepção artística e linguagem visual proposta</li>
-        <li>Referências estéticas e conceituais (moodboard ou documento equivalente)</li>
-        <li>Adequação do roteiro às características arquitetônicas da Catedral</li>
-        <li>Texto integral das narrações nas 3 línguas (PT/ES/EN)</li>
-        <li>Cue sheet de música</li>
-        <li>Storyboard ilustrado de todas as 14 cenas</li>
-        <li>Plano de mapping cena por cena</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================ -->
-<section class="block" id="proximos">
-  <h2>Próximos passos para o Alexandre <small>cronograma sugerido até 11/05/2026</small></h2>
-
-  <div class="action">
-    <b>SEMANA 1 (até ~04/05):</b> tratamento + estrutura macro em 6 partes. Definir tom autoral, atmosfera geral, abordagem narrativa, ponto de vista do anjo da guarda.<br><br>
-    <b>SEMANA 1–2 (até ~07/05):</b> sinopse das 14 cenas (3–5 linhas cada), encaixadas nos % obrigatórios. Validar com Prof. Guilherme os pontos históricos.<br><br>
-    <b>SEMANA 2 (até ~10/05):</b> articulação com a fachada — quais elementos arquitetônicos ganham que tratamento em cada cena (referência: <a href="../STORYBOARD/index.html">storyboard preliminar</a> + <a href="../PROMPTS_ANIMACAO/index.html">prompts de animação</a>).<br><br>
-    <b>10–11/05:</b> diagramação final do PDF, validação assinada pelos historiadores, anexo ao pacote da licitação.
-  </div>
-
-  <h3>Material já disponível no repositório</h3>
+  <p>Marcadores espalhados pelo Anexo 1 do ETP que precisam aparecer no roteiro:</p>
   <ul>
-    <li><a href="../STORYBOARD/index.html">Storyboard preliminar</a> — 3 atos, 9 sub-atos, frames de referência (já dialoga com o esboço do edital).</li>
-    <li><a href="../PROMPTS_ANIMACAO/index.html">Prompts de animação</a> — 22 keyframes + 21 transições com direção visual cena a cena.</li>
-    <li><code>STORYBOARD_PREGAO/APOIO/</code> — fotos da Catedral (base e noite) e PDF Carlos Marques sobre a arquitetura (apenas localmente).</li>
-    <li><code>DOCUMENTOS BAIXADOS/</code> — Edital, ETP (PDF e OCR), TR, Convênio, Portaria da Comissão, proposta da Neorama (concorrente).</li>
+    <li><strong>Padre Roque Gonzales</strong> — primeiro Santo do RS (cena 03)</li>
+    <li><strong>Redução de Concepção em 1627</strong> + os 79 anos até San Ángel Custódio (1706)</li>
+    <li><strong>18 reduções do 1º ciclo</strong> nas bacias do Ibicuí, Jacuí e Ijuí (cena 04)</li>
+    <li><strong>Batalha de M'Bororé</strong> — maior batalha naval das Américas (cena 06)</li>
+    <li><strong>40 anos de abandono</strong> + multiplicação do gado (cena 07)</li>
+    <li><strong>Os 7 povos:</strong> São Borja 1682 → Santo Ângelo 1706 (cena 09)</li>
+    <li><strong>Comparação populacional</strong> com Salvador (10k hab.) e Rio (3k hab.) (cena 10)</li>
+    <li><strong>Sistema do Cabildo</strong> — administração das reduções (cena 10)</li>
+    <li><strong>Primeiro alto-forno das Américas</strong> — minério itacuru → ferro (cena 11)</li>
+    <li><strong>Berço do cooperativismo mundial</strong> (cena 11 e fechamento)</li>
+    <li><strong>Sepé Tiarajú</strong> — figura lendária introduzida sem ligação direta à Guerra (cena 12)</li>
+    <li><strong>Mensagem final do anjo da guarda</strong> — verdadeira cristandade, mescla cultural, "como seriam as missões sem a guerra?" (cena 14)</li>
   </ul>
 
-  <h3>Contatos e canais</h3>
-  <ul>
-    <li><strong>Caio Fazolin · ADA</strong> — direção criativa do projeto, ponto de contato principal · <code>fazolin@gmail.com</code></li>
-    <li><strong>Prof. Guilherme · historiador líder</strong> — validação histórica do roteiro (sobrenome a confirmar)</li>
-    <li><strong>Departamento de Turismo da Prefeitura</strong> — esclarecimentos técnicos, fornecimento da máscara · <code>turismo@santoangelo.rs.gov.br</code> · (55) 3312-0178</li>
-    <li><strong>Departamento de Licitações</strong> — esclarecimentos jurídicos sobre o edital · <code>licitacao@santoangelo.rs.gov.br</code></li>
-  </ul>
+  <h3>Recomendação editorial da Prefeitura sobre a destruição (Parte 5)</h3>
+  <div class="quote">"Avaliar junto com os roteiristas sobre a relevância da inclusão desta parte pois mostra um momento da história que não queremos enaltecer neste primeiro momento."</div>
+  <p>Tom recomendado: melancólico, factual, sem catarse violenta.</p>
 </section>
 
 <footer>
-  <span>ADA · Ateliê Digital Analógico · Concorrência 002/2026</span>
-  <span>Briefing do roteirista · v1 · 2026-04-29</span>
+  ADA · Ateliê Digital Analógico · Concorrência 002/2026 · briefing v2 · 2026-04-29
 </footer>
 
 </div>
-
-<script>
-/* Converte cada chip .src (span) em um <a> clicável apontando para o documento-fonte */
-(function(){
-  const ETP   = '../ETP/index.html';
-  const EDITAL= '../DOCUMENTOS%20BAIXADOS/856752.pdf';
-  const TR    = '../DOCUMENTOS%20BAIXADOS/639083919405691533639047770653842423112330_TR.PDF';
-
-  // Mapeia faixas de linha do OCR do ETP para âncoras dentro de ETP/index.html.
-  // Faixas vêm das próprias citações usadas neste briefing.
-  function etpAnchor(text){
-    const m = text.match(/l\.\s*(\d+)/);
-    if(!m) return ETP; // ETP sem linha → raiz
-    const n = parseInt(m[1],10);
-    if(n >= 842  && n <= 1188) return ETP + '#anexo1';     // Anexo 1 — 14 cenas
-    if(n >= 1190 && n <= 1199) return ETP + '#anexo1';     // máscara (final do Anexo)
-    if(n >= 467  && n <= 562)  return ETP + '#hab';        // habilitação técnica + alíneas e/f
-    if(n >= 389  && n <= 463)  return ETP + '#elim';       // eliminatórios + julgamento
-    if(n >= 343  && n <= 388)  return ETP + '#julgamento'; // julgamento NTn ≥ 70
-    if(n >= 149  && n <= 342)  return ETP + '#criterios';  // 14 critérios pontuáveis
-    if(n >= 113  && n <= 148)  return ETP + '#s4';         // requisitos / DEMO
-    if(n >= 99   && n <= 111)  return ETP + '#s3';         // alinhamento
-    if(n >= 42   && n <= 97)   return ETP + '#s2';         // necessidade
-    if(n >= 18   && n <= 40)   return ETP + '#s1';         // objeto
-    if(n >= 612  && n <= 666)  return ETP + '#s7';         // valor + parcelas
-    if(n >= 668  && n <= 739)  return ETP + '#s9';         // entrega
-    return ETP;
-  }
-
-  function pickHref(text){
-    const t = text.toLowerCase();
-    if(t.includes('edital'))  return EDITAL;
-    if(t.includes(' tr ') || t.startsWith('tr,') || t.startsWith('📄 tr')) return TR;
-    if(t.includes('etp'))     return etpAnchor(t);
-    return ETP;
-  }
-
-  document.querySelectorAll('span.src').forEach(span => {
-    const href = pickHref(span.textContent || '');
-    const a = document.createElement('a');
-    a.className = span.className;
-    a.href = href;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.title = 'Abrir documento-fonte: ' + decodeURIComponent(href.replace(/^.*\//,''));
-    a.innerHTML = span.innerHTML;
-    span.replaceWith(a);
-  });
-})();
-</script>
-
 </body>
 </html>
