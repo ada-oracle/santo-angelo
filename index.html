@@ -37,11 +37,16 @@
   .nav-meta{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
 
   /* Hero */
-  .hero{padding:48px 0 16px}
-  .tag{display:inline-block;font-family:'DM Mono',monospace;font-weight:400;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);padding:4px 10px;border:1px solid var(--border);border-radius:2px;margin-bottom:24px}
-  h1.hero-title{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(36px,6vw,64px);line-height:1.05;color:var(--ink);margin:0 0 18px;letter-spacing:-.01em}
+  .hero{padding:40px 0 8px}
+  h1.hero-title{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(34px,5.5vw,56px);line-height:1.05;color:var(--ink);margin:0 0 24px;letter-spacing:-.01em}
   h1.hero-title em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;color:var(--accent)}
-  .hero-sub{max-width:680px;font-size:16px;color:var(--ink-mid)}
+
+  /* Docs nav — 4 cards */
+  .docs-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin:0 0 8px;border:1px solid var(--border)}
+  @media (max-width:640px){.docs-nav{grid-template-columns:1fr 1fr}}
+  .docs-nav a{background:var(--sec-bg);padding:18px 16px;display:flex;flex-direction:column;gap:8px;border:0;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--ink);transition:background .15s ease}
+  .docs-nav a span{font-size:20px;line-height:1}
+  .docs-nav a:hover{background:var(--card-bg);color:var(--accent);border:0}
 
   /* Stats grid */
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);margin:40px 0;border:1px solid var(--border)}
@@ -154,20 +159,19 @@
 <div class="wrap">
 
   <header class="ada-nav">
-    <span class="wordmark">ADA · Ateliê Digital Analógico</span>
-    <span class="nav-meta">Painel interno · Concorrência 002/2026</span>
+    <span class="wordmark">ADA · Catedral Angelopolitana</span>
+    <span class="nav-meta">Concorrência 002/2026 · Santo Ângelo/RS</span>
   </header>
 
   <section class="hero">
-    <span class="tag">Licitação · Santo Ângelo/RS</span>
-    <h1 class="hero-title">Catedral Angelopolitana — <em>projeção mapeada</em>.</h1>
-    <p class="hero-sub">Inscrição da ADA na Concorrência Eletrônica 002/2026. Conteúdo audiovisual autoral sobre as Missões Jesuítico-Guarani, projetado na fachada da Catedral. Este painel é a fonte única de status — reflete o arquivo <code>STATUS.md</code> deste repositório.</p>
-    <p class="hero-sub" style="margin-top:14px">
-      📑 <a href="ETP/index.html"><strong>ETP diagramado</strong></a> <small style="color:var(--ink-faint)">— Estudo Técnico Preliminar limpo</small> &nbsp;·&nbsp;
-      🎬 <a href="STORYBOARD/index.html">Storyboard preliminar</a> &nbsp;·&nbsp;
-      🎞️ <a href="PROMPTS_ANIMACAO/index.html">Prompts de animação</a> &nbsp;·&nbsp;
-      📝 <a href="BRIEFING_ROTEIRO/index.html">Briefing do roteirista</a>
-    </p>
+    <h1 class="hero-title">Painel da <em>licitação</em>.</h1>
+
+    <nav class="docs-nav" aria-label="Documentos do projeto">
+      <a href="ETP/index.html"><span>📑</span> ETP</a>
+      <a href="STORYBOARD/index.html"><span>🎬</span> Storyboard</a>
+      <a href="PROMPTS_ANIMACAO/index.html"><span>🎞️</span> Prompts</a>
+      <a href="BRIEFING_ROTEIRO/index.html"><span>📝</span> Briefing</a>
+    </nav>
 
     <div class="stats">
       <div class="stat"><div class="k">Sessão pública</div><div class="v">11/05/2026 <small>09h</small></div></div>
@@ -177,7 +181,7 @@
     </div>
 
     <div class="progress" id="progress" hidden>
-      <div class="progress-meta"><span id="progress-label">Progresso</span><span id="progress-count">0/0</span></div>
+      <div class="progress-meta"><span id="progress-label">Progresso das tarefas</span><span id="progress-count">0/0</span></div>
       <div class="progress-bar"><span id="progress-fill" style="width:0%"></span></div>
     </div>
   </section>
@@ -407,7 +411,10 @@ Testemunhas:
     try {
       const res = await fetch('STATUS.md', {cache:'no-cache'});
       if(!res.ok) throw new Error('STATUS.md HTTP '+res.status);
-      const md = await res.text();
+      let md = await res.text();
+      // Remove redundância: blockquotes do topo (links + datas) já estão no hero/stats.
+      // Tira tudo entre o H1 e o primeiro `---`, deixando só conteúdo a partir de "## Onde estamos".
+      md = md.replace(/^# [^\n]*\n+([\s\S]*?\n)?---\n+/, '');
       marked.setOptions({gfm:true, breaks:false, headerIds:false, mangle:false});
       target.innerHTML = marked.parse(md);
 
