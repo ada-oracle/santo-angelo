@@ -14,7 +14,8 @@
 
 **Fase atual:** preparação técnica e habilitação.
 **Última atualização:** 2026-04-29.
-**Progresso macro:** 3 de 12 etapas concluídas.
+**Progresso macro:** 1 de 12 etapas concluídas (Etapa 1 — Inteligência sobre o edital).
+**Branch ativa:** `governance/status-protocol` (sessão de auditoria do protocolo STATUS.md).
 
 ---
 
@@ -154,10 +155,12 @@
 
 > Esclarecimentos formais devem ser enviados até 3 dias úteis antes de 11/05/2026 para `licitacao@santoangelo.rs.gov.br`.
 
-- [ ] Confirmar se "valor de referência" é a média (R$ 2.035.039) ou o orçamento mais alto (R$ 2.115.117)
-- [ ] Quantidade mínima de historiadores: TR diz 3, edital fala em "equipe" sem número fixo
-- [ ] Peso explícito do Critério 5 (animação) — não consta no OCR
+- [x] ~~Confirmar se "valor de referência" é a média (R$ 2.035.039) ou o orçamento mais alto (R$ 2.115.117)~~ — **resolvido em 2026-04-29:** ETP item 7 + Edital item 4.1.14 estabelecem que o valor de referência é a **média (R$ 2.035.039,00)**, e propostas acima são desclassificadas.
+- [ ] Quantidade mínima de historiadores: TR diz 3, edital fala em "equipe" sem número fixo (decisão interna: seguir TR — 3 historiadores)
+- [ ] Peso explícito do Critério 5 (animação) — não consta no OCR (estimativa: peso 5)
 - [ ] DEMO aceita material composto ou exige render full 3D em fachada?
+- [ ] **Solicitar via LAI** as 3 cotações prévias que fundamentaram o ETP (Neorama já temos; faltam outras 2)
+- [ ] Confirmar com a Prefeitura o link da página do certame no portal da transparência
 
 ---
 
@@ -209,3 +212,68 @@ Material oficial da Concorrência 002/2026, extraído do portal `www.santoangelo
 ### Material técnico recebido do Departamento de Turismo
 
 - [`Guia_de_produção-Catedral_de_Santo_Ângelo_RS_00000.png`](DOCUMENTOS%20BAIXADOS/Guia_de_produ%C3%A7%C3%A3o-Catedral_de_Santo_%C3%82ngelo_RS_00000.png) — **Máscara/guia para mapping** (PNG, 3800×3840 px). Solicitada em 2026-04-27 e recebida do Departamento de Turismo (Marconi Flach). Base geométrica para alinhar a animação à fachada da Catedral, tanto no DEMO quanto no filme final.
+
+- [`edital.txt`](DOCUMENTOS%20BAIXADOS/edital.txt) — **Edital extraído por `pdftotext`** (sem layout), para busca textual dos itens (4.1.14, 5.7.e, 5.7.f, etc.). Gerado em 2026-04-29.
+
+- [`neorama.txt`](DOCUMENTOS%20BAIXADOS/neorama.txt) — **Proposta Neorama extraída por `pdftotext -layout`**, para análise da composição de custos. Gerada em 2026-04-29.
+
+---
+
+## 📓 Log de sessões
+
+### Sessão 2026-04-29 · Diagramação e ferramental
+
+**Trabalho realizado:**
+- Padrão Topaz Video AI codificado no `CLAUDE.md` seção 10.0 (upscale 2x + slow-mo 2x em uma única passada, ProRes 422, modelos prob-4/apo-8).
+- 3 vídeos da `STORYBOARD_PREGAO/RENDERS/` processados pelo Topaz para `RENDERS_2X/` (1920×1920, 24 fps, ~10 s, ProRes 422). Script de batch em `STORYBOARD_PREGAO/RENDERS_2X/_run.sh`.
+- `STORYBOARD/index.html` — adicionada nav sticky de atos (I/II/III) com IDs âncora e cabeçalhos com borda amarela.
+- `PROMPTS_ANIMACAO/index.html` — 3 banners de ato inseridos antes das animações 0/5/11; atalhos de ato na TOC.
+- `BRIEFING_ROTEIRO/index.html` — criado. Briefing público para o roteirista Alexandre, com 53 chips de citação que abrem o documento-fonte em nova aba (lógica em JS no fim do body). Estrutura: fontes, objeto, estrutura macro, 14 cenas (texto literal), pontos de ênfase, critérios pontuáveis, eliminatórios, AGORA × DEPOIS, próximos passos.
+- `ETP/index.html` — criado. Versão diagramada do `856753_OCR.txt` com 21 seções navegáveis. Conteúdo preservado integralmente; cabeçalhos repetitivos do scanner suprimidos. 14 critérios em cards com peso destacado, eliminatórios completos, parcelas 30/30/40 detalhadas, qualificação técnica completa, Anexo 1 com 6 partes e 14 cenas em texto literal.
+- `index.html` principal — linha de atalhos no hero apontando para ETP, Storyboard, Prompts e Briefing do roteirista.
+- `ORCAMENTO/index.html` — criado **fora do git** (gitignored). Valor global proposto: **R$ 1.700.000,00** (~10,5% abaixo da Neorama). Distribuição macro em 9 blocos + impostos (~14%) + parcelas 30/30/40. Contém comparativo competitivo com Neorama e cálculo da Nota de Preço (NP = 100 pts).
+- `.gitignore` — adicionados `ORCAMENTO/`, `PRODUÇÃO_DEMO/`, `.claude/`, `.gitignore.tmp.*`.
+- `DOCUMENTOS BAIXADOS/edital.txt` e `neorama.txt` — extrações de PDF para busca textual.
+
+**Decisões registradas nesta sessão:**
+- **Valor da proposta:** R$ 1.700.000,00 (orçamento agressivo abaixo da Neorama para maximizar Nota de Preço).
+- **Imposto Simples Nacional:** estimado em ~14% efetivo "por dentro" (a confirmar com contador da ADA).
+- **Repositório GitHub é PÚBLICO** (`ada-oracle/santo-angelo`). Decisão: documentos sensíveis (orçamento) ficam **gitignored**, sincronizados apenas pelo Dropbox.
+- **Termo de Anuência** foi identificado como o instrumento padrão de vínculo formal sob condição suspensiva ("só vale se a ADA ganhar"). Atende à alínea 5.7.f literalmente: *"contrato... ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto"*.
+- **Roteirista — alínea 5.7.e:** o edital usa "exibido publicamente E/OU selecionado OU premiado em festivais reconhecidos". **Basta UMA das três opções.** Como vídeo mapping é exibição pública por natureza, qualquer mapping anterior do Alexandre satisfaz a alínea — não há necessidade de prêmio.
+- **Garantia contratual (5%):** R$ 85.000,00, paga ao assinar o contrato. Recomendação: **seguro-garantia** (~R$ 1k–2,5k de prêmio, não tira caixa). NÃO incluído na planilha do orçamento.
+- **Lucro da ADA no orçamento atual:** implícito, distribuído entre direção criativa (R$ 132k Tati+Caio), coordenação (R$ 73k se feita internamente) e reserva técnica (~R$ 44k). Total flutuante: R$ 100k–250k. Pendência: avaliar adicionar linha BDI explícita.
+
+**Divergências resolvidas:**
+- 🔄 ~~"Valor de referência é média ou orçamento mais alto?"~~ → **resolvido**: é a média (R$ 2.035.039,00). Confirmado em ETP item 7 + Edital item 4.1.14.
+
+**Pendências novas mapeadas:**
+- Validar alíquota Simples Nacional real com o contador da ADA antes de fechar o valor da proposta.
+- Solicitar via LAI as outras 2 cotações prévias do ETP (Neorama já temos).
+- Confirmar com a Prefeitura o link da página do certame no portal da transparência.
+- Decidir se o orçamento ganhará linha "BDI / Margem ADA" explícita (R$ 250k–300k) ou seguirá com lucro implícito.
+- Confirmar sobrenome do Prof. Guilherme + receber Lattes.
+- Confirmar sobrenome do roteirista Alexandre + portfólio.
+
+**Próximos passos prioritários (ordem):**
+1. Receber dados do Prof. Guilherme + indicação de mais 2 historiadores (e-mail enviado).
+2. Validar alíquota Simples com contador.
+3. Definir sobrenome e portfólio do Alexandre; solicitar Termo de Anuência.
+4. Cadastrar ADA no Pregão Online Banrisul (chave/senha).
+5. Tirar todas as certidões (federal, estadual, municipal, FGTS, CNDT) em janela 25/04 a 05/05 — válidas no dia 11/05.
+6. Solicitar balanços + DRE 2024 e 2025 ao contador (índices ILC ≥ 1, ILG ≥ 1, IEG ≤ 0,5).
+7. Iniciar minuta do roteiro com Alexandre + Prof. Guilherme.
+8. Definir 1–2 cenas-foco do DEMO e iniciar produção visual.
+
+**Inventário de HTMLs públicos (todos sob mesmo design system: DM Mono + Syne + Cormorant Garamond, accent #FFD600):**
+
+| Página | Caminho | Status |
+|---|---|---|
+| Painel principal | `index.html` | ✅ atualizado nesta sessão |
+| Storyboard preliminar | `STORYBOARD/index.html` | ✅ com nav de atos |
+| Prompts de animação | `PROMPTS_ANIMACAO/index.html` | ✅ com banners de ato (22 keyframes, 21 transições) |
+| Briefing do roteirista | `BRIEFING_ROTEIRO/index.html` | ✅ criado nesta sessão (link para Alexandre) |
+| ETP diagramado | `ETP/index.html` | ✅ criado nesta sessão |
+| Modelos de declarações | `MODELOS/declaracoes-licitacao.html` | (existente — não tocado) |
+| Papel timbrado | `MODELOS/papel-timbrado-ADA.html` | (existente — não tocado) |
+| Orçamento interno | `ORCAMENTO/index.html` | 🔒 gitignored (R$ 1.700.000,00) |
