@@ -191,9 +191,7 @@ Material oficial da Concorrência 002/2026, extraído do portal `www.santoangelo
 
 - [`856752.pdf`](DOCUMENTOS%20BAIXADOS/856752.pdf) — **Edital nº 002/2026 completo** (42 páginas). Inclui o preâmbulo, regras gerais, critérios de julgamento, exigências de habilitação e os Anexos I a XIII (formulário de proposta, modelos de declaração e minuta do contrato). É o documento principal.
 
-- [`856753.pdf`](DOCUMENTOS%20BAIXADOS/856753.pdf) — **Estudo Técnico Preliminar (ETP)** (25 páginas, escaneado). Detalha os 14 critérios da Nota Técnica (0–140 pontos), a regra de corte (NTn ≥ 70), os critérios eliminatórios (3 idiomas, 50% de animação 3D, paleta barroco-missioneira, áudio binaural, 4K ProRes), o teto orçamentário oficial (R$ 2.035.039,00), o cronograma de pagamentos 30/30/40 e o esboço de roteiro com 14 cenas em 6 partes.
-
-- [`856753_OCR.txt`](DOCUMENTOS%20BAIXADOS/856753_OCR.txt) — **ETP em texto** (gerado por OCR). O PDF original é só imagem; este `.txt` permite buscar literalmente por trechos do ETP.
+- [**ETP diagramado**](ETP/index.html) — versão HTML navegável e legível do Estudo Técnico Preliminar, com os 14 critérios em cards, eliminatórios, parcelas 30/30/40 e o Anexo 1 (14 cenas) em texto literal. **Use esta versão para leitura.** O PDF original (`DOCUMENTOS BAIXADOS/856753.pdf`, 25 páginas escaneadas) e o OCR bruto (`856753_OCR.txt`) ficam preservados como referência cruzada.
 
 - [`639083919405691533639047770653842423112330_TR.PDF`](DOCUMENTOS%20BAIXADOS/639083919405691533639047770653842423112330_TR.PDF) — **Termo de Referência (TR)** (6 páginas). Detalha o objeto, técnicas exigidas, escopo dos serviços (incluindo a curadoria de pelo menos 3 historiadores), prazos, qualificação técnica e o esboço narrativo de 14 cenas. Documento que melhor descreve o "o quê" do projeto.
 
