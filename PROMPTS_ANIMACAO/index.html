@@ -96,6 +96,20 @@
   .toc{position:sticky;top:0;background:#0d0d0d;border-bottom:1px solid var(--border);padding:8px 0;margin:16px 0;z-index:50;overflow-x:auto;white-space:nowrap}
   .toc a{display:inline-block;padding:5px 9px;margin-right:3px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--ink-faint);border:1px solid transparent;text-transform:uppercase}
   .toc a:hover{color:var(--accent);border-color:var(--border-strong)}
+  .toc a.toc-ato{color:var(--accent);border-color:var(--accent);margin-left:8px;font-weight:600;letter-spacing:.16em}
+  .toc a.toc-ato:hover{background:var(--accent);color:#111}
+
+  /* Ato banner */
+  .ato-banner{margin:48px 0 18px;padding:28px 28px 24px;background:linear-gradient(135deg,#1A1A1A 0%,#0d0d0d 100%);border:1px solid var(--accent);border-left:6px solid var(--accent);position:relative}
+  .ato-banner::before{content:"";position:absolute;top:0;right:0;width:120px;height:100%;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,214,0,.04) 8px,rgba(255,214,0,.04) 16px);pointer-events:none}
+  .ato-banner-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .ato-banner-num{font-family:'DM Mono',monospace;font-weight:300;font-size:80px;line-height:.85;color:var(--accent);letter-spacing:-.02em}
+  .ato-banner-info{flex:1;min-width:240px}
+  .ato-banner-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .ato-banner-title{font-family:'DM Mono',monospace;font-weight:300;font-size:30px;color:var(--ink);line-height:1.1;margin:0 0 6px}
+  .ato-banner-period{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;color:var(--accent)}
+  .ato-banner-meta{margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--ink-mid)}
+  .ato-banner-meta span{display:inline-block;padding:3px 8px;border:1px solid var(--border-strong);margin-right:6px;margin-top:4px}
 </style>
 </head>
 <body>
@@ -622,9 +636,44 @@ function renderRow(a, idx){
   return row;
 }
 
-ANIMS.forEach((a,i)=>{ board.appendChild(renderRow(a,i)) });
+/* Banners de ato — chave = índice da animação ANTES da qual o banner aparece */
+const ATO_BANNERS = {
+  0: { num:'I', tag:'Ato I — Origens', title:'Da pedra fria à fundação',
+       period:'Pré-1610 → início do século XVIII',
+       meta:['Ocupação Guarani','Chegada dos Jesuítas','San Ángel Custódio · 1706','Construção'] },
+  5: { num:'II', tag:'Ato II — Apogeu, Ruptura e Abandono', title:'Ouro, fogo e silêncio',
+       period:'Século XVIII → Guerra Guaranítica · 1756 → 40 anos de abandono',
+       meta:['Apogeu missioneiro','Guerra Guaranítica','Sepé Tiaraju','Expulsão · 1767','Ruína','Retorno'] },
+  11:{ num:'III', tag:'Ato III — Renascimento e Síntese', title:'1888 → cidade-máquina → memória',
+       period:'1888 → modernidade → era digital → síntese',
+       meta:['Pampa floresce','Cidade-máquina','Era digital','Síntese cósmica','Encerramento'] }
+};
+
+function atoBannerEl(b, idx){
+  const wrap = el('section',{class:'ato-banner', id:`ato-${b.num}`});
+  const head = el('div',{class:'ato-banner-head'});
+  head.appendChild(el('div',{class:'ato-banner-num'}, b.num));
+  const info = el('div',{class:'ato-banner-info'});
+  info.appendChild(el('div',{class:'ato-banner-tag'}, b.tag));
+  info.appendChild(el('h2',{class:'ato-banner-title'}, b.title));
+  info.appendChild(el('div',{class:'ato-banner-period'}, b.period));
+  head.appendChild(info);
+  wrap.appendChild(head);
+  const meta = el('div',{class:'ato-banner-meta'});
+  b.meta.forEach(m=> meta.appendChild(el('span',{},m)));
+  wrap.appendChild(meta);
+  return wrap;
+}
 
 ANIMS.forEach((a,i)=>{
+  if(ATO_BANNERS[i]) board.appendChild(atoBannerEl(ATO_BANNERS[i], i));
+  board.appendChild(renderRow(a,i));
+});
+
+ANIMS.forEach((a,i)=>{
+  if(ATO_BANNERS[i]){
+    toc.appendChild(el('a',{href:`#ato-${ATO_BANNERS[i].num}`, class:'toc-ato'}, `▸ ATO ${ATO_BANNERS[i].num}`));
+  }
   toc.appendChild(el('a',{href:`#anim-${i+1}`}, `${String(i+1).padStart(2,'0')} · ${a.titulo.split('—')[0].trim()}`));
 });
 

@@ -2,6 +2,8 @@
 STORYBOARD_PREGAO/
 PRODUCAO_DEMO/
 PRODUCAO DEMO/
+PRODUÇÃO_DEMO/
+ORCAMENTO/
 
 # Memória interna do agente
 memory/
@@ -16,6 +18,10 @@ desktop.ini
 .idea/
 *.swp
 *~
+
+# Claude Code interno
+.claude/
+.gitignore.tmp.*
 
 # Material 3D pesado
 APOIO/

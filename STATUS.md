@@ -1,7 +1,9 @@
 # Status — Concorrência 002/2026 Catedral Angelopolitana
 
+> 📑 [ETP diagramado — Estudo Técnico Preliminar limpo](ETP/index.html) — todos os 14 critérios, eliminatórios, parcelas e Anexo 1 (14 cenas) bem formatados
 > 🎬 [Abrir storyboard preliminar — 3 atos, 9 sub-atos, 30 minutos](STORYBOARD/index.html)
 > 🎞️ [Prompts para animação — 22 keyframes, 21 transições](PROMPTS_ANIMACAO/index.html)
+> 📝 [Briefing do roteirista — pra Alexandre](BRIEFING_ROTEIRO/index.html) — todos os requisitos do edital com citação da fonte
 
 > **Sessão pública: 11/05/2026 às 09h** · plataforma Pregão Online Banrisul · postagem de propostas até 11/05 às 08h.
 > Teto oficial: **R$ 2.035.039,00**. Garantia da proposta: **R$ 20.350,39** (1%).
@@ -11,7 +13,7 @@
 ## Onde estamos
 
 **Fase atual:** preparação técnica e habilitação.
-**Última atualização:** 2026-04-27.
+**Última atualização:** 2026-04-29.
 **Progresso macro:** 3 de 12 etapas concluídas.
 
 ---
@@ -31,11 +33,11 @@
   - [ ] Portfólio com produção AV pública ou premiada
   - [ ] Contrato de vínculo formal (trabalho / prestação / equivalente)
 
-- **3 Historiadores** {!obrig} [+ info](#info:vinculo) [modelo de contrato](#info:contrato)
-  - [ ] 3 nomes definidos
-  - [ ] CVs (3)
+- **3 Historiadores** {!obrig} *(1/3 — Professor Guilherme [sobrenome a confirmar]; outros 2 nomes a serem indicados pelo próprio Guilherme)* [+ info](#info:vinculo) [modelo de contrato](#info:contrato)
+  - [ ] 3 nomes definidos *(1/3 — Prof. Guilherme confirmado em 2026-04-29; aguardando indicação dos outros 2)*
+  - [ ] CVs (3) *(aguardando envio do Lattes do Prof. Guilherme)*
   - [ ] 2+ comprovações de notório saber por historiador (diploma · publicações · projetos · atuação · atestados)
-  - [ ] 3 contratos de vínculo formal
+  - [ ] 3 Termos de Anuência assinados (vínculo formal sob condição suspensiva)
 
 - **2 Tradutores (ES, EN)** {!obrig} [+ info](#info:tradutores)
   - [ ] CV tradutor espanhol
@@ -75,7 +77,7 @@
   - [ ] Contrato com cláusula suspensiva assinado (se externo à ADA)
 
 ### 3. DEMO — 2 a 3 minutos
-- [x] Máscara para mapping recebida (Departamento de Turismo, 2026-04-27)
+- [x] Máscara para mapping recebida (Departamento de Turismo, 2026-04-27) — `DOCUMENTOS BAIXADOS/Guia_de_produção-Catedral_de_Santo_Ângelo_RS_00000.png` (3800×3840 px)
 - [ ] Definir 1–2 cenas-foco
 - [ ] Garantir ≥ 50% animação 3D no DEMO (eliminatório)
 - [ ] Paleta cromática barroco-missioneira aplicada

@@ -1,0 +1,940 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ETP — Estudo Técnico Preliminar · Catedral Angelopolitana</title>
+<meta name="description" content="ETP do Processo Administrativo 001-2025 — Concorrência 002/2026 da Prefeitura Municipal de Santo Ângelo/RS. Versão diagramada do OCR para leitura limpa. Conteúdo preservado integralmente." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --page-bg:#111111;
+    --sec-bg:#1A1A1A;
+    --card-bg:#222222;
+    --accent:#FFD600;
+    --warn:#ff8a3d;
+    --danger:#ff5252;
+    --ink:#FFFFFF;
+    --ink-mid:rgba(255,255,255,.62);
+    --ink-faint:rgba(255,255,255,.40);
+    --border:rgba(255,214,0,.12);
+    --border-strong:rgba(255,214,0,.30);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-size:15px;line-height:1.7}
+  ::selection{background:var(--accent);color:#111}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--border-strong)}
+  a:hover{border-bottom-color:var(--accent)}
+  .wrap{max-width:920px;margin:0 auto;padding:24px 22px 80px}
+
+  header.nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+  .wordmark{font-family:'DM Mono',monospace;font-weight:300;font-size:20px;color:var(--accent)}
+  .wordmark::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px}
+  .nav-back{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint);border:0}
+  .nav-back:hover{color:var(--accent)}
+
+  .hero{padding:32px 0 12px}
+  .tag{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);padding:4px 10px;border:1px solid var(--border);margin-bottom:14px}
+  h1{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(26px,4vw,40px);line-height:1.1;color:var(--ink);margin:0 0 12px;letter-spacing:-.01em}
+  .lede{max-width:780px;color:var(--ink-mid)}
+  .meta{margin:18px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);border:1px solid var(--border)}
+  .meta div{background:var(--sec-bg);padding:10px 14px}
+  .meta .k{font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .meta .v{font-family:'DM Mono',monospace;font-size:13px;color:var(--ink)}
+
+  .toc{position:sticky;top:0;background:#0d0d0d;border-bottom:1px solid var(--accent);padding:10px 0;margin:24px 0;z-index:50;overflow-x:auto;white-space:nowrap}
+  .toc a{display:inline-block;padding:6px 11px;margin-right:3px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;color:var(--ink-faint);border:1px solid transparent;text-transform:uppercase}
+  .toc a:hover{color:var(--accent);border-color:var(--border-strong)}
+
+  section{margin:48px 0 0;scroll-margin-top:64px}
+  section h2{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;color:var(--ink);margin:0 0 8px;padding-bottom:10px;border-bottom:1px solid var(--accent)}
+  section h2 small{display:block;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+  section h3{font-family:'Syne',sans-serif;font-weight:600;font-size:15.5px;color:var(--accent);margin:24px 0 8px;letter-spacing:.02em}
+  section h4{font-family:'DM Mono',monospace;font-weight:400;font-size:12px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);margin:18px 0 6px}
+  section p{color:var(--ink-mid);margin:0 0 12px}
+  section ul,section ol{color:var(--ink-mid);padding-left:22px;margin:6px 0 14px}
+  section ul li,section ol li{margin-bottom:4px}
+  section blockquote{margin:12px 0;padding:10px 16px;border-left:3px solid var(--accent);background:#0d0d0d;color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:15.5px;line-height:1.6}
+
+  /* Critério card */
+  .crit{background:var(--sec-bg);border:1px solid var(--border-strong);border-left:4px solid var(--accent);margin:14px 0;padding:18px 22px}
+  .crit-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+  .crit-num{font-family:'DM Mono',monospace;font-weight:300;font-size:30px;color:var(--accent);line-height:1}
+  .crit-title{flex:1;font-family:'Syne',sans-serif;font-weight:700;font-size:14.5px;color:var(--ink);letter-spacing:.02em;text-transform:uppercase}
+  .crit-peso{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.10em;background:#0d0d0d;border:1px solid var(--border-strong);padding:3px 8px}
+  .crit-peso b{color:var(--accent)}
+  .crit ol{padding-left:22px;margin:6px 0 6px}
+  .crit ol li{font-size:13.5px;color:var(--ink);margin-bottom:3px}
+
+  /* Cena card (Anexo 1) */
+  .cena{background:var(--sec-bg);border:1px solid var(--border-strong);margin:14px 0;padding:18px 22px}
+  .cena-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+  .cena-num{font-family:'DM Mono',monospace;font-weight:300;font-size:24px;color:var(--accent);line-height:1}
+  .cena-title{flex:1;font-family:'Syne',sans-serif;font-weight:700;font-size:14.5px;color:var(--ink);letter-spacing:.02em}
+
+  .parte{margin:32px 0 8px;padding:14px 18px;background:linear-gradient(135deg,#1a1500 0%,#0d0d0d 100%);border:1px solid var(--accent);border-left:6px solid var(--accent)}
+  .parte-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .parte-title{font-family:'DM Mono',monospace;font-weight:300;font-size:18px;color:var(--ink);margin:0}
+  .parte-pct{font-family:'DM Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:.06em;margin-top:2px}
+
+  table.simple{width:100%;border-collapse:collapse;margin:12px 0;background:var(--sec-bg);border:1px solid var(--border-strong);font-size:13.5px}
+  table.simple th,table.simple td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--border)}
+  table.simple th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:#0d0d0d;font-weight:400}
+  table.simple td.num{text-align:right;font-family:'DM Mono',monospace;color:var(--ink)}
+
+  .formula{font-family:'DM Mono',monospace;background:#0d0d0d;border:1px solid var(--border-strong);padding:14px 18px;color:var(--accent);font-size:14px;text-align:center;margin:12px 0;letter-spacing:.04em}
+
+  .src{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);background:#0d0d0d;border:1px solid var(--border);padding:2px 7px;margin-left:6px;letter-spacing:.04em;vertical-align:1px}
+
+  footer{margin-top:80px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="nav">
+  <a href="../index.html" class="wordmark">ADA · Catedral</a>
+  <a href="../DOCUMENTOS%20BAIXADOS/856753.pdf" class="nav-back" target="_blank">↗ PDF original</a>
+</header>
+
+<section class="hero" style="border:0;margin:0">
+  <span class="tag">Estado do Rio Grande do Sul · Prefeitura Municipal de Santo Ângelo</span>
+  <h1>Estudo Técnico Preliminar — ETP</h1>
+  <p class="lede">Modalidade concorrência — critério de julgamento técnica e preço. Versão diagramada do OCR (<code>856753_OCR.txt</code>) para leitura limpa. Conteúdo preservado integralmente do documento original; cabeçalhos repetidos e ruídos de scanner foram suprimidos para facilitar a navegação. Em caso de dúvida sobre pontuação ou redação literal, conferir o <a href="../DOCUMENTOS%20BAIXADOS/856753.pdf" target="_blank">PDF oficial</a>.</p>
+
+  <div class="meta">
+    <div><div class="k">Processo</div><div class="v">001-2025</div></div>
+    <div><div class="k">Concorrência</div><div class="v">002/2026</div></div>
+    <div><div class="k">Solicitante</div><div class="v">Sec. Mun. Desenv. Econ., Turismo e Inovação</div></div>
+    <div><div class="k">Equipe planej.</div><div class="v">Marisete dos Santos Leite (Adm. 62804)</div></div>
+  </div>
+</section>
+
+<nav class="toc">
+  <a href="#s1">▸ 1 Objeto</a>
+  <a href="#s2">▸ 2 Necessidade</a>
+  <a href="#s3">▸ 3 Alinhamento</a>
+  <a href="#s4">▸ 4 Requisitos</a>
+  <a href="#criterios">▸ 14 Critérios</a>
+  <a href="#julgamento">▸ Julgamento</a>
+  <a href="#elim">▸ Eliminatórios</a>
+  <a href="#hab">▸ Habilitação técnica</a>
+  <a href="#s5">▸ 5 Demanda</a>
+  <a href="#s6">▸ 6 Mercado</a>
+  <a href="#s7">▸ 7 Valor</a>
+  <a href="#s8">▸ 8 Pagamento</a>
+  <a href="#s9">▸ 9 Entrega</a>
+  <a href="#s10">▸ 10 Solução</a>
+  <a href="#s11">▸ 11 Parcelamento</a>
+  <a href="#s12">▸ 12 Resultados</a>
+  <a href="#s13">▸ 13 Providências</a>
+  <a href="#s14">▸ 14 Correlatas</a>
+  <a href="#s15">▸ 15 Ambiental</a>
+  <a href="#s16">▸ 16 Viabilidade</a>
+  <a href="#anexo1">▸ Anexo 1 · Roteiro</a>
+</nav>
+
+<!-- =================================================== -->
+<section id="s1">
+  <h2>1. Objeto <small>l. 18–40 do OCR</small></h2>
+  <p>Contratação de empresa especializada na criação, desenvolvimento e entrega de conteúdo audiovisual autoral e inédito, com duração de 25 (vinte e cinco) a 30 (trinta) minutos, destinado à realização de espetáculo de projeção mapeada arquitetônica, a ser exibido na fachada da Catedral de Santo Ângelo.</p>
+  <p>O conteúdo audiovisual deverá ser desenvolvido a partir de diretrizes históricas gerais e sugestivas, indicadas pelo contratante, não se caracterizando como roteiro fechado ou vinculante, cabendo à contratada a realização da pesquisa histórica, a curadoria de conteúdo e a concepção narrativa, artística e técnica do espetáculo, respeitado o recorte temático proposto.</p>
+  <p>A narrativa deverá ser construída por meio de animações de personagens e cenários de época, utilizando técnicas de animação 2D e 3D, aplicadas de forma integrada à superfície arquitetônica da Catedral Angelopolitana, com soluções visuais compatíveis com espetáculos de projeção mapeada.</p>
+  <p>O conteúdo deverá contar com trilha sonora original, devidamente sincronizada às imagens, concebida para fruição sonora individual por meio de fones de ouvido, <strong>não estando incluídos no objeto</strong> o fornecimento de equipamentos, sistemas de projeção, sistemas de áudio, fones de ouvido, operação técnica ou execução do espetáculo, os quais constituem objeto de contratação distinta.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s2">
+  <h2>2. Descrição da necessidade <small>l. 42–97 do OCR</small></h2>
+  <p>A projeção mapeada audiovisual na fachada da Catedral de Santo Ângelo é criada pela necessidade por diversos fatores estratégicos, culturais e sociais, cujo Patrimônio Histórico e Cultural das Missões, já identificado com parte da formação do Brasil.</p>
+  <p>O espetáculo estimulará na comunidade, o sentimento de orgulho local, oportunizando ao público atuar como voluntário ou parceiro de uma história rica em detalhes, fomentando ainda mais a região como destino turístico, posicionando Santo Ângelo como inovação cultural e de preservação histórica. Por ser uma atração noturna, irá estimular a maior permanência dos turistas trazendo benefícios para rede hoteleira, restaurantes e demais atores do trade turístico.</p>
+  <p>A inovação na comunicação de narrativas a serem desenvolvidas, utilizando tecnologia de ponta — como projeção mapeada de animações 2D e 3D, realidade virtual, uso de luz e sombra, criando a ilusão de movimento. <strong>Resolução final não inferior a 4K.</strong></p>
+
+  <h3>Áudio em fones de ouvido (2 canais)</h3>
+  <p>O áudio será reproduzido exclusivamente em fones de ouvido (2 canais). A trilha sonora deverá ser concebida, mixada e masterizada especificamente para reprodução em fones, utilizando técnicas de estéreo psicoacústico/binaural, com ênfase em:</p>
+  <ul>
+    <li>Sensação de espacialidade, profundidade e movimento sonoro;</li>
+    <li>Uso de panning dinâmico (efeito panorâmico), micro-delays interaurais e reverberações estéreo;</li>
+    <li>Camadas sonoras que criem percepção tridimensional, mesmo em dois canais;</li>
+    <li>Sincronização do movimento sonoro com os elementos visuais do mapeamento.</li>
+  </ul>
+  <p>O áudio deverá ser testado e validado em fones de ouvido, garantindo conforto auditivo, clareza e imersão, evitando abordagens de downmix de sistemas multicanal.</p>
+  <p><strong>Entrega final em estéreo (L/R)</strong>, com qualidade compatível com reprodução em fones.</p>
+
+  <h3>Roteiro</h3>
+  <p>No <a href="#anexo1">Anexo 1</a> consta um esboço de roteiro que deverá ser utilizado como base para o roteiro final.</p>
+  <p>Criar uma experiência imersiva que transforme a história em algo memorável e sensorial. Abordando o conteúdo de forma lúdica e compreensível sem limite de faixas etárias, evidenciando uma história rica, como a das Missões Jesuíticas. Assim, proporcionando um espetáculo único, transformando-o em uma atração turística regional e atraindo novos investimentos e parcerias para o município, o que gerará estímulos à economia local.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s3">
+  <h2>3. Alinhamento entre a contratação e entrega <small>l. 99–111 do OCR</small></h2>
+  <p>A presente contratação encontra-se respaldada no orçamento da Secretaria de Desenvolvimento Econômico, Turismo e Inovação, nas rubricas <strong>1171 — 500 (Município - Contrapartida)</strong> e <strong>1172 — 0701.19 (Estado)</strong>.</p>
+  <p>Os depósitos financeiros do Termo de Convênio Sedac nº 01/2025 - FPE nº 5792/2024, do Estado e da contrapartida, ocorrerão no Banco: 41 - BERGS (04.158801.0-5) C/C Conv. FPE nº 5792/2024, Agência: 0307, Conta: 0415880105.</p>
+  <p>Contábil: 4341 - Estado e 4342 — Contrapartida.</p>
+  <p><strong>Prazo de entrega de 240 dias.</strong></p>
+</section>
+
+<!-- =================================================== -->
+<section id="s4">
+  <h2>4. Descrição dos requisitos da contratação <small>l. 113–148 do OCR · base do julgamento técnico</small></h2>
+  <p>Esses critérios serão utilizados na avaliação da capacidade técnica dos proponentes pela comissão constituída (banca) através do vídeo demonstrativo (DEMO) com duração de 2 a 3 minutos e dos demais documentos que forem anexados pelo proponente que auxiliem na comprovação da capacidade técnica.</p>
+  <p>Os critérios abaixo apresentados serão aplicados para avaliar com base no DEMO de dois a três minutos como em caráter amostral em função da necessidade de avaliação prévia e necessária para identificar a capacidade da empresa proponente em entregar o produto especificado e dentro das expectativas da Administração. A atribuição da nota considerará a capacidade demonstrada e a coerência entre a proposta conceitual apresentada como inferência do que será apresentado no filme final com duração de 25 a 30 minutos.</p>
+  <p>Os pesos estabelecidos para os critérios abaixo refletem a prioridade artística e técnica estabelecida pela contratante, privilegiando a exatidão histórica, a profundidade da pesquisa e a complexidade da execução audiovisual.</p>
+  <p><strong>Caso algum item seja avaliado e tenha resultado final como "ponto total zero", o mesmo será considerado como eliminatório e passível de desclassificação da proponente.</strong> Isso será resultante da total ausência do atendimento do requisito definido no critério/quesito. Portanto, nenhum dos 14 quesitos pode ter resultado como zero (não confundir com o subquesito).</p>
+  <p>A avaliação também será complementada com os documentos adicionais que a proponente a seu critério apresentar em conjunto com o vídeo demonstração (DEMO) como roteiro preliminar, pesquisa histórica estruturada e outros documentos a critério do proponente.</p>
+  <p>O Termo de Referência também apresenta requisitos que devem ser atendidos pelas proponentes e que não serão alvo da comissão constituída (banca), mas sim da equipe de compras.</p>
+  <p>Para o desenvolvimento do vídeo demo poderá ser fornecido, mediante solicitação, a guia para mapping (Máscara).</p>
+</section>
+
+<!-- =================================================== -->
+<section id="criterios">
+  <h2>14 Critérios de Avaliação Técnica <small>0 a 10 por subquesito · nota = média × peso · máx. bruto: 140 pts</small></h2>
+
+  <p>Para cada critério, escala de 0 a 10 em cada subquesito; no final adota-se a média aritmética para ter a nota final do quesito, multiplicada pelo respectivo peso.</p>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">01</div>
+      <div class="crit-title">Pertinência histórica e fidelidade conceitual do roteiro</div>
+      <div class="crit-peso">Peso <b>3</b> · máx. <b>30</b></div>
+    </div>
+    <ol>
+      <li>1.1 Representação correta do contexto histórico e cultural.</li>
+      <li>1.2 Evita anacronismos e distorções.</li>
+      <li>1.3 Coerência entre narrativa, arte e trilha sonora.</li>
+      <li>1.4 Coerência geral da obra (analisado na amostra do vídeo ou na minuta do roteiro).</li>
+      <li>1.5 Unidade estética e narrativa.</li>
+      <li>1.6 Ausência de rupturas ou inconsistências.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">02</div>
+      <div class="crit-title">Profundidade da pesquisa histórica</div>
+      <div class="crit-peso">Peso <b>5</b> · máx. <b>50</b></div>
+    </div>
+    <ol>
+      <li>2.1 Todos os elementos do roteiro prévio estão atendidos.</li>
+      <li>2.2 Dimensionamento do tempo da contratação dos pesquisadores está adequada (carga horária total).</li>
+      <li>2.3 Indicação da bibliografia é satisfatória para atender a necessidade da profundidade da pesquisa histórica requerida.</li>
+      <li>2.4 A combinação da expertise da equipe de historiadores é adequada para a necessidade do projeto.</li>
+      <li>2.5 Utiliza fontes variadas que permitam a apresentação de uma visão histórica sem viés, deixando o mais neutro possível e passível de interpretação do espectador.</li>
+      <li>2.6 Apresenta coerência com os fatos conhecidos e não apresenta distorções sem apresentação de mais de uma fonte fidedigna.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">03</div>
+      <div class="crit-title">Qualidade dramatúrgica do roteiro</div>
+      <div class="crit-peso">Peso <b>3</b> · máx. <b>30</b></div>
+    </div>
+    <ol>
+      <li>3.1 Clareza, fluidez e unidade narrativa.</li>
+      <li>3.2 Capacidade de gerar emoção.</li>
+      <li>3.3 Ritmo narrativo adequado para 25 minutos a 30 minutos.</li>
+      <li>3.4 Construção de cenas, ambientes e temas.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">04</div>
+      <div class="crit-title">Impacto emocional e artístico</div>
+      <div class="crit-peso">Peso <b>4</b> · máx. <b>40</b></div>
+    </div>
+    <ol>
+      <li>4.1 Capacidade de sensibilizar o público.</li>
+      <li>4.2 Atmosferas bem definidas.</li>
+      <li>4.3 Estética consistente e coerente.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">05</div>
+      <div class="crit-title">Critérios visuais e técnicos de animação</div>
+      <div class="crit-peso">Peso <b>5</b> · máx. <b>?</b> <small style="color:var(--warn)">(peso inferido — OCR ilegível)</small></div>
+    </div>
+    <ol>
+      <li>5.1 Qualidade da direção de arte.</li>
+      <li>5.2 Paleta de cores, composição e estilo.</li>
+      <li>5.3 Coerência visual e estética geral.</li>
+      <li>5.4 Uso respeitoso do patrimônio histórico.</li>
+      <li>5.5 Domínio de animação 2D e 3D.</li>
+      <li>5.6 Fluidez e acabamento das animações.</li>
+      <li>5.7 Profundidade, texturas e iluminação.</li>
+      <li>5.8 Transições naturais e soluções elegantes.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">06</div>
+      <div class="crit-title">Qualidade e complexidade dos efeitos visuais (VFX)</div>
+      <div class="crit-peso">Peso <b>3</b> · máx. <b>30</b></div>
+    </div>
+    <ol>
+      <li>6.1 Uso de partículas, simulações e volumetria.</li>
+      <li>6.2 Impacto visual sem artefatos.</li>
+      <li>6.3 Pós-produção e composição de alto nível.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">07</div>
+      <div class="crit-title">Projeção mapeada — Precisão geométrica do mapeamento</div>
+      <div class="crit-peso">Peso <b>3</b> · máx. <b>30</b></div>
+    </div>
+    <ol>
+      <li>7.1 Alinhamento perfeito às superfícies reais.</li>
+      <li>7.2 Ausência de distorções ou descontinuidades.</li>
+      <li>7.3 Uso criativo da arquitetura real.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">08</div>
+      <div class="crit-title">Projeção mapeada — Aproveitamento criativo da arquitetura histórica</div>
+      <div class="crit-peso">Peso <b>3</b> · máx. <b>30</b></div>
+    </div>
+    <ol>
+      <li>8.1 Integração dramática com esculturas, colunas, arcos e texturas.</li>
+      <li>8.2 Uso simbólico da volumetria real.</li>
+      <li>8.3 Valorização estética da construção histórica.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">09</div>
+      <div class="crit-title">Projeção mapeada — Clareza visual e legibilidade</div>
+      <div class="crit-peso">Peso <b>3</b> · máx. <b>30</b></div>
+    </div>
+    <ol>
+      <li>9.1 Nitidez de elementos mesmo a distância.</li>
+      <li>9.2 Contraste e densidade visual adequados.</li>
+      <li>9.3 Ritmo visual compatível com o público.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">10</div>
+      <div class="crit-title">Critérios sonoros — Música e Sound Design</div>
+      <div class="crit-peso">Peso <b>4</b> · máx. <b>40</b></div>
+    </div>
+    <ol>
+      <li>10.1 Qualidade da trilha sonora original.</li>
+      <li>10.2 Coerência com a narrativa histórica.</li>
+      <li>10.3 Variedade temática.</li>
+      <li>10.4 Impacto emocional musical.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">11</div>
+      <div class="crit-title">Critérios sonoros — Qualidade do sound design</div>
+      <div class="crit-peso">Peso <b>3</b> · máx. <b>30</b></div>
+    </div>
+    <ol>
+      <li>11.1 Sincronismo com a animação.</li>
+      <li>11.2 Construção de ambiências e efeitos.</li>
+      <li>11.3 Mixagem limpa e imersiva.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">12</div>
+      <div class="crit-title">Critérios sonoros — Integração audiovisual</div>
+      <div class="crit-peso">Peso <b>2</b> · máx. <b>20</b></div>
+    </div>
+    <ol>
+      <li>12.1 Sincronia fina entre som e imagem.</li>
+      <li>12.2 Uso do áudio como elemento narrativo.</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">13</div>
+      <div class="crit-title">Critérios de complexidade — Complexidade técnica</div>
+      <div class="crit-peso">Peso <b>5</b> · máx. <b>50</b></div>
+    </div>
+    <ol>
+      <li>13.1 Quantidade de cenas detalhadas.</li>
+      <li>13.2 Sofisticação das animações e VFX (efeitos visuais).</li>
+      <li>13.3 Uso avançado de técnicas (GI, raytracing, simulações, animação 2D e 3D...).</li>
+    </ol>
+  </div>
+
+  <div class="crit">
+    <div class="crit-head">
+      <div class="crit-num">14</div>
+      <div class="crit-title">Critérios de inovação — Inovação criativa</div>
+      <div class="crit-peso">Peso <b>4</b> · máx. <b>40</b></div>
+    </div>
+    <ol>
+      <li>14.1 Originalidade do conceito.</li>
+      <li>14.2 Soluções visuais e narrativas diferenciadas.</li>
+    </ol>
+  </div>
+</section>
+
+<!-- =================================================== -->
+<section id="julgamento">
+  <h2>Do julgamento das propostas técnicas e artísticas <small>Lei 14.133/2021 — arts. 33 IV, 36 e 37</small></h2>
+
+  <h3>1. Avaliação da Proposta Técnica e de Conteúdo Artístico</h3>
+  <p>O julgamento técnico será realizado pela Comissão designada por Ato Normativo, <strong>Portaria nº 16/SMGRI/2026</strong>. O julgamento da habilitação e da proposta de preços será realizado pelo Agente de Contratação.</p>
+  <p>O julgamento das propostas técnicas e de conteúdo artístico será realizado com base em critérios objetivos previamente definidos neste Edital, em conformidade com o disposto nos arts. 33, inciso IV, 36 e 37 da Lei nº 14.133/2021.</p>
+  <p>A pontuação total da proposta técnica corresponderá à soma dos pontos obtidos nos 14 (quatorze) critérios de avaliação, observados os respectivos pesos e limites máximos, perfazendo o total máximo de 140 (cento e quarenta) pontos.</p>
+  <p>Será considerada melhor classificada na etapa técnica a proposta que obtiver a maior pontuação total, desde que <strong>não tenha obtido nota zero em qualquer dos critérios de avaliação</strong>, hipótese que implicará eliminação automática da proposta, por caracterizar o não atendimento a requisito essencial do objeto.</p>
+
+  <h3>2. Nota Técnica Mínima para Classificação</h3>
+  <p>Somente serão classificadas para a fase de julgamento da proposta de preço as licitantes que atingirem <strong>Nota Técnica Normalizada (NTn) igual ou superior a 70 (setenta) pontos</strong>, como condição mínima de qualidade técnica e artística, nos termos do art. 36, §1º, inciso I, da Lei nº 14.133/2021.</p>
+
+  <h3>3. Normalização da Nota Técnica</h3>
+  <p>Para fins de padronização da avaliação técnica, a Nota Técnica obtida será convertida em Nota Técnica Normalizada (NTn), conforme a fórmula a seguir:</p>
+  <div class="formula">NTn = (NT / 140) × 100</div>
+  <p>Onde:</p>
+  <ul>
+    <li><strong>NT</strong> = Nota Técnica total obtida, em escala de 0 (zero) a 140 (cento e quarenta) pontos;</li>
+    <li><strong>NTn</strong> = Nota Técnica Normalizada, em escala de 0 (zero) a 100 (cem) pontos.</li>
+  </ul>
+
+  <h3>4. Desclassificação</h3>
+  <p>Serão desclassificadas e não habilitadas à fase de julgamento da proposta de preço as licitantes que:</p>
+  <ol type="a">
+    <li>obtiverem Nota Técnica Normalizada (NTn) inferior a 70 (setenta) pontos, ou</li>
+    <li>obtiverem nota zero em qualquer dos critérios de avaliação técnica e artística.</li>
+  </ol>
+
+  <h3>5. Disposições Complementares</h3>
+  <p>A avaliação técnica observará os princípios da legalidade, impessoalidade, isonomia, julgamento objetivo, motivação e vinculação ao instrumento convocatório, em conformidade com o art. 5º da Lei nº 14.133/2021.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="elim">
+  <h2>6. Critérios eliminatórios <small>l. 389–423 do OCR · adicionais à pontuação</small></h2>
+  <p>Além da pontuação também será considerado na avaliação, como critérios eliminatórios, o atendimento aos seguintes itens que constam da especificação do produto (filme demo):</p>
+  <ol>
+    <li>Exigência de versões em 3 idiomas — português, inglês e espanhol;</li>
+    <li>Compatibilidade estética de paleta cromática barroco-missioneira;</li>
+    <li>Exigência de no mínimo 50% obrigatórios de animação 3D;</li>
+    <li>Técnicas avançadas de ilusão volumétrica e profundidade tridimensional aplicadas à projeção mapeada arquitetônica;</li>
+    <li>Trilha sonora original — O áudio será reproduzido exclusivamente em fones de ouvido (2 canais).
+      <ul>
+        <li>A trilha sonora deverá ser concebida, mixada e masterizada especificamente para reprodução em fones, utilizando técnicas de estéreo psicoacústico/binaural, com ênfase em:
+          <ul>
+            <li>Sensação de espacialidade, profundidade e movimento sonoro;</li>
+            <li>Uso de panning dinâmico (efeito panorâmico), micro-delays interaurais e reverberações estéreo;</li>
+            <li>Camadas sonoras que criem percepção tridimensional, mesmo em dois canais;</li>
+            <li>Sincronização do movimento sonoro com os elementos visuais do mapeamento.</li>
+          </ul>
+        </li>
+        <li>O áudio deverá ser testado e validado em fones de ouvido, garantindo conforto auditivo, clareza e imersão, evitando abordagens de downmix de sistemas multicanal.</li>
+        <li>Entrega final em estéreo (L/R), com qualidade compatível com reprodução em fones.</li>
+      </ul>
+    </li>
+    <li>Entrega técnica em arquivo — 4K ProRes;</li>
+    <li>Arte respeitando totalmente a arquitetura da catedral.</li>
+  </ol>
+  <p>As Notas Técnicas devidamente fundamentadas serão registradas em Ata pela banca examinadora detalhando as razões pelas quais a pontuação foi concedida em cada quesito e subquesito.</p>
+
+  <h3>Pontuação final</h3>
+  <p>O julgamento das propostas será realizado pelo critério de Técnica e Preço, nos termos do art. 33, inciso IV, da Lei nº 14.133/2021.</p>
+  <p>A Nota Técnica (NT) terá pontuação máxima de 140 (cento e quarenta) pontos, atribuída conforme os critérios e subcritérios definidos neste edital. Para fins de ponderação, a Nota Técnica será normalizada para a escala de 0 (zero) a 100 (cem) pontos:</p>
+  <div class="formula">NTn = (NT / 140) × 100</div>
+  <p>A Nota de Preço (NP) será atribuída com pontuação máxima de 100 (cem) pontos, sendo calculada pela fórmula:</p>
+  <div class="formula">NP = (Menor Preço Proposto na licitação / Preço do Licitante) × 100</div>
+  <p>A Pontuação Final (PF) será obtida pela soma ponderada das notas técnica e de preço, conforme a fórmula:</p>
+  <div class="formula">PF = (NTn × 0,70) + (NP × 0,30)</div>
+  <p>Será declarada vencedora a proposta que obtiver a maior pontuação final, observadas as demais condições estabelecidas neste edital.</p>
+
+  <h3>Critérios de desempate</h3>
+  <p>Estabelecer como critério de desempate de projetos que tenham obtido a mesma pontuação:</p>
+  <ol type="I">
+    <li>Para efeito de desempate, vence a proposta que obtiver maior Nota Técnica bruta (0 a 140 pontos), antes da normalização;</li>
+    <li>Persistindo o empate, será priorizado o projeto que tenha obtido a maior nota no critério de julgamento número 1;</li>
+    <li>Persistindo o empate, o desempate dar-se-á por meio da maior nota por critério de julgamento número 2;</li>
+    <li>Na sequência a seguir as notas dos critérios 3, 4 e 5 e assim por diante até alcançar o desempate.</li>
+  </ol>
+
+  <h3>Requisitos legais</h3>
+  <p>Lei Federal nº 14.133/2021, que institui normas para licitações e contratos da Administração Pública.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="hab">
+  <h2>Requisitos da empresa contratada — Qualificação técnica <small>l. 467–562 do OCR</small></h2>
+
+  <ol type="a">
+    <li>Comprovar a execução de 1 (um) ou mais projetos utilizando técnicas avançadas de projeção mapeada, similares ao objeto licitado;</li>
+    <li>Comprovar o desenvolvimento de conteúdo audiovisual para salas imersivas ou exposições interativas ou instalações multimídias de caráter permanente ou semipermanente ou projeção mapeada estrutural, aderentes ao conteúdo, capacidade de contar histórias com clareza e coerência temática, e que demonstram elevada competência artística;</li>
+    <li>Comprovar capacidade técnica na criação e execução de conteúdo audiovisual para projeção mapeada, incluindo o desenvolvimento de animações e personagens, a aplicação de efeitos visuais e simulações criativas e tecnicamente elaboradas, bem como a integração e sincronia entre som e imagem, de modo a construir narrativa audiovisual impactante, emocionalmente envolvente e adequada à projeção sobre superfícies arquitetônicas, utilizando técnicas de animação 2D, animação 3D e/ou filmagem;</li>
+    <li>Comprovar capacidade de gestão e desenvolvimento de projetos complexos — apresentação de projetos semelhantes (que envolvam as técnicas realizadas — projeção mapeada, realidade aumentada e animação 2D e 3D);</li>
+    <li>Comprovar que o roteirista indicado experiência comprovada em direção e/ou participação em projetos audiovisuais finalizados, os quais tenham sido <strong>exibidos publicamente e/ou selecionados ou premiados em festivais reconhecidos</strong>. Deverá ser apresentada, ainda, comprovação do vínculo do roteirista com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto. <strong>A inexistência de produção audiovisual pregressa do roteirista indicado constituirá condição de desclassificação da proponente.</strong></li>
+    <li>Comprovar que a equipe de historiadores indicada possui notório saber em Missões Jesuíticas, mediante a apresentação de, no mínimo, <strong>dois</strong> dos documentos ou comprovações abaixo, relacionados diretamente ao tema:
+      <ol type="I">
+        <li>Diploma de pós-graduação em História, Arqueologia, Antropologia ou áreas afins;</li>
+        <li>Publicações acadêmicas, livros, capítulos, artigos, relatórios técnicos ou materiais educativos sobre Missões Jesuíticas;</li>
+        <li>Participação comprovada em projetos, pesquisas, inventários, curadorias, exposições, produções culturais ou ações de educação patrimonial relacionadas às Missões Jesuíticas;</li>
+        <li>Atuação profissional comprovada como consultor, pesquisador, professor ou técnico especializado em projetos vinculados às Missões Jesuíticas;</li>
+        <li>Certificados, declarações ou atestados de capacidade técnica emitidos por instituições públicas ou privadas que comprovem atuação na temática.</li>
+      </ol>
+      Deverá ser apresentada, ainda, a comprovação de vínculo da equipe de historiadores com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto.
+    </li>
+    <li>Apresentar 1 (uma) ou mais cartas de recomendação de empresas que contrataram os serviços do escopo (objeto);</li>
+    <li>CNPJ ativo com atividade na área do escopo.</li>
+  </ol>
+
+  <h3>Disposições gerais</h3>
+  <ol type="a">
+    <li><strong>Não será admitida a comprovação de experiência exclusivamente acadêmica ou experimental;</strong></li>
+    <li>Será admitida a soma de experiências para fins de comprovação técnica;</li>
+    <li>A Administração poderá diligenciar para verificar a autenticidade das informações apresentadas;</li>
+    <li>A ausência de comprovação mínima exigida implicará inabilitação da licitante.</li>
+  </ol>
+</section>
+
+<!-- =================================================== -->
+<section id="s5">
+  <h2>5. Estimativa da relação entre a demanda prevista e quantidades de cada item <small>l. 563–571</small></h2>
+  <p>A relação entre a demanda prevista e a quantidade de cada item a ser contratado advirá de levantamento detalhado de quantitativo do serviço, a ser feito pela Secretaria de Desenvolvimento Econômico, Turismo e Inovação, com base em vistoria prévia no objeto deste ETP, inclusive com valor final de referência da contratação.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s6">
+  <h2>6. Alternativas de mercado <small>l. 572–611</small></h2>
+  <blockquote>"É sabido que a Administração Pública poderá obter o objeto pretendido através da Execução Direta ou da Execução Indireta. Como Execução Direta do objeto pretendido, tem-se a hipótese em que a própria Administração Pública, através de seus próprios meios, ou seja, os seus próprios órgãos e entidades, executam o serviço pretendido. Para que se configure a dita espécie de execução, deverá a Administração Pública, efetivamente, deter a totalidade dos meios necessários à concretização do fim pretendido, ou seja, deverá deter toda a estrutura, expertise técnica, pessoal, etc à conclusão dos serviços pretendidos, sob pena de não se configurar a hipótese em questão, impondo a contratação de terceiro para sua execução, respeitadas as disposições inerentes ao processo licitatório.<br><br>Já a Execução Indireta se dá quando a Administração Pública, para obter o que pretende, necessita contratar terceiros para executar o serviço necessitado ou fornecer o produto almejado. Tal espécie de execução do objeto contratado se dá através das seguintes formas: Empreitada por Preço Global; Empreitada por Preço Unitário; Tarefa; Empreitada Integral." — AZEVEDO, Rodrigo. <em>Como contratar com a Administração Pública</em>.</blockquote>
+  <p>Levando-se em conta as características do objeto a ser contratado, entende-se que a melhor solução para a contratação é a <strong>execução indireta, através de Licitação, Lei nº 14.133/2021</strong>, tendo em vista que o Município de Santo Ângelo não detém os meios necessários à concretização do objeto e que há meios de definir claramente os aspectos quantitativos do objeto a ser executado.</p>
+  <p>Nesse caso, pode ser estabelecido um padrão ou uma unidade de medida, para fins de aferição do valor a ser pago ao contratado, o que será feito após o período da verificação da conformidade da prestação com a obrigação ajustada.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s7">
+  <h2>7. Estimativas do valor de contratação <small>l. 612–618</small></h2>
+  <p>A estimativa de preços da contratação será compatível com os quantitativos em levantamento baseado em 3 (três) orçamentos prévios, com <strong>valor médio de R$ 2.035.039,00 (dois milhões, trinta e cinco mil e trinta e nove reais) de referência</strong> da contratação ora pretendida.</p>
+
+  <table class="simple">
+    <thead>
+      <tr><th>Orçamento I</th><th>Orçamento II</th><th>Orçamento III</th><th>Média (referência)</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">R$ 1.900.000,00</td>
+        <td class="num">R$ 2.090.000,00</td>
+        <td class="num">R$ 2.115.117,00</td>
+        <td class="num"><b style="color:var(--accent)">R$ 2.035.039,00</b></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- =================================================== -->
+<section id="s8">
+  <h2>8. Critérios de pagamento e dotação orçamentária <small>l. 619–666</small></h2>
+  <p>Pagamento do serviço se dará conforme as etapas abaixo descritas.</p>
+
+  <h3>1ª Parcela — 30% — Entrega do Planejamento Criativo e Narrativo</h3>
+  <p>Após a entrega, análise técnica e aprovação formal dos seguintes itens:</p>
+  <ul>
+    <li>Timeline geral do espetáculo, com duração total definida;</li>
+    <li>Roteiro completo e detalhado, contendo:
+      <ul>
+        <li>Estrutura narrativa (início, desenvolvimento e encerramento);</li>
+        <li>Descrição de cenas e transições;</li>
+        <li>Indicação de momentos de maior impacto visual;</li>
+      </ul>
+    </li>
+    <li>Concepção artística e linguagem visual proposta;</li>
+    <li>Referências estéticas e conceituais (moodboard ou documento equivalente);</li>
+    <li>Adequação do roteiro às características arquitetônicas da Catedral.</li>
+  </ul>
+
+  <h3>2ª Parcela — 30% — Entrega do Conteúdo em Desenvolvimento (Pré-visualização Técnica)</h3>
+  <p>Após a entrega e aprovação de material intermediário que comprove o avanço efetivo da produção, incluindo:</p>
+  <ul>
+    <li>Pré-visualizações (animatics ou previews) do espetáculo, contemplando:
+      <ul>
+        <li>Enquadramento e mapeamento sobre a fachada;</li>
+        <li>Ritmo narrativo e sequência de cenas;</li>
+        <li>Modelagem 3D (quando aplicável) e testes de volumetria;</li>
+        <li>Testes de sincronização básica entre imagem e trilha sonora preliminar;</li>
+      </ul>
+    </li>
+    <li>Ajustes solicitados pela fiscalização técnica na fase 1.</li>
+  </ul>
+
+  <h3>3ª Parcela — 40% — Entrega Final do Conteúdo Audiovisual</h3>
+  <p>Após a entrega definitiva, validação técnica e aceite formal do objeto, incluindo:</p>
+  <ul>
+    <li>Conteúdo final renderizado, pronto para exibição contínua;</li>
+    <li>Arquivos finais no formato e resolução compatíveis com os projetores e software de playback definidos no projeto;</li>
+    <li>Versão final aprovada do espetáculo, conforme roteiro validado;</li>
+    <li>Correção de eventuais inconformidades apontadas na etapa de testes;</li>
+    <li>Entrega de backups e organização dos arquivos conforme padrões técnicos exigidos.</li>
+  </ul>
+  <p>Os valores serão deduzidos das rubricas orçamentárias: <strong>1171 — 500 (Município - Contrapartida)</strong> e <strong>1172 — 0701.19 (Estado)</strong>.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s9">
+  <h2>9. Entrega <small>l. 668–739</small></h2>
+
+  <h3>Dos Direitos Autorais e da Titularidade da Obra</h3>
+  <p>A obra audiovisual resultante deste contrato será considerada <strong>obra por encomenda</strong>, nos termos da Lei nº 9.610/1998 (Lei de Direitos Autorais).</p>
+  <p>Todos os direitos patrimoniais de autor, incluindo, mas não se limitando aos direitos de reprodução, edição, adaptação, atualização, exibição pública, distribuição, comunicação ao público e utilização em quaisquer meios, formatos ou tecnologias, pertencerão integral e exclusivamente à Contratante, em caráter <strong>total, definitivo, irrevogável e por prazo indeterminado, no Brasil e no exterior</strong>.</p>
+  <p>A Contratada cede integralmente à Contratante, no ato da entrega final, todos os direitos patrimoniais sobre a obra, sem qualquer limitação de uso, não sendo devida remuneração adicional além do valor contratual.</p>
+
+  <h3>Do Direito de Edição e Atualização</h3>
+  <p>A Contratante poderá, a qualquer tempo e a seu exclusivo critério, realizar edições, cortes, adaptações, atualizações, reedições, reprogramações ou recontextualizações da obra, total ou parcialmente, diretamente ou por meio de terceiros, sem necessidade de autorização prévia da Contratada.</p>
+
+  <h3>Da Entrega dos Arquivos Editáveis</h3>
+  <p>Como condição essencial para o recebimento definitivo do objeto, a Contratada deverá entregar todos os arquivos-fonte e editáveis, incluindo, quando aplicável:</p>
+  <ul>
+    <li>Projetos de vídeo (ex.: After Effects, Premiere, Blender, Cinema 4D ou equivalentes);</li>
+    <li>Arquivos de áudio em trilhas separadas;</li>
+    <li>Animações, efeitos visuais, modelos 3D, texturas e assets utilizados;</li>
+    <li>Fontes tipográficas, quando licenciadas para uso irrestrito pela Contratante;</li>
+    <li>Demais elementos necessários à plena edição, atualização e reaproveitamento da obra.</li>
+  </ul>
+  <p>Os arquivos deverão ser entregues <strong>sem bloqueios, senhas, marcas d'água ou restrições técnicas</strong>, plenamente funcionais e compatíveis com versões comerciais dos softwares utilizados.</p>
+
+  <h3>Entrega do Arquivo</h3>
+  <p>Vídeo em <strong>4K ProRes</strong> com áudio separado em outro arquivo.</p>
+
+  <h3>Características do áudio</h3>
+  <p>A trilha sonora deverá ser concebida, mixada e masterizada especificamente para reprodução em fones, utilizando técnicas de estéreo psicoacústico/binaural, com ênfase em:</p>
+  <ul>
+    <li>Sensação de espacialidade, profundidade e movimento sonoro;</li>
+    <li>Uso de panning dinâmico (efeito panorâmico), micro-delays interaurais e reverberações estéreo;</li>
+    <li>Camadas sonoras que criem percepção tridimensional, mesmo em dois canais;</li>
+    <li>Sincronização do movimento sonoro com os elementos visuais do mapeamento.</li>
+  </ul>
+  <p>O áudio deverá ser testado e validado em fones de ouvido, garantindo conforto auditivo, clareza e imersão, evitando abordagens de downmix de sistemas multicanal.</p>
+  <p>Entrega final em estéreo (L/R), com qualidade compatível com reprodução em fones.</p>
+  <p><strong>Prazo de entrega do conteúdo: 240 dias após a assinatura do contrato.</strong></p>
+</section>
+
+<!-- =================================================== -->
+<section id="s10">
+  <h2>10. Descrição da solução como um todo <small>l. 740–747</small></h2>
+  <p>A contratação de empresa especializada na realização de espetáculo audiovisual por meio de projeção mapeada, a ser exibido na fachada da Catedral de Santo Ângelo, com o objetivo único de narrar a história das Missões Jesuítico-Guarani, com foco no espectro histórico, utilizando técnicas avançadas de projeção mapeada, projeção 3D e realidade virtual para criar uma experiência imersiva e visualmente impactante.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s11">
+  <h2>11. Justificativas para o parcelamento ou não da solução <small>l. 749–764</small></h2>
+  <p>O parcelamento da solução não é recomendável, devendo-se optar pela via alternativa, por ser a ideal no caso em tela, do ponto de vista da eficiência técnica, haja vista que assim o gerenciamento da contratação permanecerá sempre a cargo de um único contratado, resultando num maior nível de controle da execução dos serviços por parte da administração, concentrando a responsabilidade dos serviços e a garantia dos resultados numa única pessoa jurídica.</p>
+  <p>Assim, para execução, não há viabilidade técnica na divisão dos serviços, que em sua grande maioria são interdependentes, devendo ser executados por uma mesma empresa para garantir a responsabilidade técnica dos serviços.</p>
+  <p>Então, pelas razões expostas, recomendamos que a contratação não seja parcelada, por não ser vantajoso para a administração ou por representar possível prejuízo ao conjunto do objeto a ser contratado.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s12">
+  <h2>12. Resultados pretendidos <small>l. 766–790</small></h2>
+  <h3>Resultados Gerais Esperados</h3>
+  <ol>
+    <li><strong>Impacto Visual e Sensorial</strong>
+      <ul>
+        <li>Encantar e envolver o público por meio da imersão audiovisual.</li>
+        <li>Criar experiências memoráveis que reforcem a mensagem ou narrativa.</li>
+      </ul>
+    </li>
+    <li><strong>Valorização Cultural e Patrimonial</strong>
+      <ul>
+        <li>Ressignificação de espaços históricos, prédios ou monumentos.</li>
+        <li>Divulgação da história, tradições ou identidade local.</li>
+      </ul>
+    </li>
+    <li><strong>Atração de Público</strong>
+      <ul>
+        <li>Aumento do fluxo de visitantes bem como da permanência na cidade.</li>
+        <li>Estímulo ao turismo local e regional.</li>
+      </ul>
+    </li>
+    <li><strong>Educação e Conscientização</strong>
+      <ul>
+        <li>Facilitar a compreensão de conteúdos históricos, artísticos ou científicos.</li>
+        <li>Sensibilizar sobre causas sociais, ambientais ou culturais.</li>
+      </ul>
+    </li>
+    <li><strong>Engajamento Comunitário</strong>
+      <ul>
+        <li>Envolver a população local na criação ou apreciação do conteúdo.</li>
+        <li>Promover sentimento de pertencimento e identidade coletiva.</li>
+      </ul>
+    </li>
+    <li><strong>Resultados Econômicos</strong>
+      <ul>
+        <li>Geração de oportunidades para artistas, técnicos e produtores locais.</li>
+        <li>Estímulo ao comércio e serviços no entorno (bares, hotéis, restaurantes).</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<!-- =================================================== -->
+<section id="s13">
+  <h2>13. Providências prévias do contrato <small>l. 791–799</small></h2>
+  <p>A Secretaria de Desenvolvimento Econômico, Turismo e Inovação, deverá prover os devidos acessos à contratada, de modo que a mesma possa executar satisfatoriamente os serviços.</p>
+  <p>Após a realização de todas as etapas do processo licitatório, designar fiscal e gestor do contrato para compor a equipe de fiscalização, garantindo a prestação do serviço conforme o solicitado.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s14">
+  <h2>14. Contratações correlatas e/ou interdependentes <small>l. 801–803</small></h2>
+  <p>Não se aplica.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s15">
+  <h2>15. Possíveis impactos ambientais <small>l. 805–809</small></h2>
+  <p>Geração de resíduos sólidos comuns à obras de construção civil, com previsão de destinação nos termos da Resolução CONAMA n. 307/2002 inclusa nas obrigações da contratada.</p>
+</section>
+
+<!-- =================================================== -->
+<section id="s16">
+  <h2>16. Declaração de viabilidade <small>l. 811–836</small></h2>
+  <p>Os estudos preliminares evidenciam que a contratação da solução ora descrita, ou seja, de empresa para produção de conteúdo para o Projeto de Projeção Mapeada de Santo Ângelo/RS, mostra-se tecnicamente possível e fundamentadamente necessária.</p>
+  <p>Diante do exposto, declara-se ser viável a contratação pretendida.</p>
+  <p style="font-family:'DM Mono',monospace;font-size:12px;color:var(--ink-faint);margin-top:24px">
+    <strong>Marisete dos Santos Leite</strong> — Administradora 62804<br>
+    <strong>Vinicius Damião Maki</strong> — Secretaria Municipal de Desenvolvimento Econômico, Turismo e Inovação<br>
+    <strong>Viabilidade declarada pela Autoridade Superior em 21 de janeiro de 2026</strong><br>
+    <strong>Nívio Boelter Braz</strong> — Prefeito Municipal de Santo Ângelo
+  </p>
+</section>
+
+<!-- =================================================== -->
+<section id="anexo1">
+  <h2>Anexo 1 · Esboço de sugestão de roteiro <small>l. 842–1188 do OCR · 6 partes, 14 cenas</small></h2>
+
+  <h3>Sugestão da distribuição dos tempos para cada uma das partes</h3>
+  <table class="simple">
+    <thead>
+      <tr><th>Parte</th><th>Descrição / Título</th><th>Tempo</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Roque Gonzales e o primeiro ciclo (evangelização)</td><td class="num">15%</td></tr>
+      <tr><td>2</td><td>A estrutura da vida na redução (a formação das missões) e o ataque bandeirante — migração e o gado deixado para trás (base do rebanho que formou a economia gaúcha)</td><td class="num">20%</td></tr>
+      <tr><td>3</td><td>O segundo ciclo missioneiro — O apogeu — descrição do funcionamento geral</td><td class="num">40%</td></tr>
+      <tr><td>4</td><td>As pressões externas / início do ambiente para a Guerra Guaranítica</td><td class="num">10%</td></tr>
+      <tr><td>5</td><td>O processo de destruição (fim das missões)</td><td class="num">10%</td></tr>
+      <tr><td>6</td><td>Encerramento (mensagem final)</td><td class="num">5%</td></tr>
+    </tbody>
+  </table>
+
+  <div class="parte">
+    <div class="parte-num">Parte 0</div>
+    <div class="parte-title">Introdução</div>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head">
+      <div class="cena-num">Cena 1</div>
+      <div class="cena-title">Captura do Anjo da Guarda</div>
+    </div>
+    <p>Inicia-se com a iluminação da fachada dos edifícios históricos onde será desenvolvida a história projetada.</p>
+    <p>Após esta apresentação inicial do espaço físico que define onde será projetada a história, apresenta-se um dos elementos da fachada que será utilizado como narrador da história que se deseja contar, no caso em questão um anjinho, pois estamos na Redução de San Angel Custódio, o anjo da guarda.</p>
+    <p>O anjo da guarda é capturado da fachada e se transforma no narrador e apresentador da história que será apresentado. Esta apresentação é feita como uma forma de introdução do contexto que será descrito.</p>
+    <p><strong>Apresentador/Narrador</strong> — figura do anjo da guarda (anjinho).</p>
+    <p><em>Nota:</em> Ele seria capturado de alguma escultura que já exista na Catedral e ele começaria a contar a história. Similar àquele do aeroporto de Bruxelas (Cupido de Rubens) do vídeo abaixo: <a href="https://www.youtube.com/watch?v=JREE37Q5eNM" target="_blank">youtube.com/watch?v=JREE37Q5eNM</a></p>
+    <p><em>Nota:</em> a figura do anjinho ajuda as crianças a prestar atenção na narrativa da história (o desafio é conseguir desenvolver essa animação, similar ao vídeo acima).</p>
+  </div>
+
+  <div class="parte">
+    <div class="parte-num">Parte 1 · 15%</div>
+    <div class="parte-title">Roque Gonzales e o primeiro ciclo</div>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 2</div><div class="cena-title">Apresentação dos jesuítas e os guaranis</div></div>
+    <p>A cena se inicia com imagens das selvas, animais silvestres, dos grandes rios, ou seja do ambiente onde viviam os guaranis e onde os jesuítas estavam chegando junto com os colonizadores espanhóis.</p>
+    <p>Podemos apresentar imagens gravadas de drones sobre grandes áreas verdes (florestas) e também sobre o rio Uruguai ou outros rios da região.</p>
+    <p>O narrador apresenta uma descrição do ambiente que o jesuíta está encontrando na sua penetração do território dos guaranis de forma que introduza o ambiente, o evangelizador e o futuro evangelizado.</p>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 3</div><div class="cena-title">Chegada dos missionários no primeiro ciclo</div></div>
+    <p>A cena deve apresentar a figura do jesuíta como evangelizador e a sua devoção à fé católica, entrando em um ambiente desconhecido e hostil.</p>
+    <p>Sugestão de iniciar o trabalho com Roque Gonzáles fundando a Redução de Concepção em 1627 (por que?) ... lá as futuras famílias angelotes (como Henis chama) entram nas reduções. Isto na primeira fase. Vão se tornando cristãos... 79 anos depois de cristãos, vêem formar a nova redução de San Angel Custódio.</p>
+    <ul>
+      <li>O processo de conversão (evangelização) / abordagens iniciais / ajuda da música;</li>
+      <li>Proteção oferecida pelos jesuítas contra a escravidão;</li>
+      <li>Enfatizar o processo de migração dos indígenas (moradores originários do território) da vida nas aldeias e nômades para a vida nas reduções e cristianizados / evangelização — ruptura do sistema anterior e assimilação da cultura europeia;</li>
+      <li>Importante ilustrar o papel dos jesuítas na proteção dos guaranis, evitando que eles fossem explorados pelos encomendeiros (espanhóis) ou escravizados pelos bandeirantes (portugueses);</li>
+      <li>Estamos dando ênfase ao Padre Roque de propósito pois no âmbito regional queremos promover a figura deste Santo Católico, que é o primeiro santo do RGS.</li>
+    </ul>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 4</div><div class="cena-title">A formação das primeiras reduções no atual território do RGS</div></div>
+    <ul>
+      <li>Introdução do gado (que fica para trás, gerando o grande rebanho);</li>
+      <li>A erva mate, introdução da agricultura (base para o desenvolvimento econômico futuro do Estado);</li>
+      <li>As 18 reduções fundadas no atual território do RGS (mostrar a ocupação das bacias dos rios Ibicuí, Jacuí e Ijuí).</li>
+    </ul>
+    <p>Esta cena permitirá apresentar os principais legados dos missioneiros para a nossa economia, a erva mate e o gado. Também podemos mostrar que os jesuítas davam cunhas de machados de ferro como presentes aos caciques e que esta ferramenta ajudaria na formação das novas lavouras e ampliação do sustento alimentar dos guaranis.</p>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 5</div><div class="cena-title">O martírio</div></div>
+    <ul>
+      <li>O martírio dos padres (que depois transformados em Santos da Igreja Católica - deixar um link com o Caaró).</li>
+    </ul>
+    <p>Esta é uma cena rápida, apenas para mostrar que os Santos Missioneiros fazem parte da nossa história e que houve o primeiro ciclo aqui na região (bacia do rio Ijuí).</p>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 6</div><div class="cena-title">A chegada dos Bandeirantes</div></div>
+    <ul>
+      <li>Destruição dos Bandeirantes (apresentar que os Bandeirantes paulistas estiveram aqui na região e foram eles os responsáveis pela interrupção do trabalho das reduções no atual território do RGS);</li>
+      <li>Migração para o outro lado do Rio Uruguai (apresentar esta migração) e o gado que é deixado para trás que iria formar o grande rebanho que mais tarde será muito aproveitado (seriam milhões de cabeça de gado que se multiplicaram ao longo de 40 anos livremente);</li>
+      <li>Podemos enfatizar o evento da Batalha de M'Bororé (maior batalha naval das Américas) / onde os Bandeirantes são derrotados e não mais retornam ao sul.</li>
+    </ul>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 7</div><div class="cena-title">A Migração e o período de abandono do território</div></div>
+    <p>Aqui seria ilustrado que, durante um período de 40 anos, o território esteve sem a presença dos missioneiros (criar uma forma de fazer esta transição temporal).</p>
+    <p>Devemos destacar que um volume significativo de gado ficou abandonado no território e que formou os grandes rebanhos que mais tarde foram aproveitados para formar as vacarias e as estâncias.</p>
+  </div>
+
+  <div class="parte">
+    <div class="parte-num">Parte 2 · 20%</div>
+    <div class="parte-title">A estrutura da vida na redução</div>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 8</div><div class="cena-title">A estrutura de uma redução</div></div>
+    <p>A formação das missões (reduções), como estavam organizadas e como agiam sincronizadas com os interesses da Espanha em assegurar os territórios, apesar de certa independência em relação ao sistema colonial espanhol.</p>
+    <p>(introduzir o conceito da evangelização, tupambaé, amabaé, cabildo, autossustentabilidade, industrialização, fornecimento de água, higiene, organização das estâncias, chácaras, pomares, quinta — ambientalização das espécies europeias / ervas medicinais).</p>
+    <p>Aqui precisamos de mais tempo pois há muita coisa para apresentar. (pode ser que seja melhor colocar esta cena após a fundação dos 7 povos / há o cuidado de se achar que não havia nada do outro lado do rio Uruguai ou no Paraguai — a ideia de se colocar antes é demonstrar que o modelo das reduções já estava em funcionamento no outro lado do rio Uruguai)</p>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 9</div><div class="cena-title">O retorno à banda oriental e a fundação dos 7 povos</div></div>
+    <p>A volta para a banda oriental do rio Uruguai (funda-se os 7 povos, sendo São Borja em 1682 a primeira e Santo Ângelo a última, em 1706).</p>
+    <p>Ênfase na territorialidade e na ilustração da ocupação do espaço com as estâncias e ervais (quase todo o território do atual RGS).</p>
+    <p>Mostrar o que eram os 30 povos em todo a Província Jesuítica do Paraguai.</p>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 10</div><div class="cena-title">A estrutura das reduções (ênfase nas pessoas e na vida cotidiana)</div></div>
+    <p>Esta é a parte que introduz o auge, pois deve mostrar as bases para a afirmativa da grandiosidade do nível de vida e espiritualidade alcançada nas reduções (apologia do triunfo), que será feito na próxima cena.</p>
+    <ul>
+      <li>Enfatizar a vida dos guaranis como cristãos e não mais como índios selvagens (foram 150 anos de convívio dentro deste sistema reducional) / ressaltar o aspecto na vida e organização das reduções;</li>
+      <li>Mostrar que apenas dois padres comandavam com a ajuda dos caciques um grupo de mais de 6000 guaranis;</li>
+      <li>Organização administrativa no formato de Cabildo;</li>
+      <li>Mostrar a estrutura urbana, casa dos padres, colégio, oficinas, cabildo;</li>
+      <li>Sistemas sanitários, escoamento de água da chuva, fontes...;</li>
+      <li>Sistema produtivo e o comércio com Buenos Aires e Corrientes (navegação no rio Ijuí e Uruguai);</li>
+      <li>Interior da igreja com os retábulos e esculturas (ilustrar com imagens de igrejas atuais similares ao que existia aqui — Peru e México).</li>
+    </ul>
+    <p><em>Nota:</em> Aqui pode-se comparar com as demais cidades da América na época, pois Salvador, como capital do Brasil tinha 10.000 habitantes e o Rio de Janeiro 3.000 habitantes. (Lembrar que em 1680 foi fundada a Colônia do Sacramento)</p>
+  </div>
+
+  <div class="parte">
+    <div class="parte-num">Parte 3 · 40%</div>
+    <div class="parte-title">O segundo ciclo missioneiro — O apogeu</div>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 11</div><div class="cena-title">Coroamento da mensagem do ufanismo</div></div>
+    <p>Após a cena anterior apresentar a estruturação e o modo de vida, aqui nos concentraremos nos destaques e situações ímpares que distinguem as reduções.</p>
+    <ul>
+      <li>Dar ênfase ao esplendor e ao triunfo da humanidade;</li>
+      <li>Estado Industrial e exportador;</li>
+      <li>Primeiro alto-forno das Américas (transformaram minério de ferro extraído da pedra itacuru em ferro — domínio do ciclo siderúrgico);</li>
+      <li>Berço da experiência do cooperativismo mundial;</li>
+      <li>Organização territorial e urbana das reduções;</li>
+      <li>Tem muito subsídio no Inventário do Brabo sobre o que foi encontrado na redução de Santo Ângelo.</li>
+    </ul>
+    <p>Na parte referente ao interior das igrejas, podemos usar da "liberdade artística" e usar as ilustrações dos retábulos das igrejas da época e que estão preservadas (México, Peru, Assunção).</p>
+    <p><em>Nota:</em> Podemos usar as esculturas que existem espalhadas pelos museus do Estado e também o que existe nas igrejas das reduções do Paraguai e Argentina.</p>
+    <p>O desafio aqui é chamar a atenção para a redução de Santo Ângelo — precisamos criar algum destaque para amarrar o espetáculo ao local onde a projeção está acontecendo.</p>
+  </div>
+
+  <div class="parte">
+    <div class="parte-num">Parte 4 · 10%</div>
+    <div class="parte-title">As pressões externas / início do ambiente para a Guerra Guaranítica</div>
+  </div>
+
+  <p>Mostrar a extensão territorial ocupada pelas missões antes da existência das atuais fronteiras dos Países (enfatizar que o território missioneiro era muito maior que as fronteiras atuais dos Países individuais) — Ênfase na territorialidade.</p>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 12</div><div class="cena-title">Os ambientes limítrofes</div></div>
+    <p>Iniciar a apresentação dos cenários de pressão que levam à assinatura do Tratado de Madri e ao início da Guerra Guaranítica. Aqui seria apresentado as situações que contribuíram para o processo de destruição das Missões.</p>
+    <ul>
+      <li>Ampliação da pressão territorial portuguesa;</li>
+      <li>Fundação das cidades portuguesas (Colônia em 1680 — Rio Grande — Forte de Rio Pardo);</li>
+      <li>Tratados de limites.</li>
+    </ul>
+    <p>Isso é importante para situar os "atuais gaúchos" sobre o fato que por muito tempo o território do atual RGS foi espanhol e ocupado pelos missioneiros quase na sua integralidade e que as fronteiras vieram muito posteriormente.</p>
+    <p>Poderíamos mostrar um mapa do RGS com a evolução das fronteiras ao longo dos anos e alterando os "donos".</p>
+    <p>Aqui podemos começar a introduzir a figura lendária do Sepé Tiarajú (mas sem relacionar com a participação dele na Guerra Guaranítica).</p>
+    <p>Essa parte, pode começar a apresentar os fatores que levam as Coroas Ibéricas a decidirem pela intervenção na região, que é o início do fim das Missões.</p>
+  </div>
+
+  <div class="parte">
+    <div class="parte-num">Parte 5 · 10%</div>
+    <div class="parte-title">O processo de destruição</div>
+  </div>
+
+  <p><em>Avaliar junto com os roteiristas sobre a relevância da inclusão desta parte pois mostra um momento da história que não queremos enaltecer neste primeiro momento. Quem sabe deixamos para uma segunda fase e um novo filme?</em></p>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 13</div><div class="cena-title">O fim da utopia</div></div>
+    <p>Apresentar, sem muita ênfase, o processo da Guerra Guaranítica, dando forma ao fechamento da apresentação e a migração para o processo de ruínas e posterior ocupação colonial.</p>
+    <p>É importante demonstrar que houve uma transição desastrosa, culminando com a expulsão dos jesuítas, troca de comando entre os espanhóis e portugueses, novos conflitos e cada vez mais os guaranis missioneiros estavam alijados do processo de decisão e foram sendo absorvidos pelas novas civilizações povoadoras do território.</p>
+    <ul>
+      <li>Interesses externos;</li>
+      <li>Guerra Guaranítica;</li>
+      <li>Anulação dos tratados (tudo foi desfeito, mas já era tarde);</li>
+      <li>Expulsão dos jesuítas / extinção da ordem;</li>
+      <li>O fim da utopia;</li>
+      <li>Disputa pelo comando do território (Artigas, Rivera, Borges do Canto, Chagas Santos, etc.);</li>
+      <li>Vitória dos portugueses e início da colonização.</li>
+    </ul>
+  </div>
+
+  <div class="parte">
+    <div class="parte-num">Parte 6 · 5%</div>
+    <div class="parte-title">Fechamento</div>
+  </div>
+
+  <div class="cena">
+    <div class="cena-head"><div class="cena-num">Cena 14</div><div class="cena-title">O fechamento</div></div>
+    <p>Trazer a figura do anjo da guarda para apresentar alguma mensagem final sobre o ocorrido e deixar algo para refletir:</p>
+    <ul>
+      <li>O conceito do verdadeiro cristianismo. O que as missões jesuíticas-guarani tinham de diferente pois aqui foi o único lugar que o processo de evangelização durou tanto tempo. Qual a influência da estrutura reducional e a cultura guarani no sucesso deste projeto.</li>
+      <li>A interferência de uma cultura em outra (mescla).</li>
+      <li>O berço do cooperativismo mundial.</li>
+      <li>Como seriam as missões sem a interferência da Guerra?</li>
+    </ul>
+  </div>
+
+  <h3>Resolução da máscara</h3>
+  <p>3800 × 3840 Pixels.</p>
+  <p>Visando facilitar a produção do "demo" podemos fornecer a máscara em arquivo com extensão "png". A solicitação pode ser feita pelo e-mail <a href="mailto:turismo@santoangelo.rs.gov.br">turismo@santoangelo.rs.gov.br</a> ou por telefone (55) 3312-0178.</p>
+</section>
+
+<footer>
+  <span>ADA · Catedral Angelopolitana · Concorrência 002/2026</span>
+  <span>ETP diagramado · v1 · 2026-04-29 · fonte: <a href="../DOCUMENTOS%20BAIXADOS/856753_OCR.txt" target="_blank">856753_OCR.txt</a></span>
+</footer>
+
+</div>
+</body>
+</html>
