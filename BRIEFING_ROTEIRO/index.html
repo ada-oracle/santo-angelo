@@ -675,21 +675,37 @@
 <script>
 /* Converte cada chip .src (span) em um <a> clicável apontando para o documento-fonte */
 (function(){
-  const DOCS = {
-    edital: '../DOCUMENTOS%20BAIXADOS/856752.pdf',
-    etp:    '../ETP/index.html',
-    etpOcr: '../ETP/index.html',
-    tr:     '../DOCUMENTOS%20BAIXADOS/639083919405691533639047770653842423112330_TR.PDF'
-  };
+  const ETP   = '../ETP/index.html';
+  const EDITAL= '../DOCUMENTOS%20BAIXADOS/856752.pdf';
+  const TR    = '../DOCUMENTOS%20BAIXADOS/639083919405691533639047770653842423112330_TR.PDF';
+
+  // Mapeia faixas de linha do OCR do ETP para âncoras dentro de ETP/index.html.
+  // Faixas vêm das próprias citações usadas neste briefing.
+  function etpAnchor(text){
+    const m = text.match(/l\.\s*(\d+)/);
+    if(!m) return ETP; // ETP sem linha → raiz
+    const n = parseInt(m[1],10);
+    if(n >= 842  && n <= 1188) return ETP + '#anexo1';     // Anexo 1 — 14 cenas
+    if(n >= 1190 && n <= 1199) return ETP + '#anexo1';     // máscara (final do Anexo)
+    if(n >= 467  && n <= 562)  return ETP + '#hab';        // habilitação técnica + alíneas e/f
+    if(n >= 389  && n <= 463)  return ETP + '#elim';       // eliminatórios + julgamento
+    if(n >= 343  && n <= 388)  return ETP + '#julgamento'; // julgamento NTn ≥ 70
+    if(n >= 149  && n <= 342)  return ETP + '#criterios';  // 14 critérios pontuáveis
+    if(n >= 113  && n <= 148)  return ETP + '#s4';         // requisitos / DEMO
+    if(n >= 99   && n <= 111)  return ETP + '#s3';         // alinhamento
+    if(n >= 42   && n <= 97)   return ETP + '#s2';         // necessidade
+    if(n >= 18   && n <= 40)   return ETP + '#s1';         // objeto
+    if(n >= 612  && n <= 666)  return ETP + '#s7';         // valor + parcelas
+    if(n >= 668  && n <= 739)  return ETP + '#s9';         // entrega
+    return ETP;
+  }
 
   function pickHref(text){
     const t = text.toLowerCase();
-    // OCR txt tem linhas numeradas — usar quando a citação cita "l. NNN"
-    if(/\bl\.\s*\d/.test(t) && t.includes('etp')) return DOCS.etpOcr;
-    if(t.includes('edital'))  return DOCS.edital;
-    if(t.includes(' tr ') || t.startsWith('tr,') || t.startsWith('📄 tr')) return DOCS.tr;
-    if(t.includes('etp'))     return DOCS.etp;
-    return DOCS.etpOcr;
+    if(t.includes('edital'))  return EDITAL;
+    if(t.includes(' tr ') || t.startsWith('tr,') || t.startsWith('📄 tr')) return TR;
+    if(t.includes('etp'))     return etpAnchor(t);
+    return ETP;
   }
 
   document.querySelectorAll('span.src').forEach(span => {
