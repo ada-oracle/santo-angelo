@@ -3,156 +3,121 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Santo Ângelo · Concorrência 002/2026 — ADA</title>
-<meta name="description" content="Painel interno ADA — inscrição na Concorrência Eletrônica 002/2026 do Município de Santo Ângelo/RS." />
+<title>Painel · Catedral Angelopolitana — ADA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet" />
 <style>
   :root{
     --page-bg:#111111;
+    --sec-bg:#1A1A1A;
+    --card-bg:#222222;
     --accent:#FFD600;
-    --on-surface:#FFD600;
     --ink:#FFFFFF;
     --ink-mid:rgba(255,255,255,.55);
     --ink-faint:rgba(255,255,255,.35);
-    --sec-bg:#1A1A1A;
-    --card-bg:#222222;
     --border:rgba(255,214,0,.12);
     --border-strong:rgba(255,214,0,.30);
   }
   *{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-weight:400;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--border-strong)}
-  a:hover{border-bottom-color:var(--accent)}
+  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--accent);color:#111}
+  a{color:var(--accent);text-decoration:none}
 
-  /* Layout */
   .wrap{max-width:1080px;margin:0 auto;padding:32px 24px 96px}
-  .hairline{height:1px;background:var(--border);margin:32px 0}
 
-  /* Header */
-  header.ada-nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--border)}
+  header.ada-nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
   .wordmark{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;letter-spacing:.02em;color:var(--accent)}
   .wordmark::before{content:"";display:inline-block;width:10px;height:10px;background:var(--accent);margin-right:10px;vertical-align:1px}
   .nav-meta{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
 
-  /* Hero */
-  .hero{padding:40px 0 8px}
-  h1.hero-title{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(34px,5.5vw,56px);line-height:1.05;color:var(--ink);margin:0 0 24px;letter-spacing:-.01em}
+  .hero{padding:56px 0 32px}
+  h1.hero-title{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(34px,5.5vw,56px);line-height:1.05;color:var(--ink);margin:0;letter-spacing:-.01em}
   h1.hero-title em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;color:var(--accent)}
 
-  /* Docs nav — 4 cards */
-  .docs-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin:0 0 8px;border:1px solid var(--border)}
-  @media (max-width:640px){.docs-nav{grid-template-columns:1fr 1fr}}
-  .docs-nav a{background:var(--sec-bg);padding:18px 16px;display:flex;flex-direction:column;gap:8px;border:0;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--ink);transition:background .15s ease}
-  .docs-nav a span{font-size:20px;line-height:1}
-  .docs-nav a:hover{background:var(--card-bg);color:var(--accent);border:0}
+  /* 3 cards principais */
+  .docs-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin:48px 0 0;border:1px solid var(--border-strong)}
+  @media (max-width:720px){.docs-nav{grid-template-columns:1fr}}
+  .docs-nav a{background:var(--sec-bg);padding:36px 28px;display:flex;flex-direction:column;gap:14px;color:var(--ink);transition:background .15s ease;text-decoration:none}
+  .docs-nav a:hover{background:var(--card-bg)}
+  .docs-nav .icon{font-size:32px;line-height:1}
+  .docs-nav .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+  .docs-nav .name{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;color:var(--ink);line-height:1.15}
+  .docs-nav .desc{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink-mid);line-height:1.55;margin-top:auto}
+  .docs-nav a:hover .name{color:var(--accent)}
 
-  /* Stats grid */
-  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);margin:40px 0;border:1px solid var(--border)}
-  .stat{background:var(--sec-bg);padding:18px 20px}
-  .stat .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
-  .stat .v{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;color:var(--accent);line-height:1.1}
-  .stat .v small{font-size:12px;color:var(--ink-mid);letter-spacing:.04em}
+  /* Banner data limite */
+  .deadline{margin:48px 0 0;padding:28px 32px;background:linear-gradient(135deg,#1a1500 0%,#0d0d0d 100%);border:1px solid var(--accent);border-left:6px solid var(--accent)}
+  .deadline-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(255,214,0,.18)}
+  .deadline .when{font-family:'DM Mono',monospace;font-weight:300;font-size:32px;color:var(--accent);line-height:1;letter-spacing:-.01em}
+  .deadline .what{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-mid)}
+  .deadline .what b{color:var(--ink)}
+  .deadline-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px 28px;margin-top:6px}
+  @media (max-width:720px){.deadline-grid{grid-template-columns:1fr}}
+  .deadline-row{display:flex;flex-direction:column;gap:4px}
+  .deadline-row .lbl{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+  .deadline-row .val{font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);line-height:1.5;word-break:break-word}
+  .deadline-row .val a{color:var(--accent);border-bottom:1px solid rgba(255,214,0,.3);text-decoration:none}
+  .deadline-row .val a:hover{border-bottom-color:var(--accent)}
+  .deadline-steps{margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,214,0,.18)}
+  .deadline-steps .lbl{font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:10px}
+  .deadline-steps ol{margin:0;padding-left:22px;font-family:'DM Mono',monospace;font-size:12px;color:var(--ink-mid);line-height:1.7}
+  .deadline-steps ol li{margin-bottom:5px}
+  .deadline-steps ol li b{color:var(--ink)}
+  .deadline-steps ol li code{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--accent);background:#0d0d0d;padding:1px 6px;border:1px solid var(--border-strong)}
 
-  /* Progress */
-  .progress{margin:32px 0 8px}
-  .progress-meta{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid);margin-bottom:8px}
-  .progress-bar{height:4px;background:var(--card-bg);border:1px solid var(--border);position:relative;overflow:hidden}
-  .progress-bar > span{display:block;height:100%;background:var(--accent);transition:width .6s cubic-bezier(.2,.7,.2,1)}
+  /* Sections */
+  section.block{margin:48px 0 0}
+  section.block h2{font-family:'DM Mono',monospace;font-weight:300;font-size:22px;color:var(--ink);margin:0 0 6px;padding-bottom:10px;border-bottom:1px solid var(--accent);letter-spacing:-.01em}
+  section.block h2 small{display:block;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
 
-  /* Doc card (renderiza o STATUS.md) */
-  .doc{background:var(--sec-bg);border:1px solid var(--border);padding:40px 44px;margin-top:32px}
-  @media (max-width:640px){.doc{padding:24px 20px}}
+  /* Grupo do checklist */
+  .group{margin:32px 0 0;background:var(--sec-bg);border:1px solid var(--border-strong);border-left:4px solid var(--accent)}
+  .group-head{padding:18px 22px;border-bottom:1px solid var(--border);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+  .group-letter{font-family:'DM Mono',monospace;font-weight:300;font-size:28px;color:var(--accent);line-height:1}
+  .group-title{font-family:'DM Mono',monospace;font-weight:300;font-size:18px;color:var(--ink);letter-spacing:.01em;flex:1}
+  .group-src{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint)}
+  .group-body{padding:14px 22px 22px}
 
-  .doc h1, .doc h2, .doc h3, .doc h4{font-family:'DM Mono',monospace;font-weight:300;color:var(--ink);letter-spacing:-.005em}
-  .doc h1{font-size:28px;margin:0 0 8px;color:var(--ink);display:none}
-  .doc h2{font-size:22px;color:var(--accent);margin:48px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-  .doc h2:first-of-type{margin-top:0}
-  .doc h3{font-family:'Syne',sans-serif;font-weight:600;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin:32px 0 12px}
-  .doc p, .doc li{color:var(--ink-mid)}
-  .doc strong{color:var(--ink);font-weight:600}
-  .doc em{color:var(--accent);font-style:normal;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic}
-  .doc blockquote{margin:18px 0;padding:14px 18px;border-left:2px solid var(--accent);background:var(--card-bg);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:17px;color:var(--ink)}
-  .doc blockquote p{color:var(--ink);margin:0}
-  .doc code{font-family:'DM Mono',monospace;font-size:13px;color:var(--accent);background:var(--card-bg);padding:1px 6px;border:1px solid var(--border)}
-  .doc hr{border:0;border-top:1px solid var(--border);margin:40px 0}
+  /* Checkbox item */
+  .chk{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--border);cursor:pointer}
+  .chk:last-child{border-bottom:0}
+  .chk input[type="checkbox"]{position:absolute;opacity:0;pointer-events:none}
+  .chk .box{width:18px;height:18px;border:1px solid var(--border-strong);background:transparent;flex-shrink:0;margin-top:2px;position:relative;transition:.15s}
+  .chk:hover .box{border-color:var(--accent)}
+  .chk input:checked + .box{background:var(--accent);border-color:var(--accent)}
+  .chk input:checked + .box::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border-right:2px solid #111;border-bottom:2px solid #111;transform:rotate(45deg)}
+  .chk .body{flex:1;min-width:0}
+  .chk .name{font-family:'DM Mono',monospace;font-size:13.5px;color:var(--ink);line-height:1.45}
+  .chk input:checked ~ .body .name{color:var(--ink-faint);text-decoration:line-through}
+  .chk .meta{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-mid);line-height:1.55;margin-top:4px}
+  .chk .src{display:inline-block;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:#0d0d0d;border:1px solid var(--border-strong);padding:2px 7px;margin-top:6px}
+  .chk-na{opacity:.4}
+  .chk-na .name::after{content:" · não se aplica à ADA";color:var(--ink-faint);font-size:11px;text-transform:none;letter-spacing:0}
 
-  /* Lists */
-  .doc ul{list-style:none;padding-left:0;margin:12px 0}
-  .doc ul li{position:relative;padding-left:18px;margin:6px 0}
-  .doc ul li::before{content:"·";position:absolute;left:4px;top:-2px;color:var(--accent);font-weight:700}
+  /* Botões de anexo do item */
+  .item-actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .item-btn{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:6px 12px;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:.15s;cursor:pointer}
+  .item-btn:hover{background:var(--accent);color:#111;border-color:var(--accent)}
+  .item-btn.todo{color:var(--ink-faint);border-style:dashed}
+  .item-btn.todo:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
+  .item-btn::after{content:" ↗";font-size:9px;opacity:.6}
+  .item-btn.todo::after{content:" · em construção";font-size:9px;opacity:.6;letter-spacing:0;text-transform:none}
 
-  /* Task list (checkboxes) */
-  .doc ul li.task{padding-left:32px}
-  .doc ul li.task::before{content:none}
-  .doc ul li.task .box{position:absolute;left:0;top:4px;width:14px;height:14px;border:1px solid var(--border-strong);background:transparent;display:inline-block}
-  .doc ul li.task.done .box{background:var(--accent);border-color:var(--accent);position:relative}
-  .doc ul li.task.done .box::after{content:"";position:absolute;left:3px;top:0;width:4px;height:8px;border-right:2px solid #111;border-bottom:2px solid #111;transform:rotate(45deg)}
-  .doc ul li.task.done > .label{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--ink-faint)}
-  .doc ul li.task .label{display:inline}
+  /* Docs footer — biblioteca de documentos */
+  .docs-footer{margin-top:64px;padding-top:32px;border-top:1px solid var(--accent)}
+  .docs-footer h3{font-family:'DM Mono',monospace;font-weight:300;font-size:18px;color:var(--ink);margin:0 0 4px;letter-spacing:-.005em}
+  .docs-footer h3 small{display:block;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+  .docs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin-top:18px}
+  .docs-grid a{background:var(--sec-bg);padding:14px 16px;display:flex;flex-direction:column;gap:6px;color:var(--ink);text-decoration:none;border:0;transition:.15s}
+  .docs-grid a:hover{background:var(--card-bg)}
+  .docs-grid a .ico{font-size:18px;line-height:1}
+  .docs-grid a .name{font-family:'DM Mono',monospace;font-size:12px;color:var(--ink);line-height:1.4}
+  .docs-grid a:hover .name{color:var(--accent)}
+  .docs-grid a .meta{font-family:'DM Mono',monospace;font-size:9.5px;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;margin-top:auto}
+  .docs-grid a.local .meta{color:var(--accent)}
 
-  /* Subgrupo (item pai com sub-checklist) */
-  .doc ul li.subgroup{padding-left:0;margin:22px 0 8px}
-  .doc ul li.subgroup::before{content:none}
-  .doc ul li.subgroup > strong{font-family:'Syne',sans-serif;font-weight:600;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
-  .doc ul li.subgroup > em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--ink-mid);font-size:14px;margin-left:6px}
-  .doc ul li.subgroup > ul{margin-top:8px;padding-left:0;border-left:1px solid var(--border);padding-left:14px}
-
-  /* Badges */
-  .badge{display:inline-block;font-family:'DM Mono',monospace;font-weight:400;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:2px 7px;border:1px solid;border-radius:2px;margin-left:8px;vertical-align:2px;line-height:1.3}
-  .badge--eliminatorio{color:#ff5252;border-color:rgba(255,82,82,.45);background:rgba(255,82,82,.08)}
-  .badge--obrig{color:var(--accent);border-color:var(--border-strong);background:rgba(255,214,0,.08)}
-  .badge--estrat{color:var(--ink-mid);border-color:var(--border);background:transparent}
-
-  /* Tables */
-  .doc table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14px}
-  .doc table th, .doc table td{padding:10px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
-  .doc table th{font-family:'DM Mono',monospace;font-weight:400;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-  .doc table td{color:var(--ink-mid)}
-
-  /* Footer */
-  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
-  footer a{color:var(--ink-mid);border-bottom-color:var(--border)}
-
-  /* Loading */
-  .loading{padding:80px 20px;text-align:center;font-family:'DM Mono',monospace;color:var(--ink-faint);font-size:12px;letter-spacing:.12em;text-transform:uppercase}
-
-  /* Selection */
-  ::selection{background:var(--accent);color:#111}
-
-  /* Botão "+ info" inline */
-  .info-btn{display:inline-flex;align-items:center;gap:4px;margin-left:8px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:2px 8px;cursor:pointer;border-radius:2px;transition:all .15s ease;vertical-align:1px;text-decoration:none}
-  .info-btn:hover{background:var(--accent);color:#111;border-color:var(--accent)}
-  a.info-btn{border-bottom:1px solid var(--border-strong)}
-  a.info-btn:hover{border-bottom-color:var(--accent)}
-  a.info-btn::after{content:"↗";margin-left:4px;font-size:9px;opacity:.7}
-
-  /* Modal */
-  .modal-back{position:fixed;inset:0;background:rgba(0,0,0,.78);display:none;align-items:flex-start;justify-content:center;padding:40px 16px;z-index:1000;overflow-y:auto}
-  .modal-back[data-open="true"]{display:flex;animation:fade .2s ease}
-  @keyframes fade{from{opacity:0}to{opacity:1}}
-  .modal{background:var(--sec-bg);border:1px solid var(--border-strong);max-width:680px;width:100%;padding:36px 40px;position:relative;margin:auto}
-  @media (max-width:640px){.modal{padding:24px 22px}}
-  .modal .close{position:absolute;top:14px;right:16px;background:transparent;border:0;color:var(--ink-mid);font-family:'DM Mono',monospace;font-size:14px;cursor:pointer;padding:4px 8px}
-  .modal .close:hover{color:var(--accent)}
-  .modal .eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:8px}
-  .modal h3{font-family:'DM Mono',monospace;font-weight:300;font-size:24px;color:var(--ink);margin:0 0 18px;letter-spacing:-.005em}
-  .modal h4{font-family:'Syne',sans-serif;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:24px 0 8px}
-  .modal p, .modal li{color:var(--ink-mid);font-size:14px;line-height:1.6}
-  .modal ul{padding-left:18px}
-  .modal ul li{margin:4px 0}
-  .modal blockquote{margin:14px 0;padding:14px 18px;border-left:2px solid var(--accent);background:var(--card-bg);font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);font-style:normal;line-height:1.55}
-  .modal .src{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-faint);margin-top:24px;padding-top:14px;border-top:1px solid var(--border)}
-  .modal .src code{color:var(--accent);background:transparent;border:0;padding:0}
-
-  /* Bloco de contrato */
-  .contract-box{background:var(--card-bg);border:1px solid var(--border);padding:20px 24px;margin:14px 0;font-family:'DM Mono',monospace;font-size:12.5px;line-height:1.65;color:var(--ink);white-space:pre-wrap;max-height:420px;overflow-y:auto}
-  .contract-box .ph{color:var(--accent);background:rgba(255,214,0,.10);padding:0 4px}
-  .contract-actions{display:flex;gap:8px;margin:8px 0 18px;flex-wrap:wrap}
-  .contract-actions button{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid var(--border-strong);padding:6px 12px;cursor:pointer;border-radius:2px;transition:all .15s ease}
-  .contract-actions button:hover{background:var(--accent);color:#111;border-color:var(--accent)}
-  .contract-actions button.ok{color:#111;background:var(--accent);border-color:var(--accent)}
+  footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
 </style>
 </head>
 <body>
@@ -160,370 +125,739 @@
 
   <header class="ada-nav">
     <span class="wordmark">ADA · Catedral Angelopolitana</span>
-    <span class="nav-meta">Concorrência 002/2026 · Santo Ângelo/RS</span>
+    <span class="nav-meta">Painel da licitação · 002/2026</span>
   </header>
 
   <section class="hero">
-    <h1 class="hero-title">Painel da <em>licitação</em>.</h1>
+    <h1 class="hero-title">Materiais do <em>projeto</em>.</h1>
+  </section>
 
-    <nav class="docs-nav" aria-label="Documentos do projeto">
-      <a href="ETP/index.html"><span>📑</span> ETP</a>
-      <a href="STORYBOARD/index.html"><span>🎬</span> Storyboard</a>
-      <a href="PROMPTS_ANIMACAO/index.html"><span>🎞️</span> Prompts</a>
-      <a href="BRIEFING_ROTEIRO/index.html"><span>📝</span> Briefing</a>
-    </nav>
+  <nav class="docs-nav" aria-label="Materiais do projeto">
+    <a href="STORYBOARD/index.html">
+      <div class="icon">🎬</div>
+      <div class="label">Roteiro visual</div>
+      <div class="name">Storyboard</div>
+      <div class="desc">3 atos · 9 sub-atos · 30 minutos. Estrutura narrativa em frames de referência.</div>
+    </a>
 
-    <div class="stats">
-      <div class="stat"><div class="k">Sessão pública</div><div class="v">11/05/2026 <small>09h</small></div></div>
-      <div class="stat"><div class="k">Teto oficial</div><div class="v">R$ 2.035.039 <small>,00</small></div></div>
-      <div class="stat"><div class="k">Garantia 1%</div><div class="v">R$ 20.350 <small>,39</small></div></div>
-      <div class="stat"><div class="k">Vigência contrato</div><div class="v">240 <small>dias</small></div></div>
+    <a href="PROMPTS_ANIMACAO/index.html">
+      <div class="icon">🎞️</div>
+      <div class="label">Roteiro de prompts</div>
+      <div class="name">Prompts de animação</div>
+      <div class="desc">22 keyframes · 21 transições. Direção visual cena a cena para Freepik / image-to-video.</div>
+    </a>
+
+    <a href="BRIEFING_ROTEIRO/index.html">
+      <div class="icon">📝</div>
+      <div class="label">Para o roteirista</div>
+      <div class="name">Briefing roteiro</div>
+      <div class="desc">Tudo que o edital exige do roteiro, com citação da fonte. Pronto para enviar ao Alexandre.</div>
+    </a>
+  </nav>
+
+  <div class="deadline">
+    <div class="deadline-head">
+      <div class="when">11/05/2026 · 09h</div>
+      <div class="what"><b>Sessão pública</b> · postagem de propostas até <b>08h</b> do mesmo dia</div>
     </div>
 
-    <div class="progress" id="progress" hidden>
-      <div class="progress-meta"><span id="progress-label">Progresso das tarefas</span><span id="progress-count">0/0</span></div>
-      <div class="progress-bar"><span id="progress-fill" style="width:0%"></span></div>
+    <div class="deadline-grid">
+      <div class="deadline-row">
+        <span class="lbl">Plataforma de envio</span>
+        <span class="val"><a href="https://www.pregaoonlinebanrisul.com.br" target="_blank">www.pregaoonlinebanrisul.com.br</a> ↗</span>
+      </div>
+      <div class="deadline-row">
+        <span class="lbl">Janela de cadastro de propostas</span>
+        <span class="val">17/03/2026 (08h) → 11/05/2026 (08h) · pode editar e reenviar quantas vezes quiser durante a janela</span>
+      </div>
+      <div class="deadline-row">
+        <span class="lbl">Site oficial da Prefeitura</span>
+        <span class="val"><a href="https://www.santoangelo.rs.gov.br" target="_blank">www.santoangelo.rs.gov.br</a> ↗ · edital e anexos publicados</span>
+      </div>
+      <div class="deadline-row">
+        <span class="lbl">Esclarecimentos / impugnação</span>
+        <span class="val">Até <b>3 dias úteis antes</b> de 11/05/2026 → <a href="mailto:licitacao@santoangelo.rs.gov.br">licitacao@santoangelo.rs.gov.br</a></span>
+      </div>
+      <div class="deadline-row">
+        <span class="lbl">Contato técnico (máscara, dúvidas técnicas)</span>
+        <span class="val"><a href="mailto:turismo@santoangelo.rs.gov.br">turismo@santoangelo.rs.gov.br</a> · (55) 3312-0178 (08–11h30 / 13h30–17h)</span>
+      </div>
+      <div class="deadline-row">
+        <span class="lbl">Garantia da proposta · 1%</span>
+        <span class="val">Conta calção <b>04.146692.0-6</b> · Ag. <b>0370</b> Banrisul · ou guia ISSQN no Espaço Cidadão · validade ≥ 60 dias</span>
+      </div>
+    </div>
+
+    <div class="deadline-steps">
+      <div class="lbl">Procedimento de envio</div>
+      <ol>
+        <li><b>Credenciar a ADA</b> previamente em <code>pregaoonlinebanrisul.com.br</code> → gera chave + senha (fazer com semanas de antecedência)</li>
+        <li><b>Reunir o pacote completo</b> (proposta técnica + habilitação + declarações + Anexo I + Anexo II)</li>
+        <li><b>Depositar a garantia</b> de 1% e anexar o comprovante</li>
+        <li><b>Upload na plataforma</b> dentro da janela 17/03 → 11/05 (08h) — somente pelo sistema, não aceita e-mail nem entrega física</li>
+        <li><b>Conferir após upload</b>: baixar e abrir tudo num computador diferente para garantir legibilidade (item 4.1.7 do edital — arquivo ilegível desclassifica)</li>
+        <li><b>11/05 às 09h</b>: acompanhar a sessão pública pelo próprio sistema</li>
+      </ol>
+    </div>
+  </div>
+
+  <section class="block">
+    <h2>Para o edital <small>Documentos para upload na plataforma Banrisul — até 11/05/2026 (08h)</small></h2>
+
+    <div class="group">
+      <div class="group-head">
+        <span class="group-letter">1</span>
+        <span class="group-title">Habilitação Jurídica</span>
+        <span class="group-src">Edital · item 5.5 · p. 8</span>
+      </div>
+      <div class="group-body">
+
+        <div style="margin:0 0 14px;padding:10px 14px;background:rgba(255,214,0,.06);border:1px solid var(--border-strong);border-left:3px solid var(--accent);font-family:'DM Mono',monospace;font-size:11px;color:var(--ink);line-height:1.55">
+          ⚠ <strong style="color:var(--accent)">Regra geral (Edital 5.3):</strong> documentos sem prazo de validade só são aceitos se emitidos com <strong>data não superior a 30 dias</strong> da abertura da licitação. Janela de emissão: <strong>11/04/2026 → 11/05/2026</strong>. Vale para todos os blocos.
+        </div>
+
+        <label class="chk">
+          <input type="checkbox" data-key="hj-a">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">a) Cédula de Identidade dos diretores</div>
+            <div class="meta">RG do(s) titular(es) / responsável(is) da ADA. Aplica-se à ADA.</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/rg-tatiane.pdf" target="_blank">🪪 RG Tatiane Gonzalez</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="hj-b">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">b) Registro comercial, no caso de empresa individual</div>
+            <div class="meta">A ADA é empresa individual → este é o documento principal de habilitação jurídica. Requerimento de Empresário arquivado na Junta Comercial (com todas as alterações).</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/registro-comercial.pdf" target="_blank">📜 Registro Comercial / Requerimento de Empresário</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk chk-na">
+          <input type="checkbox" data-key="hj-c" disabled>
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">c) Ato constitutivo, estatuto ou contrato social em vigor devidamente registrado, em se tratando de sociedades comerciais, e, no caso de sociedades por ações, acompanhado de documentos de eleição de seus administradores</div>
+            <div class="meta">Não aplicável — a ADA é empresa individual, não sociedade comercial nem S/A.</div>
+          </div>
+        </label>
+
+        <label class="chk chk-na">
+          <input type="checkbox" data-key="hj-d" disabled>
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">d) Inscrição do ato constitutivo, no caso de sociedades civis, acompanhada de prova de diretoria em exercício</div>
+            <div class="meta">Não aplicável — a ADA não é sociedade civil.</div>
+          </div>
+        </label>
+
+        <label class="chk chk-na">
+          <input type="checkbox" data-key="hj-e" disabled>
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">e) Decreto de autorização, em se tratando de empresa ou sociedade estrangeira em funcionamento no País, e ato de registro ou autorização para funcionamento expedido pelo órgão competente, quando a atividade assim o exigir</div>
+            <div class="meta">Não aplicável — a ADA não é empresa estrangeira.</div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-letter">2</span>
+        <span class="group-title">Regularidade Fiscal e Trabalhista</span>
+        <span class="group-src">Edital · item 5.6 · p. 8</span>
+      </div>
+      <div class="group-body">
+
+        <label class="chk">
+          <input type="checkbox" data-key="rf-a">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">a) Prova de inscrição no <strong style="color:var(--accent)">CNPJ</strong></div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/cnpj-ada.pdf" target="_blank">🏢 CNPJ ADA</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="rf-b">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">b) Prova de regularidade para com a Fazenda Federal e Dívida Ativa da União, mediante a apresentação de <strong style="color:var(--accent)">Certidão Conjunta</strong>, expedida pela Procuradoria Geral da Fazenda Nacional do domicílio ou sede da Licitante.</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/certidao-federal.pdf" target="_blank">📑 Certidão Federal + Dívida Ativa</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="rf-c">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">c) Prova de regularidade para com a Fazenda Estadual, mediante a apresentação de <strong style="color:var(--accent)">Certidão Negativa de Tributos Estaduais</strong> expedida pela Secretaria da Fazenda Estadual do domicílio ou sede da Licitante;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/certidao-estadual.pdf" target="_blank">📑 Certidão Estadual</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="rf-d">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">d) Prova de regularidade para com a Fazenda Municipal, mediante a apresentação de <strong style="color:var(--accent)">Certidão Negativa de Tributos Municipais</strong> do domicílio ou sede da Licitante;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/certidao-municipal.pdf" target="_blank">📑 Certidão Municipal</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="rf-e">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">e) Prova de regularidade para com o Sistema de Seguridade Social — <strong style="color:var(--accent)">INSS (CND)</strong>, somente se as contribuições sociais não estiverem englobadas na Prova de Regularidade com a Fazenda Federal.</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/inss-cnd.pdf" target="_blank">📑 INSS (CND)</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="rf-f">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">f) Prova de regularidade com o Fundo de Garantia por Tempo de Serviço — <strong style="color:var(--accent)">FGTS (CRS)</strong> demonstrando situação regular no cumprimento dos encargos sociais constituídos por lei.</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/fgts-crs.pdf" target="_blank">📑 FGTS (CRS)</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="rf-g">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">g) <strong style="color:var(--accent)">Certidão Negativa de Débitos Trabalhistas</strong> (Lei 12.440/11).</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/cndt.pdf" target="_blank">📑 CNDT</a>
+            </div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-letter">3</span>
+        <span class="group-title">Qualificação Técnica</span>
+        <span class="group-src">Edital · item 5.7 · p. 9–10</span>
+      </div>
+      <div class="group-body">
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-a">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">a) Comprovar a execução de 1 (um) ou mais projetos utilizando técnicas avançadas de projeção mapeada, similares ao objeto licitado;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-b">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">b) Comprovar o desenvolvimento de conteúdo audiovisual para salas imersivas ou exposições interativas ou instalações multimídias de caráter permanente ou semipermanente ou projeção mapeada estrutural, aderentes ao conteúdo, capacidade de contar histórias com clareza e coerência temática, e que demonstram elevada competência artística;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-c">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">c) Comprovar capacidade técnica na criação e execução de conteúdo audiovisual para projeção mapeada, incluindo o desenvolvimento de animações e personagens, a aplicação de efeitos visuais e simulações criativas e tecnicamente elaboradas, bem como a integração e sincronia entre som e imagem, de modo a construir narrativa audiovisual impactante, emocionalmente envolvente e adequada à projeção sobre superfícies arquitetônicas, utilizando técnicas de animação 2D, animação 3D e/ou filmagem;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-d">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">d) Comprovar capacidade de gestão e desenvolvimento de projetos complexos — apresentação de projetos semelhantes (que envolvam as técnicas realizadas — projeção mapeada, realidade aumentada e animação 2D e 3D;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-e">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">e) Comprovar que o roteirista indicado experiência comprovada em direção e/ou participação em projetos audiovisuais finalizados, os quais tenham sido exibidos publicamente e/ou selecionados ou premiados em festivais reconhecidos. Deverá ser apresentada, ainda, comprovação do vínculo do roteirista com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto. A inexistência de produção audiovisual pregressa do roteirista indicado constituirá condição de desclassificação da proponente;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="ROTEIRISTA/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="ROTEIRISTA/press-release.html" target="_blank">📰 Press release</a>
+              <a class="item-btn todo" href="ROTEIRISTA/contrato.html" target="_blank">📑 Contrato de vínculo</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-f">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">f) Comprovar que a equipe de historiadores indicada possui notório saber em Missões Jesuíticas, mediante a apresentação de, no mínimo, dois dos documentos ou comprovações abaixo, relacionados diretamente ao tema:</div>
+            <div class="meta">
+              <strong style="color:var(--accent)">5 comprovações possíveis (mínimo 2 por historiador):</strong><br>
+              I. Diploma de pós-graduação em História, Arqueologia, Antropologia ou áreas afins;<br>
+              II. Publicações acadêmicas, livros, capítulos, artigos, relatórios técnicos ou materiais educativos sobre Missões Jesuíticas;<br>
+              III. Participação comprovada em projetos, pesquisas, inventários, curadorias, exposições, produções culturais ou ações de educação patrimonial relacionadas às Missões Jesuíticas;<br>
+              IV. Atuação profissional comprovada como consultor, pesquisador, professor ou técnico especializado em projetos vinculados às Missões Jesuíticas;<br>
+              V. Certificados, declarações ou atestados de capacidade técnica emitidos por instituições públicas ou privadas que comprovem atuação na temática.<br><br>
+              <strong style="color:var(--accent)">+ Exigência adicional (vínculo):</strong><br>
+              Deverá ser apresentada, ainda, a comprovação de vínculo da equipe de historiadores com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto.
+            </div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="HISTORIADORES/guilherme.html" target="_blank">👤 Prof. Guilherme</a>
+              <a class="item-btn todo" href="HISTORIADORES/historiador-2.html" target="_blank">👤 Historiador 2 · a confirmar</a>
+              <a class="item-btn todo" href="HISTORIADORES/historiador-3.html" target="_blank">👤 Historiador 3 · a confirmar</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-g">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">g) Apresentar 1 (uma) ou mais cartas de recomendação de empresas que contrataram os serviços do escopo (objeto).</div>
+            <div class="item-actions">
+              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qt-h">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">h) CNPJ ativo com atividade na área do escopo.</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/cnpj-ada.pdf" target="_blank">🏢 CNPJ ADA</a>
+            </div>
+          </div>
+        </label>
+
+        <div style="margin-top:14px;padding-top:14px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-mid);line-height:1.6">
+          <strong style="color:var(--accent)">Observações (Edital 5.7, p. 10):</strong><br>
+          a) Não será admitida a comprovação de experiência exclusivamente acadêmica ou experimental;<br>
+          b) Será admitida a soma de experiências para fins de comprovação técnica;<br>
+          c) A Administração poderá diligenciar para verificar a autenticidade das informações apresentadas;<br>
+          d) A ausência de comprovação mínima exigida implicará inabilitação da licitante.
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-letter">4</span>
+        <span class="group-title">Qualificação Econômico-Financeira</span>
+        <span class="group-src">Edital · item 5.8 · p. 10–11</span>
+      </div>
+      <div class="group-body">
+
+        <label class="chk">
+          <input type="checkbox" data-key="qef-a">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">a) Balanço patrimonial, demonstração de resultado de exercício e demais demonstrações contábeis dos 2 (dois) últimos exercícios sociais, sendo que, em caso de a pessoa jurídica ter sido constituída há menos de 2 (dois) anos, a demonstração se limita ao último exercício;</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/balanco-2024.pdf" target="_blank">📊 Balanço + DRE 2024</a>
+              <a class="item-btn todo" href="DOCS_ADA/balanco-2025.pdf" target="_blank">📊 Balanço + DRE 2025</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qef-b">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">b) Os índices mínimos aceitáveis estão abaixo informados e serão apurados pela aplicação da fórmula abaixo:</div>
+            <div class="meta">
+              ÍNDICES MÍNIMOS ACEITÁVEIS:<br>
+              a) ILC — Índice de Liquidez Corrente ≥ 1,00 · ILC = AC / PC<br>
+              b) ILG — Índice de Liquidez Geral ≥ 1,00 · ILG = (AC + ARLP) / (PC + PELP)<br>
+              c) IEG — Índice de Endividamento Geral ≤ 0,50 · IEG = (PC + PELP) / AT<br><br>
+              AC = Ativo Circulante · ARLP = Ativo Realizável a Longo Prazo · AP = Ativo Permanente · PC = Passivo Circulante · PELP = Passivo Exigível a Longo Prazo · PL = Patrimônio Líquido.<br><br>
+              A apuração dos índices deverá ser apresentada em folha anexa ao balanço, devidamente assinada por profissional contábil habilitado. É vedada a substituição do balanço por balancete ou balanço provisório.
+            </div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/calculo-indices.pdf" target="_blank">🧮 Cálculo dos índices (contador)</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qef-c">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">c) Certidão negativa de feitos sobre falência expedida pelo distribuidor da sede do licitante, com data não superior a 30 dias anteriores à data de abertura do certame licitatório.</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/certidao-falencia.pdf" target="_blank">📑 Certidão de Falência</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qef-d">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">d) Certidão negativa de recuperação judicial ou extrajudicial expedida pelo distribuidor da sede da pessoa jurídica;</div>
+            <div class="meta">d.1) Nas hipóteses em que a certidão encaminhada for positiva, deve o licitante apresentar comprovante da homologação/deferimento pelo juízo competente do plano de recuperação judicial/extrajudicial em vigor.</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/certidao-recuperacao-judicial.pdf" target="_blank">📑 Certidão de Recuperação Judicial</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="qef-e">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">e) A licitante deverá prestar garantia de proposta conforme artigo 58, § 1º, da Lei nº 14.133/21 em qualquer uma das modalidades previstas no art. 96, § 1º, no percentual de 1% do valor orçado pela Administração.</div>
+            <div class="meta">
+              e.1) Em caso de ser em moeda corrente, o licitante deve efetuar depósito bancário na Conta Calção 04.146692.0-6; Ag. 0370 — Banrisul ou solicitar emissão de guia para pagamento junto ao Setor de ISSQN da Prefeitura, sito à Rua Antunes Ribas, 1134 (Espaço Cidadão).<br>
+              e.2) O prazo mínimo de validade da garantia de proposta será de 60 (sessenta) dias contados da data de entrega da mesma.<br>
+              e.3) A garantia de proposta da proponente vencedora será devolvida após a publicação do extrato do contrato firmado com a mesma.<br>
+              e.4) As garantias prestadas pelas demais proponentes serão devolvidas após a homologação da licitação.
+            </div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="DOCS_ADA/garantia-proposta.pdf" target="_blank">💰 Comprovante da Garantia 1%</a>
+            </div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-letter">5</span>
+        <span class="group-title">Das Declarações</span>
+        <span class="group-src">Edital · item 5.9 · p. 12</span>
+      </div>
+      <div class="group-body">
+
+        <div style="margin:0 0 14px;font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink-mid);line-height:1.55">Todos os licitantes devem apresentar as declarações abaixo, as quais têm modelo em anexo neste Edital. <span style="color:var(--ink-faint)">Numeração corrigida — o edital original repete "c)" duas vezes (typo).</span></div>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-a">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">a) Declaração de que atendem aos requisitos de habilitação, respondendo pela veracidade das informações prestadas;</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#03" target="_blank">📝 Anexo III · Habilitação</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-b">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">b) A declaração de que cumpre as exigências de reserva de cargos para pessoa com deficiência e para reabilitado da Previdência Social;</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#04" target="_blank">📝 Anexo IV · Reserva PCD</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-c1">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">c) Declaração de que sua proposta econômica compreenda a integralidade dos custos para atendimento dos direitos trabalhistas assegurados na Constituição Federal, nas leis trabalhistas, nas normas infralegais, nas convenções coletivas de trabalho e nos termos de ajustamento de conduta vigentes na data de entrega da proposta;</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#05" target="_blank">📝 Anexo V · Custos trabalhistas</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-c2">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">d) Declaração de atestado de visita, ou de conhecimento pleno das condições e peculiaridades da contratação assinado por profissional técnico do licitante;</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#10" target="_blank">📝 Anexo X · Conhecimento</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-d">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">e) Cumprimento do disposto no inciso XXXIII do art. 7º da Constituição Federal;</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#07" target="_blank">📝 Anexo VII · Não emprega menor</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-e">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">f) Declaração, assinada por profissional habilitado da área contábil, que ateste o atendimento pelo licitante dos índices econômicos;</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#06" target="_blank">📝 Anexo VI · Índices econômicos (contador)</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-f">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">g) Declaração de que não possui em seu quadro funcional ou societário servidor público na ativa.</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#11" target="_blank">📝 Anexo XI · Sem servidor público</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-me">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">h) Declaração de enquadramento como Microempresa (ME) — assinada pelo contador, conforme item 5.11 do edital. Habilita a ADA aos benefícios da LC 123/2006 (empate ficto, preferência em caso de empate de preço).</div>
+            <div class="item-actions">
+              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#08" target="_blank">📝 Anexo VIII · Enquadramento ME/EPP/Coop</a>
+            </div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <div class="group">
+      <div class="group-head">
+        <span class="group-letter">6</span>
+        <span class="group-title">Equipe</span>
+        <span class="group-src">Pode ser redundante com bloco 3 · só roteirista e historiadores são exigidos pelo edital</span>
+      </div>
+      <div class="group-body">
+
+        <label class="chk">
+          <input type="checkbox" data-key="eq-roteirista">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">Roteirista — Alexandre [sobrenome a confirmar]</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="EQUIPE/roteirista/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="EQUIPE/roteirista/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="eq-hist1">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">Historiador 1 — Prof. Guilherme [sobrenome a confirmar]</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="EQUIPE/historiador-1/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="EQUIPE/historiador-1/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="eq-hist2">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">Historiador 2 — a confirmar</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="EQUIPE/historiador-2/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="EQUIPE/historiador-2/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="eq-hist3">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">Historiador 3 — a confirmar</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="EQUIPE/historiador-3/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="EQUIPE/historiador-3/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="eq-direcao-exec">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">Direção Executiva — Tatiane Gonzalez</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="EQUIPE/tatiane/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="EQUIPE/tatiane/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="eq-direcao-art">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">Direção Artística — Caio Fazolin</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="EQUIPE/caio/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="EQUIPE/caio/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="eq-sound">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">Sound Design — a confirmar</div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="EQUIPE/sound-design/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="EQUIPE/sound-design/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+            </div>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    // Persiste checks no localStorage (por chave data-key)
+    document.querySelectorAll('.chk input[type="checkbox"][data-key]').forEach(cb => {
+      const key = 'edital-' + cb.dataset.key;
+      cb.checked = localStorage.getItem(key) === '1';
+      cb.addEventListener('change', () => {
+        localStorage.setItem(key, cb.checked ? '1' : '0');
+      });
+    });
+  </script>
+
+
+  <section class="docs-footer">
+    <h3>Documentos do processo <small>biblioteca · clique para abrir</small></h3>
+
+    <div class="docs-grid">
+
+      <a href="DOCUMENTOS%20BAIXADOS/856752.pdf" target="_blank">
+        <span class="ico">📄</span>
+        <span class="name">Edital nº 002/2026</span>
+        <span class="meta">PDF · 42 págs.</span>
+      </a>
+
+      <a href="ETP/index.html" class="local">
+        <span class="ico">📑</span>
+        <span class="name">Estudo Técnico Preliminar (ETP)</span>
+        <span class="meta">HTML · diagramado</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/639083919405691533639047770653842423112330_TR.PDF" target="_blank">
+        <span class="ico">📄</span>
+        <span class="name">Termo de Referência (TR)</span>
+        <span class="meta">PDF · 6 págs.</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/639083919405604177639047770232830908112330_Te.PDF" target="_blank">
+        <span class="ico">📄</span>
+        <span class="name">TR — Orçamentos (Anexo II Convênio)</span>
+        <span class="meta">PDF · 6 págs.</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/639083919405342031639047770071218576112330_Co.pdf" target="_blank">
+        <span class="ico">📄</span>
+        <span class="name">Convênio SEDAC nº 01/2025</span>
+        <span class="meta">PDF · 9 págs.</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/639083919405781976639047770858032382112330_P1.pdf" target="_blank">
+        <span class="ico">📄</span>
+        <span class="name">Portaria nº 16/SMGRI/2026</span>
+        <span class="meta">Comissão Avaliação · PDF</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/639083919405852339639082457197171375112330_20.pdf" target="_blank">
+        <span class="ico">📄</span>
+        <span class="name">Proposta Neorama (concorrente)</span>
+        <span class="meta">PDF · benchmark · 4 págs.</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/Guia_de_produ%C3%A7%C3%A3o-Catedral_de_Santo_%C3%82ngelo_RS_00000.png" target="_blank">
+        <span class="ico">🎯</span>
+        <span class="name">Máscara da fachada (mapping)</span>
+        <span class="meta">PNG · 3800×3840 px</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/CARLOS%20MARQUES.pdf" target="_blank">
+        <span class="ico">🏛️</span>
+        <span class="name">Carlos Marques — arquitetura da Catedral</span>
+        <span class="meta">PDF · referência</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/CNPJ%20Zion%20Produ%C3%A7%C3%B5es.pdf" target="_blank">
+        <span class="ico">🏢</span>
+        <span class="name">CNPJ Zion Produções</span>
+        <span class="meta">PDF · cliente</span>
+      </a>
+
+      <a href="DOCUMENTOS%20BAIXADOS/Tatiane%20Gonzalez_CV_26.pdf" target="_blank">
+        <span class="ico">👤</span>
+        <span class="name">CV Tatiane Gonzalez</span>
+        <span class="meta">PDF · titular ADA</span>
+      </a>
+
     </div>
   </section>
 
-  <article class="doc" id="doc">
-    <div class="loading">Carregando STATUS.md…</div>
-  </article>
-
   <footer>
-    <span>ada-oracle/santo-angelo · GitHub Pages</span>
-    <span><a href="STATUS.md">Ver fonte STATUS.md</a></span>
+    ADA · Ateliê Digital Analógico
   </footer>
 
 </div>
-
-<div class="modal-back" id="modal-back" role="dialog" aria-modal="true">
-  <div class="modal" id="modal-body">
-    <button class="close" aria-label="Fechar">×</button>
-    <div id="modal-content"></div>
-  </div>
-</div>
-
-<template id="info-vinculo">
-  <div class="eyebrow">Habilitação técnica · Edital 002/2026 · alíneas 5.7.e e 5.7.f</div>
-  <h3>Comprovação de vínculo com a empresa proponente</h3>
-  <p>O edital exige <strong>comprovação formal de vínculo</strong> do <strong>roteirista</strong> e da <strong>equipe de historiadores</strong> com a ADA. O texto é literal e idêntico para os dois — três instrumentos são aceitos.</p>
-
-  <h4>Instrumentos aceitos</h4>
-  <ul>
-    <li><strong>Contrato de trabalho</strong> (vínculo CLT)</li>
-    <li><strong>Contrato de prestação de serviços</strong> (PJ ou autônomo)</li>
-    <li><strong>Instrumento equivalente</strong> — qualquer documento que comprove obrigação contratual entre as partes</li>
-  </ul>
-  <p>Em qualquer dos casos, o instrumento deve estar <strong>vigente</strong> ou <strong>com vigência prevista para a execução do objeto</strong> (240 dias a contar da assinatura do contrato com a Prefeitura).</p>
-
-  <h4>Trecho literal do edital</h4>
-  <blockquote>"Deverá ser apresentada, ainda, comprovação do vínculo do roteirista com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto."</blockquote>
-  <blockquote>"Deverá ser apresentada, ainda, a comprovação de vínculo da equipe de historiadores com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto."</blockquote>
-
-  <h4>Consequências</h4>
-  <ul>
-    <li><strong>Roteirista sem vínculo formal ou sem produção AV pregressa</strong> → desclassificação automática (alínea 5.7.e, parte final).</li>
-    <li><strong>Historiadores sem vínculo formal</strong> → inabilitação da licitante (alínea 5.7, observação "d").</li>
-  </ul>
-
-  <h4>Carta de interesse / compromisso serve?</h4>
-  <p>Depende do formato. O edital usa as expressões "instrumento equivalente" e "vigência prevista" — abertas, mas não absolutas.</p>
-  <ul>
-    <li><strong>Carta de intenção / interesse unilateral</strong> (só o profissional assina) → <strong>risco alto</strong>. TCU costuma rejeitar — não cria obrigação para a empresa.</li>
-    <li><strong>Carta de compromisso bilateral</strong> (empresa + profissional, com objeto, prazo, contraprestação) → pode ser aceita como "instrumento equivalente", mas depende da banca.</li>
-    <li><strong>Contrato de prestação de serviços com cláusula suspensiva</strong> → <strong>caminho seguro</strong>. Encaixa em "instrumento + vigência prevista" e não obriga a ADA a nada se não vencer.</li>
-  </ul>
-
-  <h4>Recomendação prática</h4>
-  <ul>
-    <li>Emitir <strong>contrato de prestação de serviços</strong> assinado pelas duas partes, com objeto (escopo do trabalho na Concorrência 002/2026), prazo (240 dias da assinatura do contrato com a Prefeitura) e remuneração (mesmo simbólica).</li>
-    <li>Incluir <strong>cláusula de eficácia suspensiva</strong>: "este contrato produz efeitos a partir da adjudicação da Concorrência 002/2026 à Contratante, ficando rescindido de pleno direito caso a Contratante não seja vencedora."</li>
-    <li>Resolve os dois requisitos do edital ("instrumento equivalente" + "vigência prevista") e blinda a ADA financeiramente.</li>
-    <li>Não confundir com <strong>tradutores</strong>, que pelo TR podem ser subcontratados (CV é suficiente).</li>
-  </ul>
-
-  <h4>Base legal</h4>
-  <ul>
-    <li><strong>Lei 14.133/2021, art. 67 §3º</strong> — admite "declaração de contratação futura" do responsável técnico, indicando que o legislador aceita instrumentos prospectivos.</li>
-    <li><strong>TCU Acórdãos 1097/2019-Plenário e 2607/2018-Plenário</strong> — rejeitam carta unilateral; aceitam contratos com obrigação recíproca, mesmo condicionais.</li>
-  </ul>
-
-  <p class="src">Fonte: <a href="DOCUMENTOS%20BAIXADOS/856752.pdf" target="_blank">Edital 002/2026 · pp. 9–10 (5.7.e e 5.7.f)</a>. Replicado no <a href="ETP/index.html#hab" target="_blank">ETP diagramado · Habilitação técnica</a>.</p>
-</template>
-
-<template id="info-contrato">
-  <div class="eyebrow">Modelo · contrato de prestação de serviços com cláusula suspensiva</div>
-  <h3>Modelo de contrato — vínculo condicional</h3>
-  <p>Modelo enxuto e juridicamente válido. Encaixa em "instrumento equivalente + vigência prevista" (Edital 5.7.e e 5.7.f). Não obriga a ADA a pagar nada caso não vença a licitação. Substitua os campos em <span class="ph">amarelo</span>. <strong>Adapte a Cláusula 1ª (FUNÇÃO)</strong> conforme o profissional: roteirista · pesquisa e curadoria histórica · revisão histórica · direção de arte · animação 2D/3D · trilha sonora e sound design · coordenação de pós-produção.</p>
-
-  <div class="contract-actions">
-    <button id="copy-contract">copiar texto</button>
-    <button id="download-contract">baixar .txt</button>
-  </div>
-
-  <pre class="contract-box" id="contract-text"><strong>CONTRATO DE PRESTAÇÃO DE SERVIÇOS COM CLÁUSULA SUSPENSIVA</strong>
-
-<strong>CONTRATANTE</strong>: <span class="ph">[ATELIÊ DIGITAL ANALÓGICO — RAZÃO SOCIAL COMPLETA]</span>, pessoa jurídica de direito privado, inscrita no CNPJ sob o nº <span class="ph">[CNPJ]</span>, com sede em <span class="ph">[ENDEREÇO COMPLETO]</span>, neste ato representada por <span class="ph">[NOME DO REPRESENTANTE LEGAL]</span>, <span class="ph">[NACIONALIDADE]</span>, <span class="ph">[ESTADO CIVIL]</span>, portador(a) do CPF <span class="ph">[CPF]</span>.
-
-<strong>CONTRATADO(A)</strong>: <span class="ph">[NOME COMPLETO]</span>, <span class="ph">[NACIONALIDADE]</span>, <span class="ph">[ESTADO CIVIL]</span>, <span class="ph">[PROFISSÃO]</span>, portador(a) do CPF <span class="ph">[CPF]</span> e RG <span class="ph">[RG / órgão emissor]</span>, residente e domiciliado(a) em <span class="ph">[ENDEREÇO COMPLETO]</span>.
-
-As partes têm entre si justo e contratado o seguinte:
-
-<strong>CLÁUSULA 1ª — OBJETO.</strong> O CONTRATADO prestará à CONTRATANTE serviços de <span class="ph">[FUNÇÃO — ex.: roteiro / pesquisa e curadoria histórica em Missões Jesuítico-Guarani / revisão histórica / direção de arte / animação 2D e 3D / trilha sonora e sound design / coordenação de pós-produção]</span> no projeto de produção de conteúdo audiovisual para projeção mapeada na fachada da Catedral Angelopolitana de Santo Ângelo/RS, objeto da Concorrência Eletrônica nº 002/2026 do Município de Santo Ângelo/RS.
-
-<strong>CLÁUSULA 2ª — PRAZO.</strong> A prestação dos serviços ocorrerá durante a vigência do contrato administrativo a ser firmado entre a CONTRATANTE e o Município de Santo Ângelo, pelo prazo de 240 (duzentos e quarenta) dias contados da assinatura do referido contrato administrativo, podendo ser prorrogado nos termos da Lei 14.133/2021.
-
-<strong>CLÁUSULA 3ª — REMUNERAÇÃO.</strong> Pelos serviços prestados, a CONTRATANTE pagará ao CONTRATADO o valor total de R$ <span class="ph">[VALOR POR EXTENSO]</span>, em <span class="ph">[FORMA DE PAGAMENTO — ex.: 3 parcelas correspondentes ao cronograma de pagamentos da CONTRATANTE junto ao Município (30%/30%/40%)]</span>.
-
-<strong>CLÁUSULA 4ª — CLÁUSULA SUSPENSIVA.</strong> Este contrato é celebrado sob condição suspensiva: somente produzirá efeitos a partir da adjudicação da Concorrência Eletrônica nº 002/2026 à CONTRATANTE. Caso a CONTRATANTE não seja declarada vencedora ou caso a Administração Pública revogue ou anule a licitação, este contrato será automaticamente rescindido de pleno direito, sem qualquer ônus, indenização ou obrigação recíproca entre as partes.
-
-<strong>CLÁUSULA 5ª — VÍNCULO.</strong> Este contrato não estabelece vínculo empregatício entre as partes, sendo o CONTRATADO responsável por seus tributos, encargos previdenciários e contribuições. O CONTRATADO atuará com autonomia técnica, observando as orientações da CONTRATANTE quanto a prazos, padrões de qualidade e entregas.
-
-<strong>CLÁUSULA 6ª — PROPRIEDADE INTELECTUAL.</strong> Todos os direitos patrimoniais sobre os trabalhos produzidos pelo CONTRATADO no âmbito deste contrato são cedidos integral, definitiva e irrevogavelmente à CONTRATANTE, em conformidade com a Lei 9.610/1998 e com as exigências da Concorrência Eletrônica nº 002/2026.
-
-<strong>CLÁUSULA 7ª — FORO.</strong> As partes elegem o foro da Comarca de <span class="ph">[CIDADE / RS]</span> para dirimir eventuais controvérsias decorrentes deste contrato, com renúncia a qualquer outro, por mais privilegiado que seja.
-
-E, por estarem justas e contratadas, as partes firmam o presente instrumento em duas vias de igual teor, na presença de duas testemunhas.
-
-<span class="ph">[CIDADE]</span>, <span class="ph">[DATA]</span>.
-
-
-_______________________________________
-CONTRATANTE — ATELIÊ DIGITAL ANALÓGICO
-
-
-_______________________________________
-CONTRATADO(A) — <span class="ph">[NOME]</span>
-
-
-Testemunhas:
-
-1. ________________________  CPF: ________________
-
-2. ________________________  CPF: ________________</pre>
-
-  <h4>Como assinar</h4>
-  <ul>
-    <li>Não precisa cartório nem reconhecimento de firma (Lei 13.726/2018 dispensou).</li>
-    <li>Assinatura física ou eletrônica via gov.br, Clicksign ou DocuSign — todas válidas.</li>
-    <li>Para licitação, gov.br tem máxima segurança jurídica e é gratuito.</li>
-    <li>Anexar à proposta o PDF assinado das duas partes.</li>
-  </ul>
-
-  <p class="src">Modelo construído a partir de: Lei 14.133/2021 art. 67 §3º · Edital 002/2026 alíneas 5.7.e e 5.7.f · Lei 9.610/1998 (direitos autorais por encomenda).</p>
-</template>
-
-<template id="info-dossie-pesquisa">
-  <div class="eyebrow">Critério 2 da Nota Técnica · ETP páginas 4–5</div>
-  <h3>Dossiê de pesquisa histórica</h3>
-  <p>O termo "dossiê" é nome interno nosso. Não está no edital — mas o material que ele cobre é exatamente o que o <strong>Critério 2</strong> da banca avalia. Critério 2 vale <strong>peso 5 (50 pontos)</strong>, ao lado do Critério 13 é o de maior peso na licitação.</p>
-
-  <h4>O que a banca pontua (subquesitos 2.1 a 2.6)</h4>
-  <blockquote>2.1 Todos os elementos do roteiro prévio estão atendidos<br>
-  2.2 Dimensionamento do tempo da contratação dos pesquisadores está adequada (carga horária total)<br>
-  2.3 Indicação da bibliografia é satisfatória para atender a necessidade da profundidade da pesquisa histórica requerida<br>
-  2.4 A combinação da expertise da equipe de historiadores é adequada para a necessidade do projeto<br>
-  2.5 Utiliza fontes variadas que permitam a apresentação de uma visão histórica sem viés, deixando o mais neutro possível e passível de interpretação do espectador<br>
-  2.6 Apresenta coerência com os fatos conhecidos e não apresenta distorções sem apresentação de mais de uma fonte fidedigna</blockquote>
-
-  <h4>O ETP autoriza explicitamente este anexo</h4>
-  <blockquote>"A avaliação também será complementada com os documentos adicionais que a proponente a seu critério apresentar em conjunto com o vídeo demonstração (DEMO) como roteiro preliminar, <strong>pesquisa histórica estruturada</strong> e outros documentos a critério do proponente."</blockquote>
-
-  <h4>O que entra no dossiê (mapeado para cada subquesito)</h4>
-  <ul>
-    <li><strong>Bibliografia comentada</strong> (cobre 2.3 e 2.5) — lista de livros, artigos, teses, fontes primárias (cartas jesuíticas, atas) e secundárias. Marcar quais fontes embasam cada cena. Mostrar diversidade: fontes brasileiras, paraguaias, argentinas, jesuíticas e indígenas.</li>
-    <li><strong>Plano de carga horária</strong> (cobre 2.2) — quantas horas cada historiador dedica ao projeto, distribuídas pelas fases (pesquisa inicial · validação do roteiro · revisão das cenas · aprovação final). Exemplo: 80h × 3 historiadores = 240h totais.</li>
-    <li><strong>Currículos da equipe</strong> (cobre 2.4) — CVs Lattes dos 3 historiadores, mostrando que se complementam (ex.: um especialista em Padre Roque, um em arqueologia missioneira, um em cultura guarani).</li>
-    <li><strong>Mapa de cenas × fontes</strong> (cobre 2.1 e 2.6) — para cada uma das 14 cenas, qual fonte sustenta cada afirmação. Ex.: Cena 4 (gado e erva-mate) → Kern, "As Missões Jesuíticas", cap. 5; Inventário do Brabo.</li>
-    <li><strong>Declaração de neutralidade</strong> (cobre 2.5) — texto curto explicando o método de evitar viés (espanhol vs. português, jesuíta vs. indígena, religioso vs. secular).</li>
-  </ul>
-
-  <h4>Formato sugerido</h4>
-  <ul>
-    <li>15–25 páginas em PDF, papel timbrado da ADA.</li>
-    <li>Anexar à proposta como documento de apoio ao DEMO.</li>
-    <li>Cita as fontes do roteiro preliminar (Cena 1 a 14, descritas no Anexo 1 do ETP, p. 19–25).</li>
-  </ul>
-
-  <p class="src">Fonte: <a href="ETP/index.html#s4" target="_blank">ETP diagramado · seção 4 (autorização)</a> e <a href="ETP/index.html#criterios" target="_blank">Critério 2 (subquesitos 2.1 a 2.6)</a>.</p>
-</template>
-
-<template id="info-equipe-estrategica">
-  <div class="eyebrow">Equipe complementar · não exigida pelo edital</div>
-  <h3>Revisor, diretor de arte e demais especialistas</h3>
-  <p>O edital (seção 5.7) e o ETP <strong>não exigem comprovação</strong> de revisor histórico, diretor de arte, sound designer, animadores 2D/3D ou coordenador de pós. Pela Lei 14.133, só pode ser exigida na habilitação a documentação que esteja explicitamente no edital.</p>
-
-  <h4>Para a habilitação</h4>
-  <ul>
-    <li>Não é obrigatório anexar CV.</li>
-    <li>Não é obrigatório carta de compromisso.</li>
-    <li>Não é obrigatório vínculo formal.</li>
-  </ul>
-
-  <h4>Mas importa para a Nota Técnica (0–140 pts)</h4>
-  <p>A banca avalia o DEMO e os documentos anexos. Se ela não enxerga quem faz a animação, a trilha e a pós, perde insumo para pontuar bem os critérios técnicos:</p>
-  <ul>
-    <li><strong>Critério 5</strong> (Animação 2D/3D) — 8 subquesitos, peso ~5</li>
-    <li><strong>Critério 10</strong> (Música e sound design) — peso 4</li>
-    <li><strong>Critério 11</strong> (Qualidade do sound design) — peso 3</li>
-    <li><strong>Critério 12</strong> (Integração audiovisual) — peso 2</li>
-    <li><strong>Critério 13</strong> (Complexidade técnica) — peso 5</li>
-    <li><strong>Critério 14</strong> (Inovação criativa) — peso 4</li>
-  </ul>
-
-  <h4>Recomendação prática</h4>
-  <ul>
-    <li>Anexar <strong>CV resumido (1 página)</strong> de cada especialista-chave junto com o DEMO.</li>
-    <li>Opcionalmente, <strong>carta de compromisso</strong> assinada — não é vínculo formal, apenas declaração de disponibilidade para o projeto.</li>
-    <li>Para a banca isso é insumo para confiar que a entrega final terá a qualidade prometida no DEMO.</li>
-    <li>O ETP autoriza explicitamente a apresentação de "documentos adicionais que a proponente a seu critério apresentar em conjunto com o vídeo demonstração".</li>
-  </ul>
-
-  <h4>Trecho literal do ETP</h4>
-  <blockquote>"A avaliação também será complementada com os documentos adicionais que a proponente a seu critério apresentar em conjunto com o vídeo demonstração (DEMO) como roteiro preliminar, pesquisa histórica estruturada e outros documentos a critério do proponente."</blockquote>
-
-  <p class="src">Fonte: <a href="ETP/index.html#s4" target="_blank">ETP diagramado · seção 4 — "Descrição dos requisitos da contratação"</a>.</p>
-</template>
-
-<template id="info-tradutores">
-  <div class="eyebrow">Habilitação técnica · Termo de Referência</div>
-  <h3>Tradutores — vínculo NÃO é exigido</h3>
-  <p>Para os tradutores de inglês e espanhol, o Termo de Referência permite explicitamente subcontratação e dispensa instrumento de vínculo formal.</p>
-
-  <h4>Trecho literal do TR</h4>
-  <blockquote>"Tradutores qualificados para inglês e espanhol com demonstração via curriculum vitae (podem ser subcontratados)."</blockquote>
-
-  <h4>O que entregar</h4>
-  <ul>
-    <li><strong>Currículo (CV)</strong> de cada tradutor demonstrando qualificação no idioma e em tradução audiovisual / locução / legendagem.</li>
-    <li>Não é necessário contrato anexado à proposta.</li>
-    <li>A contratação efetiva pode ocorrer após a adjudicação.</li>
-  </ul>
-
-  <p class="src">Fonte: <code>DOCUMENTOS BAIXADOS/639...0653...TR.PDF</code> · página 4, seção de Qualificação Técnica.</p>
-</template>
-
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script>
-  (async function(){
-    const target = document.getElementById('doc');
-    try {
-      const res = await fetch('STATUS.md', {cache:'no-cache'});
-      if(!res.ok) throw new Error('STATUS.md HTTP '+res.status);
-      let md = await res.text();
-      // Remove redundância: blockquotes do topo (links + datas) já estão no hero/stats.
-      // Tira tudo entre o H1 e o primeiro `---`, deixando só conteúdo a partir de "## Onde estamos".
-      md = md.replace(/^# [^\n]*\n+([\s\S]*?\n)?---\n+/, '');
-      marked.setOptions({gfm:true, breaks:false, headerIds:false, mangle:false});
-      target.innerHTML = marked.parse(md);
-
-      // Substitui {!slug} por badges visuais
-      const badgeMap = {
-        eliminatorio: {cls:'eliminatorio', label:'Eliminatório'},
-        obrig: {cls:'obrig', label:'Obrigatório'},
-        estrat: {cls:'estrat', label:'Estratégico'}
-      };
-      target.innerHTML = target.innerHTML.replace(/\{!(\w+)\}/g, (_, slug)=>{
-        const b = badgeMap[slug];
-        return b ? '<span class="badge badge--'+b.cls+'">'+b.label+'</span>' : '';
-      });
-
-      // Marca task list items
-      target.querySelectorAll('li').forEach(li=>{
-        // Subgrupo: <li> que contém <ul> direto como filho
-        if(li.querySelector(':scope > ul')) li.classList.add('subgroup');
-
-        const html = li.innerHTML;
-        const m = html.match(/^\s*\[( |x|X)\]\s*(.*)$/s);
-        if(m){
-          li.classList.add('task');
-          if(m[1].toLowerCase()==='x') li.classList.add('done');
-          li.innerHTML = '<span class="box"></span><span class="label">'+m[2]+'</span>';
-        }
-      });
-
-      // Converte links [...](#info:slug) em botões de modal, preservando o texto original
-      target.querySelectorAll('a[href^="#info:"]').forEach(a=>{
-        const slug = a.getAttribute('href').slice(6);
-        const label = (a.textContent || 'info').trim();
-        const btn = document.createElement('button');
-        btn.className = 'info-btn';
-        btn.type = 'button';
-        btn.dataset.info = slug;
-        btn.textContent = label;
-        btn.setAttribute('aria-label', label+' — '+slug);
-        a.replaceWith(btn);
-      });
-
-      // Demais links: abrir em nova aba e estilizar como botões (mesmo padrão do +info)
-      target.querySelectorAll('a[href]').forEach(a=>{
-        const href = a.getAttribute('href');
-        if(!href || href.startsWith('#')) return;
-        a.setAttribute('target','_blank');
-        a.setAttribute('rel','noopener');
-        a.classList.add('info-btn');
-      });
-
-      // Modal handlers
-      const back = document.getElementById('modal-back');
-      const content = document.getElementById('modal-content');
-      const open = (slug)=>{
-        const tpl = document.getElementById('info-'+slug);
-        if(!tpl){ content.innerHTML = '<p>Conteúdo não encontrado: '+slug+'</p>'; }
-        else { content.innerHTML = ''; content.appendChild(tpl.content.cloneNode(true)); }
-        back.dataset.open = 'true';
-        document.body.style.overflow = 'hidden';
-
-        // Wiring específico para o modal de contrato (copiar / baixar)
-        const pre = content.querySelector('#contract-text');
-        const btnCopy = content.querySelector('#copy-contract');
-        const btnDl = content.querySelector('#download-contract');
-        if(pre && btnCopy){
-          btnCopy.addEventListener('click', async ()=>{
-            try{
-              await navigator.clipboard.writeText(pre.innerText);
-              const orig = btnCopy.textContent;
-              btnCopy.textContent = 'copiado ✓';
-              btnCopy.classList.add('ok');
-              setTimeout(()=>{ btnCopy.textContent = orig; btnCopy.classList.remove('ok'); }, 1800);
-            }catch(e){ btnCopy.textContent = 'falhou — selecione e copie manualmente'; }
-          });
-        }
-        if(pre && btnDl){
-          btnDl.addEventListener('click', ()=>{
-            const blob = new Blob([pre.innerText], {type:'text/plain;charset=utf-8'});
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url; a.download = 'contrato-prestacao-servicos-ADA-Concorrencia-002-2026.txt';
-            document.body.appendChild(a); a.click();
-            setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 100);
-          });
-        }
-      };
-      const close = ()=>{ back.dataset.open = 'false'; document.body.style.overflow = ''; };
-      target.addEventListener('click', e=>{
-        const btn = e.target.closest('button.info-btn[data-info]');
-        if(btn){ e.preventDefault(); open(btn.dataset.info); }
-      });
-      back.addEventListener('click', e=>{ if(e.target===back) close(); });
-      back.querySelector('.close').addEventListener('click', close);
-      document.addEventListener('keydown', e=>{ if(e.key==='Escape' && back.dataset.open==='true') close(); });
-
-      // Calcula progresso
-      const tasks = target.querySelectorAll('li.task');
-      if(tasks.length){
-        const done = target.querySelectorAll('li.task.done').length;
-        const pct = Math.round(done/tasks.length*100);
-        const p = document.getElementById('progress');
-        p.hidden = false;
-        document.getElementById('progress-count').textContent = done+'/'+tasks.length+' · '+pct+'%';
-        document.getElementById('progress-fill').style.width = pct+'%';
-      }
-    } catch(e){
-      target.innerHTML = '<div class="loading">Não foi possível carregar STATUS.md.<br>'+e.message+'</div>';
-    }
-  })();
-</script>
 </body>
 </html>
