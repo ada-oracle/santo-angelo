@@ -89,7 +89,7 @@
   .chk input:checked + .box::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border-right:2px solid #111;border-bottom:2px solid #111;transform:rotate(45deg)}
   .chk .body{flex:1;min-width:0}
   .chk .name{font-family:'DM Mono',monospace;font-size:13.5px;color:var(--ink);line-height:1.45}
-  .chk input:checked ~ .body .name{color:var(--ink-faint);text-decoration:line-through}
+  .chk input:checked ~ .body .name{color:var(--ink-faint)}
   .chk .meta{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-mid);line-height:1.55;margin-top:4px}
   .chk .src{display:inline-block;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--accent);background:#0d0d0d;border:1px solid var(--border-strong);padding:2px 7px;margin-top:6px}
   .chk-na{opacity:.4}
@@ -103,6 +103,9 @@
   .item-btn.todo:hover{background:transparent;color:var(--accent);border-color:var(--accent)}
   .item-btn::after{content:" ↗";font-size:9px;opacity:.6}
   .item-btn.todo::after{content:" · em construção";font-size:9px;opacity:.6;letter-spacing:0;text-transform:none}
+  .btn-pair{display:inline-flex;gap:6px}
+  .btn-pair .item-btn[download]{display:none}
+  .btn-pair.shown .item-btn[download]{display:inline-flex}
 
   /* Docs footer — biblioteca de documentos */
   .docs-footer{margin-top:64px;padding-top:32px;border-top:1px solid var(--accent)}
@@ -133,25 +136,32 @@
   </section>
 
   <nav class="docs-nav" aria-label="Materiais do projeto">
-    <a href="STORYBOARD/index.html">
+    <a href="PAINEL/STORYBOARD/index.html" target="_blank">
       <div class="icon">🎬</div>
       <div class="label">Roteiro visual</div>
       <div class="name">Storyboard</div>
       <div class="desc">3 atos · 9 sub-atos · 30 minutos. Estrutura narrativa em frames de referência.</div>
     </a>
 
-    <a href="PROMPTS_ANIMACAO/index.html">
+    <a href="PAINEL/PROMPTS_ANIMACAO/index.html" target="_blank">
       <div class="icon">🎞️</div>
       <div class="label">Roteiro de prompts</div>
       <div class="name">Prompts de animação</div>
       <div class="desc">22 keyframes · 21 transições. Direção visual cena a cena para Freepik / image-to-video.</div>
     </a>
 
-    <a href="BRIEFING_ROTEIRO/index.html">
+    <a href="PAINEL/BRIEFING_ROTEIRO/index.html" target="_blank">
       <div class="icon">📝</div>
       <div class="label">Para o roteirista</div>
       <div class="name">Briefing roteiro</div>
       <div class="desc">Tudo que o edital exige do roteiro, com citação da fonte. Pronto para enviar ao Alexandre.</div>
+    </a>
+
+    <a href="PAINEL/NOTA_TECNICA/index.html" target="_blank">
+      <div class="icon">📊</div>
+      <div class="label">Como a banca decide</div>
+      <div class="name">Nota técnica</div>
+      <div class="desc">Como a Prefeitura calcula a nota. Peso real do DEMO. Os 14 critérios. Onde a ADA ganha pontos e onde pode perder tudo.</div>
     </a>
   </nav>
 
@@ -164,7 +174,7 @@
     <div class="deadline-grid">
       <div class="deadline-row">
         <span class="lbl">Plataforma de envio</span>
-        <span class="val"><a href="https://www.pregaoonlinebanrisul.com.br" target="_blank">www.pregaoonlinebanrisul.com.br</a> ↗</span>
+        <span class="val"><a href="https://pregaoonlinebanrisul.com.br" target="_blank">pregaoonlinebanrisul.com.br</a> ↗</span>
       </div>
       <div class="deadline-row">
         <span class="lbl">Janela de cadastro de propostas</span>
@@ -217,25 +227,39 @@
         </div>
 
         <label class="chk">
-          <input type="checkbox" data-key="hj-a">
+          <input type="checkbox" data-key="hj-a" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">a) Cédula de Identidade dos diretores</div>
             <div class="meta">RG do(s) titular(es) / responsável(is) da ADA. Aplica-se à ADA.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/rg-tatiane.pdf" target="_blank">🪪 RG Tatiane Gonzalez</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/TATIANE_RG_CPF.pdf" target="_blank">👁 RG/CPF</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/TATIANE_RG_CPF.pdf" download>↓</a>
+              </span>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/CNH-e.pdf" target="_blank">👁 CNH-e</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/CNH-e.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="hj-b">
+          <input type="checkbox" data-key="hj-b" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">b) Registro comercial, no caso de empresa individual</div>
             <div class="meta">A ADA é empresa individual → este é o documento principal de habilitação jurídica. Requerimento de Empresário arquivado na Junta Comercial (com todas as alterações).</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/registro-comercial.pdf" target="_blank">📜 Registro Comercial / Requerimento de Empresário</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/ATO_CONSTITUTIVO_TGLS_20420653000137.pdf" target="_blank">👁 Ato Constitutivo (JUCESP)</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/ATO_CONSTITUTIVO_TGLS_20420653000137.pdf" download>↓</a>
+              </span>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/C_COPIA_SIMPLES_ATO_CONSTITUTIVO_CONTRATO_SOCIAL_2-MESCLADO.PDF" target="_blank">👁 Cópia Simples Mesclada</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/HABILITAÇÃO%20JURÍDICA/C_COPIA_SIMPLES_ATO_CONSTITUTIVO_CONTRATO_SOCIAL_2-MESCLADO.PDF" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
@@ -280,78 +304,101 @@
       <div class="group-body">
 
         <label class="chk">
-          <input type="checkbox" data-key="rf-a">
+          <input type="checkbox" data-key="rf-a" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">a) Prova de inscrição no <strong style="color:var(--accent)">CNPJ</strong></div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/cnpj-ada.pdf" target="_blank">🏢 CNPJ ADA</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CARTAO_CNPJ_20420653000137.pdf" target="_blank">👁 Cartão CNPJ</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CARTAO_CNPJ_20420653000137.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="rf-b">
+          <input type="checkbox" data-key="rf-b" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">b) Prova de regularidade para com a Fazenda Federal e Dívida Ativa da União, mediante a apresentação de <strong style="color:var(--accent)">Certidão Conjunta</strong>, expedida pela Procuradoria Geral da Fazenda Nacional do domicílio ou sede da Licitante.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/certidao-federal.pdf" target="_blank">📑 Certidão Federal + Dívida Ativa</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/Certidao-20420653000137.pdf" target="_blank">👁 Certidão Federal + Dívida Ativa</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/Certidao-20420653000137.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="rf-c">
+          <input type="checkbox" data-key="rf-c" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">c) Prova de regularidade para com a Fazenda Estadual, mediante a apresentação de <strong style="color:var(--accent)">Certidão Negativa de Tributos Estaduais</strong> expedida pela Secretaria da Fazenda Estadual do domicílio ou sede da Licitante;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/certidao-estadual.pdf" target="_blank">📑 Certidão Estadual</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CND_Estadual_CND26041007383-91.pdf" target="_blank">👁 CND Estadual SP</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CND_Estadual_CND26041007383-91.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="rf-d">
+          <input type="checkbox" data-key="rf-d" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">d) Prova de regularidade para com a Fazenda Municipal, mediante a apresentação de <strong style="color:var(--accent)">Certidão Negativa de Tributos Municipais</strong> do domicílio ou sede da Licitante;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/certidao-municipal.pdf" target="_blank">📑 Certidão Municipal</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CND_Municipal_Relatorio_CertidaoNegativa_2026-04-28_111211.pdf" target="_blank">👁 CND Municipal SP</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CND_Municipal_Relatorio_CertidaoNegativa_2026-04-28_111211.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="rf-e">
+          <input type="checkbox" data-key="rf-e" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">e) Prova de regularidade para com o Sistema de Seguridade Social — <strong style="color:var(--accent)">INSS (CND)</strong>, somente se as contribuições sociais não estiverem englobadas na Prova de Regularidade com a Fazenda Federal.</div>
+            <div class="meta" style="color:var(--accent)">⚠ Englobado no item b — desde 2014 a Certidão Conjunta Federal+Dívida Ativa também cobre o INSS. Usaremos o mesmo arquivo.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/inss-cnd.pdf" target="_blank">📑 INSS (CND)</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/Certidao-20420653000137.pdf" target="_blank">👁 Certidão Federal + Dívida Ativa (englobada)</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/Certidao-20420653000137.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="rf-f">
+          <input type="checkbox" data-key="rf-f" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">f) Prova de regularidade com o Fundo de Garantia por Tempo de Serviço — <strong style="color:var(--accent)">FGTS (CRS)</strong> demonstrando situação regular no cumprimento dos encargos sociais constituídos por lei.</div>
+            <div class="meta" style="color:var(--accent)">⚠ Validade do CRF atual: <strong>20/04 → 19/05/2026</strong>. Pregão é em 11/05/2026 (folga de 8 dias). Em caso de adiamento/suspensão da sessão, vence. <strong>Reemitir entre 05–08/05/2026</strong> em consulta-crf.caixa.gov.br para garantir validade até início de junho.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/fgts-crs.pdf" target="_blank">📑 FGTS (CRS)</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/FGTS_%28CRS%29_Consulta_Regularidade_do_Empregador.pdf" target="_blank">👁 FGTS (CRS)</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/FGTS_%28CRS%29_Consulta_Regularidade_do_Empregador.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="rf-g">
+          <input type="checkbox" data-key="rf-g" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">g) <strong style="color:var(--accent)">Certidão Negativa de Débitos Trabalhistas</strong> (Lei 12.440/11).</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/cndt.pdf" target="_blank">📑 CNDT</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CNDT_TST_certidao_20420653000137.pdf" target="_blank">👁 CNDT (TST)</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/REGULARIDADE%20FISCAL/CNDT_TST_certidao_20420653000137.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
@@ -374,8 +421,8 @@
           <div class="body">
             <div class="name">a) Comprovar a execução de 1 (um) ou mais projetos utilizando técnicas avançadas de projeção mapeada, similares ao objeto licitado;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
-              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+              <a class="item-btn todo" href="PAINEL/PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="PAINEL/CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
             </div>
           </div>
         </label>
@@ -386,8 +433,8 @@
           <div class="body">
             <div class="name">b) Comprovar o desenvolvimento de conteúdo audiovisual para salas imersivas ou exposições interativas ou instalações multimídias de caráter permanente ou semipermanente ou projeção mapeada estrutural, aderentes ao conteúdo, capacidade de contar histórias com clareza e coerência temática, e que demonstram elevada competência artística;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
-              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+              <a class="item-btn todo" href="PAINEL/PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="PAINEL/CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
             </div>
           </div>
         </label>
@@ -398,8 +445,8 @@
           <div class="body">
             <div class="name">c) Comprovar capacidade técnica na criação e execução de conteúdo audiovisual para projeção mapeada, incluindo o desenvolvimento de animações e personagens, a aplicação de efeitos visuais e simulações criativas e tecnicamente elaboradas, bem como a integração e sincronia entre som e imagem, de modo a construir narrativa audiovisual impactante, emocionalmente envolvente e adequada à projeção sobre superfícies arquitetônicas, utilizando técnicas de animação 2D, animação 3D e/ou filmagem;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
-              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+              <a class="item-btn todo" href="PAINEL/PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="PAINEL/CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
             </div>
           </div>
         </label>
@@ -410,8 +457,8 @@
           <div class="body">
             <div class="name">d) Comprovar capacidade de gestão e desenvolvimento de projetos complexos — apresentação de projetos semelhantes (que envolvam as técnicas realizadas — projeção mapeada, realidade aumentada e animação 2D e 3D;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
-              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+              <a class="item-btn todo" href="PAINEL/PORTFOLIO/index.html" target="_blank">📁 Portfólio</a>
+              <a class="item-btn" href="PAINEL/CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
             </div>
           </div>
         </label>
@@ -422,9 +469,9 @@
           <div class="body">
             <div class="name">e) Comprovar que o roteirista indicado experiência comprovada em direção e/ou participação em projetos audiovisuais finalizados, os quais tenham sido exibidos publicamente e/ou selecionados ou premiados em festivais reconhecidos. Deverá ser apresentada, ainda, comprovação do vínculo do roteirista com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto. A inexistência de produção audiovisual pregressa do roteirista indicado constituirá condição de desclassificação da proponente;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="ROTEIRISTA/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="ROTEIRISTA/press-release.html" target="_blank">📰 Press release</a>
-              <a class="item-btn todo" href="ROTEIRISTA/contrato.html" target="_blank">📑 Contrato de vínculo</a>
+              <a class="item-btn todo" href="PAINEL/ROTEIRISTA/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/ROTEIRISTA/press-release.html" target="_blank">📰 Press release</a>
+              <a class="item-btn todo" href="PAINEL/ROTEIRISTA/contrato.html" target="_blank">📑 Contrato de vínculo</a>
             </div>
           </div>
         </label>
@@ -445,9 +492,9 @@
               Deverá ser apresentada, ainda, a comprovação de vínculo da equipe de historiadores com a empresa proponente, por meio de contrato de trabalho, contrato de prestação de serviços ou instrumento equivalente, vigente ou com vigência prevista para a execução do objeto.
             </div>
             <div class="item-actions">
-              <a class="item-btn todo" href="HISTORIADORES/guilherme.html" target="_blank">👤 Prof. Guilherme</a>
-              <a class="item-btn todo" href="HISTORIADORES/historiador-2.html" target="_blank">👤 Historiador 2 · a confirmar</a>
-              <a class="item-btn todo" href="HISTORIADORES/historiador-3.html" target="_blank">👤 Historiador 3 · a confirmar</a>
+              <a class="item-btn todo" href="PAINEL/HISTORIADORES/guilherme.html" target="_blank">👤 Prof. Guilherme</a>
+              <a class="item-btn todo" href="PAINEL/HISTORIADORES/historiador-2.html" target="_blank">👤 Historiador 2 · a confirmar</a>
+              <a class="item-btn todo" href="PAINEL/HISTORIADORES/historiador-3.html" target="_blank">👤 Historiador 3 · a confirmar</a>
             </div>
           </div>
         </label>
@@ -458,7 +505,7 @@
           <div class="body">
             <div class="name">g) Apresentar 1 (uma) ou mais cartas de recomendação de empresas que contrataram os serviços do escopo (objeto).</div>
             <div class="item-actions">
-              <a class="item-btn" href="CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
+              <a class="item-btn" href="PAINEL/CARTAS/ZION/index.html" target="_blank">📋 Carta Zion</a>
             </div>
           </div>
         </label>
@@ -469,7 +516,7 @@
           <div class="body">
             <div class="name">h) CNPJ ativo com atividade na área do escopo.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/cnpj-ada.pdf" target="_blank">🏢 CNPJ ADA</a>
+              <a class="item-btn todo" href="INSUMOS/DOCS_ADA/cnpj-ada.pdf" target="_blank">🏢 CNPJ ADA</a>
             </div>
           </div>
         </label>
@@ -495,19 +542,33 @@
       <div class="group-body">
 
         <label class="chk">
-          <input type="checkbox" data-key="qef-a">
+          <input type="checkbox" data-key="qef-a" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">a) Balanço patrimonial, demonstração de resultado de exercício e demais demonstrações contábeis dos 2 (dois) últimos exercícios sociais, sendo que, em caso de a pessoa jurídica ter sido constituída há menos de 2 (dois) anos, a demonstração se limita ao último exercício;</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/balanco-2024.pdf" target="_blank">📊 Balanço + DRE 2024</a>
-              <a class="item-btn todo" href="DOCS_ADA/balanco-2025.pdf" target="_blank">📊 Balanço + DRE 2025</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/Balanço%202024%20ASSINADO.pdf" target="_blank">👁 Balanço 2024</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/Balanço%202024%20ASSINADO.pdf" download>↓</a>
+              </span>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/Balanço%202025%20ASSINADO.pdf" target="_blank">👁 Balanço 2025</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/Balanço%202025%20ASSINADO.pdf" download>↓</a>
+              </span>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/D.%20R.%20E.%202024%20-%20ASSINADO.pdf" target="_blank">👁 DRE 2024</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/D.%20R.%20E.%202024%20-%20ASSINADO.pdf" download>↓</a>
+              </span>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/D.%20R.%20E.%202025%20ASSINADO.pdf" target="_blank">👁 DRE 2025</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/D.%20R.%20E.%202025%20ASSINADO.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="qef-b">
+          <input type="checkbox" data-key="qef-b" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">b) Os índices mínimos aceitáveis estão abaixo informados e serão apurados pela aplicação da fórmula abaixo:</div>
@@ -519,8 +580,16 @@
               AC = Ativo Circulante · ARLP = Ativo Realizável a Longo Prazo · AP = Ativo Permanente · PC = Passivo Circulante · PELP = Passivo Exigível a Longo Prazo · PL = Patrimônio Líquido.<br><br>
               A apuração dos índices deverá ser apresentada em folha anexa ao balanço, devidamente assinada por profissional contábil habilitado. É vedada a substituição do balanço por balancete ou balanço provisório.
             </div>
+            <div class="meta" style="color:var(--accent)">⚠ Falta a assinatura da Tatiane nos documentos — pedir antes de subir.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/calculo-indices.pdf" target="_blank">🧮 Cálculo dos índices (contador)</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/ANALISE%202024%20ASSINADO.pdf" target="_blank">👁 Análise 2024</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/ANALISE%202024%20ASSINADO.pdf" download>↓</a>
+              </span>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/ANALISE%202025%20ASSINADO.pdf" target="_blank">👁 Análise 2025</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/QUALIFICAÇÃO%20ECONÔMICA/ANALISE%202025%20ASSINADO.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
@@ -531,7 +600,7 @@
           <div class="body">
             <div class="name">c) Certidão negativa de feitos sobre falência expedida pelo distribuidor da sede do licitante, com data não superior a 30 dias anteriores à data de abertura do certame licitatório.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/certidao-falencia.pdf" target="_blank">📑 Certidão de Falência</a>
+              <a class="item-btn todo" href="INSUMOS/DOCS_ADA/certidao-falencia.pdf" target="_blank">📑 Certidão de Falência</a>
             </div>
           </div>
         </label>
@@ -543,7 +612,7 @@
             <div class="name">d) Certidão negativa de recuperação judicial ou extrajudicial expedida pelo distribuidor da sede da pessoa jurídica;</div>
             <div class="meta">d.1) Nas hipóteses em que a certidão encaminhada for positiva, deve o licitante apresentar comprovante da homologação/deferimento pelo juízo competente do plano de recuperação judicial/extrajudicial em vigor.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/certidao-recuperacao-judicial.pdf" target="_blank">📑 Certidão de Recuperação Judicial</a>
+              <a class="item-btn todo" href="INSUMOS/DOCS_ADA/certidao-recuperacao-judicial.pdf" target="_blank">📑 Certidão de Recuperação Judicial</a>
             </div>
           </div>
         </label>
@@ -553,14 +622,22 @@
           <span class="box"></span>
           <div class="body">
             <div class="name">e) A licitante deverá prestar garantia de proposta conforme artigo 58, § 1º, da Lei nº 14.133/21 em qualquer uma das modalidades previstas no art. 96, § 1º, no percentual de 1% do valor orçado pela Administração.</div>
+            <div style="margin:8px 0;padding:14px 16px;background:rgba(255,214,0,.10);border:1px solid var(--accent);font-family:'DM Mono',monospace;font-size:13px;color:var(--ink);line-height:1.6">
+              <div style="font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:8px">Depósito bancário · Banrisul</div>
+              <div><strong style="color:var(--accent)">Valor:</strong> R$ 20.350,39 (1% × R$ 2.035.039,00 — valor de referência da Prefeitura)</div>
+              <div><strong style="color:var(--accent)">Banco:</strong> Banrisul (041)</div>
+              <div><strong style="color:var(--accent)">Agência:</strong> 0370</div>
+              <div><strong style="color:var(--accent)">Conta Calção:</strong> 04.146692.0-6</div>
+              <div><strong style="color:var(--accent)">Favorecido:</strong> Município de Santo Ângelo / RS</div>
+              <div style="margin-top:8px;font-size:11px;color:var(--ink-mid)">Alternativa: solicitar guia de pagamento junto ao Setor de ISSQN da Prefeitura — Rua Antunes Ribas, 1134 (Espaço Cidadão).</div>
+            </div>
             <div class="meta">
-              e.1) Em caso de ser em moeda corrente, o licitante deve efetuar depósito bancário na Conta Calção 04.146692.0-6; Ag. 0370 — Banrisul ou solicitar emissão de guia para pagamento junto ao Setor de ISSQN da Prefeitura, sito à Rua Antunes Ribas, 1134 (Espaço Cidadão).<br>
               e.2) O prazo mínimo de validade da garantia de proposta será de 60 (sessenta) dias contados da data de entrega da mesma.<br>
               e.3) A garantia de proposta da proponente vencedora será devolvida após a publicação do extrato do contrato firmado com a mesma.<br>
               e.4) As garantias prestadas pelas demais proponentes serão devolvidas após a homologação da licitação.
             </div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DOCS_ADA/garantia-proposta.pdf" target="_blank">💰 Comprovante da Garantia 1%</a>
+              <a class="item-btn todo" href="INSUMOS/DOCS_ADA/garantia-proposta.pdf" target="_blank">💰 Comprovante da Garantia 1%</a>
             </div>
           </div>
         </label>
@@ -580,56 +657,71 @@
         <div style="margin:0 0 14px;font-family:'DM Mono',monospace;font-size:11.5px;color:var(--ink-mid);line-height:1.55">Todos os licitantes devem apresentar as declarações abaixo, as quais têm modelo em anexo neste Edital. <span style="color:var(--ink-faint)">Numeração corrigida — o edital original repete "c)" duas vezes (typo).</span></div>
 
         <label class="chk">
-          <input type="checkbox" data-key="dec-a">
+          <input type="checkbox" data-key="dec-a" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">a) Declaração de que atendem aos requisitos de habilitação, respondendo pela veracidade das informações prestadas;</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#03" target="_blank">📝 Anexo III · Habilitação</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-03-habilitacao_assinado.pdf" target="_blank">👁 Anexo III · Habilitação</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-03-habilitacao_assinado.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="dec-b">
+          <input type="checkbox" data-key="dec-b" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">b) A declaração de que cumpre as exigências de reserva de cargos para pessoa com deficiência e para reabilitado da Previdência Social;</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#04" target="_blank">📝 Anexo IV · Reserva PCD</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-04-reserva-cargos-pcd_assinado.pdf" target="_blank">👁 Anexo IV · Reserva PCD</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-04-reserva-cargos-pcd_assinado.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="dec-c1">
+          <input type="checkbox" data-key="dec-c1" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">c) Declaração de que sua proposta econômica compreenda a integralidade dos custos para atendimento dos direitos trabalhistas assegurados na Constituição Federal, nas leis trabalhistas, nas normas infralegais, nas convenções coletivas de trabalho e nos termos de ajustamento de conduta vigentes na data de entrega da proposta;</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#05" target="_blank">📝 Anexo V · Custos trabalhistas</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-05-custos-trabalhistas_assinado.pdf" target="_blank">👁 Anexo V · Custos trabalhistas</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-05-custos-trabalhistas_assinado.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="dec-c2">
+          <input type="checkbox" data-key="dec-c2" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">d) Declaração de atestado de visita, ou de conhecimento pleno das condições e peculiaridades da contratação assinado por profissional técnico do licitante;</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#10" target="_blank">📝 Anexo X · Conhecimento</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-10-conhecimento_assinado.pdf" target="_blank">👁 Anexo X · Conhecimento</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-10-conhecimento_assinado.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="dec-d">
+          <input type="checkbox" data-key="dec-d" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">e) Cumprimento do disposto no inciso XXXIII do art. 7º da Constituição Federal;</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#07" target="_blank">📝 Anexo VII · Não emprega menor</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-07-nao-emprega-menor_assinado.pdf" target="_blank">👁 Anexo VII · Não emprega menor</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-07-nao-emprega-menor_assinado.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
@@ -639,19 +731,40 @@
           <span class="box"></span>
           <div class="body">
             <div class="name">f) Declaração, assinada por profissional habilitado da área contábil, que ateste o atendimento pelo licitante dos índices econômicos;</div>
+            <div class="meta" style="color:var(--accent)">⚠ PDF gerado, mas precisa da assinatura do contador antes de subir.</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#06" target="_blank">📝 Anexo VI · Índices econômicos (contador)</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-06-indices-economicos.pdf" target="_blank">👁 Anexo VI · Índices econômicos</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-06-indices-economicos.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
 
         <label class="chk">
-          <input type="checkbox" data-key="dec-f">
+          <input type="checkbox" data-key="dec-f" checked>
           <span class="box"></span>
           <div class="body">
             <div class="name">g) Declaração de que não possui em seu quadro funcional ou societário servidor público na ativa.</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#11" target="_blank">📝 Anexo XI · Sem servidor público</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-11-servidor-publico_assinado.pdf" target="_blank">👁 Anexo XI · Sem servidor público</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-11-servidor-publico_assinado.pdf" download>↓</a>
+              </span>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="dec-idoneidade" checked>
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">h) Declaração de idoneidade — empresa não foi declarada inidônea para licitar com a Administração Pública.</div>
+            <div class="item-actions">
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-09-idoneidade_assinado.pdf" target="_blank">👁 Anexo IX · Idoneidade</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-09-idoneidade_assinado.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
@@ -660,9 +773,13 @@
           <input type="checkbox" data-key="dec-me">
           <span class="box"></span>
           <div class="body">
-            <div class="name">h) Declaração de enquadramento como Microempresa (ME) — assinada pelo contador, conforme item 5.11 do edital. Habilita a ADA aos benefícios da LC 123/2006 (empate ficto, preferência em caso de empate de preço).</div>
+            <div class="name">i) Declaração de enquadramento como Microempresa (ME) — assinada pelo contador, conforme item 5.11 do edital. Habilita a ADA aos benefícios da LC 123/2006 (empate ficto, preferência em caso de empate de preço).</div>
+            <div class="meta" style="color:var(--accent)">⚠ Falta assinatura do contador antes de subir.</div>
             <div class="item-actions">
-              <a class="item-btn" href="MODELOS/declaracoes-licitacao.html#08" target="_blank">📝 Anexo VIII · Enquadramento ME/EPP/Coop</a>
+              <span class="btn-pair">
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-08-enquadramento-me-epp_assinado.pdf" target="_blank">👁 Anexo VIII · Enquadramento ME/EPP</a>
+                <a class="item-btn" href="INSUMOS/DOCUMENTOS_PREGÃO/DECLARACOES_PDF/anexo-08-enquadramento-me-epp_assinado.pdf" download>↓</a>
+              </span>
             </div>
           </div>
         </label>
@@ -685,8 +802,8 @@
           <div class="body">
             <div class="name">Roteirista — Alexandre [sobrenome a confirmar]</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="EQUIPE/roteirista/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="EQUIPE/roteirista/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/roteirista/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/roteirista/anuencia.html" target="_blank">📋 Carta de Anuência</a>
             </div>
           </div>
         </label>
@@ -697,8 +814,8 @@
           <div class="body">
             <div class="name">Historiador 1 — Prof. Guilherme [sobrenome a confirmar]</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="EQUIPE/historiador-1/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="EQUIPE/historiador-1/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/historiador-1/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/historiador-1/anuencia.html" target="_blank">📋 Carta de Anuência</a>
             </div>
           </div>
         </label>
@@ -709,8 +826,8 @@
           <div class="body">
             <div class="name">Historiador 2 — a confirmar</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="EQUIPE/historiador-2/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="EQUIPE/historiador-2/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/historiador-2/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/historiador-2/anuencia.html" target="_blank">📋 Carta de Anuência</a>
             </div>
           </div>
         </label>
@@ -721,8 +838,8 @@
           <div class="body">
             <div class="name">Historiador 3 — a confirmar</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="EQUIPE/historiador-3/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="EQUIPE/historiador-3/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/historiador-3/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/historiador-3/anuencia.html" target="_blank">📋 Carta de Anuência</a>
             </div>
           </div>
         </label>
@@ -733,8 +850,8 @@
           <div class="body">
             <div class="name">Direção Executiva — Tatiane Gonzalez</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="EQUIPE/tatiane/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="EQUIPE/tatiane/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/tatiane/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/tatiane/anuencia.html" target="_blank">📋 Carta de Anuência</a>
             </div>
           </div>
         </label>
@@ -745,8 +862,8 @@
           <div class="body">
             <div class="name">Direção Artística — Caio Fazolin</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="EQUIPE/caio/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="EQUIPE/caio/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/caio/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/caio/anuencia.html" target="_blank">📋 Carta de Anuência</a>
             </div>
           </div>
         </label>
@@ -757,8 +874,8 @@
           <div class="body">
             <div class="name">Sound Design — a confirmar</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="EQUIPE/sound-design/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
-              <a class="item-btn todo" href="EQUIPE/sound-design/anuencia.html" target="_blank">📋 Carta de Anuência</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/sound-design/portfolio.html" target="_blank">📁 Portfólio / Currículo</a>
+              <a class="item-btn todo" href="PAINEL/EQUIPE/sound-design/anuencia.html" target="_blank">📋 Carta de Anuência</a>
             </div>
           </div>
         </label>
@@ -782,7 +899,7 @@
             <div class="name">a) <strong style="color:var(--accent)">DEMO</strong> — vídeo de 2 a 3 minutos</div>
             <div class="meta">Único item OBRIGATÓRIO da proposta técnica. ≥ 50% animação 3D · paleta barroco-missioneira · skullmapping autoral · trilha original binaural · 4K ProRes · arte respeitando a fachada.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="DEMO/index.html" target="_blank">🎬 DEMO</a>
+              <a class="item-btn todo" href="PAINEL/DEMO/index.html" target="_blank">🎬 DEMO</a>
             </div>
           </div>
         </label>
@@ -794,7 +911,7 @@
             <div class="name">b) <strong style="color:var(--accent)">Argumento</strong> (roteiro narrativo prévio)</div>
             <div class="meta">Documento OPCIONAL — "a critério do proponente" (ETP l. 140–143). Vale a pena anexar para pontuar nos Critérios 1 (peso 3), 2 (peso 5) e 3 (peso 3) da Nota Técnica.</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="ARGUMENTO/index.html" target="_blank">📖 Argumento</a>
+              <a class="item-btn todo" href="PAINEL/ARGUMENTO/index.html" target="_blank">📖 Argumento</a>
             </div>
           </div>
         </label>
@@ -806,7 +923,7 @@
             <div class="name">c) <strong style="color:var(--accent)">Storyboard</strong> do argumento</div>
             <div class="meta">Documento OPCIONAL — apresentação visual das cenas como apoio ao argumento. Reforça avaliação dos Critérios 5 (direção de arte) e 14 (inovação).</div>
             <div class="item-actions">
-              <a class="item-btn" href="STORYBOARD/index.html" target="_blank">🎬 Storyboard</a>
+              <a class="item-btn" href="PAINEL/STORYBOARD/index.html" target="_blank">🎬 Storyboard</a>
             </div>
           </div>
         </label>
@@ -818,7 +935,19 @@
             <div class="name">d) <strong style="color:var(--accent)">Bibliografia</strong> (pesquisa histórica estruturada)</div>
             <div class="meta">Documento OPCIONAL — citado no ETP l. 140–143 como "pesquisa histórica estruturada". Pontua diretamente no Critério 2.3 da Nota Técnica (peso 5): "Indicação da bibliografia é satisfatória para atender a necessidade da profundidade da pesquisa histórica".</div>
             <div class="item-actions">
-              <a class="item-btn todo" href="BIBLIOGRAFIA/index.html" target="_blank">📚 Bibliografia</a>
+              <a class="item-btn todo" href="PAINEL/BIBLIOGRAFIA/index.html" target="_blank">📚 Bibliografia</a>
+            </div>
+          </div>
+        </label>
+
+        <label class="chk">
+          <input type="checkbox" data-key="pt-dossie-historiadores">
+          <span class="box"></span>
+          <div class="body">
+            <div class="name">e) <strong style="color:var(--accent)">Dossiê dos historiadores</strong> (currículos + plano de horas)</div>
+            <div class="meta">Documento OPCIONAL — currículos detalhados dos 3 historiadores (formação, publicações, projetos, atestados) + cronograma de horas dedicadas ao projeto. Ataca diretamente os subquesitos do Critério 2 (peso 5 · até 50 pts brutos): <strong>2.2</strong> dimensionamento das horas dos pesquisadores · <strong>2.4</strong> expertise da equipe de historiadores · <strong>2.5</strong> fontes variadas e sem viés · <strong>2.6</strong> coerência factual. <a href="PAINEL/NOTA_TECNICA/index.html" target="_blank" style="color:var(--accent);text-decoration:underline">Ver guia de avaliação ↗</a></div>
+            <div class="item-actions">
+              <a class="item-btn todo" href="PAINEL/HISTORIADORES/index.html" target="_blank">📜 Dossiê dos historiadores</a>
             </div>
           </div>
         </label>
@@ -829,13 +958,29 @@
   </section>
 
   <script>
+    // Migração: marca como verificados os itens que o agente confirmou ter arquivo na pasta
+    const VERIFIED = ['hj-a','hj-b','rf-a','rf-b','rf-c','rf-d','rf-e','rf-f','rf-g','qef-a','qef-b','dec-a','dec-b','dec-c1','dec-c2','dec-d','dec-f','dec-idoneidade'];
+    const UNVERIFIED = ['dec-me'];
+    if (localStorage.getItem('edital-mig-v13') !== '1') {
+      VERIFIED.forEach(k => localStorage.setItem('edital-' + k, '1'));
+      UNVERIFIED.forEach(k => localStorage.setItem('edital-' + k, '0'));
+      localStorage.setItem('edital-mig-v13', '1');
+    }
+
     // Persiste checks no localStorage (por chave data-key)
     document.querySelectorAll('.chk input[type="checkbox"][data-key]').forEach(cb => {
       const key = 'edital-' + cb.dataset.key;
-      cb.checked = localStorage.getItem(key) === '1';
+      const stored = localStorage.getItem(key);
+      if (stored !== null) cb.checked = stored === '1';
+      else if (cb.defaultChecked) { cb.checked = true; localStorage.setItem(key, '1'); }
       cb.addEventListener('change', () => {
         localStorage.setItem(key, cb.checked ? '1' : '0');
       });
+    });
+
+    // Revela botão de download só após clicar em Ver
+    document.querySelectorAll('.btn-pair > a[target="_blank"]').forEach(a => {
+      a.addEventListener('click', () => a.parentElement.classList.add('shown'));
     });
   </script>
 
@@ -845,67 +990,67 @@
 
     <div class="docs-grid">
 
-      <a href="DOCUMENTOS%20BAIXADOS/856752.pdf" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/856752.pdf" target="_blank">
         <span class="ico">📄</span>
         <span class="name">Edital nº 002/2026</span>
         <span class="meta">PDF · 42 págs.</span>
       </a>
 
-      <a href="ETP/index.html" class="local">
+      <a href="PAINEL/ETP/index.html" class="local">
         <span class="ico">📑</span>
         <span class="name">Estudo Técnico Preliminar (ETP)</span>
         <span class="meta">HTML · diagramado</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/639083919405691533639047770653842423112330_TR.PDF" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/639083919405691533639047770653842423112330_TR.PDF" target="_blank">
         <span class="ico">📄</span>
         <span class="name">Termo de Referência (TR)</span>
         <span class="meta">PDF · 6 págs.</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/639083919405604177639047770232830908112330_Te.PDF" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/639083919405604177639047770232830908112330_Te.PDF" target="_blank">
         <span class="ico">📄</span>
         <span class="name">TR — Orçamentos (Anexo II Convênio)</span>
         <span class="meta">PDF · 6 págs.</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/639083919405342031639047770071218576112330_Co.pdf" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/639083919405342031639047770071218576112330_Co.pdf" target="_blank">
         <span class="ico">📄</span>
         <span class="name">Convênio SEDAC nº 01/2025</span>
         <span class="meta">PDF · 9 págs.</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/639083919405781976639047770858032382112330_P1.pdf" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/639083919405781976639047770858032382112330_P1.pdf" target="_blank">
         <span class="ico">📄</span>
         <span class="name">Portaria nº 16/SMGRI/2026</span>
         <span class="meta">Comissão Avaliação · PDF</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/639083919405852339639082457197171375112330_20.pdf" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/639083919405852339639082457197171375112330_20.pdf" target="_blank">
         <span class="ico">📄</span>
         <span class="name">Proposta Neorama (concorrente)</span>
         <span class="meta">PDF · benchmark · 4 págs.</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/Guia_de_produ%C3%A7%C3%A3o-Catedral_de_Santo_%C3%82ngelo_RS_00000.png" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/Guia_de_produ%C3%A7%C3%A3o-Catedral_de_Santo_%C3%82ngelo_RS_00000.png" target="_blank">
         <span class="ico">🎯</span>
         <span class="name">Máscara da fachada (mapping)</span>
         <span class="meta">PNG · 3800×3840 px</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/CARLOS%20MARQUES.pdf" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/CARLOS%20MARQUES.pdf" target="_blank">
         <span class="ico">🏛️</span>
         <span class="name">Carlos Marques — arquitetura da Catedral</span>
         <span class="meta">PDF · referência</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/CNPJ%20Zion%20Produ%C3%A7%C3%B5es.pdf" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/CNPJ%20Zion%20Produ%C3%A7%C3%B5es.pdf" target="_blank">
         <span class="ico">🏢</span>
         <span class="name">CNPJ Zion Produções</span>
         <span class="meta">PDF · cliente</span>
       </a>
 
-      <a href="DOCUMENTOS%20BAIXADOS/Tatiane%20Gonzalez_CV_26.pdf" target="_blank">
+      <a href="INSUMOS/DOCUMENTOS_BAIXADOS/Tatiane%20Gonzalez_CV_26.pdf" target="_blank">
         <span class="ico">👤</span>
         <span class="name">CV Tatiane Gonzalez</span>
         <span class="meta">PDF · titular ADA</span>

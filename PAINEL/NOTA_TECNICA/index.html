@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Como funciona a Nota · Catedral Angelopolitana — ADA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --page-bg:#111111;
+    --sec-bg:#1A1A1A;
+    --card-bg:#222222;
+    --accent:#FFD600;
+    --good:#7CFFB2;
+    --warn:#ff8a3d;
+    --danger:#ff5252;
+    --ink:#FFFFFF;
+    --ink-mid:rgba(255,255,255,.62);
+    --ink-faint:rgba(255,255,255,.40);
+    --border:rgba(255,214,0,.12);
+    --border-strong:rgba(255,214,0,.30);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-size:15px;line-height:1.65}
+  ::selection{background:var(--accent);color:#111}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:920px;margin:0 auto;padding:24px 22px 80px}
+
+  header.nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+  .wordmark{font-family:'DM Mono',monospace;font-weight:300;font-size:20px;color:var(--accent)}
+  .wordmark::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px}
+  .back{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint)}
+
+  .hero{padding:32px 0 12px}
+  .tag{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);padding:4px 10px;border:1px solid var(--border);margin-bottom:14px}
+  h1{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.1;color:var(--ink);margin:0 0 12px;letter-spacing:-.01em}
+  h1 em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--accent)}
+  .lede{max-width:780px;color:var(--ink-mid);font-size:16px}
+
+  section.block{margin:48px 0 0}
+  section.block h2{font-family:'DM Mono',monospace;font-weight:300;font-size:24px;color:var(--ink);margin:0 0 6px;padding-bottom:10px;border-bottom:1px solid var(--accent);letter-spacing:-.01em}
+  section.block h2 small{display:block;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+  section.block h3{font-family:'Syne',sans-serif;font-weight:600;font-size:15px;color:var(--accent);margin:22px 0 8px;letter-spacing:.02em}
+  section.block p{color:var(--ink-mid);margin:0 0 12px}
+  section.block ul{color:var(--ink-mid);padding-left:22px;margin:6px 0 14px}
+  section.block ul li{margin-bottom:6px}
+  section.block ul li strong{color:var(--ink)}
+
+  /* fórmula em destaque */
+  .formula{background:linear-gradient(135deg,#1a1500 0%,#0d0d0d 100%);border:1px solid var(--accent);padding:24px 28px;margin:18px 0;text-align:center}
+  .formula-eq{font-family:'DM Mono',monospace;font-size:clamp(15px,2.4vw,22px);color:var(--ink);letter-spacing:.02em;line-height:1.5}
+  .formula-eq b{color:var(--accent);font-weight:400}
+  .formula-leg{font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.08em;margin-top:10px}
+
+  /* Cards 70/30 */
+  .split{display:grid;grid-template-columns:7fr 3fr;gap:14px;margin:18px 0}
+  @media (max-width:640px){.split{grid-template-columns:1fr}}
+  .split-card{background:var(--sec-bg);border:1px solid var(--border-strong);padding:22px 24px}
+  .split-card.tec{border-left:4px solid var(--accent)}
+  .split-card.preco{border-left:4px solid var(--good)}
+  .split-card .pct-big{font-family:'DM Mono',monospace;font-weight:300;font-size:48px;line-height:1;color:var(--accent);margin-bottom:6px}
+  .split-card.preco .pct-big{color:var(--good)}
+  .split-card .label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:14px}
+  .split-card .desc{color:var(--ink-mid);font-size:13.5px;line-height:1.6}
+
+  /* Tabela de critérios */
+  table.criterios{width:100%;border-collapse:collapse;margin:14px 0;background:var(--sec-bg);border:1px solid var(--border-strong);font-size:13.5px}
+  table.criterios th, table.criterios td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  table.criterios th{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);background:#0d0d0d;font-weight:400}
+  table.criterios td.num{text-align:center;font-family:'DM Mono',monospace;color:var(--ink-faint);width:40px}
+  table.criterios td.peso{text-align:center;font-family:'DM Mono',monospace;color:var(--accent);width:60px;font-size:16px}
+  table.criterios td.maxpts{text-align:center;font-family:'DM Mono',monospace;color:var(--ink-faint);width:80px}
+  table.criterios tr.peso5 td.peso{color:var(--accent);font-weight:600;font-size:18px}
+  table.criterios tr.peso5{background:rgba(255,214,0,.04)}
+  table.criterios tr.peso4{background:rgba(255,214,0,.02)}
+  table.criterios .src-col{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase}
+  table.criterios .src-col.demo{color:var(--accent)}
+  table.criterios .src-col.outros{color:var(--good)}
+  table.criterios .src-col.dual{color:var(--warn)}
+
+  /* Quadro DEMO */
+  .demo-box{background:linear-gradient(135deg,#0d0d0d 0%,#1a1a1a 100%);border:1px solid var(--accent);padding:28px 30px;margin:18px 0}
+  .demo-box .demo-pct{font-family:'DM Mono',monospace;font-weight:300;font-size:64px;line-height:1;color:var(--accent);margin-bottom:6px}
+  .demo-box .demo-label{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:16px}
+  .demo-box p{color:var(--ink-mid);margin:8px 0}
+
+  /* Atenção cards */
+  .att-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+  @media (max-width:640px){.att-grid{grid-template-columns:1fr}}
+  .att{background:var(--sec-bg);border:1px solid var(--border-strong);padding:20px 22px}
+  .att.danger{border-left:4px solid var(--danger)}
+  .att.warn{border-left:4px solid var(--warn)}
+  .att.good{border-left:4px solid var(--good)}
+  .att.opp{border-left:4px solid var(--accent)}
+  .att .att-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+  .att.danger .att-tag{color:var(--danger)}
+  .att.warn .att-tag{color:var(--warn)}
+  .att.good .att-tag{color:var(--good)}
+  .att.opp .att-tag{color:var(--accent)}
+  .att h4{font-family:'DM Mono',monospace;font-weight:300;font-size:15px;color:var(--ink);margin:0 0 10px;letter-spacing:-.005em}
+  .att p, .att li{font-size:13.5px;color:var(--ink-mid);line-height:1.6}
+  .att ul{padding-left:18px;margin:6px 0}
+  .att strong{color:var(--ink)}
+
+  /* Box exemplo */
+  .exemplo{background:#0d0d0d;border:1px solid var(--border-strong);padding:18px 22px;margin:14px 0;font-family:'DM Mono',monospace;font-size:13px;line-height:1.8}
+  .exemplo .ex-line{display:flex;justify-content:space-between;border-bottom:1px dashed var(--border);padding:4px 0}
+  .exemplo .ex-line:last-child{border-bottom:none;border-top:1px solid var(--accent);margin-top:6px;padding-top:8px;color:var(--accent);font-weight:400}
+
+  blockquote{margin:14px 0;padding:14px 18px;border-left:3px solid var(--accent);background:#0d0d0d;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:15.5px;color:var(--ink);line-height:1.6}
+  blockquote b{font-style:normal;color:var(--accent);font-family:'Syne',sans-serif;font-weight:600}
+
+  footer{margin-top:64px;padding-top:24px;border-top:1px solid var(--border);font-family:'DM Mono',monospace;font-size:11px;color:var(--ink-faint);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="nav">
+  <a href="../../index.html" class="wordmark">ADA · Catedral</a>
+  <a href="../../index.html" class="back">← Painel</a>
+</header>
+
+<section class="hero">
+  <span class="tag">Como a banca decide o vencedor · Concorrência 002/2026</span>
+  <h1>Como funciona a <em>Nota</em>.</h1>
+  <p class="lede">Guia simples de como a Prefeitura calcula a nota de cada licitante, qual o peso real do DEMO, onde se ganha mais pontos e onde se perde. Tudo extraído do <strong>ETP</strong> (Estudo Técnico Preliminar) e do <strong>Edital 002/2026</strong>.</p>
+</section>
+
+<!-- ============================================================ -->
+<section class="block">
+  <h2>1 · A nota final em uma fórmula <small>técnica + preço</small></h2>
+
+  <p>Cada empresa recebe uma nota de 0 a 100. Quem tirar a maior, ganha. A nota é a soma ponderada de duas notas:</p>
+
+  <div class="formula">
+    <div class="formula-eq"><b>Nota Final</b> = (Nota Técnica Normalizada × <b>0,70</b>) + (Nota de Preço × <b>0,30</b>)</div>
+    <div class="formula-leg">Técnica vale 70% · Preço vale 30%</div>
+  </div>
+
+  <div class="split">
+    <div class="split-card tec">
+      <div class="pct-big">70%</div>
+      <div class="label">Nota Técnica</div>
+      <div class="desc">A banca avalia o <strong>DEMO + materiais que você manda</strong> e dá nota em <strong>14 critérios</strong> de 0 a 10. Cada critério tem um peso. Soma vai a 140 pts e é convertida pra escala 0–100.</div>
+    </div>
+    <div class="split-card preco">
+      <div class="pct-big">30%</div>
+      <div class="label">Nota de Preço</div>
+      <div class="desc">Calculada pela fórmula:<br><strong>NP = (Menor preço / Seu preço) × 100</strong><br>Quem oferecer o menor preço leva 100 pts. Os demais perdem proporcionalmente.</div>
+    </div>
+  </div>
+
+  <h3>Exemplo prático — ADA R$ 1,6M vs Neorama R$ 1,9M</h3>
+  <p>Imaginando que ambas tirem nota técnica máxima:</p>
+
+  <div class="exemplo">
+    <div class="ex-line"><span>ADA · NT 100 × 0,70</span><span>= 70,0</span></div>
+    <div class="ex-line"><span>ADA · NP 100 × 0,30 (menor preço)</span><span>= 30,0</span></div>
+    <div class="ex-line"><span><strong>ADA · Nota Final</strong></span><span><strong>= 100,0</strong></span></div>
+  </div>
+
+  <div class="exemplo">
+    <div class="ex-line"><span>Neorama · NT 100 × 0,70</span><span>= 70,0</span></div>
+    <div class="ex-line"><span>Neorama · NP 84,2 × 0,30 (1.600/1.900 × 100)</span><span>= 25,3</span></div>
+    <div class="ex-line"><span><strong>Neorama · Nota Final</strong></span><span><strong>= 95,3</strong></span></div>
+  </div>
+
+  <p style="color:var(--good);margin-top:12px"><strong>→ Mesmo empatando na técnica, a ADA ganha por 4,7 pontos só com o desconto.</strong></p>
+</section>
+
+<!-- ============================================================ -->
+<section class="block">
+  <h2>2 · Os 14 critérios da Nota Técnica <small>peso variável de 2 a 5</small></h2>
+
+  <p>Cada critério tem nota 0–10 (média dos sub-quesitos). A nota é multiplicada pelo peso. Soma máxima = <strong>140 pontos brutos</strong>. Depois normalizada pra 0–100.</p>
+
+  <p>Os critérios em <span style="color:var(--accent)"><strong>amarelo</strong></span> são os de <strong>peso 5</strong> — onde mais se ganha ou perde pontos. Os em fundo levemente amarelado são peso 4.</p>
+
+  <table class="criterios">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Critério</th>
+        <th>Peso</th>
+        <th>Máx</th>
+        <th>Avaliado por</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">1</td>
+        <td>Pertinência histórica e fidelidade do roteiro</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+        <td><span class="src-col dual">Roteiro + DEMO</span></td>
+      </tr>
+      <tr class="peso5">
+        <td class="num">2</td>
+        <td><strong>Profundidade da pesquisa histórica</strong></td>
+        <td class="peso">5</td>
+        <td class="maxpts">50</td>
+        <td><span class="src-col outros">Bibliografia + currículos</span></td>
+      </tr>
+      <tr>
+        <td class="num">3</td>
+        <td>Qualidade dramatúrgica do roteiro</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+        <td><span class="src-col outros">Roteiro</span></td>
+      </tr>
+      <tr class="peso4">
+        <td class="num">4</td>
+        <td>Impacto emocional e artístico</td>
+        <td class="peso">4</td>
+        <td class="maxpts">40</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr class="peso5">
+        <td class="num">5</td>
+        <td><strong>Direção de arte / animação</strong></td>
+        <td class="peso">5</td>
+        <td class="maxpts">50</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr>
+        <td class="num">6</td>
+        <td>Qualidade e complexidade dos VFX</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr>
+        <td class="num">7</td>
+        <td>Mapping — precisão geométrica</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr>
+        <td class="num">8</td>
+        <td>Mapping — aproveitamento da arquitetura</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr>
+        <td class="num">9</td>
+        <td>Mapping — clareza e legibilidade</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr class="peso4">
+        <td class="num">10</td>
+        <td>Som — música e trilha original</td>
+        <td class="peso">4</td>
+        <td class="maxpts">40</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr>
+        <td class="num">11</td>
+        <td>Som — qualidade do sound design</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr>
+        <td class="num">12</td>
+        <td>Som — integração audiovisual</td>
+        <td class="peso">2</td>
+        <td class="maxpts">20</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr class="peso5">
+        <td class="num">13</td>
+        <td><strong>Complexidade técnica (3D, ray-tracing, simulações)</strong></td>
+        <td class="peso">5</td>
+        <td class="maxpts">50</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr class="peso4">
+        <td class="num">14</td>
+        <td>Inovação criativa</td>
+        <td class="peso">4</td>
+        <td class="maxpts">40</td>
+        <td><span class="src-col demo">DEMO</span></td>
+      </tr>
+      <tr style="background:#0d0d0d;color:var(--accent)">
+        <td colspan="3" style="font-family:'DM Mono',monospace;letter-spacing:.10em;text-transform:uppercase;font-size:11px">Soma máxima de pontos brutos</td>
+        <td class="maxpts" style="color:var(--accent);font-size:16px">140</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="font-size:13px;color:var(--ink-faint)"><strong>Conversão final:</strong> NTn (normalizada) = (pontos brutos / 140) × 100.</p>
+</section>
+
+<!-- ============================================================ -->
+<section class="block">
+  <h2>3 · O peso real do DEMO <small>cobre 11 de 14 critérios — soma 39 dos 50 pesos totais</small></h2>
+
+  <div class="demo-box">
+    <div class="demo-pct">~78%</div>
+    <div class="demo-label">do peso da Nota Técnica vem do DEMO</div>
+    <p style="margin:0;font-size:14px;color:var(--ink-mid)">A soma dos pesos dos 11 critérios que o DEMO alimenta é <strong>39 de 50</strong>. Ou seja: <strong>se o DEMO for ruim, você perde quase 80% da Nota Técnica de uma vez</strong>.</p>
+  </div>
+
+  <h3>Os 11 critérios que dependem SÓ do DEMO</h3>
+  <p>Tabela isolada — apenas critérios alimentados exclusivamente pelo vídeo demonstração:</p>
+
+  <table class="criterios">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Critério</th>
+        <th>Peso</th>
+        <th>Máx</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="peso4">
+        <td class="num">4</td>
+        <td>Impacto emocional e artístico</td>
+        <td class="peso">4</td>
+        <td class="maxpts">40</td>
+      </tr>
+      <tr class="peso5">
+        <td class="num">5</td>
+        <td><strong>Direção de arte / animação</strong></td>
+        <td class="peso">5</td>
+        <td class="maxpts">50</td>
+      </tr>
+      <tr>
+        <td class="num">6</td>
+        <td>Qualidade e complexidade dos VFX</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+      </tr>
+      <tr>
+        <td class="num">7</td>
+        <td>Mapping — precisão geométrica</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+      </tr>
+      <tr>
+        <td class="num">8</td>
+        <td>Mapping — aproveitamento da arquitetura</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+      </tr>
+      <tr>
+        <td class="num">9</td>
+        <td>Mapping — clareza e legibilidade</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+      </tr>
+      <tr class="peso4">
+        <td class="num">10</td>
+        <td>Som — música e trilha original</td>
+        <td class="peso">4</td>
+        <td class="maxpts">40</td>
+      </tr>
+      <tr>
+        <td class="num">11</td>
+        <td>Som — qualidade do sound design</td>
+        <td class="peso">3</td>
+        <td class="maxpts">30</td>
+      </tr>
+      <tr>
+        <td class="num">12</td>
+        <td>Som — integração audiovisual</td>
+        <td class="peso">2</td>
+        <td class="maxpts">20</td>
+      </tr>
+      <tr class="peso5">
+        <td class="num">13</td>
+        <td><strong>Complexidade técnica (3D, ray-tracing, simulações)</strong></td>
+        <td class="peso">5</td>
+        <td class="maxpts">50</td>
+      </tr>
+      <tr class="peso4">
+        <td class="num">14</td>
+        <td>Inovação criativa</td>
+        <td class="peso">4</td>
+        <td class="maxpts">40</td>
+      </tr>
+      <tr style="background:#0d0d0d;color:var(--accent)">
+        <td colspan="2" style="font-family:'DM Mono',monospace;letter-spacing:.10em;text-transform:uppercase;font-size:11px">Total exclusivo do DEMO</td>
+        <td class="peso" style="color:var(--accent);font-size:16px">39</td>
+        <td class="maxpts" style="color:var(--accent);font-size:16px">390</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>O que o DEMO precisa entregar (resumo do edital)</h3>
+  <ul>
+    <li>Duração: <strong>2 a 3 minutos</strong></li>
+    <li>Resolução máscara mapping: <strong>3800 × 3840 px</strong> (a Tati já pediu o PNG pra Prefeitura)</li>
+    <li><strong>≥ 50% de animação 3D</strong> (eliminatório se menos)</li>
+    <li><strong>Paleta cromática barroco-missioneira</strong> (eliminatório)</li>
+    <li>Trilha em <strong>estéreo binaural psicoacústico</strong> (eliminatório — proibido downmix)</li>
+    <li>Entrega em <strong>4K ProRes</strong> (eliminatório)</li>
+    <li>Demonstrar técnicas de <strong>skullmapping</strong> (referência: Cupido de Rubens, Bruxelas)</li>
+    <li>Integração total com a arquitetura da Catedral</li>
+  </ul>
+</section>
+
+<!-- ============================================================ -->
+<section class="block">
+  <h2>4 · O que NÃO está no DEMO mas vale muito <small>22% restantes da Nota Técnica</small></h2>
+
+  <p>Os 11 pesos que <strong>não dependem do DEMO</strong> vêm de outros documentos. Aqui é onde a maioria dos concorrentes esquece — e onde a ADA pode abrir vantagem.</p>
+
+  <div class="att-grid">
+    <div class="att opp">
+      <div class="att-tag">Critério 2 · peso 5</div>
+      <h4>Pesquisa histórica</h4>
+      <p>Avalia <strong>quem são os 3 historiadores</strong>, sua formação, publicações, e <strong>quantas horas</strong> vão trabalhar. Avalia também a <strong>bibliografia</strong> que vai usar. Sem dossiê → perde até <strong>50 pts brutos</strong>.</p>
+    </div>
+    <div class="att opp">
+      <div class="att-tag">Critério 1 · peso 3</div>
+      <h4>Pertinência histórica do roteiro</h4>
+      <p>Avalia se a <strong>história está correta</strong> — sem anacronismos, sem distorções. Se você anexar um argumento escrito, a banca julga aqui. Sem roteiro escrito → julga só pelo DEMO.</p>
+    </div>
+    <div class="att opp">
+      <div class="att-tag">Critério 3 · peso 3</div>
+      <h4>Qualidade dramatúrgica do roteiro</h4>
+      <p>Ritmo, fluidez, capacidade de emocionar, construção de cenas. Avaliada via <strong>argumento escrito + DEMO</strong>. Argumento bem-feito puxa essa nota pra cima.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="block">
+  <h2>5 · Pontos críticos de atenção <small>onde a ADA ganha e onde pode perder tudo</small></h2>
+
+  <div class="att-grid">
+    <div class="att danger">
+      <div class="att-tag">⚠ Eliminatório</div>
+      <h4>NTn abaixo de 70 pts → fora</h4>
+      <p>Se a soma normalizada ficar <strong>menor que 70</strong>, a empresa é desclassificada — não interessa o preço. Lei 14.133 art. 36 §1º.</p>
+    </div>
+    <div class="att danger">
+      <div class="att-tag">⚠ Eliminatório</div>
+      <h4>Zero em qualquer critério → fora</h4>
+      <p>Se um dos 14 critérios receber nota zero (média), desclassifica automaticamente. Não dá pra "ignorar" nenhum quesito, todos precisam estar atendidos minimamente.</p>
+    </div>
+    <div class="att warn">
+      <div class="att-tag">⚠ Eliminatório técnico</div>
+      <h4>Faltar requisito obrigatório do DEMO</h4>
+      <p>Sem ≥50% animação 3D, sem paleta barroco-missioneira, sem áudio binaural, ou sem 4K ProRes — desclassificada antes mesmo da banca avaliar a qualidade.</p>
+    </div>
+    <div class="att warn">
+      <div class="att-tag">⚠ Eliminatório de habilitação</div>
+      <h4>Faltar roteirista nominado</h4>
+      <p>O edital (5.7.e) exige <strong>roteirista com produção AV pública/premiada</strong> e vínculo formal com a empresa. Sem isso → desclassifica.</p>
+    </div>
+    <div class="att good">
+      <div class="att-tag">✓ Onde a ADA ganha</div>
+      <h4>DEMO técnico forte</h4>
+      <p>Os 5 critérios mais pesados que o DEMO alimenta (5, 13, 4, 10, 14) somam <strong>22 pts de peso</strong> — quase metade dos 50 pesos totais. DEMO impecável = ~44% da Nota Técnica garantida.</p>
+    </div>
+    <div class="att good">
+      <div class="att-tag">✓ Onde a ADA ganha</div>
+      <h4>Dossiê de pesquisa histórica completo</h4>
+      <p>Critério 2 (peso 5) é o de maior peso individual. Mandar bibliografia + currículos dos 3 historiadores + plano de horas = <strong>até 50 pts brutos</strong> que a maioria dos concorrentes não vai entregar.</p>
+    </div>
+    <div class="att opp">
+      <div class="att-tag">★ Diferencial estratégico</div>
+      <h4>Argumento escrito (opcional)</h4>
+      <p>O ETP diz "a critério do proponente". Mandar um argumento bem-feito puxa Critérios 1 e 3 (somam peso 6) e mostra cuidado narrativo. Quase ninguém manda — vira diferencial gratuito.</p>
+    </div>
+    <div class="att opp">
+      <div class="att-tag">★ Diferencial de preço</div>
+      <h4>R$ 1,6M vs Neorama R$ 1,9M</h4>
+      <p>Mesmo empatando tecnicamente, ADA ganha ~4,7 pts no preço (NF 100 vs 95,3). Em caso de Neorama tirar até <strong>~6,7 pts a mais na técnica</strong>, ainda ganhamos pelo preço.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<section class="block">
+  <h2>6 · Empate técnico — quem desempata <small>Lei 14.133, art. 60 + edital</small></h2>
+
+  <p>Se duas empresas tirarem a mesma Nota Final, o desempate segue esta ordem:</p>
+  <ol style="color:var(--ink-mid);padding-left:22px">
+    <li>Maior <strong>NT bruta</strong> (não normalizada)</li>
+    <li>Maior nota no <strong>Critério 1</strong> (pertinência histórica)</li>
+    <li>Maior nota no Critério 2, 3, 4... e assim por diante</li>
+    <li>Desempenho contratual prévio em obras públicas</li>
+    <li>Programa de integridade (compliance)</li>
+    <li>Preferência local (RS), nacional (BR), inovação (P&D), Lei 12.187/09 (clima)</li>
+  </ol>
+  <p style="color:var(--warn);font-size:13.5px">⚠ <strong>ADA não tem preferência local</strong> (sede em SP). Se o desempate chegar no item 6, perdemos pra qualquer concorrente do RS.</p>
+</section>
+
+<footer>
+  ADA · Catedral Angelopolitana · Concorrência 002/2026 · guia interno de avaliação
+</footer>
+
+</div>
+</body>
+</html>

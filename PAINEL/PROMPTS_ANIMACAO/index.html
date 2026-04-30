@@ -1,0 +1,691 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prompts de Animação · Catedral Angelopolitana — ADA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --page-bg:#111111;
+    --sec-bg:#1A1A1A;
+    --card-bg:#222222;
+    --accent:#FFD600;
+    --ink:#FFFFFF;
+    --ink-mid:rgba(255,255,255,.55);
+    --ink-faint:rgba(255,255,255,.35);
+    --border:rgba(255,214,0,.12);
+    --border-strong:rgba(255,214,0,.30);
+    --warn:#ff8a3d;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--page-bg);color:var(--ink);font-family:'Syne',system-ui,sans-serif;font-size:14px;line-height:1.55}
+  a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--border-strong)}
+  ::selection{background:var(--accent);color:#111}
+  .wrap{max-width:1480px;margin:0 auto;padding:24px 20px 80px}
+
+  header.nav{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+  .wordmark{font-family:'DM Mono',monospace;font-weight:300;font-size:20px;color:var(--accent)}
+  .wordmark::before{content:"";display:inline-block;width:9px;height:9px;background:var(--accent);margin-right:9px;vertical-align:1px}
+  .nav-back{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint);border-bottom:0}
+  .nav-back:hover{color:var(--accent)}
+
+  .hero{padding:32px 0 16px}
+  .tag{display:inline-block;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mid);padding:4px 10px;border:1px solid var(--border);margin-bottom:16px}
+  h1{font-family:'DM Mono',monospace;font-weight:300;font-size:clamp(28px,4vw,44px);line-height:1.1;color:var(--ink);margin:0 0 12px;letter-spacing:-.01em}
+  h1 em{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;color:var(--accent)}
+  .sub{max-width:820px;color:var(--ink-mid)}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--border);margin:24px 0 32px;border:1px solid var(--border)}
+  .stat{background:var(--sec-bg);padding:14px 18px}
+  .stat .k{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:4px}
+  .stat .v{font-family:'DM Mono',monospace;font-size:20px;color:var(--accent);line-height:1.1}
+
+  /* Transition row: [FROM] [PROMPT] [TO] */
+  .row{display:grid;grid-template-columns:280px 1fr 280px;gap:0;background:var(--sec-bg);border:1px solid var(--border-strong);margin:18px 0}
+  @media (max-width:1100px){
+    .row{grid-template-columns:1fr 1fr;}
+    .row .center{grid-column:1 / -1;order:2}
+    .row .from{order:1}
+    .row .to{order:3}
+  }
+  @media (max-width:640px){
+    .row{grid-template-columns:1fr}
+    .row .from,.row .to,.row .center{order:initial}
+  }
+
+  .row-head{grid-column:1 / -1;display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:12px 18px;background:#0d0d0d;border-bottom:1px solid var(--border)}
+  .row-num{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .row-title{font-family:'Syne',sans-serif;font-weight:600;font-size:14px;letter-spacing:.04em;color:var(--ink)}
+  .row-axis{margin-left:auto;font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.06em}
+
+  /* Frame thumb panel */
+  .frame{padding:14px;border-right:1px solid var(--border);background:#181818;display:flex;flex-direction:column;gap:10px}
+  .row .to{border-right:0;border-left:1px solid var(--border)}
+  @media (max-width:1100px){.row .from,.row .to{border:0;border-bottom:1px solid var(--border)}}
+  .frame-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-faint)}
+  .frame-name{font-family:'Syne',sans-serif;font-weight:600;font-size:12.5px;color:var(--ink);line-height:1.3;letter-spacing:.02em}
+  .frame-img{width:100%;height:auto;max-height:260px;object-fit:contain;background:#000;cursor:zoom-in;border:1px solid var(--border)}
+  .frame-meta{font-family:'DM Mono',monospace;font-size:10px;color:var(--ink-faint);letter-spacing:.04em}
+  .frame-actions{display:flex;gap:6px;flex-wrap:wrap}
+  .btn{flex:1;min-width:0;padding:8px 10px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.10em;text-transform:uppercase;color:var(--ink-mid);background:transparent;border:1px solid var(--border-strong);cursor:pointer;text-align:center}
+  .btn:hover{color:var(--accent);border-color:var(--accent);background:#1f1f1f}
+  .btn[disabled]{opacity:.35;cursor:not-allowed;color:var(--warn);border-color:var(--warn)}
+  .btn[disabled]:hover{color:var(--warn);border-color:var(--warn);background:transparent}
+
+  /* Center prompt */
+  .center{padding:14px 18px;display:flex;flex-direction:column;gap:10px;background:#1A1A1A}
+  .center-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .center-eyebrow{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  .center-actions{margin-left:auto;display:flex;gap:6px}
+  .anim-prompt{flex:1;font-family:'DM Mono',monospace;font-size:12px;line-height:1.65;color:var(--ink-mid);white-space:pre-wrap;background:#0d0d0d;border:1px solid var(--border);padding:14px 16px;max-height:340px;overflow-y:auto}
+  .placeholder{font-family:'DM Mono',monospace;font-size:11.5px;color:var(--warn);background:repeating-linear-gradient(45deg,#1a1a1a,#1a1a1a 8px,#1f1818 8px,#1f1818 16px);border:1px dashed var(--warn);padding:14px 16px;letter-spacing:.04em}
+
+  /* Lightbox */
+  .lb{position:fixed;inset:0;background:rgba(0,0,0,.94);display:none;align-items:center;justify-content:center;z-index:1000;cursor:zoom-out}
+  .lb.open{display:flex}
+  .lb img{max-width:96vw;max-height:96vh;object-fit:contain}
+
+  /* Toast */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--accent);color:#111;font-family:'DM Mono',monospace;font-size:12px;padding:10px 18px;opacity:0;transition:all .25s ease;z-index:1100;pointer-events:none}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* TOC */
+  .toc{position:sticky;top:0;background:#0d0d0d;border-bottom:1px solid var(--border);padding:8px 0;margin:16px 0;z-index:50;overflow-x:auto;white-space:nowrap}
+  .toc a{display:inline-block;padding:5px 9px;margin-right:3px;font-family:'DM Mono',monospace;font-size:9.5px;letter-spacing:.08em;color:var(--ink-faint);border:1px solid transparent;text-transform:uppercase}
+  .toc a:hover{color:var(--accent);border-color:var(--border-strong)}
+  .toc a.toc-ato{color:var(--accent);border-color:var(--accent);margin-left:8px;font-weight:600;letter-spacing:.16em}
+  .toc a.toc-ato:hover{background:var(--accent);color:#111}
+
+  /* Ato banner */
+  .ato-banner{margin:48px 0 18px;padding:28px 28px 24px;background:linear-gradient(135deg,#1A1A1A 0%,#0d0d0d 100%);border:1px solid var(--accent);border-left:6px solid var(--accent);position:relative}
+  .ato-banner::before{content:"";position:absolute;top:0;right:0;width:120px;height:100%;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(255,214,0,.04) 8px,rgba(255,214,0,.04) 16px);pointer-events:none}
+  .ato-banner-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+  .ato-banner-num{font-family:'DM Mono',monospace;font-weight:300;font-size:80px;line-height:.85;color:var(--accent);letter-spacing:-.02em}
+  .ato-banner-info{flex:1;min-width:240px}
+  .ato-banner-tag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .ato-banner-title{font-family:'DM Mono',monospace;font-weight:300;font-size:30px;color:var(--ink);line-height:1.1;margin:0 0 6px}
+  .ato-banner-period{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:18px;color:var(--accent)}
+  .ato-banner-meta{margin-top:14px;font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--ink-mid)}
+  .ato-banner-meta span{display:inline-block;padding:3px 8px;border:1px solid var(--border-strong);margin-right:6px;margin-top:4px}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="nav">
+  <a href="../../index.html" class="wordmark">ADA · Catedral</a>
+  <a href="../STORYBOARD/index.html" class="nav-back">← Storyboard</a>
+</header>
+
+<section class="hero">
+  <span class="tag">Prompts · Animação · Vídeo Mapping</span>
+  <h1>21 transições, <em>22 keyframes</em>.</h1>
+  <p class="sub">Cada linha mostra o frame de entrada, o prompt de animação (em inglês, para Freepik) e o frame de saída. Use os botões para copiar tanto o prompt de animação quanto o prompt de criação de cada keyframe. Animação respeita a arquitetura da fachada — sempre.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="k">Keyframes</div><div class="v">22</div></div>
+    <div class="stat"><div class="k">Transições</div><div class="v">21</div></div>
+    <div class="stat"><div class="k">Modo</div><div class="v">Freepik · 1º+último</div></div>
+    <div class="stat"><div class="k">Idioma</div><div class="v">EN</div></div>
+  </div>
+</section>
+
+<nav class="toc" id="toc"></nav>
+
+<main id="board"></main>
+
+</div>
+
+<div class="lb" id="lb"><img src="" alt="" /></div>
+<div class="toast" id="toast">Copiado</div>
+
+<script>
+const FRAMES = [
+  { id:'ato0', file:'ATO_0.png', label:'ATO 0 · Ponto de partida', period:'Estado-base',
+    promptEN:null, note:'Imagem-base sem prompt — referência geométrica e cromática.' },
+
+  { id:'a1f1', file:'ATO_1_FRAME_1.png', label:'1.1 · Ocupação Guarani Ancestral', period:'Pré-1610',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for a highly precise and realistic 3D projection mapping. The projection must strictly respect and preserve the full architectural integrity of the building, with exact cutouts and perfect alignment for every element — windows, towers, doors, arches, columns, and ornamental details. No light should spill outside the facade. The mapping must enhance and transform the architecture through contrast, depth, and optical illusion, never distorting its structure.
+The entire facade is fully covered by an organic ancestral nature composition, as if the cathedral has grown from the earth itself. The stone surface is transformed into rich, ultra-detailed textures of deep moss, roots, tree bark, and living earth, seamlessly integrated with the architecture: columns become tree trunks, arches are formed by intertwined roots, and walls are layered with organic patterns.
+Use a cinematic and high-contrast color palette dominated by deep greens and warm earthy oranges, with controlled highlights to emphasize depth, volume, and architectural relief. Windows and openings glow from within with soft amber and green light, revealing subtle internal luminosity and suggesting spiritual presence and depth.
+The towers rise like monumental trees, reinforced by vertical organic textures and ascending glowing particles, emphasizing height and natural ascension. Niches subtly suggest human forms emerging from roots and textures, blending sculpture and nature without becoming literal.
+At the center above the main portal, a soft and ethereal glow emerges, suggesting a spiritual presence without revealing a clear figure. The portal itself appears deeper, like an entrance into a hidden world.
+The projection must have high brightness, strong contrast, volumetric depth, and ultra-realistic rendering quality, creating a powerful illusion that the architecture is alive. The composition should be visually striking, immersive, and harmonious, merging nature, spirituality, and architecture into a unified visual system.
+No projection on surrounding buildings or sky — only the cathedral facade is illuminated.
+Ultra-detailed, 3D projection mapping, cinematic lighting, high realism, 8K render.` },
+
+  { id:'a1f2', file:'ATO_1_FRAME_2.png', label:'1.2 · Chegada dos Jesuítas', period:'Século XVII',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for highly precise and ultra-realistic 3D projection mapping. The projection must strictly respect the architectural boundaries of the facade, with perfect edge alignment and exact cutouts for towers, windows, arches, doors, and columns. No projection spill outside the structure. Strong emphasis on clean masking and architectural precision.
+The facade shows a transition from organic nature into structured geometry. The previous forest textures are still present — roots, moss, and tree-like structures integrated into columns and walls — but now they are being intersected and partially overlaid by geometric patterns inspired by early baroque and sacred European design.
+Thin lines of glowing golden geometry begin to emerge across the facade, forming grids, radial compositions, and sacred symmetrical patterns that align perfectly with the architecture. These geometric elements contrast with the organic roots, creating a visual tension between nature and order.
+Columns remain partially organic but are now being "disciplined" by vertical lines of light. Arches are emphasized by clean, luminous outlines, reinforcing depth and perspective. The portal becomes more structured, with subtle linear perspective lines suggesting a controlled spatial system.
+Windows emit a stronger and more defined warm golden light, shifting away from the green tones of nature. Inside, abstract silhouettes suggest presence, but still not fully literal.
+The towers emphasize verticality through ascending lines of light and geometric overlays, contrasting with the remaining organic textures. The composition must clearly show the coexistence and tension between two visual languages: fluid nature and rigid geometry.
+Use a high-contrast cinematic palette combining deep greens with warm gold and amber tones. Strong highlights and sharp contrasts should enhance architectural relief and create optical illusion depth.
+Ultra-detailed, high brightness, volumetric depth, perfect mapping precision, 8K, cinematic 3D projection mapping.` },
+
+  { id:'a1f3', file:'ATO_1_FRAME_3.png', label:'1.3 · Fundação de San Ángel Custódio', period:'1706',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, no textures, no objects, no particles, and no visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Everything must be perfectly masked to the facade silhouette.
+The mapping must align perfectly with every architectural detail — windows, towers, arches, doors, and columns — with clean and sharp edge definition.
+The facade shows a 3D construction illusion where the building appears to emerge from within itself, not from outside space.
+ Stone blocks, architectural volumes, and structural elements appear embedded in the facade and extrude visually through shading and perspective, but never physically extend beyond the building surface.
+All 3D effects must be achieved through illusion only:
+perspective mapping
+shading and highlights
+internal depth simulation
+trompe-l'œil techniques
+The central portal forms a deep illusion of a tunnel going inward, not outward.
+ Columns and arches gain strong volumetric lighting, creating the illusion of protrusion while remaining flat on the surface.
+Geometric construction lines (golden ratio, grids, structural diagrams) are projected directly onto the facade surface, perfectly aligned with the architecture, never floating in space.
+Use strong contrast between light and shadow to enhance depth illusion.
+ Lighting must appear as projected light, not as physical objects.
+Color palette: warm stone tones, gold accents, subtle residual greens.
+ High contrast, high brightness, cinematic mapping style.
+The final image must look like a real projection mapping on a real building, not a 3D render.
+Ultra-realistic projection mapping simulation, perfect masking, no spill, 8K.` },
+
+  { id:'a1f4', file:'ATO_1_FRAME_4.png', label:'1.4 · Construção — refinamento', period:'1706–início do XVIII',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+
+CRITICAL REQUIREMENT:
+
+All projection must be strictly confined to the exact front surface of the cathedral facade.
+
+No light, no textures, no objects, no particles, and no visual elements are allowed outside the architectural boundaries.
+
+No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+
+Everything must be perfectly masked to the facade silhouette.
+
+The mapping must align perfectly with every architectural detail — windows, towers, arches, doors, and columns — with clean and sharp edge definition.
+
+The facade shows a 3D construction illusion where the building appears to emerge from within itself, not from outside space.
+
+Stone blocks, architectural volumes, and structural elements appear embedded in the facade and extrude visually through shading and perspective, but never physically extend beyond the building surface.
+
+All 3D effects must be achieved through illusion only:
+
+perspective mapping
+
+shading and highlights
+
+internal depth simulation
+
+trompe-l'œil techniques
+
+The central portal forms a deep illusion of a tunnel going inward, not outward.
+
+Columns and arches gain strong volumetric lighting, creating the illusion of protrusion while remaining flat on the surface.
+
+Geometric construction lines (golden ratio, grids, structural diagrams) are projected directly onto the facade surface, perfectly aligned with the architecture, never floating in space.
+
+Use strong contrast between light and shadow to enhance depth illusion.
+
+Lighting must appear as projected light, not as physical objects.
+
+Color palette: warm stone tones, gold accents, subtle residual greens.
+
+High contrast, high brightness, cinematic mapping style.
+
+The final image must look like a real projection mapping on a real building, not a 3D render.
+
+Ultra-realistic projection mapping simulation, perfect masking, no spill, 8K.` },
+
+  { id:'a1f5', file:'ATO_1_FRAME_5.png', label:'1.5 · [variante a definir]', period:'Século XVIII',
+    promptEN:null, note:'Aguardando prompt de criação.' },
+
+  { id:'a2f1', file:'ATO_2_FRAME_1.png', label:'2.1 · Apogeu Missioneiro', period:'Século XVIII',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, no textures, no objects, no particles, and no visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Everything must be perfectly masked to the facade silhouette with clean and sharp edges.
+The facade now represents the peak of the Jesuit-Guarani mission, expressing artistic richness, sacred ornamentation, and baroque sophistication.
+The entire surface is transformed into an intricate system of golden carvings, sacred patterns, and ornamental reliefs, fully integrated into the architecture. Columns, arches, and pediments are enhanced with detailed baroque engravings, floral motifs, and symmetrical compositions.
+All decorative elements must be perfectly aligned with the architectural structure — no floating ornaments. The illusion is created through projection-mapped textures, shading, and light, not physical displacement.
+Windows glow intensely with warm golden light, suggesting inner life, ritual, and sacred presence. Subtle internal silhouettes may be suggested, but remain non-literal.
+The central pediment becomes a focal ornamental composition, with radial symmetry and sacred geometry expressed through golden detailing.
+The towers emphasize vertical grandeur through layered ornamentation and luminous accents, reinforcing height and spiritual elevation.
+Use a high-contrast cinematic palette dominated by gold, warm amber, and deep shadows. Highlights must enhance relief and depth, creating a strong illusion of carved surfaces.
+The result must feel rich, monumental, and refined — a celebration of art, faith, and cultural sophistication.
+IMPORTANT: All effects must remain flat to the surface, using only projection mapping illusion techniques such as shading, perspective, and trompe-l'œil.
+Ultra-realistic projection mapping, perfect masking, no spill, high contrast, 8K.` },
+
+  { id:'a2f2', file:'ATO_2_FRAME_2.png', label:'2.2a · Guerra Guaranítica', period:'1756',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade represents the moment of rupture during the Guaranitic War (1756). The previously harmonious baroque-missioneiro composition begins to break apart visually.
+Architectural elements appear fractured through projection illusion: cracks spread across walls, columns, and arches, created using light and shadow only, without any physical displacement outside the surface.
+Golden ornamental patterns become unstable and distorted, partially fading or breaking into fragmented geometries. The symmetry of the facade begins to collapse visually.
+Deep red and orange light emerges from within windows and openings, suggesting fire and internal destruction. Light flickers unevenly, creating tension and instability.
+Dark shadows cut through the facade, creating strong contrast zones. Parts of the architecture appear consumed by darkness, while others are illuminated by harsh, dramatic lighting.
+Subtle abstract silhouettes and shadow forms suggest conflict and movement, but remain non-literal — no explicit battle scenes, only symbolic presence of struggle.
+The central portal becomes a deep, dark void, contrasting with bursts of internal fiery light, reinforcing the sense of collapse and emotional intensity.
+The towers emphasize vertical tension, with one side slightly more illuminated and the other more consumed by shadow, suggesting imbalance and conflict.
+Use a high-contrast cinematic palette dominated by deep reds, burnt orange, dark shadows, and remnants of gold. Lighting should be dramatic, directional, and uneven.
+IMPORTANT: All visual effects must remain flat on the facade surface, using only projection mapping illusion techniques such as shading, contrast, and trompe-l'œil. No elements outside the architecture.
+The final image must feel intense, dramatic, and emotionally charged — a visual rupture of a previously harmonious system.
+Ultra-realistic projection mapping, perfect masking, no spill, high contrast, 8K.` },
+
+  { id:'a2f3', file:'ATO_2_FRAME_3.png', label:'2.2b · Sepé Tiaraju', period:'1756',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade represents the Guaranitic War (1756), now introducing Sepé Tiaraju as a central symbolic figure of resistance.
+The architecture shows signs of rupture: cracks, fire-like internal light, and broken ornamental symmetry. Warm reds, burnt orange, and deep shadows dominate the composition.
+At the central upper section of the facade (pediment area), a large but integrated figure of Sepé Tiaraju appears — not floating, not outside the building — but projected directly onto the architecture as a monumental relief or fresco-like composition.
+Sepé Tiaraju is depicted as a Guarani warrior holding a spear, with strong posture and presence, symbolizing resistance. His figure must follow the geometry of the architecture, adapting to the planes, volumes, and divisions of the facade.
+His body must be partially fragmented or blended with textures of stone, fire, and cracks, as if he is emerging from or carved into the architecture itself.
+Around him, battle scenes unfold across the lower sections of the facade:
+silhouettes of Guarani warriors and colonial soldiers
+movements of tension, attack, resistance
+all figures projected flat onto the architectural surfaces
+These figures must be semi-abstract, stylized, and integrated into arches, columns, and walls — never floating in space.
+Windows emit intense fire-like light, and interior silhouettes suggest chaos and conflict.
+The central portal becomes a deep dark void with internal glowing fire, reinforcing emotional intensity.
+Use a high-contrast cinematic palette: deep reds, burnt orange, black shadows, and subtle gold remnants.
+IMPORTANT: All elements, including Sepé Tiaraju, must remain fully mapped onto the facade surface using only projection mapping illusion (trompe-l'œil, shading, contrast). No elements outside the architecture.
+The final image must feel powerful, symbolic, and culturally grounded — Sepé as a living part of the architecture and history.
+Ultra-realistic projection mapping, perfect masking, no spill, high contrast, 8K.` },
+
+  { id:'a2f4', file:'ATO_2_FRAME_4.png', label:'2.3 · Expulsão e Ruína', period:'1767',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade represents the aftermath of the Guaranitic War and the expulsion of the Jesuit-Guarani missions in 1767.
+The previous dramatic scene begins to dissolve. The large figure of Sepé Tiaraju is no longer fully present — it appears partially faded, fragmented, and eroded into the stone surface, as if being absorbed back into the architecture.
+The fire has almost completely disappeared. Only faint residual warm glows remain in a few windows, quickly fading into darkness.
+Cracks remain but are now dry and silent, no longer glowing or active. The architecture appears worn, fragile, and emptied.
+Silhouettes of battle fade into faint shadows, barely visible, dissolving into the walls and arches.
+Subtle erosion textures appear across the facade:
+worn stone
+dust-like fading
+surface degradation
+slight discoloration
+At the base and lower sections, very subtle organic elements begin to re-emerge:
+ faint moss, creeping roots, minimal natural textures — suggesting nature slowly reclaiming the structure.
+The central portal becomes a deep, completely dark void, with no internal light.
+Lighting is soft, dim, and melancholic. Contrast is reduced compared to previous scenes.
+Use a muted palette:
+ desaturated stone tones, dark browns, cold grays, very subtle green hints, and minimal warm remnants.
+IMPORTANT: All effects must remain flat and strictly mapped onto the facade surface using projection mapping illusion only. No floating elements.
+The final image must feel quiet, empty, and emotionally heavy — a monument that has lost its people and its voice.
+Ultra-realistic projection mapping, perfect masking, no spill, subtle contrast, 8K.` },
+
+  { id:'a2f5', file:'ATO_2_FRAME_5.png', label:'2.4 · [variante a definir]', period:'Século XIX',
+    promptEN:null, note:'Aguardando prompt de criação. Provável: 40 anos de abandono.' },
+
+  { id:'a2f6', file:'ATO_2_FRAME_6.jpg', label:'2.5 · [variante a definir]', period:'Final do abandono',
+    promptEN:null, note:'Aguardando prompt de criação.' },
+
+  { id:'a3f1', file:'ATO_3_FRAME_1.png', label:'3.1a · Retorno / Segunda Fundação', period:'1888',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade represents the beginning of reconstruction and return after the abandonment of the missions.
+The previous scene's darkness and decay are still present, but now subtle signs of life begin to emerge.
+Very soft warm light slowly appears in a few windows, breaking the previous darkness. The light is gentle, not intense, suggesting the first signs of human presence returning.
+The stone textures begin to regain warmth — subtle golden and amber tones softly reappear across the architecture, blending with the worn surfaces.
+Cracks and erosion remain visible, but are no longer dominant. The structure feels stable again, though marked by time.
+Subtle organic elements appear, but now in a positive tone:
+ small plants, soft green textures, and delicate growth integrated into the lower parts of the facade.
+The central portal is no longer a void — a very faint, warm internal glow appears deep inside, suggesting depth and reactivation.
+Lighting is soft, gradual, and controlled. Contrast is slightly increased compared to the previous scene, but still restrained.
+Use a cinematic palette:
+ soft warm amber, subtle gold, desaturated greens, and natural stone tones.
+IMPORTANT: All visual elements must remain flat and strictly mapped onto the facade surface using projection mapping illusion only. No floating elements.
+The final image must feel like a quiet rebirth — subtle, emotional, and full of latent energy.
+Ultra-realistic projection mapping, perfect masking, no spill, soft contrast, 8K.` },
+
+  { id:'a3f2', file:'ATO_3_FRAME_2.png', label:'3.1b · Abolição / Imigração / Pampas', period:'1888',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade now represents a moment of rebirth and transformation in 1888, connecting abolition of slavery, European immigration, and the natural landscape of the Brazilian pampas.
+The architecture becomes a layered visual composition where nature, freedom, and cultural reconstruction coexist.
+Organic elements inspired by the pampas emerge across the facade:
+ flowing grass-like patterns, wind-like movements, soft green textures integrated into columns and lower sections.
+Warm golden light expands across the building, symbolizing liberation and new beginnings. Light radiates softly from windows and spreads through architectural lines.
+Subtle human presence is suggested through abstract silhouettes and movements projected inside arches and windows — representing diverse populations and the beginning of a new social structure.
+Color becomes expressive and symbolic:
+green tones representing the land and nature
+warm gold and amber representing freedom and transformation
+touches of red and magenta introducing contemporary energy and cultural mixing
+soft blue tones adding depth and continuity
+Geometric and graphic patterns inspired by both indigenous and European visual languages merge across the architecture, forming a hybrid visual identity.
+Light flows through the facade like a living system, connecting all elements — nature, structure, and human presence — in rhythmic continuity.
+The central portal emits a strong but warm luminous presence, suggesting depth, openness, and future.
+Contrast is vibrant but balanced, avoiding chaos — the composition must feel alive but harmonious.
+IMPORTANT: All visual elements must remain strictly mapped onto the facade surface using projection mapping illusion techniques only. No floating elements, no projection outside the architecture.
+The final image must feel like a living rebirth — a fusion of land, people, and history becoming a new identity.
+Ultra-realistic projection mapping, perfect masking, no spill, vibrant color, high detail, 8K.` },
+
+  { id:'a3f3', file:'ATO_3_FRAME_3.png', label:'3.2 · Catedral Atual / Modernismo', period:'1930–1970',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade represents Brazil's transformation between 1930 and 1970 — industrialization, modernism, and urban growth.
+The architecture becomes a structured and rhythmic system.
+Columns transform into vertical industrial pillars with metallic textures and illuminated edges. Arches evolve into repeated modular structures, creating depth through projection illusion.
+Geometric patterns inspired by Brazilian modernist design (clean lines, grids, modular compositions) are mapped precisely onto the facade, aligning with architectural divisions.
+Windows behave like urban units — glowing in rhythmic sequences, suggesting life inside a growing city.
+Subtle references to machinery and infrastructure emerge through abstract forms:
+ linear motion patterns, mechanical rhythms, and structural repetition — always integrated into the architecture.
+Color palette shifts to a more modern and graphic language:
+ deep blues, steel tones, warm industrial orange, and controlled red accents.
+Light moves in organized flows, like energy running through a system.
+The central portal becomes a strong focal point of depth, suggesting a passage into a structured urban interior.
+Contrast is high, but clean and controlled — no chaos.
+IMPORTANT: All visual elements must remain flat and strictly mapped onto the facade surface using projection mapping illusion techniques only. No floating elements or spill.
+The final image must feel like a poetic machine — structured, modern, and alive.
+Ultra-realistic projection mapping, perfect masking, no spill, high contrast, modern aesthetic, 8K.` },
+
+  { id:'a3f4', file:'ATO_3_FRAME_4.png', label:'3.3 · Transição Analógico → Digital', period:'Final do XX',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade represents the transition from the industrial urban system into the digital era.
+The structured flows from the previous scene begin to dissolve into digital abstraction.
+Linear light paths transform into streams of data — composed of small particles, points, and luminous fragments moving along the architecture.
+The architectural structure becomes partially deconstructed into wireframe-like lines, revealing a digital skeleton aligned with columns, arches, and windows.
+Surfaces begin to break into grids, pixels, and fragments — suggesting a shift from physical material to information.
+Particles move in coordinated flows across the facade:
+flowing vertically along columns
+dispersing across arches
+converging toward central areas
+The central portal becomes a deep digital vortex, composed of particles and light, suggesting data flow and transformation.
+Color palette shifts toward a more digital spectrum:
+ electric blue, cyan, magenta, violet, with residual warm tones fading out.
+Light intensity increases, contrast becomes sharper, and the image gains a more luminous and ethereal quality.
+Motion is fluid and continuous, suggesting intelligence and system behavior rather than chaos.
+IMPORTANT: All visual elements (particles, data flows, wireframes) must remain strictly mapped onto the facade surface using projection mapping illusion techniques only. No floating elements or projection outside the architecture.
+The final image must feel like the architecture is transforming into data — a living digital organism emerging from the physical world.
+Ultra-realistic projection mapping, perfect masking, no spill, high contrast, digital aesthetic, 8K.` },
+
+  { id:'a3f5', file:'ATO_3_FRAME_5.jpg', label:'3.4 · Síntese do Tempo (clímax)', period:'Presente → futuro',
+    promptEN:`A grand neoclassical cathedral facade at night, perfectly centered and front-facing, used as a canvas for ultra-precise 3D projection mapping.
+CRITICAL REQUIREMENT:
+ All projection must be strictly confined to the exact front surface of the cathedral facade.
+ No light, textures, objects, particles, or visual elements are allowed outside the architectural boundaries.
+ No projection spill on the ground, sky, surrounding buildings, or lateral walls.
+ Perfect masking with clean, sharp edges aligned to the facade silhouette.
+The facade represents the final synthesis of time — a convergence of nature, history, culture, and digital transformation.
+The architecture becomes a unified living system where all previous visual languages coexist and merge seamlessly.
+Organic elements from the beginning return:
+ subtle roots, flowing natural patterns, and green textures integrated into the structure.
+Baroque-missioneiro ornamentation reappears in refined golden details, embedded into columns, arches, and pediments.
+Traces of conflict remain as subtle cracks and textures, now integrated into the structure rather than dominating it.
+Urban and modernist patterns emerge as clean geometric structures, aligned with the architecture, adding rhythm and organization.
+Digital elements flow across everything:
+ particles, data streams, and luminous fields move through the architecture, connecting all layers.
+At the center of the facade, above the main portal, a powerful luminous core emerges — a radiant convergence point where all visual elements meet.
+This core emits balanced, vibrant light that expands across the entire structure.
+Color palette is rich and harmonious:
+ green (nature), gold (spirituality), red (history), blue (depth), magenta/violet (digital), all blended in controlled gradients.
+Light flows across the facade like a breathing system, connecting all elements without chaos.
+The composition must feel unified, not fragmented — every element integrated into a coherent visual system.
+Contrast is high but balanced, with areas of calm and intensity.
+IMPORTANT: All elements must remain strictly mapped onto the facade surface using projection mapping illusion techniques only. No floating elements or spill outside the architecture.
+The final image must feel monumental, emotional, and transcendent — the building as a living memory of time itself.
+Ultra-realistic projection mapping, perfect masking, no spill, high detail, cinematic, 8K.` },
+
+  { id:'a3f6', file:'ATO_3_FRAME_6.png', label:'3.5 · [coda — variante]', period:'Pós-clímax',
+    promptEN:null, note:'Aguardando prompt de criação.' },
+  { id:'a3f7', file:'ATO_3_FRAME_7.jpg', label:'3.6 · [coda — variante]', period:'Pós-clímax',
+    promptEN:null, note:'Aguardando prompt de criação.' },
+  { id:'a3f8', file:'ATO_3_FRAME_8.jpg', label:'3.7 · [coda — variante]', period:'Pós-clímax',
+    promptEN:null, note:'Aguardando prompt de criação.' },
+  { id:'a3f9', file:'ATO_3_FRAME_9.jpg', label:'3.8 · [coda — variante]', period:'Pós-clímax',
+    promptEN:null, note:'Aguardando prompt de criação.' },
+  { id:'a3f10', file:'ATO_3_FRAME_10.png', label:'3.9 · Encerramento', period:'Final',
+    promptEN:null, note:'Aguardando prompt — provável retorno ao Anjo da Guarda.' }
+];
+
+const ANIMS = [
+  { titulo:'Despertar — pedra fria → terra viva', eixo:'Estado-base nu → invasão orgânica ascendente',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. Only projected light and textures change on the surface, as a real video mapping. Projected onto the dark stone: roots sprout from many distinct origin points spread across the facade — at the base of each column, inside the lower arches, at the corners of the pediment, between the niches, at the foot of each tower — each starting as a single small luminous tip. From those separate points, roots grow outward simultaneously like living veins of light, branching, thickening, and weaving into each other as they extend across the stone surface, eventually meeting and overlapping into a continuous green network. Moss textures bloom in patches around the same multiple origin points and spread outward in slow circular waves, painting the stone in deep green without thickening it. Projected bark wraps the columns; projected woven-root patterns fill the arches — illusion only, the architecture stays exactly where it is. Tiny golden spore-particles drift upward like fireflies between the growing roots. The windows ignite from within with warm amber and emerald light, as if each one were a hidden lantern waking up. Above the main portal, a soft ethereal glow blooms last, expanding outward like a quiet heartbeat. Slow, breathing, mystical pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Encontro — orgânico encontra geometria', eixo:'Verde puro → linhas douradas atravessando',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings around the cathedral (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade, no atmosphere, no clouds, no haze, no light bloom into the air. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil — everything stays flat to the surface but reads as deeply three-dimensional.
+
+INPUT SCENE: against a pure black night, the cathedral facade is fully covered by a living forest projection. Thick projected roots wrap every column like braided ropes; deep moss covers the walls in waves of green; the arches are filled with woven root-knots; bark texture climbs the columns; the niches glow softly with hidden organic forms. Tiny golden spore-particles drift upward inside the facade. The windows breathe a calm amber-emerald light from within. Above the main portal, a soft ethereal glow pulses gently. Everything around the building stays absolute black.
+
+TRANSITION: the projected roots, moss and bark begin to peel back across the facade like a heavy green curtain opening. The roots retract toward the edges of the facade, splitting apart from the center and pulling away in 3D parallax curls, the bark shrinking back down the columns, the woven root-knots in the arches untangling and slipping outward toward the silhouette of the architecture. As the green organic layer recedes, the architectural surface beneath it lights up at the same rhythm: where the moss leaves a column, a glowing golden line traces its edge; where the roots release an arch, a clean luminous outline reveals it; where the bark falls away from the pediment, sacred geometric grids and radial mandalas etch themselves in golden ink onto the freshly exposed stone, perfectly aligned with every architectural seam. The reveal moves outward from the central pediment in a wave, like the building itself is being unwrapped. The window glows shift one by one from forest-green to clean defined warm gold, candle-by-candle, in sequence with the unwrapping. The spore-particles align into vertical formations and become disciplined points of light along the new geometric grid. The portal glow tightens and sharpens into a defined geometric halo. By the end, the facade carries the residual organic textures only at its lower edges and base, while the rest is the architecture revealed and re-lit by sacred geometric gold. The black surroundings remain completely untouched. Ceremonial, suspenseful, ascending pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Materialização — geometria vira pedra', eixo:'Linhas → volume (trompe-l\'œil 3D)',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade carries the architecture revealed by sacred geometry: a glowing golden grid of luminous lines traces every architectural seam, radial mandalas and proportional diagrams sit on the pediment and walls; residual moss and roots cling to the lower edges and base. Windows glow defined warm gold; the portal halo is sharp and geometric. The building feels drawn, ready to be built up.
+
+TRANSITION: the thin golden lines on the facade thicken and gain weight, swelling into bold structural diagrams — column proportions, plumb lines, axial grids, foundation footprints — drawn directly onto the stone in projected light. The diagrams cast painted shadows that deepen in trompe-l'œil 3D, suddenly looking heavy and dimensional. Out of those diagrams, the illusion of stacked stone blocks paints itself into existence on the facade in sequence: foundation ashlars light up at the base of every column and stack upward block by block; voussoirs glow into the arches one stone at a time, locking into a keystone that pulses gold when it lands; cornices and entablature fill in stone by stone across the pediment; the towers complete last, course by course, capped by glowing spire-stones. Each block appears with chiaroscuro shading and parallax depth so it reads as massive and three-dimensional, but stays flat to the real surface. The remaining moss and roots at the base get covered by the new ashlars and disappear under the construction. Inside the central portal, a trompe-l'œil tunnel of darkness opens with strong perspective lines vanishing into a faint distant light. By the end, the facade reads as a freshly built mission cathedral made entirely of light, every block locked into place, the construction complete. The black surroundings remain completely untouched. Constructive, ceremonial, building-up pacing — like a master mason drawing the cathedral with a single luminous chisel. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Acabamento — a obra se assenta', eixo:'Construção bruta → cathedral lapidada',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade has just finished its luminous construction sequence. Every block of the trompe-l'œil ashlar is in place — projected stones stacked up the columns, voussoirs locked into the arches, cornices marching across the pediment, towers capped by glowing spire-stones. Faint golden construction lines (proportions, plumb lines, grids) are still visible underneath the masonry like a recent draft. The portal holds a deep tunnel of darkness with a faint distant light. The illumination feels fresh, raw, just-finished.
+
+TRANSITION: the construction enters its finishing phase on the facade. The faint golden construction lines that guided the build slowly dissolve into the stone, retracting block by block as if the scaffolding of light is being taken down — they fade from the base upward, last to disappear at the towers. As the lines vanish, the chiaroscuro on every projected stone deepens and gains polish: shadows become tighter, highlights more defined, the trompe-l'œil parallax intensifies so each block reads as more massive and three-dimensional. A warm rim-light traces the top edge of every block in golden ink, runs across cornices, and outlines the arches with a clean luminous lip. Subtle baroque mouldings begin to etch themselves on top of the stones as projected ornament — first as faint scribes, then as soft glowing reliefs, integrated cleanly into the architecture. The window glows breathe with a steady, settled warm amber, more confident than during construction. Inside the central portal, the tunnel of darkness deepens further, the distant light at the end pulsing softly with a more saintly tone — like a sanctuary just consecrated. A final unified pulse of warm light passes from the base across the entire facade, sealing the construction. By the end, the facade reads as a fully lapidated and consecrated mission cathedral made entirely of light, every block locked, polished, and inhabited by spirit. The black surroundings remain completely untouched. Settling, ceremonial, completion-of-a-rite pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'[Aguardando prompts dos dois frames]', eixo:'a definir', en:null,
+    pendente:'Ambos os keyframes sem prompt de criação.' },
+
+  { titulo:'Transição para o Apogeu — [parcial]', eixo:'? → ouro/talha barroca', en:null,
+    pendente:'ATO_1_FRAME_5 sem prompt — animação será definida quando o frame ganhar descrição.' },
+
+  { titulo:'Ruptura — ouro racha, surge fogo', eixo:'Riqueza ordenada → simetria quebrada',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade is at the peak of the missions. Every architectural element on the facade is wrapped in a dense tapestry of glowing golden baroque carvings — flowing acanthus, scrolls, rosettes, sacred medallions, all in radial symmetry. The pediment holds a luminous central rosette with rays of gold. The columns are dressed with twisted golden vines and fluted highlights. The arches are framed by ornamental moldings that catch warm light. Windows breathe a calm, steady amber-gold candlelight. Deep painted shadows give the relief a heavy carved feeling. The whole facade looks like a sun trapped in stone, with only a soft pulse of breath running through the gold.
+
+TRANSITION: the ornamentation on the facade begins to tremble — the gold pulses faster, the carvings flex as if straining. A thin black crack opens at the heart of the central rosette and forks outward in a single sharp gesture, racing across the pediment, snaking down the columns, spidering into the arches like lightning. Where the crack runs, the gold loses its warmth and bleeds into deep red and burnt orange, the trompe-l'œil depth deepening into hot fissures that look kilometers deep into the stone. Chunks of painted ornament tilt forward as if hanging by a thread, then dissolve into ember-particles that drift slowly across the facade in 3D parallax layers, always staying inside the facade silhouette. Inside each window, the calm candlelight stretches, shudders, then bursts into flickering uneven flames that cast red volumetric light onto the surrounding stone of the facade only. Animated smoke trails curl up from the lower arches across the upper sections of the facade in soft 3D plumes, dragging across the gold above them and staining it black — the smoke never leaves the facade outline. The central portal collapses inward in a dramatic perspective — a deep tunnel of darkness opens behind it, breathing pulses of fiery light from the depths. The towers split visually in half: one keeps a last shard of gold like a held breath, the other is swallowed by deep shadow that creeps across the stone like spilled ink. Tension accumulates, builds, then snaps. The black surroundings remain completely untouched throughout. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Sepé emerge — figura nasce do fogo', eixo:'Caos abstrato → relevo monumental',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade is in full rupture. Black cracks fork across the stone like lightning, glowing hot red and burnt orange in their depths. The remains of golden ornament cling to the broken surface in fragments. Every window breathes uneven flickering fire that casts trembling red light onto the surrounding facade stone. Smoke plumes drift slowly up the lower arches inside the facade, staining the upper sections black. Faint abstract silhouettes of conflict move along the lower facade like restless shadows. The central portal is a deep dark void with bursts of internal fiery light pulsing from below.
+
+TRANSITION: the chaos on the facade begins to gather itself. Embers, sparks and broken shadow-pieces lift off the lower facade and drift upward across the stone in slow 3D parallax layers, like iron filings drawn to an unseen magnet, all of them strictly inside the facade silhouette, converging on the central pediment. The flames in the windows lean inward, bending toward the center, feeding the convergence. Around the pediment, the fragments swirl in a tight orbit, then collide and lock together — they assemble a silhouette piece by piece: first the tip of a spear glowing red-hot; then a hand gripping it; then a strong shoulder; then the full warrior posture of Sepé Tiaraju. As his body finishes forming, projected stone-texture, fire-veins and crack-lines weave through his form, fusing him into the pediment as a monumental relief carved out of light. The relief reads as deeply 3D through volumetric shading — chiaroscuro, rim-light, depth — but stays flat to the facade surface. The moment Sepé locks into place, his outline pulses once with a deep red shockwave that ripples outward across the entire facade in a circular wave, briefly brightening the cracks, then settles. On the lower facade, the abstract conflict silhouettes coalesce into clearer semi-abstract forms — Guarani warriors and colonial soldiers — looping a slow choreographed battle along arches and columns as projected animation, with parallax depth between near and far figures, all strictly inside the architectural surface. The portal remains a dark fiery void behind him, framing his presence. The black surroundings remain completely untouched throughout. Focused, ascending tension — a presence asserting itself, written into the stone. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Apagamento — figura volta para a pedra', eixo:'Símbolo presente → ausência erodida',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade carries Sepé Tiaraju as a monumental projected relief on the central pediment, his body fused with stone, fire and crack textures, his spear high. Cracks still glow hot across the walls. Windows breathe fire. Smoke drifts upward in parallax inside the facade. Abstract battle silhouettes loop along the lower arches in slow choreography. The portal is a dark fiery void behind Sepé.
+
+TRANSITION: a long, slow exhale begins on the facade. The red glow drains out of Sepé's body, flowing downward like blood returning to the cracks beneath him, briefly making the fissures pulse a final time before they cool. His outline begins to disintegrate from the extremities inward, all on the pediment surface: the tip of his spear dissolves first into a slow shower of projected dust-particles that drift downward across the pediment in 3D parallax, then his hands, then his arms, then his shoulders, until only the central torso lingers as a faint outline pressed into the stone like a forgotten fresco — and then even that fades. As Sepé erodes, the choreography on the lower facade slows: the battle silhouettes lose their rhythm, their movements stretching out, freezing as still shadows, then softening like footprints washed by an invisible tide until they are gone. One by one the windows lose their fire — flames shrink to glowing embers, then to single trembling sparks, then to darkness; each window dimming in a slow staggered sequence across the facade. The painted cracks stop pulsing, lose their heat, and fade to gray and dry. The smoke plumes thin out and disperse inside the facade, leaving behind painted soot stains that darken the walls where flames used to be — accumulated time made visible. The trompe-l'œil depth of the central portal stretches deeper into total black, a silent abyss. At the base of the columns and inside the lower arches, very faint green appears — the first projected fingers of moss and slow tendrils of small roots probing back into the abandoned stone, growing imperceptibly upward. The whole facade becomes a quiet ruin, marked but standing. The black surroundings remain completely untouched throughout. Slow, melancholic, breath-like pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'[Aguardando prompt do frame seguinte]', eixo:'a definir', en:null,
+    pendente:'ATO_2_FRAME_5 sem prompt — provavelmente "40 anos de abandono / gado multiplicando".' },
+
+  { titulo:'[Aguardando prompts dos dois frames]', eixo:'a definir', en:null,
+    pendente:'Ambos os keyframes sem prompt.' },
+
+  { titulo:'Retorno — primeira luz [parcial]', eixo:'Ruína vegetal → reativação suave', en:null,
+    pendente:'ATO_2_FRAME_6 sem prompt; quando definido, animação ligará final do abandono ao despertar de 1888.' },
+
+  { titulo:'Pampa floresce — luz vira liberdade', eixo:'Renascimento sutil → vibração híbrida',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade is a quiet ruin returning to life. The stone is worn and gentle, with faint amber glows in only a few windows. Subtle green sprouts and small roots rest at the base of columns and inside the lower arches. The walls still carry faded marks of past time — soft scars, light dust textures. The portal holds a faint warm internal glow at depth, almost a whisper.
+
+TRANSITION: on the facade, the first warm window grows brighter, expands its glow, and ignites the next window through a thin trail of light running across the stone — then the next, then the next, sweeping across the entire facade like lamps being lit one by one as the building wakes up. As each window catches, a wave of warm honey-colored light spreads outward across the surrounding stone of the facade in 3D parallax layers, awakening warm color in the tired walls. From the base of every column, the small projected sprouts unroll upward in fast confident motion, becoming long flowing pampas grass textures that bend gracefully in an invisible wind, sweeping side to side, climbing along the column surfaces in golden-green waves without ever altering their shape. Inside each arch, semi-transparent human silhouettes fade in and gather — diverse figures of immigrants, freed people and indigenous presence walking, gesturing, embracing — gentle, ghostly, painted into the recess with parallax depth so they feel like they stand inside the architecture. Across the pediment and walls, hybrid geometric patterns draw themselves out in golden ink: indigenous radial mandalas interlocking with European linear ornaments, the patterns rotating slowly and breathing in trompe-l'œil 3D. Brushstrokes of red and magenta bloom at accent points on the walls like flowers opening; cool soft blue washes appear deep inside the arches as atmospheric depth. The portal blooms last — its faint glow blossoms outward into a warm luminous tunnel of depth, like a door swinging open at sunrise, with soft volumetric rays spilling onto the inner stone of the portal recess only. The black surroundings remain completely untouched throughout. By the end, the whole facade is alive, populated, vibrant with hybrid identity. Blooming, alive, social pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Cidade-máquina — pampa vira ritmo', eixo:'Floração orgânica → grade modular metálica',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade is alive with 1888 transformation — pampas grass climbs the columns in golden-green waves bending in an invisible wind; semi-transparent diverse human silhouettes gather inside the arches; hybrid radial-and-linear geometric patterns slowly breathe across the pediment and walls in golden ink with 3D depth; brushstrokes of red and magenta accent specific zones; cool blue washes glow inside the arches; the portal holds a warm luminous tunnel of depth. Color is rich, hopeful, social.
+
+TRANSITION: on the facade, the pampas grass on the columns stops swaying, then stiffens vertically, then snaps into projected vertical metallic pillars covering the column surfaces from the bottom up — gold turning into brushed steel as the new texture climbs in a confident wave. The organic curves on the walls lose their curl and rationalize into clean modernist grids, lines redrawing themselves with the precision of a ruler erasing every wave. Color cools fast: warm gold migrates into deep steel blue and industrial orange, with controlled red accents popping in at every architectural joint like rivets being driven into place. Inside each arch, modular repetition patterns paint themselves and click into rhythm — repeated rectangles, structural ribs, mechanical motifs — locking together with the visible parallax depth of stacked machinery. The semi-transparent human silhouettes lose their softness and crystallize into geometric figures: stylized workers in motion, machine shapes, abstract motion lines repeating across the lower facade. The window lights stop pulsing organically and synchronize into a chasing sequence — like signal lights down a factory wall, sweeping left to right, then right to left, then chasing diagonally across the whole pediment in coordinated rhythm. Modernist linework draws itself across the pediment in confident strokes, casting subtle 3D shadows. The portal tightens into a strict urban-depth focal point with a hot red glow burning at its center like a furnace, deep volumetric rays radiating from inside it onto the inner stone only. The black surroundings remain completely untouched throughout. By the end, the facade reads as a poetic machine: ordered, rhythmic, modern, alive with industrial pulse. Rhythmic, mechanical but poetic pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Dissolução digital — matéria vira dado', eixo:'Estrutura sólida → wireframe + partículas',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. The surroundings (sky, ground, neighboring buildings) are pure black and completely still throughout the entire animation — nothing happens outside the facade. ALL motion is strictly inside the facade silhouette, on the projected layer. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil.
+
+INPUT SCENE: against pure black surroundings, the facade is a poetic industrial machine. Brushed-steel metallic pillars cover the columns, modular repetitions click in rhythm inside the arches, modernist grids run across the walls in confident strokes. Window lights chase across the pediment in synchronized sequences. Geometric figures — stylized workers, machine shapes, abstract motion lines — repeat across the lower facade. The portal burns a hot red furnace glow with deep volumetric rays. Color is steel blue, industrial orange, controlled red.
+
+TRANSITION: the steady industrial pulse on the facade begins to glitch. The corners of the metallic textures fray and dissolve into tiny glowing pixels that drift across the stone surface in 3D parallax layers, all strictly inside the facade silhouette, like ash from a burning circuit board. The dissolution races inward from the edges: the brushed-steel skin on the columns peels back upward, revealing luminous wireframe diagrams of the same column-shape underneath, glowing in cyan and electric blue — a digital skeleton lying just beneath the metallic costume. From the base of every column, fast streams of bright particles begin to climb upward through the wireframes like data running through cables, accelerating as they rise toward the towers. The chasing window-rhythm accelerates and smooths out, the discrete ON/OFF blinks blurring into continuous flowing data streams, each window becoming a screen displaying scrolling code-like light. The modernist grid on the walls fragments into pixelated dot-matrices that ripple in 3D parallax waves across the surface, breaking and reforming as digital noise. Color cools rapidly: industrial orange and steel blue shift toward electric blue, cyan, magenta and violet, with bright accents of white. Inside the central portal, the furnace glow stops being a fire and begins to spin, drawing inward in a slow rotation that accelerates into a deep trompe-l'œil digital vortex — a painted black hole of cyan light pulling all the surrounding particles on the facade into its center. The geometric worker-figures on the lower facade break apart into clouds of dots and re-form as flowing digital silhouettes, then dissolve into the data streams. The black surroundings remain completely untouched throughout. By the end, the entire facade reads as a living digital organism overlaid onto the same fixed architecture — wireframe, particles, data flow, pixelated waves. Continuous, accelerating, intelligent pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'Síntese — todas as camadas convergem', eixo:'Dispersão digital → núcleo unificador',
+    en:`THE CATHEDRAL ARCHITECTURE AND THE CAMERA ARE COMPLETELY FIXED — the building does not move, no zoom, no pan, no rotation. Only projected light and textures change on the surface. This is a richly animated 3D projection mapping with strong depth illusion, volumetric light, parallax shading and trompe-l'œil — everything stays flat to the surface but reads as deeply three-dimensional.
+
+INPUT SCENE: the facade is a digital organism. Wireframe skeletons glow beneath dissolving metallic textures, streams of cyan and magenta particles climb the columns, the windows scroll like flowing data screens, the walls ripple with pixelated dot-matrices, the central portal spins inward as a deep trompe-l'œil black-hole vortex of cyan light. Color is electric — blue, cyan, magenta, violet, white. The building pulses with intelligence and information.
+
+TRANSITION: the spinning vortex at the portal begins to slow, then stops. The scattered digital particles all hesitate at once, suspended for a single beat — and then begin to attract each other across the entire facade, swirling backward in long curved trails like a galaxy collapsing inward toward its center. As the particles re-organize, they pull every forgotten layer of the story back with them as projected texture, in a slow simultaneous bloom: subtle green root patterns crawl up from the base of the columns again, growing in 3D parallax depth; golden baroque ornaments etch themselves onto the pediment and arches like ancient sigils being remembered, glowing softly; faint old cracks reappear as thin silver scars instead of red wounds, integrated as memory; modernist grids align with the architectural seams as a quiet structural rhythm in the background; and digital data streams keep flowing through everything as a connective luminous tissue, threading the layers together. The wireframe skeletons fade into the structure. None of the layers erase each other — they all breathe at the same tempo, like a sustained chord, in coordinated 3D parallax depth. Color stabilizes layer by layer: deep green at the base, warm gold across the pediment, soft red echoes in accent zones, deep blue inside the arches, magenta and violet drifting through as digital memory, all blended in controlled gradients. Above the central portal, a small white-gold core ignites — a single bright point — then begins to grow, expanding into a radiant sun that pushes balanced waves of light pulsing outward through every layer in slow rhythmic sequence: a green wave, a gold wave, a red wave, a blue wave, a magenta wave, a violet wave, and finally a unified white-gold pulse that washes the entire facade. The palette settles into a harmonious blend, the volumetric depth reaches its peak, and the facade radiates as a single living memory of time itself while the building itself never moves a millimeter. Cosmic, expanding, transcendent pacing. Light strictly contained within the facade — no spill on sky, ground or surroundings.` },
+
+  { titulo:'[Coda — aguardando prompt]', eixo:'a definir', en:null, pendente:'ATO_3_FRAME_6 sem prompt.' },
+  { titulo:'[Coda — aguardando prompts]', eixo:'a definir', en:null, pendente:'Ambos sem prompt.' },
+  { titulo:'[Coda — aguardando prompts]', eixo:'a definir', en:null, pendente:'Ambos sem prompt.' },
+  { titulo:'[Coda — aguardando prompts]', eixo:'a definir', en:null, pendente:'Ambos sem prompt.' },
+  { titulo:'[Coda → Encerramento]', eixo:'a definir', en:null, pendente:'Ambos sem prompt; encerramento provável retorna ao Anjo da Guarda.' }
+];
+
+/* RENDER */
+const board = document.getElementById('board');
+const toc = document.getElementById('toc');
+
+function el(t,a={},c=[]){const e=document.createElement(t);for(const k in a){if(k==='class')e.className=a[k];else if(k==='html')e.innerHTML=a[k];else e.setAttribute(k,a[k])}(Array.isArray(c)?c:[c]).forEach(x=>{if(x==null)return;if(typeof x==='string')e.appendChild(document.createTextNode(x));else e.appendChild(x)});return e}
+
+function framePanel(f, side){
+  const p = el('div',{class:`frame ${side}`});
+  p.appendChild(el('div',{class:'frame-label'}, side==='from'?'Frame de entrada':'Frame de saída'));
+  const img = el('img',{class:'frame-img', src:`img/${f.file}`, alt:f.label, loading:'lazy'});
+  img.addEventListener('click',()=>openLB(img.src,f.label));
+  p.appendChild(img);
+  p.appendChild(el('div',{class:'frame-name'}, f.label));
+  p.appendChild(el('div',{class:'frame-meta'}, `${f.period} · ${f.file}`));
+  const actions = el('div',{class:'frame-actions'});
+  const btn = el('button',{class:'btn'}, '⎘ Prompt');
+  if(!f.promptEN){ btn.disabled = true; btn.textContent = '⏳ aguardando'; }
+  else { btn.addEventListener('click',()=>{ navigator.clipboard.writeText(f.promptEN).then(()=>toast(`Prompt · ${f.file}`)) }); }
+  actions.appendChild(btn);
+  const dlImg = el('a',{class:'btn', href:`img/${f.file}`, download:f.file, style:'text-decoration:none;display:flex;align-items:center;justify-content:center'}, '↓ Imagem');
+  actions.appendChild(dlImg);
+  p.appendChild(actions);
+  return p;
+}
+
+function renderRow(a, idx){
+  const fromF = FRAMES[idx];
+  const toF = FRAMES[idx+1];
+  const row = el('section',{class:'row', id:`anim-${idx+1}`});
+  row.appendChild(el('div',{class:'row-head'},[
+    el('span',{class:'row-num'}, `Animação ${String(idx+1).padStart(2,'0')} / 21`),
+    el('span',{class:'row-title'}, a.titulo),
+    el('span',{class:'row-axis'}, `Eixo: ${a.eixo}`)
+  ]));
+  row.appendChild(framePanel(fromF,'from'));
+
+  const center = el('div',{class:'center'});
+  const head = el('div',{class:'center-head'});
+  head.appendChild(el('span',{class:'center-eyebrow'}, 'Prompt de animação · EN'));
+  const actions = el('div',{class:'center-actions'});
+  const copyBtn = el('button',{class:'btn'}, '⎘ Copiar prompt');
+  const dlBtn = el('button',{class:'btn'}, '↓ .txt');
+  if(!a.en){ copyBtn.disabled=true; dlBtn.disabled=true; copyBtn.textContent='⏳ aguardando'; dlBtn.textContent='—'; }
+  else {
+    copyBtn.addEventListener('click',()=>{navigator.clipboard.writeText(a.en).then(()=>toast(`Animação ${String(idx+1).padStart(2,'0')} copiada`))});
+    dlBtn.addEventListener('click',()=>{
+      const blob = new Blob([a.en],{type:'text/plain;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const link = el('a',{href:url, download:`anim_${String(idx+1).padStart(2,'0')}_${fromF.file.replace(/\.[^.]+$/,'')}_to_${toF.file.replace(/\.[^.]+$/,'')}.txt`}); link.click();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+    });
+  }
+  actions.appendChild(copyBtn); actions.appendChild(dlBtn);
+  head.appendChild(actions);
+  center.appendChild(head);
+
+  if(a.en){
+    center.appendChild(el('div',{class:'anim-prompt'}, a.en));
+  } else {
+    center.appendChild(el('div',{class:'placeholder'}, `⏳ ${a.pendente||'Aguardando prompts dos keyframes adjacentes.'}`));
+  }
+  row.appendChild(center);
+
+  row.appendChild(framePanel(toF,'to'));
+  return row;
+}
+
+/* Banners de ato — chave = índice da animação ANTES da qual o banner aparece */
+const ATO_BANNERS = {
+  0: { num:'I', tag:'Ato I — Origens', title:'Da pedra fria à fundação',
+       period:'Pré-1610 → início do século XVIII',
+       meta:['Ocupação Guarani','Chegada dos Jesuítas','San Ángel Custódio · 1706','Construção'] },
+  5: { num:'II', tag:'Ato II — Apogeu, Ruptura e Abandono', title:'Ouro, fogo e silêncio',
+       period:'Século XVIII → Guerra Guaranítica · 1756 → 40 anos de abandono',
+       meta:['Apogeu missioneiro','Guerra Guaranítica','Sepé Tiaraju','Expulsão · 1767','Ruína','Retorno'] },
+  11:{ num:'III', tag:'Ato III — Renascimento e Síntese', title:'1888 → cidade-máquina → memória',
+       period:'1888 → modernidade → era digital → síntese',
+       meta:['Pampa floresce','Cidade-máquina','Era digital','Síntese cósmica','Encerramento'] }
+};
+
+function atoBannerEl(b, idx){
+  const wrap = el('section',{class:'ato-banner', id:`ato-${b.num}`});
+  const head = el('div',{class:'ato-banner-head'});
+  head.appendChild(el('div',{class:'ato-banner-num'}, b.num));
+  const info = el('div',{class:'ato-banner-info'});
+  info.appendChild(el('div',{class:'ato-banner-tag'}, b.tag));
+  info.appendChild(el('h2',{class:'ato-banner-title'}, b.title));
+  info.appendChild(el('div',{class:'ato-banner-period'}, b.period));
+  head.appendChild(info);
+  wrap.appendChild(head);
+  const meta = el('div',{class:'ato-banner-meta'});
+  b.meta.forEach(m=> meta.appendChild(el('span',{},m)));
+  wrap.appendChild(meta);
+  return wrap;
+}
+
+ANIMS.forEach((a,i)=>{
+  if(ATO_BANNERS[i]) board.appendChild(atoBannerEl(ATO_BANNERS[i], i));
+  board.appendChild(renderRow(a,i));
+});
+
+ANIMS.forEach((a,i)=>{
+  if(ATO_BANNERS[i]){
+    toc.appendChild(el('a',{href:`#ato-${ATO_BANNERS[i].num}`, class:'toc-ato'}, `▸ ATO ${ATO_BANNERS[i].num}`));
+  }
+  toc.appendChild(el('a',{href:`#anim-${i+1}`}, `${String(i+1).padStart(2,'0')} · ${a.titulo.split('—')[0].trim()}`));
+});
+
+const lb = document.getElementById('lb');
+const lbImg = lb.querySelector('img');
+function openLB(src,alt){lbImg.src=src;lbImg.alt=alt;lb.classList.add('open')}
+lb.addEventListener('click',()=>lb.classList.remove('open'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape') lb.classList.remove('open')});
+
+const toastEl = document.getElementById('toast');
+let toastTimer=null;
+function toast(msg){toastEl.textContent=msg;toastEl.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>toastEl.classList.remove('show'),1500)}
+</script>
+</body>
+</html>

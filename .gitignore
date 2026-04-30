@@ -1,8 +1,5 @@
-# Material interno da licitação
-STORYBOARD_PREGAO/
-PRODUCAO_DEMO/
-PRODUCAO DEMO/
-PRODUÇÃO_DEMO/
+# Material interno da licitação (insumos brutos + orçamento)
+INSUMOS/
 ORCAMENTO/
 
 # Memória interna do agente
@@ -23,5 +20,3 @@ desktop.ini
 .claude/
 .gitignore.tmp.*
 
-# Material 3D pesado
-APOIO/

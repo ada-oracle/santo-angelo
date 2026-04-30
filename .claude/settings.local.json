@@ -2,7 +2,13 @@
   "permissions": {
     "allow": [
       "PowerShell(Get-Command *)",
-      "PowerShell(tesseract *)"
+      "PowerShell(tesseract *)",
+      "PowerShell(New-Item *)",
+      "WebFetch(domain:www.pregaoonlinebanrisul.com.br)",
+      "WebFetch(domain:www.pregaobanrisul.com.br)",
+      "WebFetch(domain:pregaoonlinebanrisul.com.br)",
+      "WebFetch(domain:pregaobanrisul.com.br)",
+      "WebSearch"
     ]
   }
 }
