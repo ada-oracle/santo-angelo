@@ -1,0 +1,11 @@
+@page{
+  @top-right{
+    content: "Caio Fazolin · CV";
+  }
+}
+
+p.nota{
+  font-family: var(--mono); font-size: 9pt; line-height: 1.5;
+  color: var(--ink-mid); text-align:left;
+  border-left:1mm solid var(--accent); padding-left:5mm; margin-top:6mm;
+}

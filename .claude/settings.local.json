@@ -8,7 +8,19 @@
       "WebFetch(domain:www.pregaobanrisul.com.br)",
       "WebFetch(domain:pregaoonlinebanrisul.com.br)",
       "WebFetch(domain:pregaobanrisul.com.br)",
-      "WebSearch"
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "mcp__after-effects__run-script",
+      "mcp__AfterEffectsMCP__run-script",
+      "mcp__AfterEffectsMCP__get-results",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:www.gov.br)",
+      "WebFetch(domain:livemarketing.com.br)",
+      "WebFetch(domain:onprojecoes.com.br)",
+      "WebFetch(domain:ligiaalonso.wordpress.com)",
+      "PowerShell($word = New-Object -ComObject Word.Application; $word.Visible = $false; $doc = $word.Documents.Open\\('E:\\\\ADA Dropbox\\\\ADA \\(1\\)\\\\2026\\\\CATEDRAL_SANTO_ANGELO\\\\INSUMOS\\\\DOCUMENTOS_PREGÃO\\\\HISTORIADORES\\\\Guilherme G. Felippe\\\\Guilherme G. Felippe - Lista de publicações sobre Missões.docx'\\); $doc.SaveAs\\([ref]'E:\\\\ADA Dropbox\\\\ADA \\(1\\)\\\\2026\\\\CATEDRAL_SANTO_ANGELO\\\\INSUMOS\\\\DOCUMENTOS_PREGÃO\\\\HISTORIADORES\\\\Guilherme G. Felippe\\\\Guilherme G. Felippe - Lista de publicações sobre Missões.pdf', [ref]17\\); $doc.Close\\(\\); $word.Quit\\(\\); Write-Output 'OK')",
+      "WebFetch(domain:www.dearvr.com)",
+      "WebFetch(domain:dearvr.com)"
     ]
   }
 }

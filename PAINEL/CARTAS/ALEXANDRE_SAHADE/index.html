@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Carta de Anuência · Alexandre Sahade Gonçalves · ADA — Concorrência 002/2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Syne:wght@400;600&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet" />
+<style>
+  body{
+    --page-bg:#FFFFFF; --sec-bg:#F2F2F2; --card-bg:#E6E6E6;
+    --accent:#000000; --ink:#000000;
+    --ink-mid:rgba(0,0,0,.55); --ink-faint:rgba(0,0,0,.35);
+    --border:rgba(0,0,0,.12);
+    --mono:'DM Mono',monospace; --sans:'Syne',sans-serif; --serif:'Cormorant Garamond',serif;
+    --fs-micro:11px; --fs-xs:12px; --fs-sm:13px; --fs-base:14px;
+    --fs-md:16px;    --fs-lg:18px; --fs-xl:22px; --fs-2xl:28px;
+    --ls-wide:.08em; --ls-wider:.14em; --ls-widest:.20em;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#e6e6e6;font-family:var(--sans);font-weight:400;color:var(--ink)}
+
+  .toolbar{position:fixed;top:14px;right:14px;z-index:10;display:flex;gap:8px;flex-wrap:wrap;align-items:stretch}
+  .ada-btn--ghost{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:var(--ls-wider);text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:9px 14px;cursor:pointer;border-radius:0}
+  .ada-btn--ghost:hover{background:var(--ink);color:var(--page-bg)}
+  .ada-btn--ghost.active{background:var(--ink);color:var(--page-bg)}
+
+  .page{width:210mm;min-height:297mm;background:var(--page-bg);margin:24px auto;padding:24mm 22mm 22mm 22mm;box-shadow:0 4px 24px rgba(0,0,0,.18);display:flex;flex-direction:column}
+
+  .ada-header{padding-bottom:10mm;border-bottom:1px solid var(--ink)}
+  .ada-wm{display:block;width:60mm;height:auto;color:var(--ink)}
+  .ada-tagline{margin-top:6mm;font-family:var(--mono);font-weight:400;font-size:var(--fs-xs);letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--ink-mid)}
+  .ada-meta{margin-top:4mm;display:flex;flex-wrap:wrap;gap:6mm;font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:var(--ls-widest);text-transform:uppercase;color:var(--ink-faint)}
+  .ada-meta strong{color:var(--ink);font-weight:400;margin-right:4px}
+
+  .content{flex:1;padding:18mm 0 14mm;font-family:var(--sans);font-size:12pt;line-height:1.7;color:var(--ink);outline:none}
+  .content[contenteditable="true"]:focus{background:var(--sec-bg);box-shadow:inset 0 0 0 1px var(--border)}
+  .anexo-eyebrow{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:var(--ls-widest);text-transform:uppercase;color:var(--ink-mid);text-align:center;margin-bottom:6mm}
+  .content h1{font-family:var(--mono);font-weight:300;font-size:var(--fs-2xl);line-height:1.15;text-transform:uppercase;letter-spacing:var(--ls-wider);text-align:center;margin:0 0 14mm;color:var(--ink)}
+  .content p{margin:0 0 12pt;text-align:justify}
+  .place-date{margin-top:14mm;font-family:var(--sans);font-size:11pt;text-align:center}
+  .signature{padding-top:6mm;display:flex;flex-direction:column;align-items:center}
+  .signature .block{display:flex;flex-direction:column;align-items:center}
+  .signature .line{width:80mm;border-top:1px solid var(--ink);margin-top:14mm}
+  .signature .who{margin-top:3pt;font-family:var(--sans);font-weight:600;font-size:10.5pt;text-transform:uppercase;letter-spacing:var(--ls-wide);text-align:center}
+  .signature .role{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:var(--ls-wider);text-transform:uppercase;color:var(--ink-mid);margin-top:2pt;text-align:center}
+
+  .ada-footer{margin-top:auto;padding-top:8mm;border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:var(--ls-wide);color:var(--ink-mid);line-height:1.6}
+  .ada-footer .col{flex:1 1 30%}
+  .ada-footer strong{display:block;color:var(--ink);font-weight:400;text-transform:uppercase;letter-spacing:var(--ls-widest);font-size:var(--fs-micro);margin-bottom:2mm}
+
+  @media print{
+    html,body{background:#fff}
+    .toolbar{display:none}
+    .page{margin:0;box-shadow:none;width:auto;min-height:auto;height:auto;max-height:297mm;display:block;padding:8mm 16mm 6mm 16mm;page-break-after:avoid;page-break-inside:avoid;overflow:hidden}
+    .ada-header{padding-bottom:3mm}
+    .ada-wm{width:24mm}
+    .ada-tagline{margin-top:1.5mm;font-size:8.5px}
+    .ada-meta{margin-top:1.5mm;font-size:8px;gap:4mm}
+    .content{flex:none;padding:3mm 0 3mm;font-size:9.5pt;line-height:1.4}
+    .anexo-eyebrow{font-size:9px;margin-bottom:3mm}
+    .content h1{font-size:14pt;margin:0 0 4mm}
+    .content p{margin:0 0 4pt}
+    .place-date{margin-top:4mm;font-size:9.5pt}
+    .signature{padding-top:1mm}
+    .signature .line{margin-top:6mm;width:65mm}
+    .signature .who{font-size:9pt}
+    .signature .role{font-size:8.5px}
+    .ada-footer{margin-top:4mm;padding-top:3mm;page-break-inside:avoid;font-size:8px;line-height:1.4}
+    .ada-footer .col{flex:1 1 28%}
+    .ada-footer strong{margin-bottom:1mm;font-size:8px}
+    @page{size:A4;margin:0}
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="ada-btn--ghost" id="btn-edit">Editar</button>
+  <button class="ada-btn--ghost" onclick="window.print()">Imprimir / PDF</button>
+</div>
+
+<div class="page">
+
+  <header class="ada-header">
+    <img class="ada-wm" src="../../../INSUMOS/MARCA/wordmark.svg" alt="ADA">
+    <div class="ada-tagline">Ateliê Digital Analógico · Plataforma criativa · Desde 2015</div>
+    <div class="ada-meta">
+      <span><strong>Razão social</strong> Tatiane G L da Silva Produção Cultural</span>
+      <span><strong>CNPJ</strong> 20.420.653/0001-37</span>
+      <span><strong>CNAE</strong> 5911-1/02</span>
+    </div>
+  </header>
+
+  <main class="content" id="content" contenteditable="false">
+    <div class="anexo-eyebrow">Edital 002/2026 · Item 5.7 alínea "e" · Roteirista</div>
+    <h1>Carta de anuência — Roteirista</h1>
+
+    <p>Eu, <strong>ALEXANDRE SAHADE GONÇALVES</strong>, brasileiro, em união estável, documentarista, portador da Cédula de Identidade RG nº 24.426.991-9 SSP/SP e inscrito no CPF sob o nº 315.613.028-13, declaro anuência e concordância com a minha participação, na condição de <strong>ROTEIRISTA RESPONSÁVEL</strong>, no projeto de produção de conteúdo audiovisual autoral e inédito para projeção mapeada na fachada da Catedral Angelopolitana, apresentado pelo proponente <strong>Tatiane G L da Silva Produção Cultural</strong> (nome fantasia Ateliê Digital Analógico), inscrito no CNPJ sob o nº 20.420.653/0001-37, na <strong>CONCORRÊNCIA ELETRÔNICA Nº 002/2026</strong> do Município de Santo Ângelo/RS — Processo Administrativo nº 001-2025, em atendimento ao item 5.7, alínea "e", do Edital.</p>
+
+    <p>Declaro ciência de que qualquer desconformidade quanto à informação aqui prestada estará sujeita às penalidades da legislação pertinente, em especial ao disposto no art. 299 do Código Penal (falsidade ideológica) e na Lei Federal nº 14.133/2021.</p>
+
+    <p>Responsabilizo-me pela veracidade das informações aqui prestadas, sob pena de responder por falsidade de informação.</p>
+
+    <p><strong>Pessoa Física</strong><br>
+    Nome completo: Alexandre Sahade Gonçalves<br>
+    Nacionalidade: brasileiro<br>
+    Estado civil: união estável<br>
+    Profissão: documentarista<br>
+    CPF: 315.613.028-13<br>
+    RG: 24.426.991-9 SSP/SP<br>
+    Endereço: Rua São Vicente de Paulo, nº 501 · São Paulo/SP · CEP 01229-010<br>
+    E-mail: alex@laborg.com.br<br>
+    Telefone: (11) 99137-0818</p>
+
+    <div class="place-date">São Paulo, 04 de maio de 2026.</div>
+
+    <div class="signature">
+      <div class="block">
+        <div class="line"></div>
+        <div class="who">Alexandre Sahade Gonçalves</div>
+        <div class="role">Roteirista · CPF 315.613.028-13 · RG 24.426.991-9 SSP/SP</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="ada-footer">
+    <div class="col">
+      <strong>Sede</strong>
+      Rua Engenheiro Francisco Azevedo, 711<br>
+      Jardim Vera Cruz · São Paulo/SP<br>
+      CEP 05.030-010
+    </div>
+    <div class="col">
+      <strong>Contato</strong>
+      ada.art.br
+    </div>
+    <div class="col">
+      <strong>Constituição</strong>
+      Fundada em 10/06/2014<br>
+      CNAE 5911-1/02 · Produção de filmes para publicidade
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  document.getElementById('btn-edit').addEventListener('click', e=>{
+    const c = document.getElementById('content');
+    const isEditing = c.contentEditable === 'true';
+    c.contentEditable = isEditing ? 'false' : 'true';
+    e.target.classList.toggle('active', !isEditing);
+    if(!isEditing) c.focus();
+  });
+</script>
+
+</body>
+</html>

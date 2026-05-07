@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<title>Portfólio · Ateliê Digital Analógico</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&amp;family=Syne:wght@400;600&amp;family=Cormorant+Garamond:ital,wght@1,300&amp;display=swap" rel="stylesheet"/>
+<style>
+  body{
+    --page-bg:#F7F2E4; --sec-bg:#EDE7D4; --card-bg:#E6E6E6;
+    --accent:#FFD600; --accent-soft:rgba(255,214,0,.18);
+    --ink:#000000;
+    --ink-mid:rgba(0,0,0,.55); --ink-faint:rgba(0,0,0,.35);
+    --border:rgba(0,0,0,.12);
+    --marco:#FFD600;
+    --mono:'DM Mono',monospace; --sans:'Syne',sans-serif; --serif:'Cormorant Garamond',serif;
+    --fs-micro:11px; --fs-xs:12px; --fs-sm:13px; --fs-base:14px;
+    --fs-md:16px; --fs-lg:18px; --fs-xl:22px; --fs-2xl:28px; --fs-3xl:36px;
+    --ls-wide:.08em; --ls-wider:.14em; --ls-widest:.20em;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:#dad3bf;font-family:var(--sans);font-weight:400;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .toolbar{display:none}
+  .ada-btn--ghost{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:var(--ls-wider);text-transform:uppercase;color:var(--ink);background:#fff;border:1px solid var(--ink);padding:9px 14px;cursor:pointer;border-radius:0}
+  .ada-btn--ghost:hover{background:var(--ink);color:var(--page-bg)}
+  .ada-btn--ghost.active{background:var(--ink);color:var(--page-bg)}
+  .toolbar .info{font-family:var(--mono);font-size:10.5px;letter-spacing:var(--ls-wide);color:rgba(0,0,0,.55);background:#fff;border:1px dashed rgba(0,0,0,.3);padding:7px 12px}
+  .toolbar .info b{color:#000;font-weight:600}
+
+  /* Cada .page-section é uma seção lógica que começa em nova página A4 */
+  .page-section{
+    display:block;
+    position:relative;
+    background:var(--page-bg);
+    break-before:page;
+    break-inside:avoid-page;
+  }
+  .page-section:first-of-type{break-before:auto}
+  .alfa-clip{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+
+  /* === Cada .page-section é uma folha A4 com tamanho fixo (idêntico em tela e PDF) === */
+  .page-section{
+    width:210mm;
+    height:297mm;
+    padding:14mm 16mm 12mm 16mm;
+    overflow:hidden;
+  }
+  @media screen{
+    body{padding:24px 0}
+    .page-section{margin:0 auto 24px;box-shadow:0 4px 24px rgba(0,0,0,.18)}
+  }
+
+  /* Cada folha vira coluna flex pra rodapé colar no fim */
+  .page-section{display:flex;flex-direction:column}
+  .page-section > main,
+  .page-section > .cover-content{flex:1}
+
+  /* Cabeçalho e rodapé injetados em cada folha */
+  .sheet-header{
+    display:flex;justify-content:space-between;align-items:flex-end;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:3mm;margin-bottom:6mm;
+    font-family:var(--mono);
+    position:relative;z-index:2;
+  }
+  .sheet-header img{display:block;width:28mm;height:auto}
+  .sheet-header .tag{font-size:7.5pt;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid)}
+  .sheet-footer{
+    display:flex;justify-content:space-between;align-items:center;
+    border-top:1px solid var(--ink);
+    padding-top:3mm;margin-top:6mm;
+    font-family:var(--mono);font-size:8pt;letter-spacing:.08em;color:var(--ink-mid);
+    position:relative;z-index:2;
+  }
+  .sheet-footer .pg{font-family:var(--sans);color:var(--ink);font-weight:600;letter-spacing:.16em;font-size:9pt}
+  .page-section--black .sheet-header{border-bottom-color:rgba(255,255,255,.4)}
+  .page-section--black .sheet-header .tag{color:rgba(255,255,255,.7)}
+  .page-section--black .sheet-footer{border-top-color:rgba(255,255,255,.4);color:rgba(255,255,255,.7)}
+  .page-section--black .sheet-footer .pg{color:#fff}
+  .page-section--black .sheet-header img{filter:invert(1) brightness(2)}
+
+  @page{
+    size:A4;
+    margin:0;
+  }
+
+  .project{break-inside:avoid}
+  .year-block{break-inside:avoid}
+  .marcos-row{break-inside:avoid}
+  .team-block{break-inside:avoid}
+  .year-head{break-inside:avoid}
+
+  /* Variantes de cor por seção */
+  .page-section--black{background:#0a0a0a;color:#fff}
+  .page-section--black .cover-title,
+  .page-section--black .cover-lede,
+  .page-section--black .cover-site,
+  .page-section--black .cover-reach-cities,
+  .page-section--black .cover-site a,
+  .page-section--black .content,
+  .page-section--black .content h1,
+  .page-section--black .content h2,
+  .page-section--black .content p{color:#fff}
+  .page-section--black .cover-eyebrow,
+  .page-section--black .h-sub{color:rgba(255,255,255,.6)}
+
+  /* ALFA watermark — elemento da marca atrás do conteúdo */
+  .alfa-bg{position:absolute;pointer-events:none;z-index:0;color:var(--accent)}
+  .alfa-bg svg{display:block;width:100%;height:100%}
+  .alfa-bg.tr{top:-30mm;right:-40mm;width:180mm;height:180mm;opacity:.55}
+  .alfa-bg.bl{bottom:-50mm;left:-40mm;width:200mm;height:200mm;opacity:.45}
+  .alfa-bg.center{top:50%;left:50%;width:280mm;height:280mm;transform:translate(-50%,-50%);opacity:.18}
+  .alfa-bg.corner-r{bottom:-30mm;right:-30mm;width:120mm;height:120mm;opacity:.7}
+  .alfa-bg.cover-hero{bottom:-60mm;right:-50mm;width:240mm;height:240mm;opacity:1}
+  .page--black .alfa-bg{color:var(--accent);opacity:1}
+  .page--yellow .alfa-bg{color:#000;opacity:.08}
+  .ada-header,.ada-footer,.content,.cover-content{position:relative;z-index:2}
+
+  .ada-header{padding-bottom:6mm;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:flex-end;gap:10mm}
+  .ada-wm{display:block;width:48mm;height:auto;color:var(--ink)}
+  .ada-tagline{display:block;width:48mm;margin-top:2.5mm;font-family:var(--mono);font-weight:400;font-size:8.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--ink-mid);text-align:center;line-height:1.3}
+  .ada-pageno{font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:var(--ls-widest);text-transform:uppercase;color:var(--ink-faint);text-align:right;line-height:1.6}
+  .ada-pageno strong{display:block;color:var(--ink);font-weight:400;font-size:var(--fs-xs)}
+
+  .ada-footer{margin-top:auto;padding-top:6mm;border-top:1px solid var(--ink);display:flex;justify-content:space-between;gap:10mm;flex-wrap:wrap;font-family:var(--mono);font-size:var(--fs-micro);letter-spacing:var(--ls-wide);color:var(--ink-mid);line-height:1.6}
+  .ada-footer strong{color:var(--ink-mid);font-weight:300;text-transform:uppercase;letter-spacing:var(--ls-widest);margin-right:4px;font-size:9px}
+  .ada-footer .page-num{color:var(--ink);font-weight:600;font-size:13px}
+  .page--black .ada-footer .page-num{color:#fff}
+  .page--black .ada-footer strong{color:rgba(255,255,255,.55)}
+
+  /* CAPA */
+  .cover-content{flex:1;display:flex;flex-direction:column;justify-content:center;padding:14mm 0}
+  .cover-eyebrow{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:var(--ls-widest);text-transform:uppercase;color:var(--ink-mid);margin-bottom:8mm}
+  .cover-title{font-family:var(--mono);font-weight:300;font-size:var(--fs-3xl);line-height:1.05;color:var(--ink);margin:0 0 10mm;text-transform:uppercase;letter-spacing:var(--ls-wider)}
+  .cover-lede{font-family:var(--sans);font-weight:400;font-size:13pt;line-height:1.55;max-width:155mm;color:var(--ink);margin:0 0 8mm}
+  .cover-lede strong{font-weight:600}
+  .cover-lede + .cover-lede{margin-top:-2mm}
+  .cover-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:4mm 10mm;font-family:var(--mono);font-size:var(--fs-xs);line-height:1.6;color:var(--ink-mid)}
+  .cover-meta strong{display:block;color:var(--ink);font-weight:400;text-transform:uppercase;letter-spacing:var(--ls-widest);font-size:var(--fs-micro);margin-bottom:1mm}
+  .cover-site{font-family:var(--mono);font-size:11pt;letter-spacing:var(--ls-wide);color:var(--ink);margin:0 0 3mm;text-align:left}
+  .cover-site a{color:inherit;text-decoration:none}
+  .cover-reach-cities{font-family:var(--mono);font-weight:300;font-size:8.5pt;line-height:1.8;color:var(--ink);margin:0;letter-spacing:var(--ls-wide);text-align:left}
+  .cover-reach-cities b{font-weight:600}
+
+  /* CONTEÚDO */
+  .content{flex:1;padding:8mm 0 6mm;font-family:var(--sans);font-size:10.5pt;line-height:1.55;color:var(--ink)}
+  .content h1{font-family:var(--mono);font-weight:300;font-size:var(--fs-2xl);line-height:1.1;text-transform:uppercase;letter-spacing:var(--ls-wider);margin:0 0 2mm;color:var(--ink)}
+  .content h1 + .h-sub{font-family:var(--mono);font-size:var(--fs-xs);letter-spacing:var(--ls-widest);text-transform:uppercase;color:var(--ink-mid);margin:0 0 8mm}
+  .content h2{font-family:var(--mono);font-weight:300;font-size:var(--fs-lg);line-height:1.2;text-transform:uppercase;letter-spacing:var(--ls-wider);margin:6mm 0 2mm;color:var(--ink)}
+  .content h2:first-child{margin-top:0}
+  .content p{margin:0 0 4mm;text-align:justify}
+  .content p.lede{font-family:var(--sans);font-size:13pt;line-height:1.45;margin-bottom:6mm;color:var(--ink)}
+
+  /* ANO bloco */
+  .year-block{margin-bottom:4mm;position:relative;page-break-inside:avoid}
+  .year-head{display:flex;align-items:baseline;gap:5mm;border-bottom:2px solid var(--ink);padding-bottom:1mm;margin-bottom:2mm;position:relative}
+  .year-head::before{content:"";position:absolute;left:-6mm;top:50%;width:3mm;height:3mm;background:var(--accent);transform:translateY(-50%)}
+  .year-head .yr{font-family:var(--mono);font-weight:400;font-size:18pt;letter-spacing:var(--ls-wide);color:var(--ink);line-height:1}
+  .year-head .ct{display:none}
+
+  /* PROJECT ITEM (linha denso, compacto pra caber em A4) */
+  .project{position:relative;display:grid;grid-template-columns:32mm 1fr;gap:4mm;padding:1.4mm 0 1.4mm 4mm;border-bottom:1px solid var(--border);page-break-inside:avoid}
+  .project:last-child{border-bottom:none}
+  .project .meta{font-family:var(--mono);font-size:7.5pt;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mid);line-height:1.35}
+  .project .meta b{color:var(--ink);font-weight:400}
+  .project .body{font-family:var(--sans);font-size:8.5pt;line-height:1.3;color:var(--ink)}
+  .project .body .title{font-family:var(--mono);font-size:9pt;color:var(--ink);font-weight:400;margin-bottom:0.3mm;line-height:1.2}
+  .project .body .scope{font-family:var(--sans);font-size:8pt;line-height:1.3;color:var(--ink-mid)}
+  .project .body .tags{margin-top:0.5mm;font-family:var(--mono);font-size:7pt;letter-spacing:.04em;color:var(--ink-faint);text-transform:uppercase}
+
+  /* MARCO toggle */
+  .marco-btn{display:none}
+  .marco-btn:hover{background:var(--ink);color:#fff}
+  .project.is-marco{background:linear-gradient(to right,#FFD600 0,#FFD600 1mm,#fff 1mm)}
+  .project.is-marco .marco-btn{background:#000;color:#fff}
+  .project.is-marco .marco-btn::before{content:"★"}
+  .project:not(.is-marco) .marco-btn::before{content:"☆"}
+
+  /* AUTORAL tag */
+  .project[data-autoral]{}
+  .project[data-autoral] .body .title::after{content:" · obra autoral";font-family:var(--mono);font-size:8pt;letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--ink-faint)}
+
+  /* NUVEM DE CLIENTES — hierarquia tipográfica por categoria */
+  .clients-cloud{text-align:center;line-height:1.5;margin-top:8mm;padding:0 4mm}
+  .clients-cloud span{display:inline-block;margin:0 6px 4px;vertical-align:baseline;color:var(--ink)}
+  /* Artistas — serif italic, maior, atmosférico */
+  .clients-cloud .artista{font-family:var(--serif);font-style:italic;font-weight:300;letter-spacing:0;text-transform:none}
+  .clients-cloud .artista.lg{font-size:38pt;line-height:1.05}
+  .clients-cloud .artista.md{font-size:30pt;line-height:1.05}
+  .clients-cloud .artista.sm{font-size:24pt;line-height:1.05}
+  /* Instituições públicas — mono uppercase, segundo tamanho, formal */
+  .clients-cloud .publica{font-family:var(--mono);font-weight:400;font-size:15pt;text-transform:uppercase;letter-spacing:.06em}
+  /* Museus / centros culturais — sans, terceiro tamanho, neutro */
+  .clients-cloud .museu{font-family:var(--sans);font-weight:400;font-size:12pt;letter-spacing:.01em;color:var(--ink)}
+  /* Marcas — mono uppercase, miúdo, esmaecido */
+  .clients-cloud .marca{font-family:var(--mono);font-weight:300;font-size:9pt;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mid)}
+
+  /* MOSAICO de imagens */
+  .mosaic{display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:1fr;gap:1.5mm;margin-top:4mm;grid-auto-flow:dense}
+  .mosaic .tile{position:relative;overflow:hidden;background:#000;aspect-ratio:1/1}
+  .mosaic .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .mosaic .tile.big{grid-column:span 2;grid-row:span 2}
+  .mosaic .tile.wide{grid-column:span 2;grid-row:span 1;aspect-ratio:2/1}
+
+  .mosaic-cover{display:grid;grid-template-columns:repeat(7,1fr);gap:1.5mm;margin-top:8mm}
+  .mosaic-cover .tile{position:relative;overflow:hidden;background:#000;aspect-ratio:1/1}
+  .mosaic-cover .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+
+  /* TIMELINE / MARCOS auto */
+  .marcos-empty{font-family:var(--mono);font-size:10pt;color:var(--ink-mid);padding:8mm 0;border:1px dashed var(--ink-faint);text-align:center;letter-spacing:var(--ls-wide)}
+  .marcos-list{margin-top:4mm}
+  .marcos-row{display:grid;grid-template-columns:18mm 1fr;gap:6mm;padding:3mm 0;border-bottom:1px solid var(--border);page-break-inside:avoid}
+  .marcos-row:last-child{border-bottom:none}
+  .marcos-year{font-family:var(--mono);font-size:11pt;color:var(--ink);letter-spacing:var(--ls-wide)}
+  .marcos-text{font-family:var(--sans);font-size:10pt;line-height:1.5;color:var(--ink)}
+  .marcos-text ul{margin:0;padding:0;list-style:none}
+  .marcos-text ul li{padding-left:8mm;position:relative;margin:0 0 1mm}
+  .marcos-text ul li:last-child{margin-bottom:0}
+  .marcos-text ul li::before{content:"—";position:absolute;left:0;color:var(--ink-mid)}
+  .marcos-text strong{font-weight:600}
+
+  /* EQUIPE */
+  .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:4mm}
+  .team-block .name{font-family:var(--mono);font-size:13pt;letter-spacing:var(--ls-wide);text-transform:uppercase;color:var(--ink);margin-bottom:1.5mm}
+  .team-block .role{font-family:var(--mono);font-size:9.5px;letter-spacing:var(--ls-widest);text-transform:uppercase;color:var(--ink-mid);margin-bottom:3mm}
+  .team-block .bio{font-family:var(--sans);font-size:10pt;line-height:1.5;color:var(--ink)}
+
+  @media print{
+    html,body{background:var(--page-bg);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .toolbar{display:none}
+    .marco-btn{display:none}
+    .page{margin:0;box-shadow:none;width:210mm;height:297mm;padding:12mm 14mm 8mm 14mm;page-break-after:always;overflow:hidden}
+    .page:last-child{page-break-after:auto}
+    .ada-wm{width:32mm}
+    .ada-header{padding-bottom:3mm}
+    .cover-content{padding:8mm 0}
+    .cover-title{font-size:30pt;margin:0 0 6mm}
+    .cover-lede{font-size:12pt;margin-bottom:10mm}
+    .content{font-size:9.5pt;padding:5mm 0 4mm}
+    .content h1{font-size:20pt}
+    .content h2{font-size:14pt;margin:4mm 0 2mm}
+    .year-head .yr{font-size:18pt}
+    .project{padding:1.5mm 0 1.5mm 6mm}
+    .project .meta{font-size:8pt}
+    .project .body .title{font-size:9.5pt}
+    .project .body .scope{font-size:8.5pt}
+    .project.is-marco{background:linear-gradient(to right,var(--accent) 0,var(--accent) 1mm,transparent 1mm)}
+    .client-cell{font-size:8.5pt;min-height:10mm;padding:4mm 3mm}
+    .marcos-row{padding:2mm 0}
+    .marcos-text{font-size:9pt}
+    .ada-footer{font-size:8.5px;padding-top:3mm;margin-top:4mm}
+    @page{size:A4;margin:0}
+  }
+</style>
+</head>
+<body>
+<!-- Símbolo ALFA da ADA — usado como elemento de marca em fundo -->
+<svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
+<symbol id="alfa" viewbox="225 225 126 126">
+<polygon fill="currentColor" points="268.01 297 288 257.02 307.99 297 324 297 288 225 252 297 268.01 297"></polygon>
+<polygon fill="currentColor" points="238.5 324 225 351 241.01 351 250.01 333 254.51 324 238.5 324"></polygon>
+<polygon fill="currentColor" points="321.49 324 325.99 333 334.99 351 351 351 337.5 324 321.49 324"></polygon>
+</symbol>
+</svg>
+<div class="toolbar">
+<span class="info">Clique em <b>☆</b> ao lado de cada projeto para marcar como <b>marco</b>. A página de Marcos atualiza sozinha.</span>
+<button class="ada-btn--ghost" id="btn-export">Copiar IDs marcados</button>
+<button class="ada-btn--ghost" id="btn-clear">Limpar marcações</button>
+<button class="ada-btn--ghost" onclick="window.print()">Imprimir / PDF</button>
+</div>
+<!-- ================== PÁGINA 1 — CAPA ================== -->
+<section class="page-section page-section--black">
+<div class="alfa-clip"><div class="alfa-bg cover-hero"><svg><use href="#alfa"></use></svg></div></div>
+<div class="cover-content">
+<div class="cover-eyebrow">Portfólio institucional</div>
+<h1 class="cover-title">Ateliê Digital Analógico</h1>
+<p class="cover-lede">Plataforma criativa fundada em 2015 por Tatiane Gonzalez e Caio Fazolin, dedicada à intersecção entre <strong>arte e tecnologia</strong>.</p>
+<p class="cover-lede">A ADA cria <strong>videomapping</strong>, <strong>stage design</strong> e direção visual ao vivo, <strong>espaços imersivos</strong> em museus e exposições e <strong>instalações audiovisuais</strong> autorais — experiências que atravessam palco, museu e espaço urbano.</p>
+<p class="cover-site"><a href="https://ada.art.br" target="_blank">ada.art.br</a></p>
+<p class="cover-reach-cities">São Paulo · Rio de Janeiro · Nova York · Brasília · Dubai · Belém · Fortaleza · Boston · Belo Horizonte · Miami · Florianópolis · Los Angeles</p>
+<div class="mosaic-cover">
+<div class="tile"><img alt="Times Square" src="../../INSUMOS/PORTIF%C3%93LIO/MAPPING_TIMES_SQUARE.png"/></div>
+<div class="tile"><img alt="Avenida Paulista" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_paulista.png"/></div>
+<div class="tile"><img alt="Palácio dos Correios" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_correios.png"/></div>
+<div class="tile"><img alt="Shopping Light" src="../../INSUMOS/PORTIF%C3%93LIO/MAPPING_SHOPPING%20LIGHT.png"/></div>
+<div class="tile"><img alt="Instituto Pasteur" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_ipca.png"/></div>
+<div class="tile"><img alt="Fundação Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5821.jpg"/></div>
+<div class="tile"><img alt="Instituto Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-182.jpg"/></div>
+</div>
+</div>
+</section>
+<!-- ================== PÁGINA 2 — MOSAICO ================== -->
+<section class="page-section page-section--black">
+<main class="content">
+<div class="mosaic">
+<div class="tile big"><img alt="Times Square" src="../../INSUMOS/PORTIF%C3%93LIO/MAPPING_TIMES_SQUARE.png"/></div>
+<div class="tile"><img alt="Palácio dos Correios" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_correios.png"/></div>
+<div class="tile"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5821.jpg"/></div>
+<div class="tile"><img alt="Shopping Light" src="../../INSUMOS/PORTIF%C3%93LIO/MAPPING_SHOPPING%20LIGHT.png"/></div>
+<div class="tile"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-182.jpg"/></div>
+<div class="tile"><img alt="Sesc Paulista" src="../../INSUMOS/PORTIF%C3%93LIO/SESC-PAULISTA--fotos-Bia-Ferrer-0363.jpg"/></div>
+<div class="tile"><img alt="Paulista 130" src="../../INSUMOS/PORTIF%C3%93LIO/On_paulista_130-anos_2021_PHBiaFerrer-11.jpg"/></div>
+<div class="tile big"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5826.jpg"/></div>
+<div class="tile"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-29.jpg"/></div>
+<div class="tile"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-82.jpg"/></div>
+<div class="tile"><img alt="Paulista 130" src="../../INSUMOS/PORTIF%C3%93LIO/On_paulista_130-anos_2021_PHBiaFerrer-44.jpg"/></div>
+<div class="tile"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5834.jpg"/></div>
+<div class="tile"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-68.jpg"/></div>
+<div class="tile"><img alt="Instituto Pasteur" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_ipca.png"/></div>
+<div class="tile"><img alt="Sesc Paulista" src="../../INSUMOS/PORTIF%C3%93LIO/SESC-PAULISTA--fotos-Bia-Ferrer-0609.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/169.jpg"/></div>
+<div class="tile big"><img alt="Paulista" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_paulista.png"/></div>
+<div class="tile"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5928.jpg"/></div>
+<div class="tile"><img alt="Paulista 130" src="../../INSUMOS/PORTIF%C3%93LIO/On_paulista_130-anos_2021_PHBiaFerrer-59.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/171.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/thumb.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-1.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-2.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-3.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-4.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-5.jpg"/></div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 3 — MARCOS ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg center"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<h1>Destaques</h1>
+<div class="h-sub">Trabalhos selecionados</div>
+<div class="marcos-list" id="marcos-list"></div>
+<div class="marcos-empty" id="marcos-empty" style="display:none">Nenhum marco selecionado ainda. Marque ☆ em projetos das próximas páginas para popular esta lista.</div>
+</main>
+</section>
+<!-- ================== PÁGINA 3 — 2026 + 2025 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg tr"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2026</div><div class="ct">em curso</div></div>
+<div class="project" data-id="2026-byd" data-year="2026">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · mar 2026<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">BYD · lançamento de carro</div>
+<div class="scope">Videomapping para o lançamento do novo carro da BYD, no Espaço Rooftop em São Paulo.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2026-mano-brown" data-year="2026">
+<button aria-label="Marcar como marco" class="marco-btn"></button>
+<div class="meta">São Paulo · 2026<br/><b>Visuais ao vivo</b></div>
+<div class="body">
+<div class="title">Mano Brown · convida Rael e Rincon Sapiência</div>
+<div class="scope">Direção visual e visuais ao vivo para show com participações especiais de Rael e Rincon Sapiência.</div>
+</div>
+</div>
+<div class="project" data-id="2026-edi-rock" data-year="2026">
+<button class="marco-btn"></button>
+<div class="meta">Festival · 2026<br/><b>Visuais ao vivo</b></div>
+<div class="body">
+<div class="title">Edi Rock · em festival</div>
+<div class="scope">Direção visual e visuais ao vivo para show em festival.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 5 — 2025 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg tr"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2025</div><div class="ct">14 projetos</div></div>
+<div class="project is-marco" data-id="2025-cop30" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Belém / PA · 2025<br/><b>Direção técnica · videomapping</b></div>
+<div class="body">
+<div class="title">COP30 · Cúpula dos Líderes</div>
+<div class="scope">Direção técnica e produção de conteúdo visual para a Cúpula dos Líderes. Ambiente diplomático de alta visibilidade internacional.</div>
+</div>
+</div>
+<div class="project" data-id="2025-esfera" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Belém / PA · 2025<br/><b>Instalação video-mapeada</b></div>
+<div class="body">
+<div class="title">Esfera · Museu das Amazônias</div>
+<div class="scope">Instalação video-mapeada em superfície esférica · narrativa visual dedicada ao bioma amazônico.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2025-sesc-df" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Brasília / DF · 4–5 out 2025<br/><b>Direção técnica · videomapping</b></div>
+<div class="body">
+<div class="title">Centro Cultural Sesc-DF · "O Futuro é Hoje"</div>
+<div class="scope">Direção técnica e conteúdo para videomapping na fachada do antigo prédio da Caixa Econômica, com Hamilton de Holanda, Criolo, Vanessa Moreno e Clarice Falcão.</div>
+</div>
+</div>
+<div class="project" data-id="2025-astronautas" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Brasil · 3–7 nov 2025<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">36º Encontro Internacional de Astronautas</div>
+<div class="scope">Mapeamento arquitetônico e direção visual para o encontro internacional de astronautas, realizado no Brasil em novembro de 2025.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2025-sp2b" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · ago 2025<br/><b>Direção técnica · visuais ao vivo</b></div>
+<div class="body">
+<div class="title">SP2B · sessão inaugural com Gilberto Gil</div>
+<div class="scope">Direção técnica e visuais ao vivo da abertura do São Paulo Beyond Business no Auditório Ibirapuera.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2025-racionais-eua" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Newark · Boston · Miami · LA · 2025<br/><b>Stage design · turnê</b></div>
+<div class="body">
+<div class="title">Racionais MCs · turnê EUA · 36 anos</div>
+<div class="scope">Stage design e direção visual ao vivo da primeira turnê internacional do grupo, em quatro cidades dos Estados Unidos.</div>
+</div>
+</div>
+<div class="project" data-id="2025-mic-fortaleza" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Fortaleza · dez 2025<br/><b>Direção técnica · conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">MIC BR · Mercado das Indústrias Criativas do Brasil</div>
+<div class="scope">Direção técnica e conteúdo audiovisual para a edição 2025 do MIC BR + Ibero-América (Ministério da Cultura), realizada em Fortaleza com programação formativa, mercado e Festival Elos na Praia de Iracema.</div>
+</div>
+</div>
+<div class="project" data-id="2025-nalimo" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">2025<br/><b>Stage design</b></div>
+<div class="body">
+<div class="title">Nalimo · desfiles</div>
+<div class="scope">Stage design para desfiles da marca.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2025-sesc-df-sede" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Brasília / DF · nov 2025<br/><b>Videomapping · instalação</b></div>
+<div class="body">
+<div class="title">Sesc-DF · abertura da nova sede administrativa</div>
+<div class="scope">Videomapping e instalação na inauguração da nova sede administrativa do Sesc-DF (complexo de 25 mil m² para 400 funcionários · SIA Trecho 04).</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2025-xp" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">2025<br/><b>Conteúdo anamórfico</b></div>
+<div class="body">
+<div class="title">XP · estande imersivo</div>
+<div class="scope">Produção de conteúdo anamórfico para o estande imersivo da XP.</div>
+</div>
+</div>
+<div class="project" data-id="2025-vivara" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">dez 2025<br/><b>Instalação imersiva · videomapping</b></div>
+<div class="body">
+<div class="title">Vivara · instalação imersiva e videomapping</div>
+<div class="scope">Instalação imersiva e videomapping para a marca.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2025-jota-quest" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2025<br/><b>Direção visual · efeitos real-time</b></div>
+<div class="body">
+<div class="title">Jota Quest · The Town 2025</div>
+<div class="scope">Direção visual e efeitos em tempo real para câmera.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2025-ludmilla-the-town" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2025<br/><b>Live visual</b></div>
+<div class="body">
+<div class="title">Ludmilla · The Town 2025</div>
+<div class="scope">Direção visual e visuais ao vivo no festival.</div>
+</div>
+</div>
+<div class="project" data-id="2025-planet-hemp" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2025<br/><b>Assistência de direção</b></div>
+<div class="body">
+<div class="title">Planet Hemp · "Última Ponta"</div>
+<div class="scope">Assistência de direção para o show "Última Ponta" do Planet Hemp no Allianz Parque.</div>
+</div>
+</div>
+<div class="project" data-id="2025-mano-brown-turne" data-year="2025">
+<button class="marco-btn"></button>
+<div class="meta">Brasil · 2025<br/><b>Turnê nacional</b></div>
+<div class="body">
+<div class="title">Mano Brown · turnê nacional</div>
+<div class="scope">Direção visual e visuais ao vivo da turnê nacional do artista.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 4 — 2024 + 2023 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg bl"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2024</div><div class="ct">8 projetos</div></div>
+<div class="project is-marco" data-id="2024-anish-kapoor" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2024<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Anish Kapoor · "Inflamação"</div>
+<div class="scope">Videomapping de abertura da exposição na Casa Bradesco / Cidade Matarazzo. Trabalho em diálogo com a obra do artista.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2024-g20" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">Rio de Janeiro · 14–16 nov 2024<br/><b>Coordenação visual · videomapping</b></div>
+<div class="body">
+<div class="title">G20 · Festival Aliança Global</div>
+<div class="scope">Coordenação visual e técnica do festival cultural oficial da presidência brasileira do G20 · videomapping no Edifício A Noite · Praça Mauá.</div>
+</div>
+</div>
+<div class="project" data-id="2024-sala-sp" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2024<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Isa Energia · Sala São Paulo · 25 anos</div>
+<div class="scope">Videomapping arquitetônico e direção visual da celebração de 25 anos da Sala São Paulo. Cliente: Isa Energia.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2024-mano-brown-turne" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">Brasil · 2024<br/><b>Turnê nacional</b></div>
+<div class="body">
+<div class="title">Mano Brown · turnê 2024</div>
+<div class="scope">Direção visual e visuais ao vivo da turnê do artista.</div>
+</div>
+</div>
+<div class="project" data-id="2024-racionais-36" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2024<br/><b>Stage design</b></div>
+<div class="body">
+<div class="title">Racionais MCs · 36 anos</div>
+<div class="scope">Stage design e direção visual ao vivo dos shows comemorativos no Espaço Unimed.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2024-natiruts" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">2024<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Natiruts · turnê "Leve com Você"</div>
+<div class="scope">Conteúdo audiovisual da turnê, com efeitos em tempo real e consultoria técnica.</div>
+</div>
+</div>
+<div class="project" data-id="2024-cerrado" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">Minas Gerais · 2024<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Cerrado Mapping Festival</div>
+<div class="scope">Videomapping no festival.</div>
+</div>
+</div>
+<div class="project" data-id="2024-space-lab" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">2024<br/><b>Sala imersiva</b></div>
+<div class="body">
+<div class="title">Space Lab</div>
+<div class="scope">Design e execução de sala imersiva.</div>
+</div>
+</div>
+<div class="project" data-id="2024-nalimo" data-year="2024">
+<button class="marco-btn"></button>
+<div class="meta">2024<br/><b>Stage design</b></div>
+<div class="body">
+<div class="title">Nalimo · desfiles "Natureza Surreal" e "Capibaribe"</div>
+<div class="scope">Stage design para os desfiles das duas coleções.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 7 — 2023 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg bl"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2023</div><div class="ct">12 projetos</div></div>
+<div class="project is-marco" data-id="2023-festival-futuro" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">Brasília · 1º jan 2023<br/><b>Direção visual · videomapping</b></div>
+<div class="body">
+<div class="title">Festival do Futuro · Posse presidencial</div>
+<div class="scope">Equipe de direção visual com Batman Zavareze. Esplanada dos Ministérios · 250 mil pessoas · 14 horas · transmissão nacional · videomapping na fachada do Congresso Nacional.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2023-times-square" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">Nova York · set 2023<br/><b>Mapeamento arquitetônico</b></div>
+<div class="body">
+<div class="title">All Amazônia · Times Square</div>
+<div class="scope">Mapeamento arquitetônico e sincronia em mais de 500 metros lineares de painéis urbanos para o Banco do Brasil, na Semana da ONU. Direção: Batman Zavareze.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2023-cop28" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">Dubai · 1º dez 2023<br/><b>Design audiovisual · instalação</b></div>
+<div class="body">
+<div class="title">Amazônia: Uma Experiência Imersiva · COP28</div>
+<div class="scope">Design audiovisual do jantar diplomático oferecido pela Presidência da República para chefes de Estado na COP28. Instalação video-mapeada com narrativa dedicada ao bioma amazônico.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2023-laco" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2023<br/><b>Ocupação audiovisual</b></div>
+<div class="body">
+<div class="title">Laço · Sesc Ipiranga</div>
+<div class="scope">Ocupação audiovisual completa do espaço expositivo.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2023-ifood" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · jul 2023<br/><b>Produção audiovisual · IA</b></div>
+<div class="body">
+<div class="title">iFood · João Gomes + Luiz Gonzaga · dueto IA</div>
+<div class="scope">Produção audiovisual do dueto entre o cantor vivo e o registro de Luiz Gonzaga, mediado por inteligência artificial, no iFood Arraial Estrelado (Jockey Club / SP). Cliente: iFood · agência criativa: Haute · produção audiovisual: ADA.</div>
+</div>
+</div>
+<div class="project" data-id="2023-luther" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">2023<br/><b>Adaptação de campanha</b></div>
+<div class="body">
+<div class="title">Luther · Netflix</div>
+<div class="scope">Conteúdo visual em adaptação de campanha para a Netflix.</div>
+</div>
+</div>
+<div class="project" data-id="2023-spiderman" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">2023<br/><b>Adaptação de campanha</b></div>
+<div class="body">
+<div class="title">Homem-Aranha · Sony Pictures</div>
+<div class="scope">Conteúdo visual em adaptação de campanha para a Sony Pictures.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2023-titas" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">2023<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Titãs · turnê "Encontro"</div>
+<div class="scope">Conteúdo audiovisual e efeitos em tempo real para a turnê.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2023-the-town" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2023<br/><b>Stage design</b></div>
+<div class="body">
+<div class="title">Racionais MCs · The Town 2023</div>
+<div class="scope">Direção visual e design de palco para o show dos Racionais MCs no festival.</div>
+</div>
+</div>
+<div class="project" data-id="2023-edi-rock-dvd" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">2023<br/><b>Conteúdo visual · DVD</b></div>
+<div class="body">
+<div class="title">Edi Rock · DVD</div>
+<div class="scope">Conteúdo visual para registro em DVD.</div>
+</div>
+</div>
+<div class="project" data-id="2023-virada-shopping-light" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 27–28 mai 2023<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Virada Cultural · "Cidade do Futuro" · Shopping Light</div>
+<div class="scope">Videomapping na fachada do Shopping Light durante a Virada Cultural 2023.</div>
+</div>
+</div>
+<div class="project" data-id="2023-virada-correios" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 27–28 mai 2023<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Virada Cultural · "Anunciação" · Palácio dos Correios</div>
+<div class="scope">Videomapping na fachada do Palácio dos Correios durante a Virada Cultural 2023.</div>
+</div>
+</div>
+<div class="project" data-id="2023-virada-pedro-lessa" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 27–28 mai 2023<br/><b>Instalação imersiva</b></div>
+<div class="body">
+<div class="title">Virada Cultural · Praça Pedro Lessa</div>
+<div class="scope">Instalação imersiva no piso da Praça Pedro Lessa durante a Virada Cultural 2023 — corredor mapeado de 40 m conectando a Estação São Bento ao Palco Anhangabaú.</div>
+</div>
+</div>
+<div class="project" data-id="2023-bancarios" data-year="2023">
+<button class="marco-btn"></button>
+<div class="meta">2023<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Sindicato dos Bancários · 100 anos</div>
+<div class="scope">Conteúdo audiovisual para o evento de centenário do Sindicato dos Bancários.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 5 — 2022 + 2021 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg tr"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2022</div><div class="ct">9 projetos</div></div>
+<div class="project is-marco" data-id="2022-racionais-rir" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">Rio de Janeiro · 2022<br/><b>Stage design</b></div>
+<div class="body">
+<div class="title">Racionais MCs · Rock in Rio</div>
+<div class="scope">Stage design e direção visual ao vivo no festival com transmissão internacional.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2022-mis-ce" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">Fortaleza · 2022<br/><b>Sala imersiva</b></div>
+<div class="body">
+<div class="title">Mix Experience · MIS Ceará</div>
+<div class="scope">Sala imersiva no Museu da Imagem e do Som do Ceará.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2022-festival-futuro-2022" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">Brasília · 2022<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Festival do Futuro · pré-posse</div>
+<div class="scope">Conteúdo audiovisual em equipe de direção liderada por Batman Zavareze.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2022-casa-nft" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">2022<br/><b>Sala imersiva</b></div>
+<div class="body">
+<div class="title">Casa NFT · Funarte</div>
+<div class="scope">Sala imersiva na Casa NFT da Funarte.</div>
+</div>
+</div>
+<div class="project" data-id="2022-pinacoteca-vivara" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2022<br/><b>Instalação expositiva</b></div>
+<div class="body">
+<div class="title">Pinacoteca SP · Vivara 60 anos</div>
+<div class="scope">Instalação expositiva na Pinacoteca de São Paulo.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2022-liniker" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">2022<br/><b>Direção visual</b></div>
+<div class="body">
+<div class="title">Liniker · turnê "Indigo Borboleta Anil"</div>
+<div class="scope">Direção visual da turnê.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2022-jao" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">2022<br/><b>Direção técnica · videomapping</b></div>
+<div class="body">
+<div class="title">Jão · Prêmio Multishow</div>
+<div class="scope">Direção técnica e visual de videomapping na premiação.</div>
+</div>
+</div>
+<div class="project" data-id="2022-pinacoteca-wccs" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2022<br/><b>Instalação</b></div>
+<div class="body">
+<div class="title">Pinacoteca SP · World Cities Culture Summit</div>
+<div class="scope">Instalação no encontro internacional sediado pela Pinacoteca.</div>
+</div>
+</div>
+<div class="project" data-id="2022-virada-shopping-queda" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2022<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Virada Cultural · "Queda" · Shopping Light</div>
+<div class="scope">Videomapping na fachada do Shopping Light durante a Virada Cultural 2022.</div>
+</div>
+</div>
+<div class="project" data-id="2022-vila-itororo" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2022<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Vila Itororó · 100 anos do palacete</div>
+<div class="scope">Videomapping na fachada do palacete histórico em comemoração aos 100 anos da Vila Itororó.</div>
+</div>
+</div>
+<div class="project" data-id="2022-tuca-democracia" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · out 2022<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Ato em defesa da democracia · Lula e Haddad</div>
+<div class="scope">Criação de conteúdo audiovisual para o ato em defesa da democracia e do Brasil com Lula e Haddad no Tuca / PUC-SP, em outubro de 2022.</div>
+</div>
+</div>
+<div class="project" data-id="2022-live-esperanca" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">2022<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Live "Brasil da Esperança"</div>
+<div class="scope">Criação de conteúdo audiovisual em equipe coordenada por Batman Zavareze.</div>
+</div>
+</div>
+<div class="project" data-id="2022-marte-curadoria" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">Ouro Preto · 2022<br/><b>Curadoria</b></div>
+<div class="body">
+<div class="title">Marte Festival · curadoria de artistas visuais</div>
+<div class="scope">Curadoria de artistas visuais para o Marte Festival, realizado em Ouro Preto.</div>
+</div>
+</div>
+<div class="project is-marco" data-id="2022-racionais-turne" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">Brasil · 2022<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Racionais MCs · turnê 2022</div>
+<div class="scope">Criação de conteúdo audiovisual para a turnê do grupo.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2022-fam-ilha" data-year="2022">
+<button class="marco-btn"></button>
+<div class="meta">Festival Amazônia Mapping · 2022<br/><b>Instalação 3D · produção executiva</b></div>
+<div class="body">
+<div class="title">Ilha virtual · Festival Amazônia Mapping</div>
+<div class="scope">Criação de ilha virtual e produção executiva do Festival Amazônia Mapping, projeto contemplado no Edital Proac 26/2021.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 9 — 2021 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg tr"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2021</div><div class="ct">10 projetos</div></div>
+<div class="project" data-id="2021-paulista" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2021<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">130 anos da Avenida Paulista</div>
+<div class="scope">Videomapping comemorativo encomendado pela Prefeitura de SP.</div>
+</div>
+</div>
+<div class="project" data-id="2021-zarif" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2021<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Fernando Zarif · SP Arte / Galeria Luciana Brito</div>
+<div class="scope">Videomapping na exposição de Fernando Zarif na Galeria Luciana Brito durante a SP Arte.</div>
+</div>
+</div>
+<div class="project" data-id="2021-heineken" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">2021<br/><b>Instalação imersiva</b></div>
+<div class="body">
+<div class="title">Heineken · "Heavy Love"</div>
+<div class="scope">Instalação imersiva para a festa "Heavy Love".</div>
+</div>
+</div>
+<div class="project" data-id="2021-sicredi" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">Lucas do Rio Verde · MT · 2021<br/><b>Salas imersivas</b></div>
+<div class="body">
+<div class="title">Museu SICREDI</div>
+<div class="scope">Design e execução de três salas imersivas no museu.</div>
+</div>
+</div>
+<div class="project" data-id="2021-itau" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">2021<br/><b>Projeção</b></div>
+<div class="body">
+<div class="title">Itaú</div>
+<div class="scope">Projeção institucional.</div>
+</div>
+</div>
+<div class="project" data-id="2021-xp" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">2021<br/><b>Projeção · 7 empenas</b></div>
+<div class="body">
+<div class="title">XP Investimentos</div>
+<div class="scope">Projeções simultâneas em sete empenas.</div>
+</div>
+</div>
+<div class="project" data-id="2021-urban95" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">10 cidades / 8 estados · 2021<br/><b>Projeção urbana itinerante</b></div>
+<div class="body">
+<div class="title">Urban 95 · projeção urbana</div>
+<div class="scope">Projeção urbana itinerante em 10 cidades de 8 estados, dedicada à primeira infância.</div>
+</div>
+</div>
+<div class="project" data-id="2021-butanta" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2021<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Instituto Butantã · 467 anos de SP</div>
+<div class="scope">Videomapping comemorativo aos 467 anos da cidade de São Paulo (SP Cidade Ciência · case Panasonic).</div>
+</div>
+</div>
+<div class="project" data-id="2021-pasteur" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2021<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Instituto Pasteur · Avenida Paulista</div>
+<div class="scope">Videomapping no Instituto Pasteur, na Avenida Paulista.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2021-ourobyte" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">Ouro Preto · 2021<br/><b>Performance audiovisual</b></div>
+<div class="body">
+<div class="title">OUROByte · com Michelle Mattiuzzi</div>
+<div class="scope">Performance audiovisual apresentada com Michelle Mattiuzzi no Marte Festival.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2021-sp-rock" data-year="2021">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2021<br/><b>Videomapping · música ao vivo</b></div>
+<div class="body">
+<div class="title">SP Rock Mapping · Minhocão</div>
+<div class="scope">Mini festival de videomapping com música ao vivo no Minhocão. Idealização ADA por convite da Secretaria Municipal.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 6 — 2020 + 2019 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg bl"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2020</div><div class="ct">8 projetos</div></div>
+<div class="project" data-id="2020-anitta" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">2020<br/><b>Videomapping · clipe</b></div>
+<div class="body">
+<div class="title">Anitta · "Tócame"</div>
+<div class="scope">Videomapping para o clipe da artista.</div>
+</div>
+</div>
+<div class="project" data-id="2020-google" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">2020<br/><b>Projeção mapeada</b></div>
+<div class="body">
+<div class="title">Google · "Orgulho de Ser"</div>
+<div class="scope">Projeção mapeada na campanha.</div>
+</div>
+</div>
+<div class="project" data-id="2020-ame" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">5 estados · 2020<br/><b>Projeção interativa</b></div>
+<div class="body">
+<div class="title">Ame Digital · "Ame Sem Moderação"</div>
+<div class="scope">Projeção interativa em campanha itinerante por cinco estados.</div>
+</div>
+</div>
+<div class="project" data-id="2020-ambev" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">2 estados · 2020<br/><b>Projeção</b></div>
+<div class="body">
+<div class="title">Ambev · "Bud One Time Live"</div>
+<div class="scope">Projeção em ação simultânea em dois estados.</div>
+</div>
+</div>
+<div class="project" data-id="2020-hc-emilio" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2020<br/><b>Projeção</b></div>
+<div class="body">
+<div class="title">"Protagonistas de Máscaras" · HC-USP + Emílio Ribas</div>
+<div class="scope">Projeção em homenagem aos profissionais de saúde durante a pandemia, no Hospital das Clínicas USP e no Instituto Emílio Ribas.</div>
+</div>
+</div>
+<div class="project" data-id="2020-monteiro-lobato" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">Taubaté · 2020<br/><b>Ambientes imersivos</b></div>
+<div class="body">
+<div class="title">Museu Monteiro Lobato</div>
+<div class="scope">Design e execução de ambientes imersivos no museu.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2020-ilha-fam" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">Festival Amazônia Mapping · 2020<br/><b>Instalação 3D · Unreal Engine</b></div>
+<div class="body">
+<div class="title">ILHA do FAM</div>
+<div class="scope">Instalação virtual 3D em Unreal Engine para o Festival Amazônia Mapping. Premiada no SIM SP 2020 (Inovação). Quatro edições (2020–2023).</div>
+</div>
+</div>
+<div class="project" data-id="2020-vai-tapajos-sp" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · jan 2020<br/><b>Instalação de luz</b></div>
+<div class="body">
+<div class="title">Festa Vai Tapajós SP</div>
+<div class="scope">Instalação de luz para a Festa Vai Tapajós em São Paulo.</div>
+</div>
+</div>
+<div class="project" data-id="2020-vai-tapajos-alter" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">Alter do Chão · dez 2020<br/><b>Instalação de luz</b></div>
+<div class="body">
+<div class="title">Festa Vai Tapajós · Alter do Chão</div>
+<div class="scope">Instalação de luz para a Festa Vai Tapajós em Alter do Chão (dez/2020 e jan/2021). Patrocínio Colorado.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2020-sp-rock-augusta" data-year="2020">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2020<br/><b>Videomapping · música ao vivo</b></div>
+<div class="body">
+<div class="title">SP Rock Mapping · Rua Augusta</div>
+<div class="scope">Primeira edição do mini festival de videomapping, na Rua Augusta. Convite da Secretaria Municipal.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 11 — 2019 ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg bl"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2019</div><div class="ct">10 projetos</div></div>
+<div class="project" data-id="2019-abstrata" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">Fortaleza · nov 2019<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">"Heliosheat" · Abstrata Festival Internacional de Videomapping</div>
+<div class="scope">Videomapping autoral no Abstrata Festival Internacional de Videomapping. Patrocínio Budweiser.</div>
+</div>
+</div>
+<div class="project" data-id="2019-natura" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">Belém / PA · 2019<br/><b>Projeção mapeada</b></div>
+<div class="body">
+<div class="title">Natura · projeção na floresta</div>
+<div class="scope">Projeção mapeada na floresta amazônica para a Natura.</div>
+</div>
+</div>
+<div class="project" data-id="2019-alok" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">Rio de Janeiro · 2019<br/><b>Stage design</b></div>
+<div class="body">
+<div class="title">Alok · Rock in Rio</div>
+<div class="scope">Stage design e direção visual no festival.</div>
+</div>
+</div>
+<div class="project" data-id="2019-corona" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">2019<br/><b>Software interativo</b></div>
+<div class="body">
+<div class="title">Corona · "Sounds of Pollution"</div>
+<div class="scope">Software interativo para a campanha.</div>
+</div>
+</div>
+<div class="project" data-id="2019-ibm" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">2019<br/><b>Instalação interativa</b></div>
+<div class="body">
+<div class="title">IBM · CIAB</div>
+<div class="scope">Instalação audiovisual interativa.</div>
+</div>
+</div>
+<div class="project" data-id="2019-ccbb-tim-burton" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">Brasília · abr 2019<br/><b>Sala imersiva</b></div>
+<div class="body">
+<div class="title">"A Beleza Sombria dos Monstros" · CCBB Brasília</div>
+<div class="scope">Projeção mapeada e sala imersiva da exposição "A Beleza Sombria dos Monstros: Dez Anos de A Arte de Tim Burton" no Centro Cultural Banco do Brasil.</div>
+</div>
+</div>
+<div class="project" data-id="2019-reviver" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">2019<br/><b>Conteúdo audiovisual</b></div>
+<div class="body">
+<div class="title">Fundação Reviver · 25 anos</div>
+<div class="scope">Conteúdo audiovisual de 1 hora para a celebração de 25 anos da fundação.</div>
+</div>
+</div>
+<div class="project" data-id="2019-renascer" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">2019<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Fundação Renascer · aniversário</div>
+<div class="scope">Videomapping comemorativo de aniversário da fundação.</div>
+</div>
+</div>
+<div class="project" data-id="2019-virada-incerteza" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2019<br/><b>Direção técnica · videomapping</b></div>
+<div class="body">
+<div class="title">Virada Cultural · "Incerteza Invisível"</div>
+<div class="scope">Direção técnica, gestão de mídia e criação de conteúdo para o videomapping "Incerteza Invisível" na Virada Cultural. Roteiro: Caio Fazolin, Tatiane Gonzalez e Michelle Mattiuzzi.</div>
+</div>
+</div>
+<div class="project" data-id="2019-shopping-light" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · out 2019<br/><b>Ambiente imersivo</b></div>
+<div class="body">
+<div class="title">Shopping Light · ambiente imersivo</div>
+<div class="scope">Design e execução de ambiente imersivo.</div>
+</div>
+</div>
+<div class="project" data-id="2019-datagro" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · out 2019<br/><b>Projeção mapeada</b></div>
+<div class="body">
+<div class="title">DATAGRO</div>
+<div class="scope">Conteúdo para projeção mapeada para a DATAGRO.</div>
+</div>
+</div>
+<div class="project" data-id="2019-sp-na-rua" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · set 2019<br/><b>Instalação de luz</b></div>
+<div class="body">
+<div class="title">SP na Rua</div>
+<div class="scope">Instalação de luz para o SP na Rua, da Secretaria Municipal de Cultura de São Paulo.</div>
+</div>
+</div>
+<div class="project" data-id="2019-paraitinga" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Luiz do Paraitinga · set 2019<br/><b>Sala imersiva interativa</b></div>
+<div class="body">
+<div class="title">Modernização do Museu de São Luiz do Paraitinga</div>
+<div class="scope">Sala imersiva e instalação interativa para a modernização do museu (MUMAM · PROAC Editais).</div>
+</div>
+</div>
+<div class="project" data-id="2019-virada-sombras" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · mai 2019<br/><b>Instalação interativa</b></div>
+<div class="body">
+<div class="title">Virada Cultural · "Sombras"</div>
+<div class="scope">Instalação interativa "Sombras" durante a Virada Cultural 2019. Secretaria Municipal de Cultura de São Paulo.</div>
+</div>
+</div>
+<div class="project" data-id="2019-aniversario-sp" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · jan 2019<br/><b>Projeção</b></div>
+<div class="body">
+<div class="title">Aniversário de São Paulo</div>
+<div class="scope">Projeção comemorativa do aniversário da cidade de São Paulo. Secretaria Municipal de Cultura.</div>
+</div>
+</div>
+<div class="project" data-id="2019-heavy-love-schutz" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · jan 2019<br/><b>Instalação de luz</b></div>
+<div class="body">
+<div class="title">Heavy Love · Schutz</div>
+<div class="scope">Instalação de luz para Heavy Love e Schutz.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2019-invisivel" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">Florianópolis · 2019<br/><b>Exposição individual</b></div>
+<div class="body">
+<div class="title">O Invisível das Coisas · Galeria Digital O Sítio</div>
+<div class="scope">Primeira exposição individual da ADA.</div>
+</div>
+</div>
+<div class="project" data-autoral="" data-id="2019-color-blindness" data-year="2019">
+<button class="marco-btn"></button>
+<div class="meta">Fortaleza · 2019<br/><b>Videomapping</b></div>
+<div class="body">
+<div class="title">Color Blindness · Festival Abstrata</div>
+<div class="scope">Videomapping autoral apresentado no festival.</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 7 — 2017 + 2015 + AUTORAIS ÍNDICE ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg tr"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<div class="year-block">
+<div class="year-head"><div class="yr">2018</div><div class="ct">1 projeto</div></div>
+<div class="project" data-id="2018-natal-iluminado" data-year="2018">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2018<br/><b>Projeção · iluminação</b></div>
+<div class="body">
+<div class="title">Natal Iluminado 2018</div>
+<div class="scope">Produção de conteúdo audiovisual e iluminação para o Natal Iluminado da cidade de São Paulo.</div>
+</div>
+</div>
+</div>
+<div class="year-block">
+<div class="year-head"><div class="yr">2017</div><div class="ct">1 projeto</div></div>
+<div class="project" data-autoral="" data-id="2017-protocolo" data-year="2017">
+<button class="marco-btn"></button>
+<div class="meta">São Paulo · 2017<br/><b>Instalação generativa</b></div>
+<div class="body">
+<div class="title">Protocolo · AVXLab/CCSP + SPCine</div>
+<div class="scope">Instalação audiovisual generativa sobre controle e comunicação. Residência AVXLab/CCSP em parceria com a SPCine. Colaboração com Henrique Roscoe.</div>
+</div>
+</div>
+</div>
+<div class="year-block">
+<div class="year-head"><div class="yr">2015</div><div class="ct">1 projeto · obra fundadora</div></div>
+<div class="project" data-autoral="" data-id="2015-pixel-data" data-year="2015">
+<button class="marco-btn"></button>
+<div class="meta">Rio de Janeiro · 2015<br/><b>Performance generativa</b></div>
+<div class="body">
+<div class="title">pixel.data/cm² · Festival Visualismo</div>
+<div class="scope">Performance audiovisual generativa apresentada na Praça Mauá durante o Festival Visualismo. Obra fundadora da ADA. Caio Fazolin (visuais) e Tatiane Gonzalez (pesquisa).</div>
+</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 8 — CLIENTES ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg corner-r"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<h1>Clientes</h1>
+<div class="h-sub">Marcas, instituições e artistas atendidos</div>
+<div class="clients-cloud">
+<span class="marca">Itaú</span>
+<span class="artista md">Anitta</span>
+<span class="museu">Sesc Ipiranga</span>
+<span class="marca">XP</span>
+<span class="publica">Presidência da República</span>
+<span class="artista lg">Racionais MCs</span>
+<span class="museu">Pinacoteca SP</span>
+<span class="marca">Heineken</span>
+<span class="artista sm">Vanessa Moreno</span>
+<span class="publica">G20 Brasil</span>
+<span class="marca">Google</span>
+<span class="artista md">Anish Kapoor</span>
+<span class="museu">Sala São Paulo</span>
+<span class="marca">Banco do Brasil</span>
+<span class="artista sm">Hamilton de Holanda</span>
+<span class="publica">Funarte</span>
+<span class="museu">CCBB Brasília</span>
+<span class="artista md">Mano Brown</span>
+<span class="marca">Ambev</span>
+<span class="artista sm">Criolo</span>
+<span class="museu">Sesc-DF</span>
+<span class="publica">Prefeitura de SP</span>
+<span class="artista md">Gilberto Gil</span>
+<span class="marca">iFood</span>
+<span class="museu">Galeria Luciana Brito</span>
+<span class="artista sm">Liniker</span>
+<span class="marca">Vivara</span>
+<span class="publica">SPCine</span>
+<span class="artista md">Titãs</span>
+<span class="museu">Mix Experience MIS Ceará</span>
+<span class="marca">Casa Bradesco</span>
+<span class="artista sm">Edi Rock</span>
+<span class="publica">Encontro Internacional de Astronautas</span>
+<span class="artista md">Ludmilla</span>
+<span class="marca">Natura</span>
+<span class="museu">Museu Monteiro Lobato</span>
+<span class="artista sm">Clarice Falcão</span>
+<span class="marca">Sony Pictures</span>
+<span class="artista md">Alok</span>
+<span class="museu">Museu SICREDI</span>
+<span class="marca">Netflix</span>
+<span class="artista sm">Jão</span>
+<span class="marca">Corona</span>
+<span class="artista md">Jota Quest</span>
+<span class="marca">IBM</span>
+<span class="artista sm">Natiruts</span>
+<span class="marca">Nalimo</span>
+<span class="marca">Space Lab</span>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 9 — EQUIPE + CONTATO ================== -->
+<section class="page-section">
+<div class="alfa-clip"><div class="alfa-bg bl"><svg><use href="#alfa"></use></svg></div></div>
+<main class="content">
+<h1>Equipe</h1>
+<div class="h-sub">Direção e operação</div>
+<div class="team-grid">
+<div class="team-block">
+<div class="name">Tatiane Gonzalez</div>
+<div class="role">Direção executiva · cofundadora · representante legal</div>
+<div class="bio">Pesquisa, coordenação de produção e gestão da plataforma. Responsável legal da Tatiane G L da Silva Produção Cultural (CNPJ 20.420.653/0001-37), razão social da ADA.</div>
+</div>
+<div class="team-block">
+<div class="name">Caio Fazolin</div>
+<div class="role">Direção artística · cofundador</div>
+<div class="bio">Direção artística das obras públicas e autorais da ADA desde 2015. Visuais ao vivo, instalação generativa, direção de videomapping arquitetônico. Repertório atravessa palco, museu, espaço urbano e ambiente diplomático.</div>
+</div>
+</div>
+</main>
+</section>
+<!-- ================== PÁGINA 10 — MOSAICO FINAL ================== -->
+<section class="page-section page-section--black">
+<main class="content">
+<div class="mosaic">
+<div class="tile big"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5821.jpg"/></div>
+<div class="tile"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-29.jpg"/></div>
+<div class="tile"><img alt="Times Square" src="../../INSUMOS/PORTIF%C3%93LIO/MAPPING_TIMES_SQUARE.png"/></div>
+<div class="tile"><img alt="Paulista 130" src="../../INSUMOS/PORTIF%C3%93LIO/On_paulista_130-anos_2021_PHBiaFerrer-44.jpg"/></div>
+<div class="tile"><img alt="Sesc Paulista" src="../../INSUMOS/PORTIF%C3%93LIO/SESC-PAULISTA--fotos-Bia-Ferrer-0609.jpg"/></div>
+<div class="tile"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5928.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/171.jpg"/></div>
+<div class="tile big"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-182.jpg"/></div>
+<div class="tile"><img alt="Palácio dos Correios" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_correios.png"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-1.jpg"/></div>
+<div class="tile"><img alt="Paulista 130" src="../../INSUMOS/PORTIF%C3%93LIO/On_paulista_130-anos_2021_PHBiaFerrer-11.jpg"/></div>
+<div class="tile"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5826.jpg"/></div>
+<div class="tile"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-68.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-2.jpg"/></div>
+<div class="tile"><img alt="Sesc Paulista" src="../../INSUMOS/PORTIF%C3%93LIO/SESC-PAULISTA--fotos-Bia-Ferrer-0363.jpg"/></div>
+<div class="tile big"><img alt="Shopping Light" src="../../INSUMOS/PORTIF%C3%93LIO/MAPPING_SHOPPING%20LIGHT.png"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-3.jpg"/></div>
+<div class="tile"><img alt="Reviver" src="../../INSUMOS/PORTIF%C3%93LIO/IPDA_PHBiaFerrer-5834.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-4.jpg"/></div>
+<div class="tile"><img alt="Paulista" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_paulista.png"/></div>
+<div class="tile"><img alt="Paulista 130" src="../../INSUMOS/PORTIF%C3%93LIO/On_paulista_130-anos_2021_PHBiaFerrer-59.jpg"/></div>
+<div class="tile"><img alt="Butantã" src="../../INSUMOS/PORTIF%C3%93LIO/On_Butanta_PH_BiaFerrer-82.jpg"/></div>
+<div class="tile"><img alt="Instituto Pasteur" src="../../INSUMOS/PORTIF%C3%93LIO/mapping_ipca.png"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/Sem-Titulo-1Prancheta-5.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/169.jpg"/></div>
+<div class="tile"><img alt="ADA" src="../../INSUMOS/PORTIF%C3%93LIO/thumb.jpg"/></div>
+</div>
+</main>
+</section>
+<script>
+  const STORAGE_KEY = 'ada-portfolio-marcos';
+
+  function loadMarcos(){
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved !== null){
+      try { return JSON.parse(saved); } catch(e){}
+    }
+    // Sem localStorage: usa as classes is-marco já presentes no HTML
+    return Array.from(document.querySelectorAll('.project.is-marco')).map(p => p.dataset.id);
+  }
+  function saveMarcos(set){
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(set)));
+  }
+
+  const marcosSet = new Set(loadMarcos());
+
+  function applyMarcoState(){
+    document.querySelectorAll('.project').forEach(p => {
+      const id = p.dataset.id;
+      if (marcosSet.has(id)) p.classList.add('is-marco');
+      else p.classList.remove('is-marco');
+    });
+  }
+
+  function renderMarcosPage(){
+    const list = document.getElementById('marcos-list');
+    const empty = document.getElementById('marcos-empty');
+    list.innerHTML = '';
+
+    const marked = Array.from(document.querySelectorAll('.project.is-marco'));
+    if (marked.length === 0){
+      empty.style.display = '';
+      return;
+    }
+    empty.style.display = 'none';
+
+    // Agrupa por ano (descendente)
+    const byYear = {};
+    marked.forEach(p => {
+      const y = p.dataset.year || '—';
+      if (!byYear[y]) byYear[y] = [];
+      const title = p.querySelector('.title').textContent.trim();
+      const meta = p.querySelector('.meta').innerText.trim().split('\n')[1] || '';
+      byYear[y].push({ title, meta });
+    });
+
+    const years = Object.keys(byYear).sort((a,b) => b.localeCompare(a));
+    years.forEach(y => {
+      const row = document.createElement('div');
+      row.className = 'marcos-row';
+      const items = byYear[y].map(it =>
+        `<li><strong>${it.title}</strong>${it.meta ? ' — ' + it.meta : ''}</li>`
+      ).join('');
+      row.innerHTML = `
+        <div class="marcos-year">${y}</div>
+        <div class="marcos-text"><ul>${items}</ul>
+</div>`;
+      list.appendChild(row);
+    });
+  }
+
+  // Bind toggles
+  document.querySelectorAll('.project .marco-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      const project = btn.closest('.project');
+      const id = project.dataset.id;
+      if (marcosSet.has(id)) marcosSet.delete(id);
+      else marcosSet.add(id);
+      saveMarcos(marcosSet);
+      applyMarcoState();
+      renderMarcosPage();
+    });
+  });
+
+  // Export marked IDs
+  document.getElementById('btn-export').addEventListener('click', async () => {
+    const ids = Array.from(marcosSet);
+    if (ids.length === 0){
+      alert('Nenhum projeto marcado ainda.');
+      return;
+    }
+    const text = ids.join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      const btn = document.getElementById('btn-export');
+      const orig = btn.textContent;
+      btn.textContent = '✓ Copiado · ' + ids.length + ' IDs';
+      setTimeout(() => { btn.textContent = orig; }, 2500);
+    } catch(e){
+      prompt('Copie os IDs abaixo:', text);
+    }
+  });
+
+  // Clear all
+  document.getElementById('btn-clear').addEventListener('click', () => {
+    if (!confirm('Limpar todas as marcações de marco?')) return;
+    marcosSet.clear();
+    saveMarcos(marcosSet);
+    applyMarcoState();
+    renderMarcosPage();
+  });
+
+  // Inicializa
+  applyMarcoState();
+  renderMarcosPage();
+
+  // Injeta cabeçalho + rodapé em cada folha A4
+  (function injectSheetChrome(){
+    const sections = document.querySelectorAll('.page-section');
+    const total = sections.length;
+    sections.forEach((sec, i) => {
+      const pageNum = i + 1;
+      const header = document.createElement('div');
+      header.className = 'sheet-header';
+      header.innerHTML = '<img src="../../INSUMOS/MARCA/wordmark.svg" alt="ADA"><div class="tag">Plataforma criativa · desde 2015</div>';
+      const footer = document.createElement('div');
+      footer.className = 'sheet-footer';
+      footer.innerHTML = '<span>Portfólio institucional · maio de 2026 · ada.art.br</span><span class="pg">' + String(pageNum).padStart(2,'0') + '</span>';
+      sec.insertBefore(header, sec.firstChild);
+      sec.appendChild(footer);
+      // Wordmark amarelo nas seções pretas
+      if (sec.classList.contains('page-section--black')){
+        const img = header.querySelector('img');
+        img.src = '../../INSUMOS/MARCA/wordmark-yellow.svg';
+        img.style.filter = 'none';
+      }
+    });
+  })();
+</script>
+</body>
+</html>

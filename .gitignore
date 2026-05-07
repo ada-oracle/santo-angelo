@@ -20,3 +20,30 @@ desktop.ini
 .claude/
 .gitignore.tmp.*
 
+# Pastas de trabalho pesadas (projetos AE/Premiere, renders brutos, midias)
+PRODUCAO_DEMO/
+TG/
+
+# Dependencias node
+node_modules/
+
+# Arquivos temporarios de editor
+*.tmp
+*.tmp.*
+
+# Midias pesadas (versoes finais ficam no Dropbox)
+*.mp4
+*.mov
+*.wav
+*.aep
+*.aep_AME
+*.cfa
+*.fbx
+*.prproj
+*.psd
+*.psb
+
+# Arquivos individuais acima do limite do GitHub
+MATERIAL_INSCRICAO/03_QUALIFICACAO_TECNICA/HISTORIADORES/Guilherme G. Felippe/DADOS/Guilherme G. Felippe - FOTO.png
+MATERIAL_INSCRICAO/06_PROPOSTA_TECNICA/FRAMES_DE_REFERENCIA/frames-de-referencia-v1.pdf
+

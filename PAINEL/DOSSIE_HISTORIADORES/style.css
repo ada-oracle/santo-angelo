@@ -1,0 +1,433 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
+
+:root{
+  --paper:#F7F2E4;
+  --ink:#0a0a0a;
+  --ink-mid:#3a3a3a;
+  --ink-soft:#666;
+  --accent:#FFD600;
+  --black:#0a0a0a;
+  --rule:rgba(0,0,0,.18);
+  --mono:'DM Mono',monospace;
+  --sans:'Syne',sans-serif;
+  --serif:'Cormorant Garamond',serif;
+}
+
+/* ============ PAGED.JS @page rules ============ */
+@page{
+  size: A4;
+  margin: 22mm 20mm 22mm 20mm;
+  background: var(--paper);
+  @top-left{
+    content: string(act-title);
+    font-family: var(--mono); font-weight:300; font-size:8pt;
+    letter-spacing:.18em; text-transform:uppercase; color: var(--ink-mid);
+    padding-bottom:3mm; border-bottom: .3pt solid var(--rule);
+    white-space: nowrap;
+  }
+  @top-right{
+    content: "Dossiê · Historiadores";
+    font-family: var(--mono); font-weight:300; font-size:8pt;
+    letter-spacing:.18em; text-transform:uppercase; color: var(--ink-mid);
+    padding-bottom:3mm; border-bottom: .3pt solid var(--rule);
+    text-align:right; white-space: nowrap;
+  }
+  @bottom-left{
+    content: "ADA · Catedral Angelopolitana de Santo Ângelo";
+    font-family: var(--mono); font-weight:300; font-size:7.5pt;
+    letter-spacing:.18em; text-transform:uppercase; color: var(--ink-soft);
+    padding-top:3mm; border-top: .3pt solid var(--rule);
+    white-space: nowrap;
+  }
+  @bottom-right{
+    content: counter(page) " / " counter(pages);
+    font-family: var(--mono); font-weight:400; font-size:8.5pt;
+    letter-spacing:.1em; color: var(--ink);
+    padding-top:3mm; border-top: .3pt solid var(--rule);
+    text-align:right; white-space: nowrap;
+  }
+}
+
+/* Capa: sem header/footer */
+@page :first{
+  margin: 0;
+  background: var(--black);
+  @top-left{ content: none } @top-right{ content: none }
+  @bottom-left{ content: none } @bottom-right{ content: none }
+}
+
+/* ============ Base ============ */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);
+  font-family:var(--serif); font-weight:400; font-size:11.5pt; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:"liga","kern";
+}
+
+p{margin:0 0 4mm 0; text-align:justify; hyphens:auto}
+p + p { text-indent: 5mm; margin-top:-2mm }
+
+p.nota{
+  font-family:var(--mono); font-style:normal; font-weight:300; font-size:9pt;
+  line-height:1.5; color:var(--ink-mid); text-align:left;
+  border-left:1mm solid var(--accent); padding-left:5mm; margin-top:8mm;
+}
+
+h1,h2,h3,h4{font-family:var(--mono); font-weight:300; letter-spacing:.06em;
+  text-transform:uppercase; margin:0;}
+
+/* h1 abre página + define string do header + respiro generoso */
+h1{
+  font-size:22pt; line-height:1.1; letter-spacing:.12em;
+  margin: 18mm 0 10mm 0;          /* << RESPIRO entre hairline e título */
+  padding-bottom: 4mm;
+  border-bottom: .8pt solid var(--ink);
+  string-set: act-title content();
+  break-before: page;
+  break-after: avoid-page;
+}
+
+h2{font-size:13pt; letter-spacing:.14em; margin:10mm 0 4mm 0;
+  border-bottom:.5pt solid var(--rule); padding-bottom:1.5mm;
+  break-after: avoid-page;
+}
+
+em, i { font-style: italic; color: var(--ink-mid) }
+strong { font-weight:500 }
+
+/* ============ Capa ============ */
+.cover{
+  width:210mm; height:297mm; padding:28mm 24mm;
+  background: var(--black); color:#fff;
+  display:flex; flex-direction:column; justify-content:space-between;
+  position:relative; overflow:hidden;
+}
+.cover::before{
+  content:""; position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,214,0,.08), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(255,214,0,.05), transparent 60%);
+  pointer-events:none;
+}
+.cover-top, .cover-mid, .cover-bottom{ position:relative; z-index:2 }
+
+.eyebrow{font-family:var(--mono); font-weight:300; font-size:9pt;
+  letter-spacing:.32em; text-transform:uppercase; color:#fff;
+  display:flex; align-items:center; gap:6mm}
+.eyebrow::before{ content:""; display:inline-block; width:18mm; height:.5pt; background:var(--accent) }
+
+.cover h1.cover-title{
+  font-family:var(--sans); font-weight:700; font-size:48pt; line-height:1.05;
+  letter-spacing:-.01em; text-transform:none; color:#fff;
+  margin:0; padding:0; border:0;
+  string-set:none; break-before:auto;
+}
+.cover h1.cover-title em{ font-family:var(--serif); font-style:italic;
+  font-weight:300; color:var(--accent); letter-spacing:0; }
+
+.cover-meta{ display:grid; grid-template-columns:1fr 1fr; gap:8mm;
+  font-family:var(--mono); font-size:8.5pt; letter-spacing:.14em;
+  text-transform:uppercase; color:#cfc6a3; }
+.cover-meta .label{ color:#7d7757; display:block; margin-bottom:2mm }
+.cover-meta .value{ color:#fff; font-weight:400 }
+
+/* ============ Seções de conteúdo ============ */
+.section{ /* h1 dentro já força break-before */ }
+
+/* ============ Tabelas ============ */
+.atos-table, .context-table, .anatomy-table{
+  width:100%; border-collapse:collapse; margin:4mm 0 6mm 0;
+  font-family:var(--sans); font-size:9.5pt; line-height:1.4;
+}
+.atos-table th, .context-table th, .anatomy-table th{
+  text-align:left; vertical-align:bottom;
+  font-family:var(--mono); font-weight:400; font-size:7.5pt;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--ink-mid);
+  padding:2mm 4mm 2mm 0; border-bottom:1pt solid var(--ink);
+}
+.atos-table td, .context-table td, .anatomy-table td{
+  vertical-align:top; padding:3mm 4mm 3mm 0;
+  border-bottom:.4pt solid var(--rule); color:var(--ink);
+}
+
+/* Atos table — coluna do número do ato em destaque */
+.atos-table td.ato-num{
+  font-family:var(--mono); font-weight:400; font-size:18pt;
+  letter-spacing:.04em; color:var(--ink);
+  width:14mm; text-align:left;
+  border-bottom: 1pt solid var(--ink);
+  padding-top: 4mm;
+}
+.atos-table tr.ato-row td:not(.ato-num){
+  border-top: 1pt solid var(--ink);
+}
+
+/* Context tables — primeira coluna (sub-ato) destacada */
+.context-table td:first-child{
+  font-family:var(--mono); font-weight:400; font-size:9pt;
+  letter-spacing:.05em; color:var(--ink);
+  width:18mm;
+}
+
+/* Anatomy table — primeira coluna em sans bold */
+.anatomy-table td:first-child{
+  font-family:var(--sans); font-weight:600; letter-spacing:0;
+  color:var(--ink);
+  text-transform:uppercase; font-size:9pt; width:38mm;
+}
+
+/* Lista de instrumentos */
+.instruments{ list-style:none; padding:0; margin: 4mm 0 0 0; }
+.instruments li{ display:grid; grid-template-columns:42mm 1fr; gap:6mm;
+  padding:3mm 0; border-top:.4pt solid var(--rule); break-inside:avoid }
+.instruments li:last-child{ border-bottom:.4pt solid var(--rule) }
+.instruments li .nome{ font-family:var(--sans); font-weight:600; font-size:10pt;
+  text-transform:uppercase; letter-spacing:.05em; color:var(--ink); }
+.instruments li .papel{ font-family:var(--serif); font-size:11pt; color:var(--ink) }
+
+/* Bibliografia (ABNT) */
+.bibliografia{
+  list-style: decimal;
+  padding-left: 7mm;
+  margin: 4mm 0 0 0;
+  font-family: var(--serif);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: var(--ink);
+}
+.bibliografia li{
+  padding: 2mm 0;
+  text-align: justify;
+  hyphens: auto;
+  break-inside: avoid;
+  border-bottom: .3pt solid var(--rule);
+}
+.bibliografia li:last-child{ border-bottom: none }
+.bibliografia li::marker{
+  font-family: var(--mono); font-weight: 300;
+  font-size: 9pt; color: var(--ink-mid);
+}
+.bibliografia em{ font-style: italic; color: var(--ink) }
+
+/* Assinatura */
+.assinatura{
+  margin-top: 22mm;
+  break-inside: avoid;
+}
+.assinatura .linha{
+  width: 70mm;
+  border-top: .6pt solid var(--ink);
+  margin-bottom: 2mm;
+}
+.assinatura .nome{
+  font-family: var(--serif); font-style: italic; font-weight: 400;
+  font-size: 14pt; color: var(--ink);
+  margin-bottom: 1mm;
+}
+.assinatura .cargo{
+  font-family: var(--mono); font-weight: 400; font-size: 8.5pt;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--ink-mid);
+}
+
+/* ============ Ficha de historiador ============ */
+.ficha-head{
+  display: grid; grid-template-columns: 38mm 1fr; gap: 8mm;
+  align-items: start;
+  margin-top: 4mm;
+  break-inside: avoid;
+}
+.ficha-foto{
+  width: 38mm; height: 50mm;
+  background: var(--rule);
+  object-fit: cover;
+  filter: grayscale(.15) contrast(1.05);
+}
+.ficha-meta{ display: flex; flex-direction: column; gap: 2mm }
+.ficha-meta .nome{
+  font-family: var(--sans); font-weight: 700; font-size: 22pt;
+  line-height: 1; letter-spacing: -.005em; color: var(--ink);
+  margin: 0;
+}
+.ficha-meta .titulo{
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 12.5pt; color: var(--ink-mid); margin: 1mm 0 3mm 0;
+}
+.ficha-meta dl{
+  display: grid; grid-template-columns: 28mm 1fr;
+  gap: 2mm 5mm; margin: 0;
+  font-family: var(--mono); font-size: 8.5pt; line-height: 1.4;
+}
+.ficha-meta dt{
+  font-weight: 300; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.ficha-meta dd{
+  margin: 0; font-family: var(--sans); font-size: 9.5pt;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+}
+
+.highlights{ list-style: none; padding: 0; margin: 6mm 0 0 0 }
+.highlights li{
+  display: grid; grid-template-columns: 6mm 1fr; gap: 3mm;
+  padding: 2.2mm 0; border-top: .4pt solid var(--rule);
+  font-family: var(--serif); font-size: 11pt; line-height: 1.45;
+  color: var(--ink); break-inside: avoid;
+}
+.highlights li:last-child{ border-bottom: .4pt solid var(--rule) }
+.highlights li::before{
+  content: counter(hl, decimal-leading-zero);
+  counter-increment: hl;
+  font-family: var(--mono); font-weight: 400; font-size: 8.5pt;
+  letter-spacing: .08em; color: var(--ink-mid);
+  padding-top: 1mm;
+}
+.highlights{ counter-reset: hl }
+
+.publicacoes{
+  list-style: none; padding: 0; margin: 4mm 0 0 0;
+  font-family: var(--serif); font-size: 10pt; line-height: 1.45;
+}
+.publicacoes li{
+  padding: 2mm 0 2mm 6mm; position: relative;
+  border-bottom: .3pt solid var(--rule);
+  text-align: justify; hyphens: auto;
+  break-inside: avoid;
+}
+.publicacoes li:last-child{ border-bottom: none }
+.publicacoes li::before{
+  content: "▸";
+  position: absolute; left: 0; top: 2.5mm;
+  color: var(--accent);
+  font-size: 9pt;
+}
+.publicacoes em{ font-style: italic }
+
+/* ============ Plano de Horas ============ */
+.horas-table{
+  width: 100%; border-collapse: collapse; margin: 4mm 0 4mm 0;
+  font-family: var(--sans); font-size: 9pt; line-height: 1.4;
+}
+.horas-table th{
+  text-align: left; vertical-align: bottom;
+  font-family: var(--mono); font-weight: 400; font-size: 7.5pt;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mid);
+  padding: 2mm 3mm 2mm 0; border-bottom: 1pt solid var(--ink);
+}
+.horas-table th.num, .horas-table td.num{ text-align: right }
+.horas-table td{
+  vertical-align: top; padding: 3mm 3mm 3mm 0;
+  border-bottom: .4pt solid var(--rule); color: var(--ink);
+}
+.horas-table tbody tr.etapa td:first-child{
+  font-family: var(--mono); font-weight: 400; font-size: 9pt;
+  color: var(--ink); width: 14mm;
+}
+.horas-table tbody tr.total td{
+  font-family: var(--sans); font-weight: 700;
+  border-top: 1pt solid var(--ink); border-bottom: 2pt double var(--ink);
+  background: rgba(255,214,0,.10);
+}
+.horas-table tbody tr.total td.num{ font-size: 11pt }
+
+.horas-resumo{
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm;
+  margin: 6mm 0 0 0;
+}
+.horas-resumo .card{
+  border: .5pt solid var(--ink); padding: 4mm 5mm;
+  background: rgba(255,214,0,.08);
+}
+.horas-resumo .card .nome{
+  font-family: var(--mono); font-weight: 400; font-size: 8pt;
+  letter-spacing: .14em; text-transform: uppercase; color: var(--ink-mid);
+  margin-bottom: 2mm;
+}
+.horas-resumo .card .qtd{
+  font-family: var(--sans); font-weight: 700; font-size: 22pt;
+  line-height: 1; color: var(--ink);
+}
+.horas-resumo .card .qtd small{
+  font-family: var(--mono); font-weight: 300; font-size: 8.5pt;
+  letter-spacing: .14em; color: var(--ink-mid);
+}
+
+/* Vínculo */
+.vinculo-card{
+  border-left: 2mm solid var(--accent);
+  padding: 3mm 5mm; margin: 6mm 0;
+  background: rgba(255,214,0,.06);
+  font-family: var(--mono); font-weight: 300; font-size: 9pt;
+  line-height: 1.5; color: var(--ink-mid);
+  break-inside: avoid;
+}
+
+/* Bloco de assinaturas múltiplas */
+.assinaturas-grid{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12mm 14mm;
+  margin-top: 16mm;
+}
+.assinaturas-grid .assinatura{ margin: 0; break-inside: avoid }
+
+.highlight-bio{
+  font-family: var(--serif); font-size: 12pt; line-height: 1.55;
+  color: var(--ink); margin-top: 8mm;
+  text-align: justify; hyphens: auto;
+}
+
+/* Equipe compacta — 3 cards em uma página */
+.ficha-compacta{
+  display: grid; grid-template-columns: 1fr; gap: 6mm;
+  margin-top: 2mm;
+}
+.ficha-card{
+  display: grid; grid-template-columns: 32mm 1fr;
+  gap: 6mm 8mm;
+  align-items: start;
+  padding: 5mm 0 6mm 0;
+  border-top: .6pt solid var(--ink);
+  break-inside: avoid;
+}
+.ficha-card:last-child{ border-bottom: .6pt solid var(--ink) }
+.ficha-foto-sm{
+  width: 32mm; height: 42mm;
+  object-fit: cover;
+  filter: grayscale(.15) contrast(1.05);
+  grid-row: span 4;
+}
+.ficha-card .nome{
+  font-family: var(--sans); font-weight: 700; font-size: 15pt;
+  line-height: 1; color: var(--ink); margin: 0;
+}
+.ficha-card .titulo{
+  font-family: var(--serif); font-style: italic; font-weight: 300;
+  font-size: 11pt; color: var(--ink-mid); margin: 1mm 0 2mm 0;
+}
+.ficha-card dl{
+  display: grid; grid-template-columns: 24mm 1fr;
+  gap: 1mm 4mm; margin: 0 0 2mm 0;
+  font-family: var(--mono); font-size: 7.5pt; line-height: 1.35;
+}
+.ficha-card dt{
+  font-weight: 300; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--ink-mid);
+}
+.ficha-card dd{
+  margin: 0; font-family: var(--sans); font-size: 8.5pt;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+}
+.ficha-card .highlight-bio{
+  font-family: var(--serif); font-size: 10pt; line-height: 1.45;
+  color: var(--ink); margin: 2mm 0 0 0;
+  text-align: justify; hyphens: auto;
+}
+
+.ficha-card .resumo-lattes{
+  font-family: var(--serif); font-size: 10pt; line-height: 1.45;
+  color: var(--ink); margin: 2mm 0 0 0;
+  text-align: justify; hyphens: auto;
+}
+.ficha-card .resumo-lattes .fonte{
+  font-family: var(--mono); font-style: normal; font-weight: 300;
+  font-size: 7.5pt; letter-spacing: .04em;
+  color: var(--ink-soft);
+}
